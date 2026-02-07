@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM 1: Rates and Returns - Learning Outcomes | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.3em;
+            margin-bottom: 10px;
+        }
+
+        .module-meta {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .disclaimer {
+            color: #666;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .los-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .los-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .los-card.coming-soon {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            opacity: 0.7;
+        }
+
+        .los-code {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .los-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .los-description {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .los-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .los-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+        }
+
+        .los-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .intuitive-btn {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        .detailed-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .practice-btn {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+        }
+
+        .btn-icon {
+            font-size: 1.3em;
+        }
+
+        .btn-text {
+            font-size: 0.95em;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .los-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .los-buttons {
+                flex-direction: column;
+            }
+            
+            .los-btn {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="quant-modules.html" class="back-button">← Back to All Learning Modules</a>
+            <h1>Learning Module 1: Rates and Returns</h1>
+            <p class="module-meta">📊 Quantitative Methods | Multiple Learning Outcomes</p>
+            <p class="disclaimer">
+                Learning outcomes based on CFA Institute curriculum
+            </p>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Outcome Statements (LOS)</h2>
+            <div class="los-grid">
+                
+                <!-- LOS 1.a - AVAILABLE WITH 3 BUTTONS -->
+                <div class="los-card">
+                    <div class="los-code">LOS 1.a</div>
+                    <div class="los-title">
+                        Interest Rates: Three Interpretations
+                    </div>
+                    <p class="los-description">
+                        Interpret interest rates as required rates of return, discount rates, or opportunity costs and explain an interest rate as the sum of a real risk-free rate and premiums that compensate investors for bearing distinct types of risk.
+                    </p>
+                    
+                    <!-- THREE BUTTONS -->
+                    <div class="los-buttons">
+                        <a href="quant-lm1-los1a-intuitive.html" class="los-btn intuitive-btn" target="_blank">
+                            <span class="btn-icon">🎯</span>
+                            <span class="btn-text">Intuitive Learning</span>
+                        </a>
+                        
+                        <a href="quant-lm1-los1a-detailed.html" class="los-btn detailed-btn" target="_blank">
+                            <span class="btn-icon">📚</span>
+                            <span class="btn-text">Detailed Notes</span>
+                        </a>
+                        
+                        <a href="quant-lm1-los1a-practice.html" class="los-btn practice-btn" target="_blank">
+                            <span class="btn-icon">✍️</span>
+                            <span class="btn-text">Practice Questions</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- OTHER LOS - COMING SOON -->
+                <div class="los-card coming-soon">
+                    <div class="los-code">Other LOS</div>
+                    <div class="los-title">
+                        Additional Learning Outcomes
+                    </div>
+                    <p class="los-description">
+                        More learning outcome statements for this module will be added soon, including effective annual rates, compounding frequencies, present value, future value calculations, and annuities.
+                    </p>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>
