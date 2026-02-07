@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOS 1.a: Practice Questions - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            font-size: 0.9em;
+            color: #6c757d;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .question-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .option {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+
+        .option.selected {
+            background: #e0c3fc;
+            border-color: #667eea;
+        }
+
+        .option.correct {
+            background: #d4fc79;
+            border-color: #4caf50;
+        }
+
+        .option.incorrect {
+            background: #ff9a9e;
+            border-color: #f44336;
+        }
+
+        .explanation {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .check-answer-btn {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .navigation {
+            background: #f8f9fa;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 3px solid #e9ecef;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✍️ Practice Questions</h1>
+            <p class="subtitle">LOS 1.a: Test Your Understanding</p>
+            <div class="badge">10 Questions - Interactive Quiz</div>
+        </div>
+
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>→</span>
+            <a href="quant-modules.html">Quantitative Methods</a>
+            <span>→</span>
+            <a href="quant-lm1-los-list.html">LM 1: Time Value of Money</a>
+            <span>→</span>
+            <strong>LOS 1.a - Practice Questions</strong>
+        </div>
+
+        <div class="content">
+            <h2>Practice Questions</h2>
+            <p style="margin-bottom: 30px;">Test your understanding of interest rates, their interpretations, and their components. Click on your answer choice and then click "Check Answer" to see if you're correct.</p>
+
+            <!-- Question 1 -->
+            <div class="question-card">
+                <div class="question-number">Question 1</div>
+                <p><strong>An investor is evaluating two investment opportunities. Investment A is a government bond yielding 5%, and Investment B is a corporate bond from a tech startup yielding 14%. The 9% difference in yields is primarily attributable to:</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 1, 'A')">
+                    A) Inflation premium
+                </div>
+                <div class="option" onclick="selectOption(this, 1, 'B')">
+                    B) Maturity premium
+                </div>
+                <div class="option" onclick="selectOption(this, 1, 'C')">
+                    C) Default risk premium
+                </div>
+                <div class="option" onclick="selectOption(this, 1, 'D')">
+                    D) Liquidity premium
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(1, 'C')">Check Answer</button>
+                
+                <div class="explanation" id="explanation1">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: C</h4>
+                    <p><strong>Explanation:</strong> The 9% yield differential between the government bond and the tech startup bond is primarily due to the <strong>default risk premium</strong>. Government bonds are considered virtually risk-free in terms of default, while a tech startup has significantly higher default risk. Investors require this additional compensation for the possibility that the startup may fail to make promised payments. While both bonds may also differ in liquidity and maturity, the question states the difference is "primarily" attributable to one factor, and for government vs. corporate bonds, especially startups, the default risk premium is the dominant factor.</p>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card">
+                <div class="question-number">Question 2</div>
+                <p><strong>If USD 8,000 today is equivalent to USD 9,200 in two years, the annual interest rate is closest to:</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 2, 'A')">
+                    A) 7.25%
+                </div>
+                <div class="option" onclick="selectOption(this, 2, 'B')">
+                    B) 7.24%
+                </div>
+                <div class="option" onclick="selectOption(this, 2, 'C')">
+                    C) 15.00%
+                </div>
+                <div class="option" onclick="selectOption(this, 2, 'D')">
+                    D) 6.82%
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(2, 'B')">Check Answer</button>
+                
+                <div class="explanation" id="explanation2">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: B</h4>
+                    <p><strong>Explanation:</strong> To find the annual interest rate, we use the formula:</p>
+                    <p style="margin-left: 20px; font-family: 'Courier New', monospace;">FV = PV × (1 + r)^n</p>
+                    <p style="margin-left: 20px; font-family: 'Courier New', monospace;">9,200 = 8,000 × (1 + r)^2</p>
+                    <p style="margin-left: 20px; font-family: 'Courier New', monospace;">(1 + r)^2 = 9,200 / 8,000 = 1.15</p>
+                    <p style="margin-left: 20px; font-family: 'Courier New', monospace;">1 + r = √1.15 = 1.0724</p>
+                    <p style="margin-left: 20px; font-family: 'Courier New', monospace;">r = 0.0724 or <strong>7.24%</strong></p>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card">
+                <div class="question-number">Question 3</div>
+                <p><strong>Which of the following best describes the "opportunity cost" interpretation of an interest rate?</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 3, 'A')">
+                    A) The rate used to discount future cash flows to present value
+                </div>
+                <div class="option" onclick="selectOption(this, 3, 'B')">
+                    B) The minimum return required to undertake an investment
+                </div>
+                <div class="option" onclick="selectOption(this, 3, 'C')">
+                    C) The return forgone by choosing one course of action over another
+                </div>
+                <div class="option" onclick="selectOption(this, 3, 'D')">
+                    D) The rate that equates the present value of inflows with outflows
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(3, 'C')">Check Answer</button>
+                
+                <div class="explanation" id="explanation3">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: C</h4>
+                    <p><strong>Explanation:</strong> The opportunity cost interpretation views the interest rate as the value forgone by choosing one course of action over another. For example, if you spend money today rather than investing it at 5%, you forgo the 5% return—that's your opportunity cost. Option A describes the discount rate interpretation, Option B describes the required rate of return interpretation, and Option D describes the internal rate of return concept.</p>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card">
+                <div class="question-number">Question 4</div>
+                <p><strong>Consider the following two bonds:</strong></p>
+                <ul>
+                    <li>Bond X: 3-year maturity, highly liquid, government-issued, 4.5% yield</li>
+                    <li>Bond Y: 3-year maturity, thinly traded, government-issued, 5.2% yield</li>
+                </ul>
+                <p><strong>The 0.7% (70 basis points) difference in yields is best explained by the:</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 4, 'A')">
+                    A) Default risk premium
+                </div>
+                <div class="option" onclick="selectOption(this, 4, 'B')">
+                    B) Maturity premium
+                </div>
+                <div class="option" onclick="selectOption(this, 4, 'C')">
+                    C) Liquidity premium
+                </div>
+                <div class="option" onclick="selectOption(this, 4, 'D')">
+                    D) Inflation premium
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(4, 'C')">Check Answer</button>
+                
+                <div class="explanation" id="explanation4">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: C</h4>
+                    <p><strong>Explanation:</strong> Both bonds have identical maturity (3 years) and both are government-issued (so same default risk). The only difference stated is that Bond X is highly liquid while Bond Y is thinly traded (illiquid). The 0.7% additional yield on Bond Y is the <strong>liquidity premium</strong>—the extra compensation investors require for holding a bond that may be difficult to sell quickly without a price concession. Thinly traded bonds have higher transaction costs and may require selling at a discount in a hurry, so investors demand higher yields to compensate.</p>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-card">
+                <div class="question-number">Question 5</div>
+                <p><strong>The real risk-free interest rate is best described as:</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 5, 'A')">
+                    A) The rate on short-term government securities minus expected inflation
+                </div>
+                <div class="option" onclick="selectOption(this, 5, 'B')">
+                    B) The interest rate that would exist on a risk-free security if no inflation were expected
+                </div>
+                <div class="option" onclick="selectOption(this, 5, 'C')">
+                    C) The rate on long-term government bonds
+                </div>
+                <div class="option" onclick="selectOption(this, 5, 'D')">
+                    D) The nominal interest rate on Treasury bills
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(5, 'B')">Check Answer</button>
+                
+                <div class="explanation" id="explanation5">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: B</h4>
+                    <p><strong>Explanation:</strong> The real risk-free interest rate is defined as the single-period interest rate for a completely risk-free security if no inflation were expected. It reflects the time preferences of individuals for current versus future real consumption—essentially what people demand to defer consumption even in a world with no risk and no inflation. Option A describes how we might estimate it empirically, but it's not the definition. Options C and D describe nominal rates that include inflation premiums.</p>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-card">
+                <div class="question-number">Question 6</div>
+                <p><strong>If the real risk-free rate is 2.5%, expected inflation is 3.5%, default risk premium is 1.5%, liquidity premium is 0.5%, and maturity premium is 1.0%, the appropriate interest rate is:</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 6, 'A')">
+                    A) 7.5%
+                </div>
+                <div class="option" onclick="selectOption(this, 6, 'B')">
+                    B) 8.0%
+                </div>
+                <div class="option" onclick="selectOption(this, 6, 'C')">
+                    C) 9.0%
+                </div>
+                <div class="option" onclick="selectOption(this, 6, 'D')">
+                    D) 9.5%
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(6, 'C')">Check Answer</button>
+                
+                <div class="explanation" id="explanation6">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: C</h4>
+                    <p><strong>Explanation:</strong> The interest rate is the sum of all components:</p>
+                    <p style="margin-left: 20px; margin-top: 10px;">r = Real risk-free rate + Inflation premium + Default risk premium + Liquidity premium + Maturity premium</p>
+                    <p style="margin-left: 20px;">r = 2.5% + 3.5% + 1.5% + 0.5% + 1.0%</p>
+                    <p style="margin-left: 20px;"><strong>r = 9.0%</strong></p>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question-card">
+                <div class="question-number">Question 7</div>
+                <p><strong>An investor has INR 500,000 and can either invest in a fixed deposit yielding 7% or start a small business with expected returns of 18%. If the investor chooses to start the business, the opportunity cost is:</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 7, 'A')">
+                    A) 7%
+                </div>
+                <div class="option" onclick="selectOption(this, 7, 'B')">
+                    B) 11%
+                </div>
+                <div class="option" onclick="selectOption(this, 7, 'C')">
+                    C) 18%
+                </div>
+                <div class="option" onclick="selectOption(this, 7, 'D')">
+                    D) 25%
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(7, 'A')">Check Answer</button>
+                
+                <div class="explanation" id="explanation7">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: A</h4>
+                    <p><strong>Explanation:</strong> The opportunity cost is what you give up by choosing one option over another. By choosing to start the business, the investor gives up the 7% return from the fixed deposit. That forgone 7% return is the opportunity cost of starting the business. The 18% is the expected return from the chosen option (the business), not the opportunity cost. The 11% difference is not the opportunity cost—it's the incremental expected return for taking on the additional risk.</p>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-card">
+                <div class="question-number">Question 8</div>
+                <p><strong>Which of the following statements about the nominal risk-free rate is most accurate?</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 8, 'A')">
+                    A) It equals the real risk-free rate plus all risk premiums
+                </div>
+                <div class="option" onclick="selectOption(this, 8, 'B')">
+                    B) It can be approximated as the sum of the real risk-free rate and the inflation premium
+                </div>
+                <div class="option" onclick="selectOption(this, 8, 'C')">
+                    C) It includes compensation for default risk
+                </div>
+                <div class="option" onclick="selectOption(this, 8, 'D')">
+                    D) It is always greater than corporate bond yields
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(8, 'B')">Check Answer</button>
+                
+                <div class="explanation" id="explanation8">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: B</h4>
+                    <p><strong>Explanation:</strong> The nominal risk-free rate is the combination of the real risk-free rate and the inflation premium. More precisely: (1 + nominal risk-free rate) = (1 + real risk-free rate) × (1 + inflation premium). In practice, this is often approximated as: Nominal risk-free rate ≈ Real risk-free rate + Inflation premium. Option A is incorrect because the nominal risk-free rate does not include risk premiums like default, liquidity, or maturity premiums. Option C is incorrect because "risk-free" means no default risk. Option D is incorrect because the comparison depends on the specific securities and market conditions.</p>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question-card">
+                <div class="question-number">Question 9</div>
+                <p><strong>Holding all other factors constant, which bond would you expect to have the highest yield?</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 9, 'A')">
+                    A) 10-year US Treasury bond
+                </div>
+                <div class="option" onclick="selectOption(this, 9, 'B')">
+                    B) 10-year high-quality corporate bond, actively traded
+                </div>
+                <div class="option" onclick="selectOption(this, 9, 'C')">
+                    C) 10-year low-quality corporate bond, thinly traded
+                </div>
+                <div class="option" onclick="selectOption(this, 9, 'D')">
+                    D) 2-year US Treasury bond
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(9, 'C')">Check Answer</button>
+                
+                <div class="explanation" id="explanation9">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: C</h4>
+                    <p><strong>Explanation:</strong> Bond C would have the highest yield because it has both high default risk (low-quality) and low liquidity (thinly traded). Comparing all options:</p>
+                    <ul style="margin-top: 10px;">
+                        <li><strong>Option A:</strong> No default risk, high liquidity, 10-year maturity</li>
+                        <li><strong>Option B:</strong> Some default risk, high liquidity, 10-year maturity</li>
+                        <li><strong>Option C:</strong> High default risk + low liquidity + 10-year maturity = Highest yield</li>
+                        <li><strong>Option D:</strong> No default risk, high liquidity, but shorter maturity</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Bond C must compensate investors with the highest yield due to its combination of risks.</p>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question-card">
+                <div class="question-number">Question 10</div>
+                <p><strong>All else equal, if market participants' inflation expectations increase, the most likely effect on interest rates would be:</strong></p>
+                
+                <div class="option" onclick="selectOption(this, 10, 'A')">
+                    A) Interest rates would decrease
+                </div>
+                <div class="option" onclick="selectOption(this, 10, 'B')">
+                    B) Interest rates would remain unchanged
+                </div>
+                <div class="option" onclick="selectOption(this, 10, 'C')">
+                    C) Interest rates would increase
+                </div>
+                <div class="option" onclick="selectOption(this, 10, 'D')">
+                    D) The real risk-free rate would increase
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(10, 'C')">Check Answer</button>
+                
+                <div class="explanation" id="explanation10">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: C</h4>
+                    <p><strong>Explanation:</strong> If inflation expectations increase, investors will demand higher nominal interest rates to maintain their real returns. The inflation premium is a component of interest rates, so if expected inflation rises, interest rates will increase accordingly. For example, if the real risk-free rate is 2% and expected inflation rises from 3% to 5%, the nominal risk-free rate would rise from approximately 5% to 7%. Option D is incorrect because the real risk-free rate is independent of inflation expectations—it reflects time preferences for consumption, not inflation.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="navigation">
+            <a href="quant-lm1-los1a-detailed.html" class="nav-button">← Back: Detailed Notes</a>
+            <a href="quant-lm1-los-list.html" class="nav-button">Back to LOS List</a>
+        </div>
+    </div>
+
+    <script>
+        // Question selection functionality
+        function selectOption(element, questionNum, option) {
+            // Remove selection from all options in this question
+            const questionCard = element.closest('.question-card');
+            const options = questionCard.getElementsByClassName('option');
+            for (let i = 0; i < options.length; i++) {
+                options[i].classList.remove('selected');
+            }
+            // Add selection to clicked option
+            element.classList.add('selected');
+            // Store the selected answer
+            element.setAttribute('data-selected', option);
+        }
+
+        // Check answer functionality
+        function checkAnswer(questionNum, correctAnswer) {
+            const questionCard = document.querySelectorAll('.question-card')[questionNum - 1];
+            const options = questionCard.getElementsByClassName('option');
+            const explanation = document.getElementById('explanation' + questionNum);
+            
+            let selectedOption = null;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].classList.contains('selected')) {
+                    selectedOption = options[i];
+                    break;
+                }
+            }
+            
+            if (!selectedOption) {
+                alert('Please select an answer first!');
+                return;
+            }
+            
+            // Check if answer is correct
+            const selectedAnswer = selectedOption.getAttribute('data-selected');
+            
+            // Reset all options
+            for (let i = 0; i < options.length; i++) {
+                options[i].classList.remove('correct', 'incorrect');
+            }
+            
+            // Mark the selected option
+            if (selectedAnswer === correctAnswer) {
+                selectedOption.classList.add('correct');
+            } else {
+                selectedOption.classList.add('incorrect');
+                // Also highlight the correct answer
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].textContent.trim().startsWith(correctAnswer + ')')) {
+                        options[i].classList.add('correct');
+                    }
+                }
+            }
+            
+            // Show explanation
+            explanation.classList.add('show');
+        }
+    </script>
+</body>
+</html>
