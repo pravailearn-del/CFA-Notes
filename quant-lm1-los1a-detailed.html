@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOS 1.a: Detailed Notes - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            font-size: 0.9em;
+            color: #6c757d;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            color: #4a5fc8;
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .key-concept {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            border: 3px solid #4caf50;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .key-concept h3 {
+            color: #2e7d32;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            border: 3px solid #667eea;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .example-box h3 {
+            color: #4a5fc8;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .example-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border: 3px solid #ff8a65;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(255, 138, 101, 0.3);
+        }
+
+        .formula-box h3 {
+            color: #d84315;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .formula {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            text-align: center;
+            margin: 15px 0;
+            color: #d84315;
+            font-weight: bold;
+        }
+
+        .important-note {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-left: 5px solid #ff6b9d;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .important-note strong {
+            color: #c7254e;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .comparison-table tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .navigation {
+            background: #f8f9fa;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 3px solid #e9ecef;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Detailed Notes</h1>
+            <p class="subtitle">LOS 1.a: Interest Rates - Complete CFA Curriculum</p>
+            <div class="badge">Comprehensive Study Material</div>
+        </div>
+
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>→</span>
+            <a href="quant-modules.html">Quantitative Methods</a>
+            <span>→</span>
+            <a href="quant-lm1-los-list.html">LM 1: Time Value of Money</a>
+            <span>→</span>
+            <strong>LOS 1.a - Detailed Notes</strong>
+        </div>
+
+        <div class="content">
+            <div style="text-align: right; margin-bottom: 20px;">
+                <button class="download-btn" onclick="downloadPDF()">
+                    📥 Download PDF
+                </button>
+            </div>
+
+            <h2>The Time Value of Money and Interest Rates</h2>
+
+            <p>The time value of money is a foundational principle in finance that establishes the equivalence between cash flows occurring on different dates. Since cash received today is preferred to cash promised in the future, we must establish a consistent basis for this trade-off to compare financial instruments when cash is paid or received at different times.</p>
+
+            <div class="key-concept">
+                <h3>💡 Definition: Interest Rate</h3>
+                <p>An <strong>interest rate (or yield)</strong>, denoted as <em>r</em>, is a rate of return that reflects the relationship between differently dated (timed) cash flows.</p>
+            </div>
+
+            <div class="example-box">
+                <h3>📊 Fundamental Example</h3>
+                <div class="example-content">
+                    <p>If USD 9,500 today and USD 10,000 in one year are equivalent in value, then:</p>
+                    <ul>
+                        <li>Required compensation = USD 10,000 - USD 9,500 = USD 500</li>
+                        <li>Interest rate = USD 500 / USD 9,500 = 0.0526 or <strong>5.26%</strong></li>
+                    </ul>
+                    <p style="margin-top: 15px;">This 5.26% represents the rate of return needed to make waiting one year worthwhile.</p>
+                </div>
+            </div>
+
+            <h2>Three Interpretations of Interest Rates</h2>
+
+            <p>Interest rates can be conceptualized in three interconnected ways, each providing a different perspective on the same fundamental concept:</p>
+
+            <h3>1. Required Rate of Return</h3>
+
+            <div class="key-concept">
+                <h3>Definition</h3>
+                <p>The <strong>required rate of return</strong> is the minimum rate of return an investor must receive to accept an investment. It represents the investor's hurdle rate—the minimum acceptable return given the risk and other characteristics of the investment.</p>
+            </div>
+
+            <p>From an investor's perspective, the required rate of return reflects:</p>
+            <ul>
+                <li>The compensation needed for taking on risk</li>
+                <li>The return necessary to make the investment worthwhile compared to alternative opportunities</li>
+                <li>The expected return that justifies committing capital to this particular investment</li>
+            </ul>
+
+            <p>Different investments will have different required rates of return based on their risk profiles. A highly speculative technology startup will have a much higher required rate of return than a government treasury bond because of the vastly different risk levels.</p>
+
+            <h3>2. Discount Rate</h3>
+
+            <div class="key-concept">
+                <h3>Definition</h3>
+                <p>The <strong>discount rate</strong> is the interest rate used to calculate the present value of future cash flows. It answers the question: "What is a future cash flow worth today?"</p>
+            </div>
+
+            <p>In our earlier example, 5.26% is the discount rate at which USD 10,000 in one year is equivalent to USD 9,500 today. The discount rate allows us to:</p>
+            <ul>
+                <li>Convert future cash flows into their present value equivalents</li>
+                <li>Compare investment alternatives with different cash flow patterns</li>
+                <li>Evaluate whether future benefits justify current costs</li>
+            </ul>
+
+            <div class="important-note">
+                <strong>Note:</strong> The terms "interest rate" and "discount rate" are used almost interchangeably in financial analysis. Both represent the rate that equates cash flows at different points in time.
+            </div>
+
+            <h3>3. Opportunity Cost</h3>
+
+            <div class="key-concept">
+                <h3>Definition</h3>
+                <p>An <strong>opportunity cost</strong> is the value that investors forgo by choosing a particular course of action. The interest rate represents the opportunity cost of current consumption or of choosing one investment over another.</p>
+            </div>
+
+            <p>When we think of interest rates as opportunity costs, we're recognizing that every financial decision involves trade-offs:</p>
+            <ul>
+                <li>If you spend USD 9,500 today rather than investing it, you forgo earning 5.26% by consuming rather than saving</li>
+                <li>If you invest in Project A yielding 8%, the opportunity cost is the 10% you could have earned from Project B</li>
+                <li>The opportunity cost of holding cash is the interest you could earn by investing it</li>
+            </ul>
+
+            <h2>Determinants of Interest Rates</h2>
+
+            <p>Economic theory tells us that interest rates are determined by the forces of supply and demand, where investors supply funds and borrowers demand their use. From the perspective of investors analyzing market-determined interest rates, we can decompose an interest rate into several components.</p>
+
+            <div class="formula-box">
+                <h3>Interest Rate Components</h3>
+                <div class="formula">
+                    r = Real Risk-Free Rate + Inflation Premium + Default Risk Premium + Liquidity Premium + Maturity Premium
+                </div>
+            </div>
+
+            <h3>Component 1: Real Risk-Free Interest Rate</h3>
+
+            <div class="key-concept">
+                <h3>Definition</h3>
+                <p>The <strong>real risk-free interest rate</strong> is the single-period interest rate for a completely risk-free security if no inflation were expected.</p>
+            </div>
+
+            <p>Key characteristics:</p>
+            <ul>
+                <li>Reflects the time preferences of individuals for current versus future real consumption</li>
+                <li>Represents the fundamental "price of time"—what people demand to defer consumption even without risk</li>
+                <li>Influenced by factors such as economic growth expectations, demographics, and cultural saving preferences</li>
+                <li>Generally estimated to be in the range of 2-3% historically, though it varies over time and across economies</li>
+            </ul>
+
+            <h3>Component 2: Inflation Premium</h3>
+
+            <div class="key-concept">
+                <h3>Definition</h3>
+                <p>The <strong>inflation premium</strong> compensates investors for expected inflation and reflects the average inflation rate expected over the maturity of the debt.</p>
+            </div>
+
+            <p>Understanding the inflation premium:</p>
+            <ul>
+                <li>Inflation reduces the purchasing power of money—the amount of goods and services one can buy with it</li>
+                <li>If investors expect 3% inflation, they need at least a 3% nominal return just to maintain their purchasing power</li>
+                <li>The inflation premium is forward-looking, based on expected (not historical) inflation</li>
+                <li>Higher inflation expectations lead to higher interest rates</li>
+            </ul>
+
+            <div class="formula-box">
+                <h3>Nominal Risk-Free Interest Rate</h3>
+                <p>The sum of the real risk-free interest rate and the inflation premium is called the <strong>nominal risk-free interest rate</strong>:</p>
+                <div class="formula">
+                    (1 + Nominal Risk-Free Rate) = (1 + Real Risk-Free Rate) × (1 + Inflation Premium)
+                </div>
+                <p style="margin-top: 15px;">In practice, this is often approximated as:</p>
+                <div class="formula">
+                    Nominal Risk-Free Rate ≈ Real Risk-Free Rate + Inflation Premium
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>Important:</strong> Many countries have short-term government debt whose interest rate can be considered to represent the nominal risk-free interest rate over that time horizon. Examples include:
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>United States:</strong> 90-day Treasury bills (T-bills)</li>
+                    <li><strong>France:</strong> BTFs (Bons du Trésor à taux fixe et à intérêts précomptés) with maturities up to one year</li>
+                    <li><strong>Japan:</strong> Short-term Treasury bills with 6 and 12-month maturities</li>
+                    <li><strong>India:</strong> 91-day, 182-day, and 364-day Treasury bills</li>
+                </ul>
+            </div>
+
+            <h3>Component 3: Default Risk Premium</h3>
+
+            <div class="key-concept">
+                <h3>Definition</h3>
+                <p>The <strong>default risk premium</strong> compensates investors for the possibility that the borrower will fail to make a promised payment at the contracted time and in the contracted amount.</p>
+            </div>
+
+            <p>Factors affecting default risk premium:</p>
+            <ul>
+                <li><strong>Borrower's financial strength:</strong> More financially stable borrowers have lower default risk premiums</li>
+                <li><strong>Economic conditions:</strong> Default risk premiums tend to rise during economic downturns</li>
+                <li><strong>Industry factors:</strong> Some industries are inherently riskier than others</li>
+                <li><strong>Credit ratings:</strong> Rating agencies (like S&P, Moody's, Fitch) assess default risk, influencing required premiums</li>
+            </ul>
+
+            <p>Government bonds in stable economies (like US Treasuries) are typically considered to have zero default risk. Corporate bonds, municipal bonds, and bonds from less stable governments carry default risk and therefore must offer higher yields to compensate investors.</p>
+
+            <h3>Component 4: Liquidity Premium</h3>
+
+            <div class="key-concept">
+                <h3>Definition</h3>
+                <p>The <strong>liquidity premium</strong> compensates investors for the risk of loss relative to an investment's fair value if the investment needs to be converted to cash quickly.</p>
+            </div>
+
+            <p>Understanding liquidity:</p>
+            <ul>
+                <li><strong>Liquid investments:</strong> Can be sold quickly without significant price impact (e.g., US Treasury bills, large-cap stocks)</li>
+                <li><strong>Illiquid investments:</strong> May take time to sell or require selling at a discount (e.g., real estate, bonds of small issuers, private equity)</li>
+                <li>The liquidity premium reflects the costs of selling a position, including both transaction costs and potential price impact</li>
+            </ul>
+
+            <div class="example-box">
+                <h3>📊 Liquidity Premium Example</h3>
+                <div class="example-content">
+                    <p><strong>US Treasury Bills:</strong> These do not bear a liquidity premium because large amounts can be bought and sold without affecting their market price. The T-bill market is one of the most liquid in the world.</p>
+                    <p style="margin-top: 15px;"><strong>Small Issuer Bonds:</strong> Many bonds of small issuers trade infrequently after they are issued. The interest rate on such bonds includes a liquidity premium reflecting the relatively high costs of selling a position.</p>
+                </div>
+            </div>
+
+            <h3>Component 5: Maturity Premium</h3>
+
+            <div class="key-concept">
+                <h3>Definition</h3>
+                <p>The <strong>maturity premium</strong> compensates investors for the increased sensitivity of the market value of debt to a change in market interest rates as maturity is extended (holding all else equal).</p>
+            </div>
+
+            <p>Why maturity matters:</p>
+            <ul>
+                <li><strong>Interest rate risk:</strong> Longer-term bonds are more sensitive to changes in interest rates</li>
+                <li><strong>Uncertainty:</strong> More can go wrong over longer time periods</li>
+                <li><strong>Reinvestment risk:</strong> Uncertainty about rates at which future cash flows can be reinvested</li>
+                <li>The difference between the interest rate on longer-maturity liquid Treasury debt and short-term Treasury debt typically reflects a positive maturity premium (and possibly different inflation premiums)</li>
+            </ul>
+
+            <div class="important-note">
+                <strong>Note on Terminology:</strong> Interest rates are typically quoted in annual terms. For example, if a 90-day government security is quoted at 3%, this is the annualized rate, not the actual interest rate earned over the 90-day period. The actual 90-day return would be approximately 0.75% (3% × 90/360).
+            </div>
+
+            <h2>Dynamic Nature of Interest Rates</h2>
+
+            <p>It's crucial to understand that interest rates are not static. Whether we interpret an interest rate as a required rate of return, a discount rate, or an opportunity cost, the rate encompasses the real risk-free rate and a set of risk premiums that depend on the characteristics of the cash flows.</p>
+
+            <div class="important-note">
+                <strong>Key Point:</strong> All components of interest rates—the real risk-free rate, inflation premium, default risk premium, liquidity premium, and maturity premium—vary over time and continuously change. Consequently, all interest rates fluctuate.
+                <br><br>
+                How much they change depends on:
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Various economic fundamentals (GDP growth, unemployment, central bank policy, etc.)</li>
+                    <li>Expectations of how these economic fundamentals will change in the future</li>
+                    <li>Market sentiment and risk appetite</li>
+                    <li>Global economic conditions and capital flows</li>
+                </ul>
+            </div>
+
+            <h2>Comprehensive Example</h2>
+
+            <div class="example-box">
+                <h3>📊 Example: Determining Interest Rates</h3>
+                <div class="example-content">
+                    <p><strong>Scenario:</strong> The following exhibit presents selected information for five debt securities. All five investments promise only a single payment at maturity. Assume that premiums relating to inflation, liquidity, and default risk are constant across all time horizons.</p>
+
+                    <table class="comparison-table" style="margin: 20px 0;">
+                        <thead>
+                            <tr>
+                                <th>Investment</th>
+                                <th>Maturity (years)</th>
+                                <th>Liquidity</th>
+                                <th>Default Risk</th>
+                                <th>Interest Rate (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>High</td>
+                                <td>Low</td>
+                                <td>2.0</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2</td>
+                                <td>Low</td>
+                                <td>Low</td>
+                                <td>2.5</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>7</td>
+                                <td>Low</td>
+                                <td>Low</td>
+                                <td>r<sub>3</sub> (unknown)</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>8</td>
+                                <td>High</td>
+                                <td>Low</td>
+                                <td>4.0</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>8</td>
+                                <td>Low</td>
+                                <td>High</td>
+                                <td>6.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Part 1: Explain the difference between Investment 1 and Investment 2</h4>
+                    
+                    <p><strong>Analysis:</strong></p>
+                    <p>Investment 2 is identical to Investment 1 in every respect except liquidity:</p>
+                    <ul>
+                        <li>Both have 2-year maturity</li>
+                        <li>Both have low default risk</li>
+                        <li>Investment 1 has high liquidity; Investment 2 has low liquidity</li>
+                    </ul>
+
+                    <p><strong>Solution:</strong></p>
+                    <p>The difference in interest rates is 2.5% - 2.0% = <strong>0.5%</strong></p>
+                    <p>This 0.5% difference represents the <strong>liquidity premium</strong>—the additional compensation investors require for holding Investment 2, which has lower liquidity and therefore carries the risk of loss relative to fair value if the investment needs to be converted to cash quickly.</p>
+
+                    <h4 style="margin-top: 25px;">Part 2: Estimate the default risk premium</h4>
+                    
+                    <p><strong>Analysis:</strong></p>
+                    <p>To isolate the default risk premium, we need to compare two investments that differ only in default risk. Investments 4 and 5 both have 8-year maturity, but Investment 5 has high default risk while Investment 4 has low default risk. However, they also differ in liquidity.</p>
+
+                    <p><strong>Solution:</strong></p>
+                    <p>Step 1: Calculate the total difference in rates:</p>
+                    <p style="margin-left: 20px;">6.5% - 4.0% = 2.5%</p>
+                    
+                    <p>Step 2: Adjust for liquidity difference:</p>
+                    <p style="margin-left: 20px;">From Part 1, we know the liquidity premium is 0.5%<br>
+                    Investment 5 has low liquidity while Investment 4 has high liquidity<br>
+                    Therefore, 0.5% of the 2.5% difference is due to liquidity</p>
+                    
+                    <p>Step 3: Calculate default risk premium:</p>
+                    <p style="margin-left: 20px;">2.5% - 0.5% = <strong>2.0%</strong></p>
+                    
+                    <p><strong>Conclusion:</strong> The default risk premium is 2.0%, reflecting the additional compensation required for bearing Investment 5's relatively higher default risk.</p>
+
+                    <h4 style="margin-top: 25px;">Part 3: Calculate upper and lower limits for r<sub>3</sub></h4>
+                    
+                    <p><strong>Analysis:</strong></p>
+                    <p>Investment 3 characteristics:</p>
+                    <ul>
+                        <li>7-year maturity</li>
+                        <li>Low liquidity</li>
+                        <li>Low default risk</li>
+                    </ul>
+
+                    <p><strong>Lower Bound:</strong></p>
+                    <p>Compare Investment 3 to Investment 2 (both have low liquidity and low default risk):</p>
+                    <ul>
+                        <li>Investment 2: 2-year maturity, 2.5% rate</li>
+                        <li>Investment 3: 7-year maturity, r<sub>3</sub> rate</li>
+                        <li>Since Investment 3 has longer maturity, it should have a higher maturity premium</li>
+                        <li>Therefore: r<sub>3</sub> > 2.5%</li>
+                    </ul>
+
+                    <p><strong>Upper Bound:</strong></p>
+                    <p>Compare Investment 3 to Investment 4 (both have low default risk):</p>
+                    <ul>
+                        <li>Investment 4: 8-year maturity, high liquidity, 4.0% rate</li>
+                        <li>If Investment 4 had low liquidity like Investment 3, its rate would be 4.0% + 0.5% = 4.5%</li>
+                        <li>Investment 3 has 7-year maturity (shorter than Investment 4's 8 years)</li>
+                        <li>Therefore, Investment 3 should have a lower maturity premium than Investment 4</li>
+                        <li>Thus: r<sub>3</sub> < 4.5%</li>
+                    </ul>
+
+                    <p><strong>Conclusion:</strong></p>
+                    <div style="background: #d4fc79; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; font-weight: bold; font-size: 1.2em;">
+                        2.5% < r<sub>3</sub> < 4.5%
+                    </div>
+                    <p style="margin-top: 15px;">The interest rate for Investment 3 should be between 2.5% and 4.5%, reflecting its position between Investments 2 and 4 in terms of maturity, while accounting for its low liquidity and low default risk.</p>
+                </div>
+            </div>
+
+            <h2>Summary and Key Takeaways</h2>
+
+            <div class="key-concept">
+                <h3>✅ Essential Points to Remember</h3>
+                <ul style="line-height: 1.8;">
+                    <li><strong>Time value of money:</strong> Cash today is worth more than cash in the future</li>
+                    <li><strong>Three interpretations:</strong> Interest rates can be viewed as required rates of return, discount rates, or opportunity costs</li>
+                    <li><strong>Five components:</strong> Interest rates = Real risk-free rate + Inflation premium + Default risk premium + Liquidity premium + Maturity premium</li>
+                    <li><strong>Nominal risk-free rate:</strong> Combines the real risk-free rate and inflation premium</li>
+                    <li><strong>Dynamic nature:</strong> All components vary over time, causing interest rates to fluctuate continuously</li>
+                    <li><strong>Relative pricing:</strong> Different securities have different interest rates based on their specific risk characteristics</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="quant-lm1-los1a-intuitive.html" class="nav-button">← Back: Intuitive Learning</a>
+            <a href="quant-lm1-los1a-practice.html" class="nav-button">Next: Practice Questions →</a>
+        </div>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            alert("PDF download functionality will be implemented. This will generate a PDF of the Detailed Notes section.");
+            // In production, this would trigger actual PDF generation
+        }
+    </script>
+</body>
+</html>
