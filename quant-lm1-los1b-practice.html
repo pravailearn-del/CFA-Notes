@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOS 1.b: Practice Questions - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            font-size: 0.9em;
+            color: #6c757d;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .question-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+
+        .option.selected {
+            background: #e0c3fc;
+            border-color: #667eea;
+        }
+
+        .option.correct {
+            background: #d4fc79;
+            border-color: #4caf50;
+        }
+
+        .option.incorrect {
+            background: #ff9a9e;
+            border-color: #f44336;
+        }
+
+        .explanation {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .check-answer-btn {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .calculation {
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            border-left: 3px solid #667eea;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 5px solid #ff8a65;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .tip-box strong {
+            color: #d84315;
+        }
+
+        .navigation {
+            background: #f8f9fa;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 3px solid #e9ecef;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✍️ Practice Questions</h1>
+            <p class="subtitle">LOS 1.b: Test Your Understanding</p>
+            <div class="badge">6 Questions - Interactive Quiz</div>
+        </div>
+
+        <div class="breadcrumb">
+            <a href="quant-lm1-los-list.html">← Back to LM 1</a>
+            <span>></span>
+            <span>LOS 1.b</span>
+            <span>></span>
+            <span>Practice Questions</span>
+        </div>
+
+        <div class="content">
+            <h2>Practice Questions</h2>
+            <p style="margin-bottom: 30px;">Test your understanding of return measurement approaches. Click on your answer choice and then click "Check Answer" to see if you're correct.</p>
+
+            <div class="tip-box">
+                <strong>💡 Exam Strategy:</strong> Pay attention to whether the question asks for arithmetic mean, geometric mean, or holding period return. The exam often tests your ability to distinguish between these measures!
+            </div>
+
+            <!-- Question 1 -->
+            <div class="question-card">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">
+                    <strong>An investor purchased 100 shares of a stock for USD 34.50 per share at the beginning of the quarter. If the investor sold all of the shares for USD 30.50 per share after receiving a USD 51.55 dividend payment at the end of the quarter, the investor's holding period return is closest to:</strong>
+                </div>
+                
+                <div class="option" onclick="selectOption(this, 1, 'A')">
+                    A) -13.0 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 1, 'B')">
+                    B) -11.6 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 1, 'C')">
+                    C) -10.1 percent
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(1, 'C')">Check Answer</button>
+                
+                <div class="explanation" id="explanation1">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: C</h4>
+                    <p><strong>Explanation:</strong></p>
+                    <p>Step 1: Calculate initial investment: P₀ = 100 × $34.50 = $3,450</p>
+                    <p>Step 2: Calculate ending value: P₁ = 100 × $30.50 = $3,050</p>
+                    <p>Step 3: Apply the formula:</p>
+                    <div class="calculation">
+                        R = [(P₁ - P₀) + I₁] / P₀<br>
+                        R = [(3,050 - 3,450) + 51.55] / 3,450<br>
+                        R = -348.45 / 3,450 = -0.101 = -10.1%
+                    </div>
+                    <p><strong>Components:</strong> Dividend yield = 1.49%, Capital loss = -11.59%, Total = -10.1%</p>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">
+                    <strong>An analyst obtains the following annual rates of return for a mutual fund:</strong>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Return (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>20X8</td><td>14</td></tr>
+                            <tr><td>20X9</td><td>-10</td></tr>
+                            <tr><td>20X0</td><td>-2</td></tr>
+                        </tbody>
+                    </table>
+                    <strong>The fund's holding period return over the three-year period is closest to:</strong>
+                </div>
+                
+                <div class="option" onclick="selectOption(this, 2, 'A')">
+                    A) 0.18 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 2, 'B')">
+                    B) 0.55 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 2, 'C')">
+                    C) 0.67 percent
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(2, 'B')">Check Answer</button>
+                
+                <div class="explanation" id="explanation2">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: B</h4>
+                    <p><strong>Explanation:</strong></p>
+                    <p>For multi-period holding period returns, we compound the returns:</p>
+                    <div class="calculation">
+                        R = [(1 + R₁) × (1 + R₂) × (1 + R₃)] - 1<br>
+                        R = [(1.14) × (0.90) × (0.98)] - 1<br>
+                        R = 1.0055 - 1 = 0.0055 = 0.55%
+                    </div>
+                    <p><strong>Key Insight:</strong> Despite a strong first year (+14%), the negative returns significantly reduced the overall return to just 0.55%.</p>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">
+                    <strong>A fund had the following returns over the past 10 years:</strong>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Year</th><th>Return (%)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1-2</td><td>4.5, 6.0</td></tr>
+                            <tr><td>3-4</td><td>1.5, -2.0</td></tr>
+                            <tr><td>5-6</td><td>0.0, 4.5</td></tr>
+                            <tr><td>7-8</td><td>3.5, 2.5</td></tr>
+                            <tr><td>9-10</td><td>5.5, 4.0</td></tr>
+                        </tbody>
+                    </table>
+                    <strong>The arithmetic mean return over the 10 years is closest to:</strong>
+                </div>
+                
+                <div class="option" onclick="selectOption(this, 3, 'A')">
+                    A) 2.97 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 3, 'B')">
+                    B) 3.00 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 3, 'C')">
+                    C) 3.33 percent
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(3, 'B')">Check Answer</button>
+                
+                <div class="explanation" id="explanation3">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: B</h4>
+                    <p><strong>Explanation:</strong></p>
+                    <p>The arithmetic mean is simply the sum of all returns divided by the number of periods:</p>
+                    <div class="calculation">
+                        Sum = 4.5 + 6.0 + 1.5 + (-2.0) + 0.0 + 4.5 + 3.5 + 2.5 + 5.5 + 4.0 = 30.0%<br>
+                        Arithmetic Mean = 30.0% / 10 = 3.0%
+                    </div>
+                    <p>The arithmetic mean gives equal weight to each period's return.</p>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card">
+                <div class="question-number">Question 4</div>
+                <div class="question-text">
+                    <strong>Using the same fund data from Question 3, the geometric mean return over the 10 years is closest to:</strong>
+                </div>
+                
+                <div class="option" onclick="selectOption(this, 4, 'A')">
+                    A) 2.94 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 4, 'B')">
+                    B) 2.97 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 4, 'C')">
+                    C) 3.00 percent
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(4, 'B')">Check Answer</button>
+                
+                <div class="explanation" id="explanation4">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: B</h4>
+                    <p><strong>Explanation:</strong></p>
+                    <p>The geometric mean accounts for compounding:</p>
+                    <div class="calculation">
+                        Product = (1.045) × (1.06) × (1.015) × (0.98) × (1.00) × <br>
+                                 (1.045) × (1.035) × (1.025) × (1.055) × (1.04) = 1.3402338<br>
+                        R̄G = ¹⁰√1.3402338 - 1 = 1.029717 - 1 = 2.97%
+                    </div>
+                    <p><strong>Note:</strong> The geometric mean (2.97%) is slightly lower than the arithmetic mean (3.00%) due to the volatility in returns.</p>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-card">
+                <div class="question-number">Question 5</div>
+                <div class="question-text">
+                    <strong>An analyst observes the following annual rates of return for a hedge fund:</strong>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Year</th><th>Return (%)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>22</td></tr>
+                            <tr><td>2</td><td>25</td></tr>
+                            <tr><td>3</td><td>-30</td></tr>
+                            <tr><td>4</td><td>5</td></tr>
+                        </tbody>
+                    </table>
+                    <strong>The fund's four-year geometric mean return is closest to:</strong>
+                </div>
+                
+                <div class="option" onclick="selectOption(this, 5, 'A')">
+                    A) 3.27 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 5, 'B')">
+                    B) 4.26 percent
+                </div>
+                <div class="option" onclick="selectOption(this, 5, 'C')">
+                    C) 5.50 percent
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(5, 'A')">Check Answer</button>
+                
+                <div class="explanation" id="explanation5">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: A</h4>
+                    <p><strong>Explanation:</strong></p>
+                    <div class="calculation">
+                        Product = (1.22) × (1.25) × (0.70) × (1.05) = 1.12583<br>
+                        R̄G = ⁴√1.12583 - 1 = 1.0327 - 1 = 3.27%
+                    </div>
+                    <p><strong>For comparison:</strong> Arithmetic Mean = (22 + 25 - 30 + 5) / 4 = 5.5%</p>
+                    <p><strong>Key Insight:</strong> The large negative return (-30%) creates a significant gap between arithmetic (5.5%) and geometric (3.27%) means. The geometric mean accurately shows that $100 invested would grow to $112.58, which is a 3.27% annual rate, not 5.5%.</p>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-card">
+                <div class="question-number">Question 6</div>
+                <div class="question-text">
+                    <strong>A portfolio manager is comparing the historical performance of three mutual funds over a five-year period. All three funds had the same arithmetic mean return of 8% per year, but different levels of volatility:<br><br>
+                    • Fund A: Stable returns close to 8% each year<br>
+                    • Fund B: Moderately volatile returns ranging from 0% to 16%<br>
+                    • Fund C: Highly volatile returns ranging from -25% to 40%<br><br>
+                    Which statement is most accurate regarding their geometric mean returns?</strong>
+                </div>
+                
+                <div class="option" onclick="selectOption(this, 6, 'A')">
+                    A) All three funds will have the same geometric mean return of 8% because they have the same arithmetic mean.
+                </div>
+                <div class="option" onclick="selectOption(this, 6, 'B')">
+                    B) Fund A will have the highest geometric mean return, followed by Fund B, then Fund C.
+                </div>
+                <div class="option" onclick="selectOption(this, 6, 'C')">
+                    C) Fund C will have the highest geometric mean return because higher volatility leads to higher compounded returns.
+                </div>
+                
+                <button class="check-answer-btn" onclick="checkAnswer(6, 'B')">Check Answer</button>
+                
+                <div class="explanation" id="explanation6">
+                    <h4 style="color: #2e7d32; margin-bottom: 10px;">✓ Correct Answer: B</h4>
+                    <p><strong>Explanation:</strong></p>
+                    <p><strong>Fundamental Principle:</strong> For a given arithmetic mean, higher volatility results in a LOWER geometric mean. This is the "volatility drag" effect.</p>
+                    <p><strong>Why?</strong> Large losses require even larger gains to recover. A 50% loss needs a 100% gain to break even. The geometric mean accounts for this asymmetric impact.</p>
+                    <p><strong>Example with same 8% arithmetic mean:</strong></p>
+                    <div class="calculation">
+                        Low Volatility (7%, 8%, 9%):<br>
+                        Geometric Mean = ³√(1.07 × 1.08 × 1.09) - 1 ≈ 8.00%<br><br>
+                        High Volatility (-10%, 16%, 18%):<br>
+                        Geometric Mean = ³√(0.90 × 1.16 × 1.18) - 1 = 7.36%
+                    </div>
+                    <p><strong>Conclusion:</strong> Fund A (stable) will have the highest geometric mean, Fund B (moderate volatility) will be in the middle, and Fund C (high volatility) will have the lowest geometric mean, despite all having 8% arithmetic mean.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="quant-lm1-los1b-detailed.html" class="nav-button">← Detailed Notes</a>
+            <a href="quant-lm1-los-list.html" class="nav-button">Back to LM 1</a>
+        </div>
+    </div>
+
+    <script>
+        // Question selection functionality
+        function selectOption(element, questionNum, option) {
+            // Remove selection from all options in this question
+            const questionCard = element.closest('.question-card');
+            const options = questionCard.getElementsByClassName('option');
+            for (let i = 0; i < options.length; i++) {
+                options[i].classList.remove('selected');
+            }
+            // Add selection to clicked option
+            element.classList.add('selected');
+            // Store the selected answer
+            element.setAttribute('data-selected', option);
+        }
+
+        // Check answer functionality
+        function checkAnswer(questionNum, correctAnswer) {
+            const questionCard = document.querySelectorAll('.question-card')[questionNum - 1];
+            const options = questionCard.getElementsByClassName('option');
+            const explanation = document.getElementById('explanation' + questionNum);
+            
+            let selectedOption = null;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].classList.contains('selected')) {
+                    selectedOption = options[i];
+                    break;
+                }
+            }
+            
+            if (!selectedOption) {
+                alert('Please select an answer first!');
+                return;
+            }
+            
+            // Check if answer is correct
+            const selectedAnswer = selectedOption.getAttribute('data-selected');
+            
+            // Reset all options
+            for (let i = 0; i < options.length; i++) {
+                options[i].classList.remove('correct', 'incorrect');
+            }
+            
+            // Mark the selected option
+            if (selectedAnswer === correctAnswer) {
+                selectedOption.classList.add('correct');
+            } else {
+                selectedOption.classList.add('incorrect');
+                // Also highlight the correct answer
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].textContent.trim().startsWith(correctAnswer + ')')) {
+                        options[i].classList.add('correct');
+                    }
+                }
+            }
+            
+            // Show explanation
+            explanation.classList.add('show');
+        }
+    </script>
+</body>
+</html>
