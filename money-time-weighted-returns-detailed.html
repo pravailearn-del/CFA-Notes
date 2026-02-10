@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money-Weighted vs Time-Weighted Returns: Detailed Notes - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .key-concept {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #27ae60;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #fbc02d;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> &gt; <a href="#">Quantitative Methods</a> &gt; <a href="#">Returns</a> &gt; Money-Weighted and Time-Weighted Returns
+        </div>
+
+        <span class="badge">Detailed Notes</span>
+
+        <h1>Money-Weighted and Time-Weighted Rates of Return</h1>
+
+        <div class="key-concept">
+            <h3>Learning Outcome Statement</h3>
+            <p><strong>Compare the money-weighted and time-weighted rates of return and evaluate the performance of portfolios based on these measures.</strong></p>
+        </div>
+
+        <h2>1. Introduction and Context</h2>
+
+        <p>The arithmetic and geometric return computations discussed in prior learning objectives do not account for the timing of cash flows into and out of a portfolio. When investors make contributions to or withdrawals from a portfolio during the measurement period, two distinct methodologies are employed to calculate returns:</p>
+
+        <ol>
+            <li><strong>Money-Weighted Rate of Return (MWRR)</strong> - Accounts for the timing and magnitude of cash flows</li>
+            <li><strong>Time-Weighted Rate of Return (TWRR)</strong> - Eliminates the effect of cash flow timing</li>
+        </ol>
+
+        <p>The choice between these methods depends on the purpose of the performance measurement and whether the portfolio manager has control over the timing of cash flows.</p>
+
+        <div class="image-container">
+            <svg viewBox="0 0 900 400" style="width:100%; max-width:900px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="900" height="400" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="450" y="35" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">Return Calculation Framework</text>
+                
+                <!-- Top box -->
+                <rect x="300" y="60" width="300" height="60" fill="#667eea" rx="10"/>
+                <text x="450" y="85" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Investment Returns with</text>
+                <text x="450" y="105" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Interim Cash Flows</text>
+                
+                <!-- Arrow down -->
+                <path d="M 450 120 L 450 150" stroke="#2c3e50" stroke-width="2" fill="none"/>
+                <path d="M 450 150 L 445 140 L 455 140 Z" fill="#2c3e50"/>
+                
+                <!-- Question box -->
+                <rect x="300" y="160" width="300" height="50" fill="#ffe0b2" rx="10"/>
+                <text x="450" y="185" font-size="15" font-weight="bold" text-anchor="middle" fill="#2c3e50">Does manager control</text>
+                <text x="450" y="202" font-size="15" font-weight="bold" text-anchor="middle" fill="#2c3e50">cash flow timing?</text>
+                
+                <!-- Left branch - No -->
+                <path d="M 350 210 L 200 270" stroke="#2c3e50" stroke-width="2" fill="none"/>
+                <text x="250" y="240" font-size="14" font-weight="bold" fill="#c0392b">NO</text>
+                
+                <rect x="50" y="270" width="300" height="100" fill="#c8e6c9" rx="10"/>
+                <text x="200" y="295" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Time-Weighted Return</text>
+                <text x="200" y="320" font-size="13" text-anchor="middle" fill="#555">Preferred for evaluating</text>
+                <text x="200" y="340" font-size="13" text-anchor="middle" fill="#555">portfolio manager performance</text>
+                <text x="200" y="360" font-size="13" text-anchor="middle" fill="#555">Geometric mean of period returns</text>
+                
+                <!-- Right branch - Yes -->
+                <path d="M 550 210 L 700 270" stroke="#2c3e50" stroke-width="2" fill="none"/>
+                <text x="650" y="240" font-size="14" font-weight="bold" fill="#27ae60">YES</text>
+                
+                <rect x="550" y="270" width="300" height="100" fill="#ffcdd2" rx="10"/>
+                <text x="700" y="295" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Money-Weighted Return</text>
+                <text x="700" y="320" font-size="13" text-anchor="middle" fill="#555">Shows actual investor return</text>
+                <text x="700" y="340" font-size="13" text-anchor="middle" fill="#555">based on cash flow timing</text>
+                <text x="700" y="360" font-size="13" text-anchor="middle" fill="#555">Internal Rate of Return (IRR)</text>
+            </svg>
+        </div>
+
+        <h2>2. Money-Weighted Rate of Return</h2>
+
+        <div class="key-concept">
+            <h3>Definition</h3>
+            <p>The <strong>money-weighted rate of return</strong> is a measure of the rate of growth of all funds invested in an account over a stated measurement period. It accounts for the timing and magnitude of all cash flows and provides the investor with information on the actual dollar-weighted return earned on the investment.</p>
+        </div>
+
+        <h3>2.1 Mathematical Framework</h3>
+
+        <p>The money-weighted return is calculated using the internal rate of return (IRR) methodology. The IRR is the discount rate that equates the present value of all cash inflows to the present value of all cash outflows.</p>
+
+        <div class="formula-box">
+            <h4 style="color: white;">General IRR Equation</h4>
+            <p style="margin-top: 15px; font-size: 1.1em;">
+                Σ [CFₜ / (1 + IRR)ᵗ] = 0
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95em;">Where:</p>
+            <ul style="margin-left: 25px; margin-top: 10px; font-size: 0.95em;">
+                <li><strong>CFₜ</strong> = Cash flow at time t (negative for outflows, positive for inflows)</li>
+                <li><strong>IRR</strong> = Internal rate of return (the money-weighted rate of return)</li>
+                <li><strong>t</strong> = Time period (0, 1, 2, ..., T)</li>
+                <li><strong>T</strong> = Total number of periods</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <h4>Cash Flow Sign Convention</h4>
+            <p><strong>Negative cash flows (-)</strong>: Represent money invested (outflows from investor's perspective)</p>
+            <p style="margin-top: 8px;"><strong>Positive cash flows (+)</strong>: Represent money received, withdrawn, or remaining value (inflows to investor)</p>
+        </div>
+
+        <h3>2.2 Detailed Example: Portfolio with Multiple Cash Flows</h3>
+
+        <div class="example-box">
+            <h4>Example 1: Three-Year Mutual Fund Investment</h4>
+            <p>An investor makes the following transactions in a mutual fund:</p>
+            
+            <table style="margin-top: 15px;">
+                <tr>
+                    <th>Year</th>
+                    <th>Beginning Balance</th>
+                    <th>New Investment</th>
+                    <th>Withdrawal</th>
+                    <th>Net Balance</th>
+                    <th>Annual Return</th>
+                    <th>Investment Gain/Loss</th>
+                    <th>Ending Balance</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>€0</td>
+                    <td>€100</td>
+                    <td>€0</td>
+                    <td>€100</td>
+                    <td>-50%</td>
+                    <td>-€50</td>
+                    <td>€50</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>€50</td>
+                    <td>€950</td>
+                    <td>€0</td>
+                    <td>€1,000</td>
+                    <td>+35%</td>
+                    <td>+€350</td>
+                    <td>€1,350</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>€1,350</td>
+                    <td>€0</td>
+                    <td>-€350</td>
+                    <td>€1,000</td>
+                    <td>+27%</td>
+                    <td>+€270</td>
+                    <td>€1,270</td>
+                </tr>
+            </table>
+
+            <h4 style="margin-top: 25px;">Cash Flow Timeline</h4>
+            <p>Converting the above information to cash flows from the investor's perspective:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li><strong>CF₀</strong> = -€100 (initial investment at end of Year 0/beginning of Year 1)</li>
+                <li><strong>CF₁</strong> = -€950 (additional investment at end of Year 1/beginning of Year 2)</li>
+                <li><strong>CF₂</strong> = +€350 (withdrawal at end of Year 2)</li>
+                <li><strong>CF₃</strong> = +€1,270 (final portfolio value at end of Year 3)</li>
+            </ul>
+
+            <h4 style="margin-top: 25px;">Calculation</h4>
+            <p>The money-weighted return equation becomes:</p>
+            <p style="margin-top: 10px; font-family: 'Courier New'; background: white; padding: 15px; border-radius: 8px;">
+                -100/(1+IRR)⁰ + (-950)/(1+IRR)¹ + 350/(1+IRR)² + 1,270/(1+IRR)³ = 0
+            </p>
+            
+            <p style="margin-top: 15px;">Solving for IRR (using financial calculator or spreadsheet):</p>
+            <p style="margin-top: 10px; font-weight: bold; font-size: 1.2em; color: #c0392b;">
+                Money-Weighted Return = 26.11% per annum
+            </p>
+
+            <h4 style="margin-top: 25px;">Interpretation</h4>
+            <p>The 26.11% return reflects the investor's actual annualized return accounting for the specific timing and amounts invested. This return is significantly higher than the arithmetic mean (4%) or geometric mean (2.66%) of the annual returns because:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>Only €100 was exposed to the -50% return in Year 1</li>
+                <li>The majority of capital (€950) was invested at the start of Year 2, capturing the +35% and +27% returns</li>
+            </ul>
+        </div>
+
+        <h3>2.3 Example: Dividend-Paying Stock</h3>
+
+        <div class="example-box">
+            <h4>Example 2: Stock Investment with Dividends</h4>
+            <p>An investor purchases shares over a two-year period:</p>
+            
+            <table style="margin-top: 15px;">
+                <tr>
+                    <th>Time</th>
+                    <th>Transaction</th>
+                    <th>Cash Flow</th>
+                </tr>
+                <tr>
+                    <td>t = 0</td>
+                    <td>Purchase 1 share at $200</td>
+                    <td>-$200</td>
+                </tr>
+                <tr>
+                    <td>t = 1</td>
+                    <td>Receive dividend ($5) on first share</td>
+                    <td>+$5</td>
+                </tr>
+                <tr>
+                    <td>t = 1</td>
+                    <td>Purchase 1 additional share at $225</td>
+                    <td>-$225</td>
+                </tr>
+                <tr>
+                    <td>t = 1 (net)</td>
+                    <td>Net cash flow at t = 1</td>
+                    <td>-$220</td>
+                </tr>
+                <tr>
+                    <td>t = 2</td>
+                    <td>Receive dividends ($5 × 2 shares)</td>
+                    <td>+$10</td>
+                </tr>
+                <tr>
+                    <td>t = 2</td>
+                    <td>Sell 2 shares at $235 each</td>
+                    <td>+$470</td>
+                </tr>
+                <tr>
+                    <td>t = 2 (net)</td>
+                    <td>Net cash flow at t = 2</td>
+                    <td>+$480</td>
+                </tr>
+            </table>
+
+            <h4 style="margin-top: 25px;">IRR Calculation</h4>
+            <p style="font-family: 'Courier New'; background: white; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                -200/(1+IRR)⁰ + (-220)/(1+IRR)¹ + 480/(1+IRR)² = 0
+            </p>
+            
+            <p style="margin-top: 15px; font-weight: bold; font-size: 1.2em; color: #c0392b;">
+                Money-Weighted Return = 9.39%
+            </p>
+
+            <h4 style="margin-top: 25px;">Period-by-Period Analysis</h4>
+            <p><strong>Year 1 Holding Period Return:</strong></p>
+            <p style="margin-left: 25px;">HPR₁ = ($5 + $225 - $200) / $200 = 15%</p>
+            
+            <p style="margin-top: 15px;"><strong>Year 2 Holding Period Return:</strong></p>
+            <p style="margin-left: 25px;">Beginning value: $225 × 2 shares = $450</p>
+            <p style="margin-left: 25px;">HPR₂ = ($10 + $470 - $450) / $450 = 6.67%</p>
+            
+            <p style="margin-top: 15px;"><strong>Arithmetic Mean:</strong> (15% + 6.67%) / 2 = 10.84%</p>
+            
+            <p style="margin-top: 15px;">The money-weighted return of 9.39% is lower than the arithmetic mean because more capital was invested in Year 2 when performance was weaker (6.67%) compared to Year 1 (15%).</p>
+        </div>
+
+        <h3>2.4 Limitations of Money-Weighted Returns</h3>
+
+        <div class="important-note">
+            <h4>Key Limitations</h4>
+            <ol>
+                <li><strong>Lack of comparability</strong>: Two investors in the same fund with different cash flow patterns will have different money-weighted returns</li>
+                <li><strong>Timing dependency</strong>: Returns are heavily influenced by investor behavior (contribution/withdrawal timing), which may not reflect manager skill</li>
+                <li><strong>External factors</strong>: Captures effects of decisions outside the portfolio manager's control</li>
+            </ol>
+            <p style="margin-top: 15px;"><strong>Appropriate use</strong>: Measuring the actual dollar-weighted return experienced by a specific investor</p>
+        </div>
+
+        <h2>3. Time-Weighted Rate of Return</h2>
+
+        <div class="key-concept">
+            <h3>Definition</h3>
+            <p>The <strong>time-weighted rate of return</strong> measures the compound rate of growth of $1 (or €1) initially invested in the portfolio over a stated measurement period. It is independent of cash flows and provides a pure measure of investment performance.</p>
+        </div>
+
+        <h3>3.1 Calculation Methodology</h3>
+
+        <p>The time-weighted rate of return is calculated using a three-step process:</p>
+
+        <ol>
+            <li><strong>Break the evaluation period into subperiods</strong>: Divide the measurement period based on the dates of significant cash inflows or outflows. Value the portfolio immediately before each cash flow.</li>
+            <li><strong>Calculate holding period returns</strong>: Compute the return for each subperiod using the standard holding period return formula.</li>
+            <li><strong>Link the subperiod returns</strong>: Chain-link or compound the individual returns to obtain the time-weighted return for the entire period.</li>
+        </ol>
+
+        <div class="formula-box">
+            <h4 style="color: white;">Time-Weighted Return Formula</h4>
+            <p style="margin-top: 15px; font-size: 1.05em;">For a single year with multiple subperiods:</p>
+            <p style="margin-top: 10px; font-size: 1.1em;">
+                R<sub>TW</sub> = [(1 + R₁) × (1 + R₂) × ... × (1 + Rₙ)] - 1
+            </p>
+            
+            <p style="margin-top: 20px; font-size: 1.05em;">For multiple years, annualize using geometric mean:</p>
+            <p style="margin-top: 10px; font-size: 1.1em;">
+                R<sub>TW</sub> = [(1 + R₁) × (1 + R₂) × ... × (1 + Rₙ)]^(1/N) - 1
+            </p>
+            
+            <p style="margin-top: 15px; font-size: 0.95em;">Where:</p>
+            <ul style="margin-left: 25px; margin-top: 10px; font-size: 0.95em;">
+                <li><strong>Rᵢ</strong> = Holding period return for subperiod i</li>
+                <li><strong>N</strong> = Number of years (for annualization)</li>
+            </ul>
+        </div>
+
+        <h3>3.2 Detailed Example: Two-Year Stock Investment</h3>
+
+        <div class="example-box">
+            <h4>Example 3: Calculating Time-Weighted Return</h4>
+            <p>Using the same stock investment from Example 2, calculate the time-weighted return.</p>
+            
+            <p style="margin-top: 15px;"><strong>Given Information:</strong></p>
+            <ul style="margin-left: 25px;">
+                <li>Year 1 HPR = 15%</li>
+                <li>Year 2 HPR = 6.67%</li>
+            </ul>
+
+            <h4 style="margin-top: 25px;">Step 1: Identify Subperiods</h4>
+            <p>The investment period consists of two one-year subperiods.</p>
+
+            <h4 style="margin-top: 25px;">Step 2: Calculate Returns</h4>
+            <p>Already calculated: R₁ = 15% and R₂ = 6.67%</p>
+
+            <h4 style="margin-top: 25px;">Step 3: Link Returns</h4>
+            <p style="font-family: 'Courier New'; background: white; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                R<sub>TW</sub> = [(1 + 0.15) × (1 + 0.0667)]^(1/2) - 1<br>
+                R<sub>TW</sub> = [1.15 × 1.0667]^0.5 - 1<br>
+                R<sub>TW</sub> = 1.2267^0.5 - 1<br>
+                R<sub>TW</sub> = 1.1076 - 1<br>
+                R<sub>TW</sub> = 0.1076 or 10.76%
+            </p>
+
+            <h4 style="margin-top: 25px;">Comparison</h4>
+            <table style="margin-top: 15px;">
+                <tr>
+                    <th>Measure</th>
+                    <th>Value</th>
+                    <th>Interpretation</th>
+                </tr>
+                <tr>
+                    <td>Money-Weighted Return</td>
+                    <td>9.39%</td>
+                    <td>Actual investor return with cash flow timing</td>
+                </tr>
+                <tr>
+                    <td>Time-Weighted Return</td>
+                    <td>10.76%</td>
+                    <td>Pure portfolio performance measure</td>
+                </tr>
+                <tr>
+                    <td>Arithmetic Mean</td>
+                    <td>10.84%</td>
+                    <td>Simple average of period returns</td>
+                </tr>
+            </table>
+
+            <p style="margin-top: 15px;">The time-weighted return (10.76%) exceeds the money-weighted return (9.39%) because it does not give extra weight to Year 2's lower performance when more capital was invested.</p>
+        </div>
+
+        <h3>3.3 Practical Implementation</h3>
+
+        <div class="important-note">
+            <h4>Portfolio Valuation Frequency</h4>
+            <p>For exact time-weighted returns, portfolios should be valued immediately prior to each significant cash flow. However, this can be costly with frequent transactions.</p>
+            
+            <p style="margin-top: 15px;"><strong>Common Practice</strong>: Value portfolios at regular intervals (typically daily) to obtain approximate time-weighted returns. The approximation improves with:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>More frequent valuations</li>
+                <li>Cash flows that occur at regular interval endpoints</li>
+                <li>Cash flows uncorrelated with market movements</li>
+            </ul>
+        </div>
+
+        <h3>3.4 Comprehensive Example: Pension Fund Performance</h3>
+
+        <div class="example-box">
+            <h4>Example 4: Quarterly Performance Evaluation</h4>
+            <p>Strubeck Corporation evaluates two portfolio managers over four quarters:</p>
+            
+            <h4 style="margin-top: 20px;">In-House Account</h4>
+            <table style="margin-top: 10px;">
+                <tr>
+                    <th>Quarter</th>
+                    <th>Beginning Value</th>
+                    <th>Cash Flow</th>
+                    <th>Amount Invested</th>
+                    <th>Ending Value</th>
+                    <th>HPR</th>
+                </tr>
+                <tr>
+                    <td>Q1</td>
+                    <td>$4,000,000</td>
+                    <td>+$1,000,000</td>
+                    <td>$5,000,000</td>
+                    <td>$6,000,000</td>
+                    <td>20.00%</td>
+                </tr>
+                <tr>
+                    <td>Q2</td>
+                    <td>$6,000,000</td>
+                    <td>-$500,000</td>
+                    <td>$5,500,000</td>
+                    <td>$5,775,000</td>
+                    <td>5.00%</td>
+                </tr>
+                <tr>
+                    <td>Q3</td>
+                    <td>$5,775,000</td>
+                    <td>+$225,000</td>
+                    <td>$6,000,000</td>
+                    <td>$6,720,000</td>
+                    <td>12.00%</td>
+                </tr>
+                <tr>
+                    <td>Q4</td>
+                    <td>$6,720,000</td>
+                    <td>-$600,000</td>
+                    <td>$6,120,000</td>
+                    <td>$5,508,000</td>
+                    <td>-10.00%</td>
+                </tr>
+            </table>
+
+            <p style="margin-top: 15px;"><strong>Calculation:</strong></p>
+            <p style="font-family: 'Courier New'; background: white; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                R<sub>TW</sub> = (1.20 × 1.05 × 1.12 × 0.90) - 1<br>
+                R<sub>TW</sub> = 1.2701 - 1<br>
+                R<sub>TW</sub> = 0.2701 or 27.01%
+            </p>
+
+            <h4 style="margin-top: 25px;">Super Trust Account</h4>
+            <table style="margin-top: 10px;">
+                <tr>
+                    <th>Quarter</th>
+                    <th>Beginning Value</th>
+                    <th>Cash Flow</th>
+                    <th>Amount Invested</th>
+                    <th>Ending Value</th>
+                    <th>HPR</th>
+                </tr>
+                <tr>
+                    <td>Q1</td>
+                    <td>$10,000,000</td>
+                    <td>+$2,000,000</td>
+                    <td>$12,000,000</td>
+                    <td>$13,200,000</td>
+                    <td>10.00%</td>
+                </tr>
+                <tr>
+                    <td>Q2</td>
+                    <td>$13,200,000</td>
+                    <td>-$1,200,000</td>
+                    <td>$12,000,000</td>
+                    <td>$12,240,000</td>
+                    <td>2.00%</td>
+                </tr>
+                <tr>
+                    <td>Q3</td>
+                    <td>$12,240,000</td>
+                    <td>-$7,000,000</td>
+                    <td>$5,240,000</td>
+                    <td>$5,659,200</td>
+                    <td>8.00%</td>
+                </tr>
+                <tr>
+                    <td>Q4</td>
+                    <td>$5,659,200</td>
+                    <td>-$400,000</td>
+                    <td>$5,259,200</td>
+                    <td>$5,469,568</td>
+                    <td>4.00%</td>
+                </tr>
+            </table>
+
+            <p style="margin-top: 15px;"><strong>Calculation:</strong></p>
+            <p style="font-family: 'Courier New'; background: white; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                R<sub>TW</sub> = (1.10 × 1.02 × 1.08 × 1.04) - 1<br>
+                R<sub>TW</sub> = 1.2602 - 1<br>
+                R<sub>TW</sub> = 0.2602 or 26.02%
+            </p>
+
+            <p style="margin-top: 20px;"><strong>Conclusion:</strong> The in-house portfolio outperformed Super Trust by 99 basis points (27.01% - 26.02%) on a time-weighted basis, providing a fair comparison independent of cash flow patterns.</p>
+        </div>
+
+        <h2>4. Comparative Analysis</h2>
+
+        <div class="image-container">
+            <svg viewBox="0 0 900 500" style="width:100%; max-width:900px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="900" height="500" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="450" y="35" font-size="22" font-weight="bold" text-anchor="middle" fill="#2c3e50">Money-Weighted vs Time-Weighted: Key Differences</text>
+                
+                <!-- Headers -->
+                <rect x="50" y="60" width="250" height="50" fill="#667eea" rx="10"/>
+                <text x="175" y="92" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Characteristic</text>
+                
+                <rect x="320" y="60" width="260" height="50" fill="#e74c3c" rx="10"/>
+                <text x="450" y="92" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Money-Weighted</text>
+                
+                <rect x="600" y="60" width="260" height="50" fill="#27ae60" rx="10"/>
+                <text x="730" y="92" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Time-Weighted</text>
+                
+                <!-- Row 1: Method -->
+                <rect x="50" y="130" width="250" height="60" fill="#ecf0f1" rx="8"/>
+                <text x="175" y="160" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Calculation Method</text>
+                
+                <rect x="320" y="130" width="260" height="60" fill="#ffebee" rx="8"/>
+                <text x="450" y="155" font-size="12" text-anchor="middle" fill="#2c3e50">Internal Rate of Return</text>
+                <text x="450" y="175" font-size="12" text-anchor="middle" fill="#2c3e50">(IRR) methodology</text>
+                
+                <rect x="600" y="130" width="260" height="60" fill="#e8f5e9" rx="8"/>
+                <text x="730" y="155" font-size="12" text-anchor="middle" fill="#2c3e50">Geometric mean of</text>
+                <text x="730" y="175" font-size="12" text-anchor="middle" fill="#2c3e50">subperiod returns</text>
+                
+                <!-- Row 2: Cash Flows -->
+                <rect x="50" y="210" width="250" height="60" fill="#ecf0f1" rx="8"/>
+                <text x="175" y="240" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Cash Flow Impact</text>
+                
+                <rect x="320" y="210" width="260" height="60" fill="#ffebee" rx="8"/>
+                <text x="450" y="235" font-size="12" text-anchor="middle" fill="#2c3e50">Highly sensitive to</text>
+                <text x="450" y="255" font-size="12" text-anchor="middle" fill="#2c3e50">timing and magnitude</text>
+                
+                <rect x="600" y="210" width="260" height="60" fill="#e8f5e9" rx="8"/>
+                <text x="730" y="235" font-size="12" text-anchor="middle" fill="#2c3e50">Eliminates cash</text>
+                <text x="730" y="255" font-size="12" text-anchor="middle" fill="#2c3e50">flow timing effects</text>
+                
+                <!-- Row 3: Comparability -->
+                <rect x="50" y="290" width="250" height="60" fill="#ecf0f1" rx="8"/>
+                <text x="175" y="320" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Cross-Investor Comparison</text>
+                
+                <rect x="320" y="290" width="260" height="60" fill="#ffebee" rx="8"/>
+                <text x="450" y="315" font-size="12" text-anchor="middle" fill="#2c3e50">Different for each</text>
+                <text x="450" y="335" font-size="12" text-anchor="middle" fill="#2c3e50">investor in same fund</text>
+                
+                <rect x="600" y="290" width="260" height="60" fill="#e8f5e9" rx="8"/>
+                <text x="730" y="315" font-size="12" text-anchor="middle" fill="#2c3e50">Identical for all</text>
+                <text x="730" y="335" font-size="12" text-anchor="middle" fill="#2c3e50">investors in same fund</text>
+                
+                <!-- Row 4: Best Use -->
+                <rect x="50" y="370" width="250" height="60" fill="#ecf0f1" rx="8"/>
+                <text x="175" y="400" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Primary Application</text>
+                
+                <rect x="320" y="370" width="260" height="60" fill="#ffebee" rx="8"/>
+                <text x="450" y="395" font-size="12" text-anchor="middle" fill="#2c3e50">Individual investor's</text>
+                <text x="450" y="415" font-size="12" text-anchor="middle" fill="#2c3e50">actual returns</text>
+                
+                <rect x="600" y="370" width="260" height="60" fill="#e8f5e9" rx="8"/>
+                <text x="730" y="395" font-size="12" text-anchor="middle" fill="#2c3e50">Manager performance</text>
+                <text x="730" y="415" font-size="12" text-anchor="middle" fill="#2c3e50">evaluation</text>
+                
+                <!-- Row 5: Control -->
+                <rect x="50" y="450" width="250" height="40" fill="#ecf0f1" rx="8"/>
+                <text x="175" y="475" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Performance Driver</text>
+                
+                <rect x="320" y="450" width="260" height="40" fill="#ffebee" rx="8"/>
+                <text x="450" y="475" font-size="12" text-anchor="middle" fill="#2c3e50">Investor decisions</text>
+                
+                <rect x="600" y="450" width="260" height="40" fill="#e8f5e9" rx="8"/>
+                <text x="730" y="475" font-size="12" text-anchor="middle" fill="#2c3e50">Manager decisions</text>
+            </svg>
+        </div>
+
+        <h3>4.1 Selection Criteria</h3>
+
+        <table>
+            <tr>
+                <th>Evaluation Purpose</th>
+                <th>Recommended Method</th>
+                <th>Rationale</th>
+            </tr>
+            <tr>
+                <td>Portfolio manager evaluation</td>
+                <td>Time-Weighted Return</td>
+                <td>Isolates investment decisions from cash flow decisions that managers don't control</td>
+            </tr>
+            <tr>
+                <td>Individual investor performance</td>
+                <td>Money-Weighted Return</td>
+                <td>Reflects actual dollar-weighted returns based on investor's cash flow timing</td>
+            </tr>
+            <tr>
+                <td>Fund marketing/comparison</td>
+                <td>Time-Weighted Return</td>
+                <td>Provides standardized, comparable performance metrics across funds</td>
+            </tr>
+            <tr>
+                <td>Assessing investment timing skill</td>
+                <td>Both (Comparison)</td>
+                <td>Difference reveals impact of cash flow timing decisions</td>
+            </tr>
+        </table>
+
+        <h3>4.2 Interpretation of Differences</h3>
+
+        <div class="important-note">
+            <h4>When Money-Weighted > Time-Weighted</h4>
+            <p>The investor exhibited favorable timing, contributing more capital during periods of strong performance or withdrawing capital before periods of weak performance.</p>
+            
+            <h4 style="margin-top: 15px;">When Time-Weighted > Money-Weighted</h4>
+            <p>The investor exhibited unfavorable timing, contributing more capital during periods of weak performance or withdrawing capital before periods of strong performance.</p>
+            
+            <p style="margin-top: 15px;"><strong>Note</strong>: Neither outcome implies superior or inferior manager performance. The difference reflects only the interaction between cash flow timing and returns.</p>
+        </div>
+
+        <h2>5. Regulatory and Industry Standards</h2>
+
+        <div class="key-concept">
+            <h3>Performance Presentation Standards</h3>
+            <p><strong>Global Investment Performance Standards (GIPS®)</strong>: Require the use of time-weighted returns for performance presentation to ensure fair and comparable disclosure of investment results.</p>
+            
+            <p style="margin-top: 15px;"><strong>Rationale</strong>: Time-weighted returns provide the most meaningful basis for comparing the performance of different investment managers or funds since they are not influenced by client-directed cash flows.</p>
+        </div>
+
+        <h2>6. Summary and Exam Tips</h2>
+
+        <div class="important-note">
+            <h4>Key Takeaways</h4>
+            <ol>
+                <li><strong>Money-weighted return</strong> = IRR = Actual investor return with cash flow timing</li>
+                <li><strong>Time-weighted return</strong> = Geometric mean = Pure portfolio performance</li>
+                <li>Use <strong>time-weighted</strong> for manager evaluation (preferred method)</li>
+                <li>Use <strong>money-weighted</strong> for actual investor return calculation</li>
+                <li>Differences between the two measures reveal cash flow timing effects</li>
+                <li>Time-weighted returns require portfolio valuation at each significant cash flow</li>
+                <li>Both measures are correct; they answer different questions</li>
+            </ol>
+        </div>
+
+        <div class="example-box">
+            <h4>Exam Problem-Solving Strategy</h4>
+            <ol>
+                <li><strong>Identify the measure required</strong>: Read the question carefully to determine whether money-weighted or time-weighted return is requested</li>
+                <li><strong>For money-weighted returns</strong>:
+                    <ul style="margin-left: 25px; margin-top: 8px;">
+                        <li>List all cash flows with proper signs</li>
+                        <li>Identify time periods</li>
+                        <li>Use IRR function or solve IRR equation</li>
+                    </ul>
+                </li>
+                <li><strong>For time-weighted returns</strong>:
+                    <ul style="margin-left: 25px; margin-top: 8px;">
+                        <li>Break into subperiods based on cash flows</li>
+                        <li>Calculate holding period return for each subperiod</li>
+                        <li>Chain-link returns using geometric compounding</li>
+                    </ul>
+                </li>
+                <li><strong>Interpret results</strong>: Be prepared to explain why the two measures differ and what the difference signifies about cash flow timing</li>
+            </ol>
+        </div>
+
+        <div class="navigation">
+            <a href="money-time-weighted-returns-intuitive.html" class="nav-button">← Intuitive Learning</a>
+            <a href="money-time-weighted-returns-practice.html" class="nav-button">Practice Questions →</a>
+        </div>
+    </div>
+</body>
+</html>

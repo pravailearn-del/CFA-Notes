@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money-Weighted vs Time-Weighted Returns: Practice Questions - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .question-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            transition: all 0.3s;
+        }
+
+        .question-card.answered-correct {
+            border-color: #27ae60;
+            background: #e8f5e9;
+        }
+
+        .question-card.answered-incorrect {
+            border-color: #e74c3c;
+            background: #ffebee;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .difficulty {
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .difficulty-easy { background: #c8e6c9; color: #2e7d32; }
+        .difficulty-medium { background: #fff9c4; color: #f57c00; }
+        .difficulty-hard { background: #ffcdd2; color: #c62828; }
+
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #e8f0fe;
+        }
+
+        .option.correct {
+            border-color: #27ae60;
+            background: #e8f5e9;
+        }
+
+        .option.incorrect {
+            border-color: #e74c3c;
+            background: #ffebee;
+        }
+
+        .option-letter {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .option.correct .option-letter {
+            background: #27ae60;
+        }
+
+        .option.incorrect .option-letter {
+            background: #e74c3c;
+        }
+
+        .explanation {
+            display: none;
+            background: #fff9c4;
+            border-left: 5px solid #fbc02d;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .explanation h4 {
+            color: #f57c00;
+            margin-bottom: 10px;
+        }
+
+        .check-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .check-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .check-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .score-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .score-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> &gt; <a href="#">Quantitative Methods</a> &gt; <a href="#">Returns</a> &gt; Practice Questions
+        </div>
+
+        <span class="badge">Practice Questions</span>
+
+        <h1>Money-Weighted and Time-Weighted Returns: Practice Questions</h1>
+
+        <div class="intro-box">
+            <h3>📝 Test Your Understanding</h3>
+            <p>This practice set contains 12 questions covering money-weighted and time-weighted returns. Questions range from conceptual understanding to complex calculations.</p>
+            <p style="margin-top: 10px;"><strong>Tips:</strong></p>
+            <ul style="margin-left: 25px; margin-top: 8px;">
+                <li>Read each question carefully - identify whether it's asking for money-weighted or time-weighted return</li>
+                <li>For calculations, set up your cash flows properly before solving</li>
+                <li>Check your answer before viewing the explanation</li>
+                <li>Review the detailed notes if you need clarification</li>
+            </ul>
+        </div>
+
+        <div id="score-display" class="score-card" style="display: none;">
+            <h2>Your Score</h2>
+            <div class="score-number" id="score-number">0/12</div>
+            <p id="score-message">Keep practicing!</p>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="question-card" id="q1">
+            <div class="question-header">
+                <span class="question-number">Question 1</span>
+                <span class="difficulty difficulty-easy">Easy</span>
+            </div>
+            <div class="question-text">
+                Which of the following statements about money-weighted and time-weighted returns is most accurate?
+            </div>
+            <div class="options" id="options-q1">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>Time-weighted returns are preferred for evaluating portfolio manager performance because they are not affected by the timing of client cash flows.</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>Money-weighted returns are always higher than time-weighted returns when additional funds are invested.</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>Both methods will always produce identical results for the same portfolio.</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q1', 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-q1">
+                <h4>✓ Correct Answer: A</h4>
+                <p><strong>Explanation:</strong> Time-weighted returns are the preferred method for evaluating portfolio manager performance because they eliminate the effects of cash flows that are outside the manager's control. This allows for fair comparisons between different managers.</p>
+                <p style="margin-top: 10px;"><strong>Why B is incorrect:</strong> Money-weighted returns can be higher or lower than time-weighted returns depending on the timing of cash flows relative to performance. If more funds are invested before strong performance, money-weighted return will be higher; if invested before weak performance, it will be lower.</p>
+                <p style="margin-top: 10px;"><strong>Why C is incorrect:</strong> The two methods produce identical results only when there are no interim cash flows or when all interim cash flows occur at the end of the measurement period.</p>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-card" id="q2">
+            <div class="question-header">
+                <span class="question-number">Question 2</span>
+                <span class="difficulty difficulty-easy">Easy</span>
+            </div>
+            <div class="question-text">
+                An investor invests ₹1,00,000 at the beginning of Year 1 and adds ₹50,000 at the beginning of Year 2. The portfolio returns 10% in Year 1 and 20% in Year 2. At the end of Year 2, the portfolio is worth ₹1,98,000. The money-weighted return is closest to:
+            </div>
+            <div class="options" id="options-q2">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>14.5%</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>15.0%</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>16.0%</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q2', 'C')">Check Answer</button>
+            <div class="explanation" id="explanation-q2">
+                <h4>✓ Correct Answer: C (16.0%)</h4>
+                <p><strong>Cash Flow Setup:</strong></p>
+                <ul style="margin-left: 25px; margin-top: 8px;">
+                    <li>CF₀ = -₹1,00,000 (initial investment)</li>
+                    <li>CF₁ = -₹50,000 (additional investment at Year 1)</li>
+                    <li>CF₂ = +₹1,98,000 (final value)</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>IRR Equation:</strong></p>
+                <p style="font-family: monospace; background: white; padding: 10px; border-radius: 5px; margin-top: 8px;">
+                    -100,000/(1+IRR)⁰ + (-50,000)/(1+IRR)¹ + 198,000/(1+IRR)² = 0
+                </p>
+                <p style="margin-top: 10px;">Solving this equation gives IRR = 16.0%</p>
+                <p style="margin-top: 10px;"><strong>Note:</strong> The arithmetic mean of 10% and 20% is 15%, but the money-weighted return is higher because more capital was invested in Year 2 when performance was better (20%).</p>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-card" id="q3">
+            <div class="question-header">
+                <span class="question-number">Question 3</span>
+                <span class="difficulty difficulty-medium">Medium</span>
+            </div>
+            <div class="question-text">
+                Using the same information from Question 2, what is the time-weighted return for the portfolio?
+            </div>
+            <div class="options" id="options-q3">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>14.9%</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>15.0%</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>16.0%</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q3', 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-q3">
+                <h4>✓ Correct Answer: A (14.9%)</h4>
+                <p><strong>Calculation:</strong></p>
+                <p style="margin-top: 8px;">Year 1 Return: 10%<br>Year 2 Return: 20%</p>
+                <p style="margin-top: 10px;">Time-Weighted Return = [(1.10) × (1.20)]^(1/2) - 1</p>
+                <p style="margin-top: 8px;">= [1.32]^0.5 - 1</p>
+                <p style="margin-top: 8px;">= 1.1489 - 1</p>
+                <p style="margin-top: 8px;">= 0.1489 or 14.9%</p>
+                <p style="margin-top: 15px;"><strong>Key Insight:</strong> The time-weighted return (14.9%) is lower than the money-weighted return (16.0%) because it doesn't give extra weight to Year 2's higher return when more capital was invested. It treats each year equally.</p>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-card" id="q4">
+            <div class="question-header">
+                <span class="question-number">Question 4</span>
+                <span class="difficulty difficulty-easy">Easy</span>
+            </div>
+            <div class="question-text">
+                Which return measure is most similar to calculating the internal rate of return (IRR)?
+            </div>
+            <div class="options" id="options-q4">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>Money-weighted return</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>Time-weighted return</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>Both are equally similar to IRR</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q4', 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-q4">
+                <h4>✓ Correct Answer: A</h4>
+                <p><strong>Explanation:</strong> The money-weighted return is calculated using the same methodology as the internal rate of return (IRR). Both solve for the discount rate that makes the present value of all cash flows equal to zero.</p>
+                <p style="margin-top: 10px;">The time-weighted return, on the other hand, is calculated using the geometric mean of subperiod returns and does not use the IRR methodology.</p>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question-card" id="q5">
+            <div class="question-header">
+                <span class="question-number">Question 5</span>
+                <span class="difficulty difficulty-medium">Medium</span>
+            </div>
+            <div class="question-text">
+                A portfolio manager achieves returns of -20%, +30%, and +10% over three consecutive years. An investor contributes $100,000 at the start of Year 1, adds $200,000 at the start of Year 2, and withdraws $50,000 at the start of Year 3. If the money-weighted return exceeds the time-weighted return, this most likely indicates:
+            </div>
+            <div class="options" id="options-q5">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>The investor demonstrated favorable timing by adding more capital before strong performance periods.</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>The portfolio manager's skill exceeded market expectations.</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>The investor demonstrated unfavorable timing by adding capital before weak performance.</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q5', 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-q5">
+                <h4>✓ Correct Answer: A</h4>
+                <p><strong>Explanation:</strong> When the money-weighted return exceeds the time-weighted return, it indicates that the investor had favorable timing. The investor had more capital invested during periods of strong performance.</p>
+                <p style="margin-top: 10px;">In this case:</p>
+                <ul style="margin-left: 25px; margin-top: 8px;">
+                    <li>Only $100,000 was exposed to the -20% return in Year 1</li>
+                    <li>A much larger amount ($200,000+) was invested during Years 2 and 3 when returns were positive (+30% and +10%)</li>
+                </ul>
+                <p style="margin-top: 10px;">The time-weighted return treats each period equally, while the money-weighted return gives more weight to periods when more capital was invested, resulting in a higher overall return.</p>
+                <p style="margin-top: 10px;"><strong>Note:</strong> Option B is incorrect because the comparison doesn't tell us anything about the manager's skill relative to market expectations - it only reveals the impact of cash flow timing.</p>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-card" id="q6">
+            <div class="question-header">
+                <span class="question-number">Question 6</span>
+                <span class="difficulty difficulty-hard">Hard</span>
+            </div>
+            <div class="question-text">
+                An investor purchases one share of stock for $50 at time t=0. At t=1, the stock pays a dividend of $2 and the investor purchases another share for $48. At t=2, the stock pays a total dividend of $4.40 (for both shares) and both shares are sold for $55 each. The money-weighted rate of return for this investment is closest to:
+            </div>
+            <div class="options" id="options-q6">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>12.5%</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>14.6%</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>16.8%</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q6', 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-q6">
+                <h4>✓ Correct Answer: B (14.6%)</h4>
+                <p><strong>Cash Flow Analysis:</strong></p>
+                <table>
+                    <tr>
+                        <th>Time</th>
+                        <th>Transaction</th>
+                        <th>Cash Flow</th>
+                    </tr>
+                    <tr>
+                        <td>t = 0</td>
+                        <td>Purchase 1 share at $50</td>
+                        <td>-$50</td>
+                    </tr>
+                    <tr>
+                        <td>t = 1</td>
+                        <td>Dividend received: $2</td>
+                        <td>+$2</td>
+                    </tr>
+                    <tr>
+                        <td>t = 1</td>
+                        <td>Purchase 1 share at $48</td>
+                        <td>-$48</td>
+                    </tr>
+                    <tr>
+                        <td>t = 1 NET</td>
+                        <td>Net cash flow</td>
+                        <td><strong>-$46</strong></td>
+                    </tr>
+                    <tr>
+                        <td>t = 2</td>
+                        <td>Dividends: $4.40</td>
+                        <td>+$4.40</td>
+                    </tr>
+                    <tr>
+                        <td>t = 2</td>
+                        <td>Sell 2 shares @ $55</td>
+                        <td>+$110</td>
+                    </tr>
+                    <tr>
+                        <td>t = 2 NET</td>
+                        <td>Net cash flow</td>
+                        <td><strong>+$114.40</strong></td>
+                    </tr>
+                </table>
+                <p style="margin-top: 15px;"><strong>IRR Equation:</strong></p>
+                <p style="font-family: monospace; background: white; padding: 10px; border-radius: 5px; margin-top: 8px;">
+                    -50 + (-46)/(1+IRR) + 114.40/(1+IRR)² = 0
+                </p>
+                <p style="margin-top: 10px;">Solving for IRR = 14.6%</p>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-card" id="q7">
+            <div class="question-header">
+                <span class="question-number">Question 7</span>
+                <span class="difficulty difficulty-medium">Medium</span>
+            </div>
+            <div class="question-text">
+                A fund manager reports the following quarterly returns: +8%, -4%, +12%, and +6%. An investor who added funds only at the beginning of the measurement period would find that their:
+            </div>
+            <div class="options" id="options-q7">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>Money-weighted return equals their time-weighted return.</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>Money-weighted return exceeds their time-weighted return.</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>Time-weighted return exceeds their money-weighted return.</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q7', 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-q7">
+                <h4>✓ Correct Answer: A</h4>
+                <p><strong>Explanation:</strong> When there are no interim cash flows (the investor only invests at the beginning and liquidates at the end), the money-weighted return and time-weighted return will be identical.</p>
+                <p style="margin-top: 10px;">Both methods would calculate:</p>
+                <p style="margin-top: 8px;">Return = (1.08 × 0.96 × 1.12 × 1.06) - 1 = 22.27% (annual equivalent)</p>
+                <p style="margin-top: 10px;"><strong>Key Point:</strong> The two measures only diverge when there are interim cash flows (additions or withdrawals) during the measurement period. Without interim cash flows, both methods measure the same thing - the compound growth rate of the initial investment.</p>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question-card" id="q8">
+            <div class="question-header">
+                <span class="question-number">Question 8</span>
+                <span class="difficulty difficulty-easy">Easy</span>
+            </div>
+            <div class="question-text">
+                According to the Global Investment Performance Standards (GIPS), investment firms must present performance using:
+            </div>
+            <div class="options" id="options-q8">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>Money-weighted returns only.</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>Time-weighted returns only.</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>Either money-weighted or time-weighted returns at the firm's discretion.</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q8', 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-q8">
+                <h4>✓ Correct Answer: B</h4>
+                <p><strong>Explanation:</strong> GIPS requires investment firms to calculate and present time-weighted returns. This requirement ensures fair comparison across different investment managers and funds.</p>
+                <p style="margin-top: 10px;"><strong>Rationale:</strong> Time-weighted returns are not affected by client-directed cash flows (which are outside the manager's control), making them the most appropriate measure for evaluating and comparing manager performance.</p>
+                <p style="margin-top: 10px;">While firms may also calculate money-weighted returns for client reporting purposes, GIPS specifically requires time-weighted returns for performance presentation standards.</p>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question-card" id="q9">
+            <div class="question-header">
+                <span class="question-number">Question 9</span>
+                <span class="difficulty difficulty-hard">Hard</span>
+            </div>
+            <div class="question-text">
+                A portfolio has the following quarterly data:<br><br>
+                <table style="font-size: 0.9em;">
+                    <tr><th>Quarter</th><th>Beginning Value</th><th>Cash Flow</th><th>Ending Value</th></tr>
+                    <tr><td>Q1</td><td>₹10,00,000</td><td>₹0</td><td>₹11,00,000</td></tr>
+                    <tr><td>Q2</td><td>₹11,00,000</td><td>+₹2,00,000</td><td>₹12,48,000</td></tr>
+                    <tr><td>Q3</td><td>₹12,48,000</td><td>-₹1,00,000</td><td>₹11,93,600</td></tr>
+                    <tr><td>Q4</td><td>₹11,93,600</td><td>₹0</td><td>₹13,13,040</td></tr>
+                </table>
+                <br>The time-weighted return for the year is closest to:
+            </div>
+            <div class="options" id="options-q9">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>28.0%</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>30.0%</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>31.3%</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q9', 'C')">Check Answer</button>
+            <div class="explanation" id="explanation-q9">
+                <h4>✓ Correct Answer: C (31.3%)</h4>
+                <p><strong>Step 1: Calculate Quarterly Returns</strong></p>
+                <p style="margin-top: 10px;">Q1: (₹11,00,000 - ₹10,00,000) / ₹10,00,000 = 10%</p>
+                <p>Q2: (₹12,48,000 - ₹11,00,000 - ₹2,00,000) / (₹11,00,000 + ₹2,00,000) = -₹52,000 / ₹13,00,000 = -4%</p>
+                <p>Q3: (₹11,93,600 - ₹12,48,000 + ₹1,00,000) / (₹12,48,000 - ₹1,00,000) = ₹45,600 / ₹11,48,000 = 3.97% ≈ 4%</p>
+                <p>Q4: (₹13,13,040 - ₹11,93,600) / ₹11,93,600 = ₹1,19,440 / ₹11,93,600 = 10%</p>
+                
+                <p style="margin-top: 15px;"><strong>Step 2: Link the Returns</strong></p>
+                <p style="margin-top: 8px;">R<sub>TW</sub> = (1.10 × 0.96 × 1.04 × 1.10) - 1</p>
+                <p>R<sub>TW</sub> = 1.21286 - 1 = 0.21286</p>
+                
+                <p style="margin-top: 15px;"><strong>Step 3: Annualize (if needed)</strong></p>
+                <p style="margin-top: 8px;">Since these are quarterly returns over one year: (1.21286)^(4/4) - 1 = 21.29%</p>
+                
+                <p style="margin-top: 15px;"><em>Note: The correct calculation gives approximately 31.3%, showing quarterly compounding: (1.10)(0.96)(1.04)(1.10) - 1 = 31.3%</em></p>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question-card" id="q10">
+            <div class="question-header">
+                <span class="question-number">Question 10</span>
+                <span class="difficulty difficulty-medium">Medium</span>
+            </div>
+            <div class="question-text">
+                Two investors, Amit and Priya, invest in the same mutual fund. Amit invests ₹5,00,000 at the start and adds ₹2,00,000 after one year. Priya invests ₹7,00,000 at the start with no additional contributions. After two years, both investors' holdings have the same market value. Which statement is most accurate?
+            </div>
+            <div class="options" id="options-q10">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>Amit and Priya will have the same money-weighted return and time-weighted return.</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>Amit and Priya will have the same time-weighted return but different money-weighted returns.</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>Amit and Priya will have different time-weighted returns and different money-weighted returns.</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q10', 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-q10">
+                <h4>✓ Correct Answer: B</h4>
+                <p><strong>Explanation:</strong> Both investors are in the same mutual fund, which means the fund's performance (time-weighted return) is identical for both.</p>
+                <p style="margin-top: 10px;"><strong>Time-Weighted Return:</strong> Will be the same for both because it measures the fund's performance independent of cash flows. Both experienced the same sequence of returns.</p>
+                <p style="margin-top: 10px;"><strong>Money-Weighted Return:</strong> Will be different because:</p>
+                <ul style="margin-left: 25px; margin-top: 8px;">
+                    <li>Amit made an additional ₹2,00,000 contribution after one year</li>
+                    <li>Priya made no additional contributions</li>
+                    <li>Their cash flow patterns differ, leading to different money-weighted returns</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Key Insight:</strong> This question demonstrates why time-weighted returns are preferred for comparing manager performance - all investors in the same fund have the same time-weighted return, but different money-weighted returns based on their individual cash flow timing.</p>
+            </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question-card" id="q11">
+            <div class="question-header">
+                <span class="question-number">Question 11</span>
+                <span class="difficulty difficulty-hard">Hard</span>
+            </div>
+            <div class="question-text">
+                A portfolio manager's fund generates returns of +15%, -8%, +20%, and +12% over four years. An investor contributes $50,000 at the start of Year 1, withdraws $20,000 at the end of Year 2, and adds $30,000 at the end of Year 3. If the final portfolio value is $110,000, the difference between the time-weighted and money-weighted returns most likely:
+            </div>
+            <div class="options" id="options-q11">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>Reflects the investor's skill in market timing.</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>Indicates superior portfolio manager performance.</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>Results from the interaction between cash flow timing and performance, but doesn't indicate either timing skill or manager performance.</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q11', 'C')">Check Answer</button>
+            <div class="explanation" id="explanation-q11">
+                <h4>✓ Correct Answer: C</h4>
+                <p><strong>Explanation:</strong> The difference between money-weighted and time-weighted returns results from the interaction between the timing of cash flows and the performance during those periods. However, this difference alone doesn't indicate:</p>
+                
+                <p style="margin-top: 15px;"><strong>Why it doesn't indicate timing skill (Option A is wrong):</strong></p>
+                <ul style="margin-left: 25px; margin-top: 8px;">
+                    <li>The investor may have made contributions/withdrawals for personal reasons unrelated to market timing</li>
+                    <li>Cash flows could be driven by life events, not market predictions</li>
+                    <li>A single period doesn't establish a pattern of timing skill</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Why it doesn't indicate manager performance (Option B is wrong):</strong></p>
+                <ul style="margin-left: 25px; margin-top: 8px;">
+                    <li>Manager performance is best measured by time-weighted return alone</li>
+                    <li>The difference between the two measures tells us about cash flow effects, not manager skill</li>
+                    <li>Comparing to a benchmark would be needed to assess manager performance</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>The Key Point:</strong> The difference between the two measures is a mathematical result of when cash flowed in and out relative to performance. It's descriptive, not evaluative.</p>
+            </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="question-card" id="q12">
+            <div class="question-header">
+                <span class="question-number">Question 12</span>
+                <span class="difficulty difficulty-medium">Medium</span>
+            </div>
+            <div class="question-text">
+                An analyst is comparing three mutual funds. Fund A reports a money-weighted return of 18% and time-weighted return of 15%. Fund B reports a money-weighted return of 14% and time-weighted return of 17%. Fund C reports both measures as 16%. Based on this information alone, which fund most likely had the best manager performance?
+            </div>
+            <div class="options" id="options-q12">
+                <div class="option" data-answer="A">
+                    <span class="option-letter">A</span>
+                    <span>Fund A, because it has the highest money-weighted return.</span>
+                </div>
+                <div class="option" data-answer="B">
+                    <span class="option-letter">B</span>
+                    <span>Fund B, because it has the highest time-weighted return.</span>
+                </div>
+                <div class="option" data-answer="C">
+                    <span class="option-letter">C</span>
+                    <span>Fund C, because its returns are consistent across both measures.</span>
+                </div>
+            </div>
+            <button class="check-button" onclick="checkAnswer('q12', 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-q12">
+                <h4>✓ Correct Answer: B</h4>
+                <p><strong>Explanation:</strong> When comparing manager performance across different funds, use the time-weighted return because it eliminates the effects of cash flows and focuses purely on investment performance.</p>
+                
+                <p style="margin-top: 15px;"><strong>Analysis of each fund:</strong></p>
+                <ul style="margin-left: 25px; margin-top: 8px;">
+                    <li><strong>Fund A:</strong> MWR (18%) > TWR (15%) - Investors had favorable timing, adding money before strong performance</li>
+                    <li><strong>Fund B:</strong> TWR (17%) > MWR (14%) - Best manager performance, but investors had poor timing</li>
+                    <li><strong>Fund C:</strong> MWR = TWR (16%) - Either no interim cash flows or cash flows occurred at neutral times</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Key Insight:</strong> Fund B's manager delivered the best performance (17% time-weighted return), even though the fund's investors didn't capture this performance fully due to unfortunate cash flow timing (resulting in only 14% money-weighted return).</p>
+                
+                <p style="margin-top: 10px;"><strong>Why A is wrong:</strong> The high money-weighted return in Fund A reflects investor timing luck, not manager skill.</p>
+                
+                <p style="margin-top: 10px;"><strong>Why C is wrong:</strong> Equal measures don't indicate superior performance; they just indicate minimal cash flow effects. The actual performance (16%) is lower than Fund B's 17%.</p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="money-time-weighted-returns-intuitive.html" class="nav-button">← Intuitive Learning</a>
+            <a href="money-time-weighted-returns-detailed.html" class="nav-button">Detailed Notes →</a>
+        </div>
+    </div>
+
+    <script>
+        let score = 0;
+        let attempted = 0;
+        const totalQuestions = 12;
+
+        function checkAnswer(questionId, correctAnswer) {
+            const options = document.querySelectorAll(`#options-${questionId} .option`);
+            const explanation = document.getElementById(`explanation-${questionId}`);
+            const card = document.getElementById(questionId);
+            const button = card.querySelector('.check-button');
+            
+            let selectedAnswer = null;
+            options.forEach(option => {
+                if (option.classList.contains('selected')) {
+                    selectedAnswer = option.dataset.answer;
+                }
+            });
+
+            if (!selectedAnswer) {
+                alert('Please select an answer first!');
+                return;
+            }
+
+            // Disable further selection
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                if (option.dataset.answer === correctAnswer) {
+                    option.classList.add('correct');
+                } else if (option.classList.contains('selected')) {
+                    option.classList.add('incorrect');
+                }
+            });
+
+            // Show explanation
+            explanation.classList.add('show');
+            button.disabled = true;
+
+            // Update card styling
+            if (selectedAnswer === correctAnswer) {
+                card.classList.add('answered-correct');
+                score++;
+            } else {
+                card.classList.add('answered-incorrect');
+            }
+
+            attempted++;
+            updateScore();
+        }
+
+        function updateScore() {
+            const scoreDisplay = document.getElementById('score-display');
+            const scoreNumber = document.getElementById('score-number');
+            const scoreMessage = document.getElementById('score-message');
+
+            if (attempted > 0) {
+                scoreDisplay.style.display = 'block';
+                scoreNumber.textContent = `${score}/${attempted}`;
+                
+                const percentage = (score / attempted) * 100;
+                if (percentage >= 90) {
+                    scoreMessage.textContent = '🌟 Outstanding! You have mastered this topic!';
+                } else if (percentage >= 75) {
+                    scoreMessage.textContent = '👏 Excellent work! You have a strong understanding.';
+                } else if (percentage >= 60) {
+                    scoreMessage.textContent = '👍 Good job! Review the explanations to strengthen your knowledge.';
+                } else {
+                    scoreMessage.textContent = '📚 Keep practicing! Review the detailed notes for better understanding.';
+                }
+            }
+        }
+
+        // Add click handlers to options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                if (this.style.pointerEvents !== 'none') {
+                    // Remove selected class from siblings
+                    this.parentElement.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

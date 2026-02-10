@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money-Weighted vs Time-Weighted Returns: Intuitive Learning - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .intuitive-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .analogy-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #ff8a65;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #fbc02d;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> &gt; <a href="#">Quantitative Methods</a> &gt; <a href="#">Returns</a> &gt; Money-Weighted and Time-Weighted Returns
+        </div>
+
+        <span class="badge">Intuitive Learning</span>
+
+        <h1>Understanding Money-Weighted and Time-Weighted Returns: Which One Tells Your Real Story? 🎯</h1>
+
+        <div class="intuitive-box">
+            <h3>💡 The Big Question</h3>
+            <p>Imagine you're investing in a mutual fund. You start with ₹1,00,000, then add ₹10,00,000 after a year when the fund performs really well. But then the fund has a bad year. How do you calculate your <em>actual</em> return?</p>
+            <p>Here's the thing: <strong>when you add or withdraw money matters a lot</strong>! That's why we need two different ways to measure returns. Think of it like weighing yourself with and without accounting for the big meal you just ate - timing matters!</p>
+        </div>
+
+        <h2>Why Do We Need Two Different Return Measures? 🤔</h2>
+
+        <div class="analogy-box">
+            <h3>🎪 The Cricket Batting Average Analogy</h3>
+            <p>Think of Money-Weighted Return like a cricket player's batting average that accounts for how many balls they faced in each innings. If they scored big runs when they faced many balls, their average is higher.</p>
+            <p>Time-Weighted Return is like looking at the average score per innings, regardless of how many balls were faced. It just looks at performance in each time period equally.</p>
+            <p><strong>Both tell you something important, but different!</strong></p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 500" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="500" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="40" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">Two Ways to Measure Your Investment Returns</text>
+                
+                <!-- Left side - Money-Weighted -->
+                <rect x="50" y="80" width="320" height="380" fill="#e0c3fc" rx="15"/>
+                <text x="210" y="115" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">💰 Money-Weighted</text>
+                <text x="210" y="145" font-size="16" text-anchor="middle" fill="#34495e">(What YOU Actually Earned)</text>
+                
+                <!-- Money bag icon -->
+                <circle cx="210" cy="200" r="40" fill="#ffd700" stroke="#f39c12" stroke-width="3"/>
+                <text x="210" y="215" font-size="30" text-anchor="middle">₹</text>
+                
+                <!-- Features -->
+                <rect x="80" y="260" width="260" height="50" fill="white" rx="10"/>
+                <text x="210" y="290" font-size="14" text-anchor="middle" fill="#2c3e50">Accounts for WHEN you invest</text>
+                
+                <rect x="80" y="320" width="260" height="50" fill="white" rx="10"/>
+                <text x="210" y="350" font-size="14" text-anchor="middle" fill="#2c3e50">Different for each investor</text>
+                
+                <rect x="80" y="380" width="260" height="50" fill="white" rx="10"/>
+                <text x="210" y="410" font-size="14" text-anchor="middle" fill="#2c3e50">Like IRR calculation</text>
+                
+                <!-- Right side - Time-Weighted -->
+                <rect x="430" y="80" width="320" height="380" fill="#a8edea" rx="15"/>
+                <text x="590" y="115" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">⏰ Time-Weighted</text>
+                <text x="590" y="145" font-size="16" text-anchor="middle" fill="#34495e">(Manager Performance)</text>
+                
+                <!-- Clock icon -->
+                <circle cx="590" cy="200" r="40" fill="white" stroke="#3498db" stroke-width="3"/>
+                <line x1="590" y1="200" x2="590" y2="170" stroke="#3498db" stroke-width="3"/>
+                <line x1="590" y1="200" x2="610" y2="200" stroke="#3498db" stroke-width="3"/>
+                
+                <!-- Features -->
+                <rect x="460" y="260" width="260" height="50" fill="white" rx="10"/>
+                <text x="590" y="290" font-size="14" text-anchor="middle" fill="#2c3e50">Ignores cash flow timing</text>
+                
+                <rect x="460" y="320" width="260" height="50" fill="white" rx="10"/>
+                <text x="590" y="350" font-size="14" text-anchor="middle" fill="#2c3e50">Same for all investors</text>
+                
+                <rect x="460" y="380" width="260" height="50" fill="white" rx="10"/>
+                <text x="590" y="410" font-size="14" text-anchor="middle" fill="#2c3e50">Geometric mean of returns</text>
+            </svg>
+        </div>
+
+        <h2>Money-Weighted Return: Your Personal Investment Story 💼</h2>
+
+        <div class="intuitive-box">
+            <h3>🎯 What Is It?</h3>
+            <p>The money-weighted return tells you what <strong>you personally earned</strong> on your actual investment. It's like calculating your cricket batting average where big innings count more heavily.</p>
+            <p>If you invested a lot of money when the market was down and it then recovered, your money-weighted return will be higher. Lucky timing! But if you invested heavily right before a crash, your return will be lower. Bad timing!</p>
+            <p><strong>Key insight:</strong> It's basically the Internal Rate of Return (IRR) of your investment cash flows.</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Rajesh's Mutual Fund Journey</h3>
+            <p><strong>Scenario:</strong> Rajesh invests in an HDFC mutual fund over three years:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li><strong>Year 0 (Start):</strong> Invests ₹1,00,000</li>
+                <li><strong>Year 1 (Start):</strong> Adds ₹9,50,000</li>
+                <li><strong>Year 2 (End):</strong> Withdraws ₹3,50,000</li>
+                <li><strong>Year 3 (End):</strong> Final value ₹12,70,000</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>The returns during each year were:</strong></p>
+            <ul style="margin-left: 25px;">
+                <li>Year 1: -50% (market crash!)</li>
+                <li>Year 2: +35% (recovery)</li>
+                <li>Year 3: +27% (bull run)</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>His money-weighted return:</strong> 26.11% per year!</p>
+            <p>Why so high? Because he had only ₹1,00,000 invested during the -50% crash, but ₹10,00,000+ invested during the good years. Smart timing (or lucky!).</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 900 400" style="width:100%; max-width:900px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="900" height="400" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="450" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">Rajesh's Investment Timeline</text>
+                
+                <!-- Timeline -->
+                <line x1="50" y1="200" x2="850" y2="200" stroke="#667eea" stroke-width="3"/>
+                
+                <!-- Year 0 -->
+                <circle cx="100" cy="200" r="8" fill="#667eea"/>
+                <text x="100" y="230" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">Year 0</text>
+                <rect x="40" y="80" width="120" height="80" fill="#ffcccc" rx="10"/>
+                <text x="100" y="100" font-size="12" text-anchor="middle" fill="#2c3e50" font-weight="bold">Invest</text>
+                <text x="100" y="120" font-size="16" text-anchor="middle" fill="#c0392b" font-weight="bold">₹1,00,000</text>
+                <text x="100" y="140" font-size="11" text-anchor="middle" fill="#555">Starting small</text>
+                
+                <!-- Year 1 -->
+                <circle cx="350" cy="200" r="8" fill="#667eea"/>
+                <text x="350" y="230" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">Year 1</text>
+                <rect x="290" y="80" width="120" height="80" fill="#ffcccc" rx="10"/>
+                <text x="350" y="100" font-size="12" text-anchor="middle" fill="#2c3e50" font-weight="bold">Add More</text>
+                <text x="350" y="120" font-size="16" text-anchor="middle" fill="#c0392b" font-weight="bold">₹9,50,000</text>
+                <text x="350" y="140" font-size="11" text-anchor="middle" fill="#555">Big investment!</text>
+                
+                <!-- Bad year indicator -->
+                <rect x="320" y="250" width="60" height="40" fill="#e74c3c" rx="5"/>
+                <text x="350" y="275" font-size="16" text-anchor="middle" fill="white" font-weight="bold">-50%</text>
+                
+                <!-- Year 2 -->
+                <circle cx="600" cy="200" r="8" fill="#667eea"/>
+                <text x="600" y="230" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">Year 2</text>
+                <rect x="540" y="80" width="120" height="80" fill="#c8e6c9" rx="10"/>
+                <text x="600" y="100" font-size="12" text-anchor="middle" fill="#2c3e50" font-weight="bold">Withdraw</text>
+                <text x="600" y="120" font-size="16" text-anchor="middle" fill="#27ae60" font-weight="bold">₹3,50,000</text>
+                <text x="600" y="140" font-size="11" text-anchor="middle" fill="#555">Take some profit</text>
+                
+                <!-- Good year indicator -->
+                <rect x="570" y="250" width="60" height="40" fill="#27ae60" rx="5"/>
+                <text x="600" y="275" font-size="16" text-anchor="middle" fill="white" font-weight="bold">+35%</text>
+                
+                <!-- Year 3 -->
+                <circle cx="800" cy="200" r="8" fill="#667eea"/>
+                <text x="800" y="230" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">Year 3</text>
+                <rect x="740" y="80" width="120" height="80" fill="#c8e6c9" rx="10"/>
+                <text x="800" y="100" font-size="12" text-anchor="middle" fill="#2c3e50" font-weight="bold">Final Value</text>
+                <text x="800" y="120" font-size="16" text-anchor="middle" fill="#27ae60" font-weight="bold">₹12,70,000</text>
+                <text x="800" y="140" font-size="11" text-anchor="middle" fill="#555">Happy ending!</text>
+                
+                <!-- Good year indicator -->
+                <rect x="770" y="250" width="60" height="40" fill="#27ae60" rx="5"/>
+                <text x="800" y="275" font-size="16" text-anchor="middle" fill="white" font-weight="bold">+27%</text>
+                
+                <!-- Result -->
+                <rect x="350" y="330" width="200" height="50" fill="#ffd700" rx="10"/>
+                <text x="450" y="355" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">Money-Weighted Return:</text>
+                <text x="450" y="375" font-size="18" text-anchor="middle" fill="#c0392b" font-weight="bold">26.11% per year</text>
+            </svg>
+        </div>
+
+        <div class="formula-box">
+            <h3 style="color: white;">📐 The Formula (It's the IRR!)</h3>
+            <p style="margin-top: 15px;">The money-weighted return solves this equation:</p>
+            <p style="margin-top: 10px; font-size: 1.2em; text-align: center;">
+                CF₀/(1+IRR)⁰ + CF₁/(1+IRR)¹ + CF₂/(1+IRR)² + ... + CFₙ/(1+IRR)ⁿ = 0
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95em;">Where:</p>
+            <ul style="margin-left: 25px; margin-top: 10px; font-size: 0.95em;">
+                <li><strong>CF</strong> = Cash flow (negative for investments, positive for withdrawals)</li>
+                <li><strong>IRR</strong> = Internal Rate of Return (what we're solving for)</li>
+                <li><strong>n</strong> = Time period</li>
+            </ul>
+            <p style="margin-top: 15px; font-size: 0.95em;"><em>Pro tip: Use Excel's =IRR() function. Life's too short for manual calculations! 😊</em></p>
+        </div>
+
+        <div class="example-box">
+            <h3>🌍 Global Example: Sarah's Stock Investment</h3>
+            <p><strong>Scenario:</strong> Sarah invests in Tesla stock over two years:</p>
+            <table style="margin-top: 15px;">
+                <tr>
+                    <th>Time</th>
+                    <th>Action</th>
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>t = 0</td>
+                    <td>Buy 1 share</td>
+                    <td>-$200 (outflow)</td>
+                </tr>
+                <tr>
+                    <td>t = 1</td>
+                    <td>Dividend received</td>
+                    <td>+$5 (inflow)</td>
+                </tr>
+                <tr>
+                    <td>t = 1</td>
+                    <td>Buy another share</td>
+                    <td>-$225 (outflow)</td>
+                </tr>
+                <tr>
+                    <td>t = 1 NET</td>
+                    <td>Net cash flow</td>
+                    <td>-$220</td>
+                </tr>
+                <tr>
+                    <td>t = 2</td>
+                    <td>Dividends (2 shares)</td>
+                    <td>+$10 (inflow)</td>
+                </tr>
+                <tr>
+                    <td>t = 2</td>
+                    <td>Sell both shares @$235</td>
+                    <td>+$470 (inflow)</td>
+                </tr>
+                <tr>
+                    <td>t = 2 NET</td>
+                    <td>Net cash flow</td>
+                    <td>+$480</td>
+                </tr>
+            </table>
+            <p style="margin-top: 15px;"><strong>Money-Weighted Return:</strong> 9.39% per year</p>
+            <p>This tells Sarah what she actually earned on her specific investment pattern.</p>
+        </div>
+
+        <h2>Time-Weighted Return: The Fair Comparison Tool ⏰</h2>
+
+        <div class="intuitive-box">
+            <h3>🎯 What Is It?</h3>
+            <p>The time-weighted return measures how well the investment <strong>performed</strong>, independent of when you added or withdrew money. It's like asking "How did the fund manager do?" rather than "How did I do?"</p>
+            <p>This is the preferred method for evaluating fund managers because it's not affected by investor decisions about when to add or withdraw money (which managers can't control).</p>
+            <p><strong>Key insight:</strong> It breaks your investment into periods and calculates the geometric mean of returns, treating each period equally.</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>🏏 The Fair Scorecard Analogy</h3>
+            <p>Imagine evaluating a cricket coach. You want to know how good the coach is, not whether players happened to perform better when more people were watching!</p>
+            <p>Time-weighted return is like looking at the team's average performance in each match, regardless of how important the match was. It's the fairest way to judge the coach's skill.</p>
+            <p>Money-weighted return would be like giving more importance to matches where more fans showed up - not really fair to the coach!</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 450" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="450" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="22" font-weight="bold" text-anchor="middle" fill="#2c3e50">How Time-Weighted Return Works</text>
+                
+                <!-- Step 1 -->
+                <rect x="50" y="70" width="200" height="100" fill="#a8edea" rx="15"/>
+                <text x="150" y="95" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Step 1</text>
+                <text x="150" y="120" font-size="13" text-anchor="middle" fill="#34495e">Break into periods</text>
+                <text x="150" y="140" font-size="13" text-anchor="middle" fill="#34495e">based on cash flows</text>
+                
+                <!-- Arrow -->
+                <path d="M 250 120 L 280 120" stroke="#667eea" stroke-width="3" fill="none"/>
+                <path d="M 280 120 L 270 115 L 270 125 Z" fill="#667eea"/>
+                
+                <!-- Step 2 -->
+                <rect x="300" y="70" width="200" height="100" fill="#e0c3fc" rx="15"/>
+                <text x="400" y="95" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Step 2</text>
+                <text x="400" y="120" font-size="13" text-anchor="middle" fill="#34495e">Calculate return for</text>
+                <text x="400" y="140" font-size="13" text-anchor="middle" fill="#34495e">each period</text>
+                
+                <!-- Arrow -->
+                <path d="M 500 120 L 530 120" stroke="#667eea" stroke-width="3" fill="none"/>
+                <path d="M 530 120 L 520 115 L 520 125 Z" fill="#667eea"/>
+                
+                <!-- Step 3 -->
+                <rect x="550" y="70" width="200" height="100" fill="#ffd89b" rx="15"/>
+                <text x="650" y="95" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Step 3</text>
+                <text x="650" y="120" font-size="13" text-anchor="middle" fill="#34495e">Link returns using</text>
+                <text x="650" y="140" font-size="13" text-anchor="middle" fill="#34495e">geometric mean</text>
+                
+                <!-- Example visualization -->
+                <text x="50" y="220" font-size="18" font-weight="bold" fill="#2c3e50">Example: Sarah's Stock</text>
+                
+                <!-- Period 1 -->
+                <rect x="50" y="240" width="180" height="80" fill="#c8e6c9" rx="10"/>
+                <text x="140" y="265" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">Period 1 (Year 1)</text>
+                <text x="140" y="290" font-size="13" text-anchor="middle" fill="#27ae60">Return: 15%</text>
+                <text x="140" y="310" font-size="11" text-anchor="middle" fill="#555">($5 + $225 - $200) / $200</text>
+                
+                <!-- Multiply symbol -->
+                <text x="245" y="285" font-size="24" font-weight="bold" fill="#667eea">×</text>
+                
+                <!-- Period 2 -->
+                <rect x="270" y="240" width="180" height="80" fill="#ffccbc" rx="10"/>
+                <text x="360" y="265" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">Period 2 (Year 2)</text>
+                <text x="360" y="290" font-size="13" text-anchor="middle" fill="#e64a19">Return: 6.67%</text>
+                <text x="360" y="310" font-size="11" text-anchor="middle" fill="#555">($10 + $470 - $450) / $450</text>
+                
+                <!-- Arrow down -->
+                <path d="M 225 330 L 225 360" stroke="#667eea" stroke-width="3" fill="none"/>
+                <path d="M 225 360 L 220 350 L 230 350 Z" fill="#667eea"/>
+                
+                <!-- Calculation -->
+                <rect x="50" y="370" width="350" height="60" fill="#fff9c4" rx="10"/>
+                <text x="225" y="395" font-size="14" text-anchor="middle" fill="#2c3e50">Time-Weighted Return:</text>
+                <text x="225" y="420" font-size="16" text-anchor="middle" fill="#c0392b" font-weight="bold">√(1.15 × 1.0667) - 1 = 10.76%</text>
+                
+                <!-- Comparison box -->
+                <rect x="470" y="240" width="280" height="190" fill="#e8f5e9" rx="10" stroke="#27ae60" stroke-width="2"/>
+                <text x="610" y="270" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">🔍 Comparison</text>
+                <text x="610" y="300" font-size="13" text-anchor="middle" fill="#555">Money-Weighted:</text>
+                <text x="610" y="320" font-size="18" text-anchor="middle" fill="#c0392b" font-weight="bold">9.39%</text>
+                <text x="610" y="350" font-size="13" text-anchor="middle" fill="#555">Time-Weighted:</text>
+                <text x="610" y="370" font-size="18" text-anchor="middle" fill="#27ae60" font-weight="bold">10.76%</text>
+                <text x="610" y="400" font-size="11" text-anchor="middle" fill="#555">Higher because it doesn't</text>
+                <text x="610" y="415" font-size="11" text-anchor="middle" fill="#555">weight the poor Year 2 heavily</text>
+            </svg>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Comparing Two Investors in Same Fund</h3>
+            <p><strong>The Situation:</strong> Both Priya and Amit invest in the same Tata mutual fund that has these annual returns:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>Year 1: +20%</li>
+                <li>Year 2: -10%</li>
+                <li>Year 3: +15%</li>
+            </ul>
+            
+            <p style="margin-top: 15px;"><strong>Priya's investments:</strong></p>
+            <ul style="margin-left: 25px;">
+                <li>Starts with ₹1,00,000</li>
+                <li>Adds ₹5,00,000 at start of Year 2 (before the -10% year)</li>
+            </ul>
+            
+            <p style="margin-top: 15px;"><strong>Amit's investments:</strong></p>
+            <ul style="margin-left: 25px;">
+                <li>Starts with ₹1,00,000</li>
+                <li>Adds ₹5,00,000 at start of Year 3 (after the -10% year)</li>
+            </ul>
+            
+            <p style="margin-top: 15px;"><strong>Results:</strong></p>
+            <ul style="margin-left: 25px;">
+                <li><strong>Priya's money-weighted return:</strong> Lower (she invested big before the bad year)</li>
+                <li><strong>Amit's money-weighted return:</strong> Higher (he invested big after the bad year)</li>
+                <li><strong>Time-weighted return for both:</strong> Same! Because it's measuring the fund's performance, not their timing</li>
+            </ul>
+            
+            <p style="margin-top: 15px;"><em>This is why fund managers prefer time-weighted returns - it's fair! They can't control when investors add or withdraw money.</em></p>
+        </div>
+
+        <h2>When to Use Each One? 🤷</h2>
+
+        <div class="important-note">
+            <h3>⚠️ Key Takeaway</h3>
+            <p><strong>For evaluating portfolio managers:</strong> Use Time-Weighted Return</p>
+            <p style="margin-top: 10px;"><strong>For knowing what YOU actually earned:</strong> Use Money-Weighted Return</p>
+            <p style="margin-top: 10px;">It's like the difference between judging a cricket coach (time-weighted) vs. calculating your own batting average (money-weighted)!</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 500" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="500" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="400" y="40" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">Decision Tree: Which Return to Use?</text>
+                
+                <!-- Starting question -->
+                <rect x="250" y="70" width="300" height="60" fill="#667eea" rx="15"/>
+                <text x="400" y="95" font-size="16" font-weight="bold" text-anchor="middle" fill="white">What's your question?</text>
+                <text x="400" y="115" font-size="14" text-anchor="middle" fill="white">👇</text>
+                
+                <!-- Branch left -->
+                <path d="M 400 130 L 200 200" stroke="#667eea" stroke-width="3" fill="none"/>
+                
+                <rect x="50" y="200" width="300" height="80" fill="#ffe0b2" rx="15"/>
+                <text x="200" y="225" font-size="15" font-weight="bold" text-anchor="middle" fill="#2c3e50">"How well did the</text>
+                <text x="200" y="245" font-size="15" font-weight="bold" text-anchor="middle" fill="#2c3e50">fund manager perform?"</text>
+                <text x="200" y="270" font-size="13" text-anchor="middle" fill="#555">Compare different managers</text>
+                
+                <path d="M 200 280 L 200 320" stroke="#27ae60" stroke-width="3" fill="none"/>
+                <path d="M 200 320 L 195 310 L 205 310 Z" fill="#27ae60"/>
+                
+                <rect x="50" y="330" width="300" height="70" fill="#c8e6c9" rx="15"/>
+                <text x="200" y="355" font-size="18" font-weight="bold" text-anchor="middle" fill="#27ae60">Use TIME-WEIGHTED</text>
+                <text x="200" y="380" font-size="13" text-anchor="middle" fill="#555">⏰ Fair comparison</text>
+                <text x="200" y="395" font-size="13" text-anchor="middle" fill="#555">Ignores cash flow timing</text>
+                
+                <!-- Branch right -->
+                <path d="M 400 130 L 600 200" stroke="#667eea" stroke-width="3" fill="none"/>
+                
+                <rect x="450" y="200" width="300" height="80" fill="#ffe0b2" rx="15"/>
+                <text x="600" y="225" font-size="15" font-weight="bold" text-anchor="middle" fill="#2c3e50">"What did I personally</text>
+                <text x="600" y="245" font-size="15" font-weight="bold" text-anchor="middle" fill="#2c3e50">earn on my investment?"</text>
+                <text x="600" y="270" font-size="13" text-anchor="middle" fill="#555">My actual returns with timing</text>
+                
+                <path d="M 600 280 L 600 320" stroke="#e74c3c" stroke-width="3" fill="none"/>
+                <path d="M 600 320 L 595 310 L 605 310 Z" fill="#e74c3c"/>
+                
+                <rect x="450" y="330" width="300" height="70" fill="#ffcdd2" rx="15"/>
+                <text x="600" y="355" font-size="18" font-weight="bold" text-anchor="middle" fill="#c0392b">Use MONEY-WEIGHTED</text>
+                <text x="600" y="380" font-size="13" text-anchor="middle" fill="#555">💰 Your actual return</text>
+                <text x="600" y="395" font-size="13" text-anchor="middle" fill="#555">Accounts for timing</text>
+                
+                <!-- Bottom note -->
+                <rect x="100" y="430" width="600" height="50" fill="#fff9c4" rx="10"/>
+                <text x="400" y="460" font-size="14" text-anchor="middle" fill="#2c3e50">💡 Both are correct! They just answer different questions.</text>
+            </svg>
+        </div>
+
+        <div class="intuitive-box">
+            <h3>🎓 The Practical Reality</h3>
+            <p><strong>In the real world:</strong></p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>Mutual fund companies advertise their <strong>time-weighted returns</strong> (makes sense - they want to show their management skill)</li>
+                <li>Your actual account statement might show <strong>money-weighted returns</strong> (what you actually earned)</li>
+                <li>CFA exam will test you on <strong>both</strong> - so know when to use each! 😊</li>
+            </ul>
+        </div>
+
+        <h2>Quick Comparison Table 📊</h2>
+
+        <table style="margin-top: 20px;">
+            <tr>
+                <th>Aspect</th>
+                <th>Money-Weighted Return</th>
+                <th>Time-Weighted Return</th>
+            </tr>
+            <tr>
+                <td><strong>What it measures</strong></td>
+                <td>Your actual return based on your cash flows</td>
+                <td>Portfolio performance independent of cash flows</td>
+            </tr>
+            <tr>
+                <td><strong>Calculation method</strong></td>
+                <td>Internal Rate of Return (IRR)</td>
+                <td>Geometric mean of period returns</td>
+            </tr>
+            <tr>
+                <td><strong>Affected by timing?</strong></td>
+                <td>YES - very much!</td>
+                <td>NO - ignores it</td>
+            </tr>
+            <tr>
+                <td><strong>Same for all investors?</strong></td>
+                <td>NO - depends on when you invest</td>
+                <td>YES - same for everyone</td>
+            </tr>
+            <tr>
+                <td><strong>Best for...</strong></td>
+                <td>Individual investor performance</td>
+                <td>Manager performance evaluation</td>
+            </tr>
+            <tr>
+                <td><strong>Control over result</strong></td>
+                <td>Investor has control (timing)</td>
+                <td>Manager has control (investments)</td>
+            </tr>
+            <tr>
+                <td><strong>Real-world use</strong></td>
+                <td>Personal account statements</td>
+                <td>Fund performance reports, comparisons</td>
+            </tr>
+        </table>
+
+        <div class="important-note">
+            <h3>🎯 Remember This!</h3>
+            <p><strong>Money-Weighted = "My Story"</strong> (What I earned with my timing)</p>
+            <p style="margin-top: 10px;"><strong>Time-Weighted = "Manager's Story"</strong> (How well the fund performed)</p>
+            <p style="margin-top: 10px;"><strong>Both are correct answers to different questions!</strong> 🎪</p>
+        </div>
+
+        <div class="navigation">
+            <a href="money-time-weighted-returns-detailed.html" class="nav-button">📚 View Detailed Notes →</a>
+            <a href="money-time-weighted-returns-practice.html" class="nav-button">🎯 Practice Questions →</a>
+        </div>
+    </div>
+</body>
+</html>
