@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM2: Portfolio Risk and Return: Part II | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .module-info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .module-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .los-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .los-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .los-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .los-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .los-card.available:hover {
+            border-color: white;
+        }
+
+        .los-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .los-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .los-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .los-card.available .los-number {
+            color: #ffd700;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        .los-title {
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: inherit;
+        }
+
+        .los-description {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: inherit;
+            margin-bottom: 15px;
+        }
+
+        .los-card.coming-soon .los-description {
+            color: #666;
+        }
+
+        .resources-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resources-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .resource-link {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resource-link {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #999;
+        }
+
+        .resource-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .los-card.available .resource-link:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .los-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="portfolio-modules.html" class="back-button">← Back to Portfolio Management</a>
+            <h1>📋 Learning Module 2</h1>
+            <p class="subtitle">Portfolio Risk and Return: Part II</p>
+            <div class="module-info">
+                <p><strong>Module Overview:</strong> This module extends portfolio theory by introducing the risk-free asset, developing the Capital Asset Pricing Model (CAPM), and distinguishing between systematic and unsystematic risk. You'll learn to calculate beta, apply the CAPM, and evaluate portfolio performance using various metrics.</p>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Outcome Statements (LOS)</h2>
+            <div class="los-grid">
+                
+                <!-- LOS 2.a -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 2.a</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe the implications of combining a risk-free asset with a portfolio of risky assets
+                    </div>
+                    <div class="los-description">
+                        Understand how adding a risk-free asset expands investment opportunities. The risk-free asset has zero variance and zero correlation with risky assets. Investors can create portfolios by combining the risk-free asset with any risky portfolio, creating a linear relationship between risk and return. This combination allows investors to achieve any desired risk level: lending (investing in risk-free asset) reduces risk below that of the risky portfolio alone, while borrowing (leveraging) at the risk-free rate increases both risk and expected return above the risky portfolio. The optimal risky portfolio is the one that, when combined with the risk-free asset, offers the best risk-return trade-off.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 2.b -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 2.b</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Explain the capital allocation line (CAL) and the capital market line (CML)
+                    </div>
+                    <div class="los-description">
+                        Learn the CAL and CML concepts. The Capital Allocation Line (CAL) represents all possible portfolios formed by combining the risk-free asset with a specific risky portfolio. Its slope is the Sharpe ratio of the risky portfolio. The Capital Market Line (CML) is a special CAL formed by combining the risk-free asset with the market portfolio (the tangency portfolio on the efficient frontier). The CML represents the most efficient portfolios available to all investors. Equation: E(Rₚ) = Rf + [(E(Rₘ) - Rf) / σₘ] × σₚ, where the slope is the market price of risk. Only efficient portfolios lie on the CML.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 2.c -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 2.c</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Explain systematic and nonsystematic risk, including why an investor should not expect to receive additional return for bearing nonsystematic risk
+                    </div>
+                    <div class="los-description">
+                        Distinguish between two types of risk. Systematic risk (market risk, non-diversifiable risk): risk that affects all securities, arising from macroeconomic factors like interest rates, inflation, or economic cycles; cannot be eliminated through diversification; investors are compensated for bearing this risk. Nonsystematic risk (firm-specific risk, diversifiable risk): risk unique to individual securities, arising from company-specific events; can be eliminated through adequate diversification; investors receive no compensation for this risk because it can be avoided. In a well-diversified portfolio, nonsystematic risk approaches zero, leaving only systematic risk. Rational investors diversify, so only systematic risk commands a risk premium.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 2.d -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 2.d</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Explain return generating models (including the market model) and their uses
+                    </div>
+                    <div class="los-description">
+                        Understand models that explain asset returns. Return generating models express an asset's return as a function of one or more factors. The market model is a single-factor model: Rᵢ = αᵢ + βᵢRₘ + εᵢ, where Rᵢ is the asset return, αᵢ is the intercept, βᵢ measures sensitivity to market returns Rₘ, and εᵢ is the error term (firm-specific return). Uses include: estimating beta, decomposing return into systematic and unsystematic components, forecasting returns, and portfolio construction. Multi-factor models extend this by including additional factors (size, value, momentum) to better explain return variation. These models help identify sources of risk and return.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 2.e -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 2.e</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Calculate and interpret beta
+                    </div>
+                    <div class="los-description">
+                        Master beta calculation and interpretation. Beta measures an asset's systematic risk relative to the market: β = Cov(Rᵢ,Rₘ) / Var(Rₘ) = ρᵢₘ × (σᵢ/σₘ), where ρᵢₘ is correlation with market, σᵢ is asset standard deviation, and σₘ is market standard deviation. Interpretation: β = 1 means the asset moves in line with the market; β > 1 means more volatile than market (aggressive); β < 1 means less volatile (defensive); β = 0 means no systematic risk; negative β means moves opposite to market. Portfolio beta is the weighted average of individual asset betas. Beta is a key input in the CAPM for determining required returns.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 2.f -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 2.f</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Explain the capital asset pricing model (CAPM), including its assumptions, and the security market line (SML)
+                    </div>
+                    <div class="los-description">
+                        Understand the CAPM framework. CAPM equation: E(Rᵢ) = Rf + βᵢ[E(Rₘ) - Rf], where E(Rᵢ) is expected return, Rf is risk-free rate, βᵢ is beta, and [E(Rₘ) - Rf] is the market risk premium. Key assumptions: investors are risk-averse and mean-variance optimizers, markets are frictionless (no taxes or transaction costs), all investors have identical expectations, and can borrow/lend at the risk-free rate. The Security Market Line (SML) graphs the CAPM relationship, plotting expected return against beta. All properly priced assets lie on the SML. Assets above the SML are undervalued (higher return than justified by risk); assets below are overvalued.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 2.g -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 2.g</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Calculate and interpret the expected return of an asset using the CAPM
+                    </div>
+                    <div class="los-description">
+                        Apply the CAPM to determine required returns. Given the risk-free rate, market return, and asset beta, calculate expected return: E(Rᵢ) = Rf + βᵢ[E(Rₘ) - Rf]. For example, if Rf = 3%, E(Rₘ) = 10%, and β = 1.2, then E(Rᵢ) = 3% + 1.2(10% - 3%) = 11.4%. Interpretation: this is the minimum return investors require to hold the asset given its systematic risk. If actual expected return exceeds CAPM return, the asset is undervalued; if less, it's overvalued. Use CAPM for valuation (discounting cash flows), performance evaluation, and determining hurdle rates for capital budgeting.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 2.h -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 2.h</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe and demonstrate applications of the CAPM and the SML
+                    </div>
+                    <div class="los-description">
+                        Explore practical CAPM applications. Portfolio evaluation: compare actual returns to CAPM-required returns to assess performance. Security selection: identify mispriced securities—buy those above the SML (higher return than required), sell those below. Capital budgeting: use CAPM to determine discount rates for projects based on their systematic risk. Performance attribution: separate returns into compensation for systematic risk versus alpha (excess return). Asset pricing: determine fair value by discounting expected cash flows at CAPM-required return. Strategic asset allocation: understand risk-return trade-offs across asset classes. The SML provides a benchmark for evaluating whether returns adequately compensate for risk taken.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 2.i -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 2.i</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Calculate and interpret the Sharpe ratio, Treynor ratio, M², and Jensen's alpha
+                    </div>
+                    <div class="los-description">
+                        Master portfolio performance measures. Sharpe ratio = (Rₚ - Rf) / σₚ: excess return per unit of total risk; higher is better; use to compare portfolios or funds. Treynor ratio = (Rₚ - Rf) / βₚ: excess return per unit of systematic risk; appropriate for well-diversified portfolios. M² (M-squared) = Rₚ × (σₘ/σₚ) - Rₘ × (σₘ/σₚ) + Rₘ: Sharpe ratio adjusted to be in percentage terms, representing excess return if portfolio were leveraged/deleveraged to match market risk. Jensen's alpha = Rₚ - [Rf + βₚ(Rₘ - Rf)]: excess return above CAPM prediction; positive alpha indicates outperformance. Each measure evaluates different aspects of risk-adjusted performance.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>

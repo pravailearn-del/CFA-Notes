@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM4: Basics of Portfolio Planning and Construction | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .module-info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .module-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .los-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .los-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .los-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .los-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .los-card.available:hover {
+            border-color: white;
+        }
+
+        .los-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .los-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .los-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .los-card.available .los-number {
+            color: #ffd700;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        .los-title {
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: inherit;
+        }
+
+        .los-description {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: inherit;
+            margin-bottom: 15px;
+        }
+
+        .los-card.coming-soon .los-description {
+            color: #666;
+        }
+
+        .resources-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resources-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .resource-link {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resource-link {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #999;
+        }
+
+        .resource-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .los-card.available .resource-link:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .los-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="portfolio-modules.html" class="back-button">← Back to Portfolio Management</a>
+            <h1>📋 Learning Module 4</h1>
+            <p class="subtitle">Basics of Portfolio Planning and Construction</p>
+            <div class="module-info">
+                <p><strong>Module Overview:</strong> This module focuses on the practical aspects of portfolio planning and construction, centered around the Investment Policy Statement (IPS). You'll learn how to define client objectives, assess risk tolerance, identify investment constraints, specify asset classes, and integrate ESG considerations into portfolio decisions.</p>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Outcome Statements (LOS)</h2>
+            <div class="los-grid">
+                
+                <!-- LOS 4.a -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.a</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe the reasons for a written investment policy statement (IPS)
+                    </div>
+                    <div class="los-description">
+                        Understand the importance of a formal IPS. Key benefits include: establishes clear communication between client and portfolio manager, documents investment objectives and constraints, provides a long-term framework to guide decisions and prevent emotional reactions during market volatility, creates accountability and performance benchmarks, ensures continuity when personnel changes occur, satisfies fiduciary and regulatory requirements, and serves as a reference point during portfolio reviews. The IPS helps maintain discipline by clearly stating what the portfolio is designed to achieve and under what constraints, reducing the likelihood of strategy drift or inappropriate decisions.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.b -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.b</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe the major components of an IPS
+                    </div>
+                    <div class="los-description">
+                        Learn the essential IPS elements. Introduction: client description, purpose, and scope. Statement of Objectives: return requirements (income needs, capital appreciation) and risk tolerance (ability and willingness to take risk). Statement of Constraints: liquidity needs (anticipated cash flows), time horizon (short-term vs. long-term), tax considerations (taxable vs. tax-deferred), legal and regulatory requirements (ERISA for pension plans, trust documents), and unique circumstances (ethical restrictions, concentrated positions, special needs). Investment Guidelines: asset allocation ranges, rebalancing policy, use of derivatives or leverage. Review and Monitoring: performance measurement, reporting frequency, and conditions for IPS revision.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.c -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.c</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe risk and return objectives and how they may be developed for a client
+                    </div>
+                    <div class="los-description">
+                        Develop return and risk objectives. Return objectives specify the required rate of return to meet investment goals: determined by spending needs, inflation expectations, and time horizon; can be absolute (e.g., 5% annually) or relative (e.g., exceed inflation by 3%); must be realistic given risk tolerance and market conditions. Risk objectives define acceptable risk level: quantified as standard deviation, downside deviation, or maximum loss; considers both ability to take risk (financial capacity—wealth, income stability, time horizon) and willingness to take risk (psychological comfort with volatility). Return and risk are interrelated—higher return objectives require accepting higher risk. Objectives must be consistent and achievable.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.d -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.d</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Explain the difference between the willingness and the ability (capacity) to take risk in analyzing an investor's financial risk tolerance
+                    </div>
+                    <div class="los-description">
+                        Distinguish willingness from ability to bear risk. Ability (capacity): objective financial capacity to withstand losses without jeopardizing goals—determined by wealth level, income stability and needs, time horizon, and liquidity requirements; high net worth and long time horizons increase ability. Willingness: subjective psychological comfort with volatility and potential losses—influenced by investment experience, personality, and emotional responses; can be assessed through risk questionnaires. When willingness and ability conflict, ability generally takes precedence (you cannot afford risks beyond your capacity), but willingness may require additional client education. Portfolio should reflect the lower of ability and willingness to ensure appropriate risk-taking aligned with both financial capacity and emotional comfort.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.e -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.e</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe the investment constraints of liquidity, time horizon, tax concerns, legal and regulatory factors, and unique circumstances and their implications for the choice of portfolio assets
+                    </div>
+                    <div class="los-description">
+                        Understand key investment constraints. Liquidity: need for cash (spending requirements, emergency funds) affects allocation to liquid assets versus illiquid alternatives; higher liquidity needs favor publicly traded securities. Time horizon: investment period affects risk capacity—longer horizons allow recovery from short-term volatility, supporting higher equity allocations; multi-stage horizons (accumulation then retirement) require different strategies. Tax considerations: marginal tax rates, capital gains vs. income taxation, tax-deferred accounts influence security selection—favor tax-efficient strategies in taxable accounts. Legal/regulatory: trust documents, ERISA rules for pensions, investment restrictions limit available choices. Unique circumstances: ethical investing restrictions (ESG, religious), concentrated stock positions, specific risk aversions, or special needs that affect portfolio structure.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.f -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.f</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Explain the specification of asset classes in relation to asset allocation
+                    </div>
+                    <div class="los-description">
+                        Learn asset class specification for allocation. Asset classes should be: mutually exclusive (securities belong to only one class), exhaustive (cover all investment opportunities), diversifying (low correlations with each other), liquid enough for implementation, and have measurable risk-return characteristics. Common specifications: equities (domestic/international, large/small cap, growth/value), fixed income (government, corporate, high yield, by maturity), real estate, commodities, alternatives. Granularity depends on portfolio size and sophistication—larger portfolios justify more sub-asset classes. Proper specification enables strategic asset allocation decisions and provides a framework for measuring performance attribution. Asset classes should reflect investable opportunities available to the client given constraints.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.g -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.g</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe the principles of portfolio construction and the role of asset allocation in relation to the IPS
+                    </div>
+                    <div class="los-description">
+                        Understand portfolio construction principles. Strategic asset allocation: the primary driver of long-term returns (studies suggest 90%+ of return variability comes from asset allocation); determined by IPS objectives and constraints; establishes target weights and allowable ranges for each asset class. Implementation approaches: passive (index funds matching asset class benchmarks), active (seeking to outperform through security selection and tactical allocation), or core-satellite (passive core with active satellites). The IPS guides the entire process—objectives determine the risk-return target, constraints shape permissible allocations, and asset allocation translates these into specific portfolio weights. Security selection and tactical decisions occur within the strategic framework, ensuring the portfolio remains aligned with client goals despite market movements.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.h -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.h</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe how environmental, social, and governance (ESG) considerations may be integrated into portfolio planning and construction
+                    </div>
+                    <div class="los-description">
+                        Explore ESG integration approaches. Negative screening: excluding sectors or companies violating ESG criteria (tobacco, weapons, poor labor practices). Positive screening: actively selecting companies with strong ESG performance. ESG integration: incorporating ESG factors into fundamental analysis as material risks/opportunities affecting valuations. Thematic investing: targeting specific ESG themes (clean energy, gender diversity). Engagement and stewardship: active ownership to influence company ESG practices through voting and dialogue. Impact investing: investments explicitly designed to generate measurable social/environmental benefits alongside financial returns. ESG considerations can be documented in the IPS as objectives or constraints, affecting asset allocation, security selection, and ongoing monitoring. Growing evidence suggests ESG factors can enhance long-term risk-adjusted returns.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>

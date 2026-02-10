@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM6: Introduction to Risk Management | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .module-info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .module-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .los-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .los-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .los-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .los-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .los-card.available:hover {
+            border-color: white;
+        }
+
+        .los-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .los-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .los-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .los-card.available .los-number {
+            color: #ffd700;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        .los-title {
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: inherit;
+        }
+
+        .los-description {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: inherit;
+            margin-bottom: 15px;
+        }
+
+        .los-card.coming-soon .los-description {
+            color: #666;
+        }
+
+        .resources-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resources-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .resource-link {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resource-link {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #999;
+        }
+
+        .resource-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .los-card.available .resource-link:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .los-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="portfolio-modules.html" class="back-button">← Back to Portfolio Management</a>
+            <h1>📋 Learning Module 6</h1>
+            <p class="subtitle">Introduction to Risk Management</p>
+            <div class="module-info">
+                <p><strong>Module Overview:</strong> This module provides a foundation in risk management, covering frameworks, governance structures, and measurement methods. You'll learn how organizations identify, assess, and manage various types of risk, understand the role of risk tolerance in decision-making, and explore risk budgeting concepts.</p>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Outcome Statements (LOS)</h2>
+            <div class="los-grid">
+                
+                <!-- LOS 6.a -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.a</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Define risk management
+                    </div>
+                    <div class="los-description">
+                        Understand risk management as the systematic process of identifying, measuring, and managing potential losses or adverse outcomes that could affect an organization's objectives. It involves making deliberate decisions about which risks to accept, reduce, transfer, or avoid. Risk management is not about eliminating all risk (which is impossible and undesirable), but rather about understanding risk-return trade-offs and ensuring risks taken are intentional, measured, and aligned with organizational goals and risk tolerance. Effective risk management balances the pursuit of opportunities with the need to protect against threats, creating a framework for informed decision-making that enhances long-term value while limiting potential for catastrophic losses.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.b -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.b</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe features of a risk management framework
+                    </div>
+                    <div class="los-description">
+                        Learn key components of a risk management framework. Risk identification: systematically discovering potential risk exposures across the organization. Risk measurement and assessment: quantifying risks using metrics like VaR, stress testing, and scenario analysis. Risk mitigation: implementing strategies to reduce or transfer unwanted risks (hedging, diversification, insurance). Risk monitoring and reporting: ongoing tracking of risk exposures and communication to stakeholders. The framework should be comprehensive (covering all material risks), integrated (coordinated across the organization rather than siloed), and dynamic (regularly updated as risks evolve). It provides structure for consistent risk management practices, clear accountability, and ensures risks are managed holistically rather than in isolation.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.c -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.c</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Define risk governance and describe elements of effective risk governance
+                    </div>
+                    <div class="los-description">
+                        Understand risk governance as the top-level oversight and decision-making structure for risk management. Elements of effective risk governance include: clear organizational structure with defined roles and responsibilities (board oversight, senior management accountability, risk committees), independence of risk management function from risk-taking units, comprehensive risk policies establishing acceptable risk levels and limits, risk culture emphasizing awareness and accountability throughout the organization, adequate resources and expertise for risk management activities, and regular reporting to board and senior management. Good governance ensures risk management is embedded in strategic decisions, creates appropriate checks and balances, prevents excessive risk-taking, and aligns risk management with organizational objectives and stakeholder interests.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.d -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.d</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Explain how risk tolerance affects risk management
+                    </div>
+                    <div class="los-description">
+                        Learn how risk tolerance shapes risk management decisions. Risk tolerance represents the level and types of risk an organization is willing and able to accept in pursuit of its objectives. It's influenced by: financial capacity (capital strength, liquidity), regulatory requirements, stakeholder expectations, competitive position, and organizational culture. Risk tolerance affects: which opportunities to pursue (higher risk tolerance allows more aggressive strategies), how much capital to allocate to risky activities, what hedging or mitigation strategies to employ, and acceptable levels for various risk metrics. Organizations with low risk tolerance implement stricter limits and more comprehensive hedging, while those with higher tolerance may accept more volatility to pursue greater returns. Risk tolerance should be clearly articulated in policy and guide all risk-taking decisions.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.e -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.e</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe risk budgeting and its role in risk governance
+                    </div>
+                    <div class="los-description">
+                        Understand risk budgeting as the process of allocating risk capacity across different activities or business units to optimize risk-adjusted returns. Similar to capital budgeting, risk budgeting involves: quantifying total available risk capacity (based on risk tolerance and capital), allocating risk budgets to units/strategies based on expected returns per unit of risk, monitoring actual risk usage against budgets, and adjusting allocations over time. Role in governance: ensures risk-taking is intentional and aligned with strategy, prevents excessive concentration in any area, creates accountability for risk decisions, facilitates comparison of risk-adjusted performance across units, and helps optimize overall portfolio efficiency. Risk budgeting makes risk a scarce resource to be allocated efficiently, promoting a risk-aware culture and better decision-making.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.f -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.f</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Identify financial and non-financial sources of risk and describe how they may interact
+                    </div>
+                    <div class="los-description">
+                        Distinguish risk sources. Financial risks: market risk (prices, rates, volatility), credit risk (counterparty default), liquidity risk (inability to transact), operational risk (systems, processes, people failures). Non-financial risks: regulatory/legal risk (compliance, litigation), reputational risk (brand damage), strategic risk (business model failures), environmental and social risks. Interactions: financial stress can trigger reputations problems (bank runs), regulatory changes affect market liquidity, operational failures lead to credit losses (fraud), strategic missteps create market risk exposure (concentrated positions). These interactions create complexity—risks don't occur in isolation but cascade and amplify. Effective risk management must consider correlations and feedback loops between different risk types, especially during stress periods when multiple risks converge.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.g -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.g</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe methods for measuring and modifying risk exposures and factors to consider in choosing among the methods
+                    </div>
+                    <div class="los-description">
+                        Explore risk measurement and modification approaches. Measurement methods: sensitivity analysis (how changes in factors affect outcomes), scenario analysis (specific event impacts), stress testing (extreme market conditions), Value at Risk (VaR—maximum likely loss over time period at confidence level), and expected shortfall (average loss beyond VaR). Modification methods: avoidance (eliminate activity), reduction (diversification, position limits), transfer (insurance, derivatives hedging), acceptance (retain risk with adequate compensation). Choice factors: cost-benefit analysis (hedging costs vs. risk reduction benefits), market liquidity for hedging instruments, basis risk (hedge imperfection), operational complexity, accounting and regulatory treatment, and impact on strategic flexibility. The optimal approach balances effective risk management with costs and practical constraints, focusing resources on the most material and manageable risks.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✍️ Practice Questions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>
