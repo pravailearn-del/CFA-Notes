@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM5: Company Analysis: Past and Present | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .module-info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .module-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .los-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .los-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .los-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .los-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .los-card.available:hover {
+            border-color: white;
+        }
+
+        .los-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .los-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .los-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .los-card.available .los-number {
+            color: #ffd700;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        .los-title {
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: inherit;
+        }
+
+        .los-description {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: inherit;
+            margin-bottom: 15px;
+        }
+
+        .los-card.coming-soon .los-description {
+            color: #666;
+        }
+
+        .resources-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resources-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .resource-link {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resource-link {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #999;
+        }
+
+        .resource-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .los-card.available .resource-link:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .los-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="equity-investments-modules.html" class="back-button">← Back to Equity Investments</a>
+            <h1>📋 Learning Module 5</h1>
+            <p class="subtitle">Company Analysis: Past and Present</p>
+            <div class="module-info">
+                <p><strong>Module Overview:</strong> This module focuses on analyzing a company's historical and current performance through examination of business models, revenue drivers, profitability metrics, and capital structure. Essential for fundamental analysis and equity valuation.</p>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Outcome Statements (LOS)</h2>
+            <div class="los-grid">
+                
+                <!-- LOS 5.a -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.a</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe the elements that should be covered in a thorough company research report
+                    </div>
+                    <div class="los-description">
+                        Learn the comprehensive structure of a research report: executive summary, business overview and strategy, industry analysis, competitive positioning, financial analysis (historical and forecasted), valuation, investment thesis, risks, and recommendation. Understand the importance of addressing management quality, corporate governance, ESG factors, and catalysts. Learn how to present information in a clear, logical, and actionable format for investment decision-making.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 5.b -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.b</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Determine a company's business model
+                    </div>
+                    <div class="los-description">
+                        Understand a business model as the way a company creates, delivers, and captures value. Analyze key components: customer value proposition (what needs are being met), revenue model (how the company makes money), cost structure (major cost drivers), key resources and capabilities, and distribution channels. Distinguish between different business model types: subscription, marketplace, freemium, razor-and-blade, franchise, and others. Evaluate business model sustainability and competitive advantages.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 5.c -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.c</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Evaluate a company's revenue and revenue drivers, including pricing power
+                    </div>
+                    <div class="los-description">
+                        Learn to decompose revenue into volume and price components. Analyze revenue drivers: market growth, market share changes, pricing actions, new product introductions, and geographic expansion. Understand pricing power indicators: brand strength, product differentiation, switching costs, and competitive dynamics. Evaluate revenue quality by examining sustainability, diversification, and organic vs. acquired growth. Analyze segment reporting to understand revenue composition and growth trends across different business lines.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 5.d -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.d</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Evaluate a company's operating profitability and working capital using key measures
+                    </div>
+                    <div class="los-description">
+                        Master profitability metrics: gross profit margin (revenue - COGS) / revenue, operating margin (EBIT / revenue), and net profit margin (net income / revenue). Analyze working capital efficiency using: days sales outstanding (DSO), days inventory outstanding (DIO), days payables outstanding (DPO), and the cash conversion cycle (DSO + DIO - DPO). Understand how operating leverage, economies of scale, and cost management affect profitability. Evaluate trends and compare to industry peers and historical performance.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 5.e -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.e</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Evaluate a company's capital investments and capital structure
+                    </div>
+                    <div class="los-description">
+                        Analyze capital expenditure (CapEx) patterns and their relationship to depreciation (maintenance vs. growth CapEx). Evaluate return on invested capital (ROIC) to assess capital allocation efficiency. Examine capital structure through debt-to-equity ratio, debt-to-assets ratio, and interest coverage ratios. Understand financial leverage effects on ROE (DuPont analysis). Assess capital allocation decisions: internal investments, acquisitions, dividends, and share buybacks. Evaluate whether capital structure supports business strategy and maintains financial flexibility.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>

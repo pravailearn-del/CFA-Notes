@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM6: Industry and Competitive Analysis | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .module-info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .module-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .los-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .los-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .los-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .los-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .los-card.available:hover {
+            border-color: white;
+        }
+
+        .los-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .los-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .los-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .los-card.available .los-number {
+            color: #ffd700;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        .los-title {
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: inherit;
+        }
+
+        .los-description {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: inherit;
+            margin-bottom: 15px;
+        }
+
+        .los-card.coming-soon .los-description {
+            color: #666;
+        }
+
+        .resources-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resources-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .resource-link {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resource-link {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #999;
+        }
+
+        .resource-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .los-card.available .resource-link:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .los-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="equity-investments-modules.html" class="back-button">← Back to Equity Investments</a>
+            <h1>📋 Learning Module 6</h1>
+            <p class="subtitle">Industry and Competitive Analysis</p>
+            <div class="module-info">
+                <p><strong>Module Overview:</strong> This module covers frameworks for analyzing industries and competitive dynamics. Learn to evaluate industry structure, competitive forces, and strategic positioning to assess company prospects and investment potential.</p>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Outcome Statements (LOS)</h2>
+            <div class="los-grid">
+                
+                <!-- LOS 6.a -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.a</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe the purposes of, and steps involved in, industry and competitive analysis
+                    </div>
+                    <div class="los-description">
+                        Understand that industry analysis helps identify attractive industries and assess prospects for companies within them. Learn the analytical steps: define the industry and products/services, analyze industry structure and dynamics, identify key success factors, evaluate competitive positioning, and forecast industry and company performance. Recognize that industry analysis provides context for company-specific analysis and helps in relative valuation across industry peers.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.b -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.b</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe industry classification methods and compare methods by which companies can be grouped
+                    </div>
+                    <div class="los-description">
+                        Learn major classification systems: Global Industry Classification Standard (GICS), Industry Classification Benchmark (ICB), and others. Understand the hierarchical structure from sectors to industry groups to industries to sub-industries. Compare classification approaches: products/services offered (what companies sell), business cycle sensitivity (cyclical vs. defensive), and statistical methods (cluster analysis based on correlation). Recognize limitations: conglomerates span multiple industries, industries evolve, and classification boundaries can be arbitrary.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.c -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.c</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Determine an industry's size, growth characteristics, profitability, and market share trends
+                    </div>
+                    <div class="los-description">
+                        Learn to measure industry size using revenues, units sold, or capacity. Analyze growth through historical trends, compound annual growth rates (CAGR), and stage in industry life cycle (embryonic, growth, shakeout, mature, decline). Evaluate profitability using industry-average ROE, ROIC, and operating margins. Examine market share concentration using metrics like the Herfindahl-Hirschman Index (HHI) and identify whether the industry is fragmenting or consolidating. Understand implications of each stage for investment attractiveness.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.d -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.d</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Analyze an industry's structure and external influences using Porter's Five Forces and PESTLE frameworks
+                    </div>
+                    <div class="los-description">
+                        Master Porter's Five Forces: (1) threat of new entrants (barriers to entry), (2) bargaining power of suppliers, (3) bargaining power of buyers, (4) threat of substitutes, and (5) rivalry among existing competitors. Understand that weak forces (low threat, low power, low rivalry) indicate attractive industry structure. Learn PESTLE analysis: Political, Economic, Social, Technological, Legal, and Environmental factors affecting the industry. Apply both frameworks to assess industry attractiveness and identify key drivers of profitability and change.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 6.e -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 6.e</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Evaluate the competitive strategy and position of a company
+                    </div>
+                    <div class="los-description">
+                        Understand Porter's generic competitive strategies: cost leadership (lowest cost producer), differentiation (unique products commanding premium prices), and focus (serving specific niche segments). Analyze whether a company's strategy is consistent and sustainable. Evaluate competitive position through market share, brand strength, customer loyalty, cost position, innovation capability, and distribution network. Assess strategic fit between company resources, capabilities, and chosen strategy. Identify sources of competitive advantage and moats that protect profitability.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>

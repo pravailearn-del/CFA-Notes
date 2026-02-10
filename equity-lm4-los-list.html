@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM4: Overview of Equity Securities | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .module-info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .module-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .author-info {
+            margin-top: 10px;
+            font-size: 0.95em;
+            font-style: italic;
+            color: #666;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .los-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .los-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .los-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .los-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .los-card.available:hover {
+            border-color: white;
+        }
+
+        .los-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .los-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .los-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .los-card.available .los-number {
+            color: #ffd700;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        .los-title {
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: inherit;
+        }
+
+        .los-description {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: inherit;
+            margin-bottom: 15px;
+        }
+
+        .los-card.coming-soon .los-description {
+            color: #666;
+        }
+
+        .resources-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resources-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .resource-link {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resource-link {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #999;
+        }
+
+        .resource-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .los-card.available .resource-link:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .los-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="equity-investments-modules.html" class="back-button">← Back to Equity Investments</a>
+            <h1>📋 Learning Module 4</h1>
+            <p class="subtitle">Overview of Equity Securities</p>
+            <div class="module-info">
+                <p><strong>Module Overview:</strong> This module covers the characteristics of equity securities, differences between common and preferred stock, public vs. private equity, and the risk-return characteristics of various equity types.</p>
+                <p class="author-info">by Ryan C. Fuhrmann, CFA, and Asjeet S. Lamba, PhD, CFA. Ryan C. Fuhrmann, CFA, is at Fuhrmann Capital LLC (USA). Asjeet S. Lamba, PhD, CFA, is at the University of Melbourne (Australia).</p>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Outcome Statements (LOS)</h2>
+            <div class="los-grid">
+                
+                <!-- LOS 4.a -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.a</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe characteristics of types of equity securities
+                    </div>
+                    <div class="los-description">
+                        Learn the fundamental characteristics of equity securities: residual claim on assets (after creditors), voting rights, limited liability, dividend income (discretionary payments), and potential for capital appreciation. Understand the distinction between common stock (ordinary shares) and preferred stock (preference shares). Explore special equity types including putable and callable common shares, participating preferred stock, and convertible preferred stock.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.b -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.b</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe differences in voting rights and other ownership characteristics among different equity classes
+                    </div>
+                    <div class="los-description">
+                        Understand different share classes: Class A vs. Class B shares with different voting rights (dual-class structures), statutory voting vs. cumulative voting systems, and their implications for shareholder control. Learn about differential dividend rights, priority in liquidation, and conversion features. Analyze how founders and management use share class structures to maintain control while raising capital.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.c -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.c</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Compare and contrast public and private equity securities
+                    </div>
+                    <div class="los-description">
+                        Compare public equity (listed on exchanges, high liquidity, extensive disclosure, dispersed ownership, regulatory oversight) with private equity (unlisted, illiquid, limited disclosure, concentrated ownership, less regulation). Understand private equity types: venture capital (early-stage companies), leveraged buyouts (mature companies), growth capital, and distressed investing. Analyze differences in valuation, governance, return expectations, and exit strategies.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.d -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.d</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe methods for investing in non-domestic equity securities
+                    </div>
+                    <div class="los-description">
+                        Learn investment methods for foreign equities: direct investment (purchasing shares on foreign exchanges), depository receipts (ADRs, GDRs), global registered shares, and exchange-traded funds. Understand sponsored vs. unsponsored DRs, differences between ADR levels (Level I, II, III), and implications for dividends, voting rights, currency risk, and tax treatment. Analyze advantages and challenges of each approach.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.e -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.e</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Compare the risk and return characteristics of different types of equity securities
+                    </div>
+                    <div class="los-description">
+                        Analyze risk-return profiles: common stock (highest risk and return potential, subordinate claim), preferred stock (lower risk than common, fixed dividend, higher priority), putable common shares (downside protection through put option), and callable preferred stock (issuer can redeem, typically offers higher yield). Understand how features like conversion rights, participation in excess earnings, and cumulative dividends affect risk and return. Compare volatility, dividend yields, and total return expectations.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.f -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.f</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Explain the role of equity securities in the financing of a company's assets
+                    </div>
+                    <div class="los-description">
+                        Understand that equity provides permanent capital with no maturity date or mandatory payments, making it suitable for long-term investments and risky ventures. Learn about the pecking order theory (companies prefer internal financing, then debt, then equity), trade-offs between debt and equity financing (financial leverage, bankruptcy risk, agency costs), and optimal capital structure considerations. Analyze how companies use IPOs, seasoned offerings, and rights offerings to raise equity capital.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.g -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.g</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Contrast the market value and book value of equity securities
+                    </div>
+                    <div class="los-description">
+                        Learn that book value (shareholders' equity on the balance sheet) represents historical accounting value, while market value (share price × shares outstanding) reflects investors' expectations of future cash flows and growth. Understand that market value typically exceeds book value for profitable growing companies due to intangible assets, growth opportunities, and economic goodwill not captured in accounting statements. Analyze the price-to-book ratio and its interpretation for value investing.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 4.h -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 4.h</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Compare a company's cost of equity, its (accounting) return on equity, and investors' required rates of return
+                    </div>
+                    <div class="los-description">
+                        Understand the three related but distinct concepts: cost of equity (rate of return company must offer to attract equity investors, often estimated using CAPM or dividend discount model), return on equity (ROE = Net Income / Shareholders' Equity, accounting measure of profitability), and required rate of return (minimum return investors demand given the investment's risk). Learn that sustainable value creation requires ROE to exceed cost of equity. Analyze how these metrics relate to valuation and investment decisions.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>
