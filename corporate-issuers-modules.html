@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Issuers - Learning Modules | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .disclaimer {
+            color: #666;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .lm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .lm-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-decoration: none;
+            display: block;
+        }
+
+        .lm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .lm-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .lm-card.available:hover {
+            border-color: white;
+        }
+
+        .lm-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .lm-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: inherit;
+        }
+
+        .lm-card.available .lm-number {
+            color: #ffd700;
+        }
+
+        .lm-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: inherit;
+        }
+
+        .lm-description {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: inherit;
+        }
+
+        .lm-card.coming-soon .lm-description {
+            color: #999;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .lm-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">← Back to All Subjects</a>
+            <h1>🏢 Corporate Issuers</h1>
+            <p class="subtitle">7 Learning Modules covering organizational forms, corporate governance, capital management, and business models</p>
+            <p class="disclaimer">
+                Content structured according to CFA Institute Learning Outcome Statements (LOS)
+            </p>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Modules (LM)</h2>
+            <div class="lm-grid">
+                <!-- LM 1 -->
+                <a href="corporate-issuers-lm1-los-list.html" class="lm-card available">
+                    <div class="lm-number">Learning Module 1</div>
+                    <div class="lm-title">Organizational Forms, Corporate Issuer Features, and Ownership</div>
+                    <div class="lm-description">
+                        Types of business organizations, corporate structures, and ownership characteristics
+                    </div>
+                    <span class="status-badge status-available">Available</span>
+                </a>
+
+                <!-- LM 2 -->
+                <a href="corporate-issuers-lm2-los-list.html" class="lm-card available">
+                    <div class="lm-number">Learning Module 2</div>
+                    <div class="lm-title">Investors and Other Stakeholders</div>
+                    <div class="lm-description">
+                        Stakeholder relationships, interests, and conflicts in corporate governance
+                    </div>
+                    <span class="status-badge status-available">Available</span>
+                </a>
+
+                <!-- LM 3 -->
+                <a href="corporate-issuers-lm3-los-list.html" class="lm-card available">
+                    <div class="lm-number">Learning Module 3</div>
+                    <div class="lm-title">Corporate Governance: Conflicts, Mechanisms, Risks, and Benefits</div>
+                    <div class="lm-description">
+                        Agency problems, board structures, executive compensation, and ESG considerations
+                    </div>
+                    <span class="status-badge status-available">Available</span>
+                </a>
+
+                <!-- LM 4 -->
+                <a href="corporate-issuers-lm4-los-list.html" class="lm-card available">
+                    <div class="lm-number">Learning Module 4</div>
+                    <div class="lm-title">Working Capital and Liquidity</div>
+                    <div class="lm-description">
+                        Cash conversion cycle, liquidity management, and working capital optimization
+                    </div>
+                    <span class="status-badge status-available">Available</span>
+                </a>
+
+                <!-- LM 5 -->
+                <a href="corporate-issuers-lm5-los-list.html" class="lm-card available">
+                    <div class="lm-number">Learning Module 5</div>
+                    <div class="lm-title">Capital Investments and Capital Allocation</div>
+                    <div class="lm-description">
+                        Investment decision criteria, NPV, IRR, and capital project evaluation
+                    </div>
+                    <span class="status-badge status-available">Available</span>
+                </a>
+
+                <!-- LM 6 -->
+                <a href="corporate-issuers-lm6-los-list.html" class="lm-card available">
+                    <div class="lm-number">Learning Module 6</div>
+                    <div class="lm-title">Capital Structure</div>
+                    <div class="lm-description">
+                        Debt vs. equity financing, optimal capital structure, and capital structure theories
+                    </div>
+                    <span class="status-badge status-available">Available</span>
+                </a>
+
+                <!-- LM 7 -->
+                <a href="corporate-issuers-lm7-los-list.html" class="lm-card available">
+                    <div class="lm-number">Learning Module 7</div>
+                    <div class="lm-title">Business Models</div>
+                    <div class="lm-description">
+                        Revenue models, cost structures, competitive advantages, and business model analysis
+                    </div>
+                    <span class="status-badge status-available">Available</span>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>
