@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM3: Fiscal Policy | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .module-info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .module-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .los-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .los-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .los-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .los-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .los-card.available:hover {
+            border-color: white;
+        }
+
+        .los-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .los-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .los-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .los-card.available .los-number {
+            color: #ffd700;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        .los-title {
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: inherit;
+        }
+
+        .los-description {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: inherit;
+            margin-bottom: 15px;
+        }
+
+        .los-card.coming-soon .los-description {
+            color: #666;
+        }
+
+        .resources-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resources-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .resource-link {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resource-link {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #999;
+        }
+
+        .resource-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .los-card.available .resource-link:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .los-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="econ-modules.html" class="back-button">← Back to Economics</a>
+            <h1>📋 Learning Module 3</h1>
+            <p class="subtitle">Fiscal Policy</p>
+            <div class="module-info">
+                <p><strong>Module Overview:</strong> This module examines government fiscal policy tools, objectives, and implementation. Understanding the roles of government spending, taxation, budget deficits, and the debate on national debt sustainability.</p>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Outcome Statements (LOS)</h2>
+            <div class="los-grid">
+                
+                <!-- LOS 3.a -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 3.a</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Compare monetary and fiscal policy
+                    </div>
+                    <div class="los-description">
+                        Contrast fiscal policy (government's use of taxation and spending) with monetary policy (central bank's control of money supply and interest rates). Compare implementation: fiscal policy has legislative lags but direct impact on aggregate demand; monetary policy has shorter lags but indirect transmission through financial markets. Analyze coordination challenges and the policy mix needed for economic stability. Understand that fiscal policy directly affects government budget while monetary policy operates through banking system.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 3.b -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 3.b</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe roles and objectives of fiscal policy as well as arguments as to whether the size of a national debt relative to GDP matters
+                    </div>
+                    <div class="los-description">
+                        Examine fiscal policy objectives: influencing aggregate demand, redistributing income and wealth, and allocating resources. Understand roles in economic stabilization through automatic stabilizers (progressive taxes, unemployment benefits) and discretionary measures. Analyze the debt-to-GDP ratio debate: concerns include crowding out private investment, higher future taxes, potential default risk, and intergenerational burden. Counterarguments: domestic debt is "owed to ourselves," low interest rates reduce burden, and debt-financed productive investments boost future GDP. Understand debt sustainability depends on growth rates versus interest rates.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 3.c -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 3.c</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe tools of fiscal policy, including their advantages and disadvantages
+                    </div>
+                    <div class="los-description">
+                        Understand fiscal policy tools: Government spending (on infrastructure, defense, education, healthcare) - advantages include direct demand stimulus and multiplier effects; disadvantages include implementation lags and potential waste. Transfer payments (social security, unemployment benefits) - advantages include automatic stabilization and targeted support; disadvantages include dependency and work disincentives. Taxation (income, corporate, consumption taxes) - advantages include revenue generation and behavior modification; disadvantages include distortionary effects and compliance costs. Analyze supply-side effects of tax policy on labor supply and capital formation.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 3.d -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 3.d</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Explain the implementation of fiscal policy and difficulties of implementation as well as whether a fiscal policy is expansionary or contractionary
+                    </div>
+                    <div class="los-description">
+                        Analyze fiscal policy implementation challenges: recognition lag (identifying economic problems), action lag (legislative process for policy approval), and impact lag (time for policies to affect economy). Understand political constraints, special interest pressures, and difficulty of fine-tuning. Identify expansionary fiscal policy (increased spending or reduced taxes leading to budget deficits) used to combat recession. Identify contractionary fiscal policy (decreased spending or increased taxes leading to budget surpluses) used to combat inflation. Consider Ricardian equivalence theory suggesting tax cuts may not stimulate demand if consumers anticipate future tax increases.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>

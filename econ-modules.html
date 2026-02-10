@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economics - Learning Modules | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .disclaimer {
+            color: #666;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .lm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .lm-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-decoration: none;
+            display: block;
+        }
+
+        .lm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .lm-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .lm-card.available:hover {
+            border-color: white;
+        }
+
+        .lm-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .lm-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: inherit;
+        }
+
+        .lm-card.available .lm-number {
+            color: #ffd700;
+        }
+
+        .lm-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: inherit;
+        }
+
+        .lm-description {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: inherit;
+        }
+
+        .lm-card.coming-soon .lm-description {
+            color: #999;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .lm-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">← Back to All Subjects</a>
+            <h1>💹 Economics</h1>
+            <p class="subtitle">8 Learning Modules covering microeconomics, macroeconomics, and international economics</p>
+            <p class="disclaimer">
+                Content structured according to CFA Institute Learning Outcome Statements (LOS)
+            </p>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Modules (LM)</h2>
+            <div class="lm-grid">
+                <!-- LM 1 -->
+                <div class="lm-card coming-soon">
+                    <div class="lm-number">Learning Module 1</div>
+                    <div class="lm-title">The Firm and Market Structures</div>
+                    <div class="lm-description">
+                        Perfect competition, monopolistic competition, oligopoly, and monopoly market structures
+                    </div>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+
+                <!-- LM 2 -->
+                <div class="lm-card coming-soon">
+                    <div class="lm-number">Learning Module 2</div>
+                    <div class="lm-title">Understanding Business Cycles</div>
+                    <div class="lm-description">
+                        Economic indicators, business cycle phases, and unemployment analysis
+                    </div>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+
+                <!-- LM 3 -->
+                <div class="lm-card coming-soon">
+                    <div class="lm-number">Learning Module 3</div>
+                    <div class="lm-title">Fiscal Policy</div>
+                    <div class="lm-description">
+                        Government spending, taxation, budget deficits, and fiscal policy tools
+                    </div>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+
+                <!-- LM 4 -->
+                <div class="lm-card coming-soon">
+                    <div class="lm-number">Learning Module 4</div>
+                    <div class="lm-title">Monetary Policy</div>
+                    <div class="lm-description">
+                        Central banking, money supply, interest rates, and monetary policy implementation
+                    </div>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+
+                <!-- LM 5 -->
+                <div class="lm-card coming-soon">
+                    <div class="lm-number">Learning Module 5</div>
+                    <div class="lm-title">Introduction to Geopolitics</div>
+                    <div class="lm-description">
+                        Geopolitical risk, cooperation and conflict, and impact on markets
+                    </div>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+
+                <!-- LM 6 -->
+                <div class="lm-card coming-soon">
+                    <div class="lm-number">Learning Module 6</div>
+                    <div class="lm-title">International Trade</div>
+                    <div class="lm-description">
+                        Comparative advantage, trade policies, tariffs, and trade agreements
+                    </div>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+
+                <!-- LM 7 -->
+                <div class="lm-card coming-soon">
+                    <div class="lm-number">Learning Module 7</div>
+                    <div class="lm-title">Capital Flows and the FX Market</div>
+                    <div class="lm-description">
+                        Balance of payments, capital flows, and foreign exchange market dynamics
+                    </div>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+
+                <!-- LM 8 -->
+                <div class="lm-card coming-soon">
+                    <div class="lm-number">Learning Module 8</div>
+                    <div class="lm-title">Exchange Rate Calculations</div>
+                    <div class="lm-description">
+                        Currency quotes, cross rates, and forward exchange rate calculations
+                    </div>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>

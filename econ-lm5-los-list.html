@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM5: Introduction to Geopolitics | CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #764ba2;
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .module-info {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .module-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            color: #333;
+        }
+
+        .los-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .los-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .los-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .los-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+        }
+
+        .los-card.available:hover {
+            border-color: white;
+        }
+
+        .los-card.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .los-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .los-number {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: inherit;
+        }
+
+        .los-card.available .los-number {
+            color: #ffd700;
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-coming {
+            background: #ff9800;
+            color: white;
+        }
+
+        .los-title {
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: inherit;
+        }
+
+        .los-description {
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: inherit;
+            margin-bottom: 15px;
+        }
+
+        .los-card.coming-soon .los-description {
+            color: #666;
+        }
+
+        .resources-section {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resources-section {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .resource-link {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .los-card.coming-soon .resource-link {
+            background: rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #999;
+        }
+
+        .resource-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .los-card.available .resource-link:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .los-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="econ-modules.html" class="back-button">← Back to Economics</a>
+            <h1>📋 Learning Module 5</h1>
+            <p class="subtitle">Introduction to Geopolitics</p>
+            <div class="module-info">
+                <p><strong>Module Overview:</strong> This module examines geopolitical factors affecting global markets and investments. Understanding cooperation versus competition dynamics, international institutions, geopolitical risks, and their impact on investment decisions.</p>
+            </div>
+        </header>
+
+        <div class="content-section">
+            <h2 class="section-title">Learning Outcome Statements (LOS)</h2>
+            <div class="los-grid">
+                
+                <!-- LOS 5.a -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.a</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe geopolitics from a cooperation versus competition perspective
+                    </div>
+                    <div class="los-description">
+                        Understand geopolitics as the interplay of geography, politics, and economics. Analyze cooperation frameworks: multilateral trade agreements, diplomatic alliances, joint security arrangements, and international collaboration on climate change. Examine competition dynamics: strategic rivalry for resources, territorial disputes, economic nationalism, trade wars, and technology competition. Understand how nations balance cooperation (mutual gains, stability) with competition (national interests, relative power). Recognize that countries simultaneously cooperate and compete depending on the issue domain.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 5.b -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.b</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe geopolitics and its relationship with globalization
+                    </div>
+                    <div class="los-description">
+                        Examine the interaction between geopolitics and globalization. Understand how globalization (increased economic integration, cross-border flows of goods, services, capital, and information) creates interdependence but also vulnerabilities. Analyze backlash against globalization: concerns about inequality, job losses, national sovereignty, and cultural identity. Recognize resurgence of nationalism and protectionism as geopolitical responses. Understand how geopolitical tensions can disrupt global supply chains, trade patterns, and capital flows. Consider the trend toward "deglobalization" or "slowbalization" and formation of regional blocs.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 5.c -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.c</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe functions and objectives of the international organizations that facilitate trade, including the World Bank, the International Monetary Fund, and the World Trade Organization
+                    </div>
+                    <div class="los-description">
+                        Understand roles of key international institutions. World Bank: provides development financing and technical assistance to reduce poverty in developing countries through infrastructure projects, education, and health programs. International Monetary Fund (IMF): promotes international monetary cooperation, exchange rate stability, provides emergency financing to countries facing balance of payments crises, and conducts economic surveillance. World Trade Organization (WTO): facilitates trade negotiations, establishes multilateral trade rules, resolves trade disputes between members, and promotes trade liberalization. Recognize these institutions aim to foster global economic cooperation and stability.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 5.d -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.d</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe geopolitical risk
+                    </div>
+                    <div class="los-description">
+                        Define geopolitical risk as uncertainty arising from political events, international relations, and conflicts that can disrupt markets and economies. Identify sources: territorial conflicts, regime changes, civil unrest, terrorism, cyberattacks, and wars. Understand categories: event risk (specific incidents like elections or coups), thematic risk (ongoing tensions like US-China relations), and exogenous shocks (unpredictable events like pandemics). Recognize geopolitical risk is often underpriced by markets due to its low-probability-high-impact nature and difficulty in quantification. Consider contagion effects where regional conflicts affect global markets.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 5.e -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.e</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe tools of geopolitics and their impact on regions and economies
+                    </div>
+                    <div class="los-description">
+                        Examine geopolitical tools nations employ. Economic tools: sanctions, tariffs, trade embargoes, investment restrictions, and currency manipulation. Diplomatic tools: alliances, treaties, international agreements, and soft power through cultural influence. Military tools: defense alliances, military presence, arms sales, and direct military intervention. Information tools: propaganda, cyber operations, and media influence. Analyze impacts: economic tools disrupt trade and investment flows; diplomatic tools shape international cooperation; military tools affect regional stability; information tools influence public opinion and policy. Understand these tools have intended targets but often produce spillover effects on global markets.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+                <!-- LOS 5.f -->
+                <div class="los-card coming-soon">
+                    <div class="los-header">
+                        <span class="los-number">LOS 5.f</span>
+                        <span class="status-badge status-coming">Coming Soon</span>
+                    </div>
+                    <div class="los-title">
+                        Describe the impact of geopolitical risk on investments
+                    </div>
+                    <div class="los-description">
+                        Analyze how geopolitical risk affects investment returns and portfolio decisions. Direct impacts: disruption of operations, asset expropriation, supply chain interruptions, and market access restrictions. Indirect impacts: increased volatility, risk premium adjustments, currency fluctuations, and flight to safe-haven assets. Understand sector-specific effects: defense and cybersecurity may benefit; trade-dependent sectors face headwinds. Consider geographic diversification as both risk mitigation (reducing exposure to specific conflicts) and source of risk (exposure to multiple geopolitical situations). Recognize importance of scenario analysis and stress testing for geopolitical events in portfolio management.
+                    </div>
+                    <div class="resources-section">
+                        <span class="resource-link">📖 Intuitive Learning</span>
+                        <span class="resource-link">📝 Detailed Notes</span>
+                        <span class="resource-link">✏️ Practice Questions</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 CFA Level 1 Study Platform | Built for aspiring charterholders</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">CFA Institute does not endorse, promote, or warrant the accuracy or quality of this content.</p>
+        </footer>
+    </div>
+</body>
+</html>
