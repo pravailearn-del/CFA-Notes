@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Additivity: Detailed Notes - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .key-concept {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #fbc02d;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> > <a href="#">Quantitative Methods</a> > <a href="#">Time Value of Money</a> > Cash Flow Additivity
+        </div>
+
+        <span class="badge">📚 Detailed Notes</span>
+
+        <h1>Cash Flow Additivity Principle</h1>
+
+        <div class="key-concept">
+            <h3>Learning Outcome Statement (LOS)</h3>
+            <p><strong>Explain the cash flow additivity principle, its importance for the no-arbitrage condition, and its use in calculating implied forward interest rates, forward exchange rates, and option values.</strong></p>
+        </div>
+
+        <h2>I. Fundamental Concepts</h2>
+
+        <div class="key-concept">
+            <h3>Definition of Cash Flow Additivity</h3>
+            <p>The <strong>cash flow additivity principle</strong> states that the present value of any stream of future cash flows indexed at the same point in time equals the sum of the present values of the individual cash flows.</p>
+            
+            <p style="margin-top: 15px;"><strong>Mathematical Expression:</strong></p>
+            <p>For a series of cash flows CF₁, CF₂, ..., CFₙ occurring at times t₁, t₂, ..., tₙ:</p>
+        </div>
+
+        <div class="formula-box">
+PV(Total) = PV(CF₁) + PV(CF₂) + ... + PV(CFₙ)
+
+Where:
+PV(CFᵢ) = CFᵢ / (1 + r)^tᵢ
+
+And r is the appropriate discount rate for each cash flow
+        </div>
+
+        <div class="important-note">
+            <strong>Key Implication:</strong> Cash flows may be segregated, combined, or rearranged without altering their aggregate present value, provided the timing and risk characteristics remain constant.
+        </div>
+
+        <div class="key-concept">
+            <h3>The No-Arbitrage Condition</h3>
+            <p><strong>No-arbitrage condition:</strong> A market condition where no possibility exists to earn a riskless profit in the absence of transaction costs and with zero initial investment.</p>
+            
+            <p style="margin-top: 15px;"><strong>Relationship to Cash Flow Additivity:</strong></p>
+            <p>The cash flow additivity principle is fundamental to ensuring market prices satisfy the no-arbitrage condition. When cash flows can be decomposed and recombined, any violation of additivity would create arbitrage opportunities that market participants would immediately exploit, driving prices back to equilibrium.</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 400" style="max-width: 100%;">
+                <!-- Background -->
+                <rect width="800" height="400" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    Cash Flow Additivity: Formal Representation
+                </text>
+                
+                <!-- Top box: Combined cash flow stream -->
+                <rect x="50" y="70" width="700" height="80" rx="10" fill="#d4fc79" stroke="#4caf50" stroke-width="3"/>
+                <text x="400" y="100" font-size="16" text-anchor="middle" fill="#2c3e50" font-weight="bold">
+                    Complete Cash Flow Stream
+                </text>
+                <text x="400" y="125" font-size="14" text-anchor="middle" fill="#555">
+                    PV = Σ [CFᵢ / (1 + r)^tᵢ] for i = 1 to n
+                </text>
+                
+                <!-- Equals symbol -->
+                <text x="400" y="185" font-size="32" text-anchor="middle" fill="#667eea" font-weight="bold">=</text>
+                
+                <!-- Individual components -->
+                <rect x="50" y="210" width="200" height="70" rx="8" fill="#e0c3fc" stroke="#667eea" stroke-width="2"/>
+                <text x="150" y="235" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">Component 1</text>
+                <text x="150" y="255" font-size="12" text-anchor="middle" fill="#555">PV(CF₁)</text>
+                <text x="150" y="270" font-size="11" text-anchor="middle" fill="#666">CF₁/(1+r)^t₁</text>
+                
+                <text x="270" y="250" font-size="24" text-anchor="middle" fill="#667eea" font-weight="bold">+</text>
+                
+                <rect x="300" y="210" width="200" height="70" rx="8" fill="#e0c3fc" stroke="#667eea" stroke-width="2"/>
+                <text x="400" y="235" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">Component 2</text>
+                <text x="400" y="255" font-size="12" text-anchor="middle" fill="#555">PV(CF₂)</text>
+                <text x="400" y="270" font-size="11" text-anchor="middle" fill="#666">CF₂/(1+r)^t₂</text>
+                
+                <text x="520" y="250" font-size="24" text-anchor="middle" fill="#667eea" font-weight="bold">+ ...</text>
+                
+                <rect x="550" y="210" width="200" height="70" rx="8" fill="#e0c3fc" stroke="#667eea" stroke-width="2"/>
+                <text x="650" y="235" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">Component n</text>
+                <text x="650" y="255" font-size="12" text-anchor="middle" fill="#555">PV(CFₙ)</text>
+                <text x="650" y="270" font-size="11" text-anchor="middle" fill="#666">CFₙ/(1+r)^tₙ</text>
+                
+                <!-- Bottom principle box -->
+                <rect x="100" y="310" width="600" height="70" rx="10" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+                <text x="400" y="340" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">
+                    Fundamental Principle
+                </text>
+                <text x="400" y="360" font-size="12" text-anchor="middle" fill="#555">
+                    Present value is invariant to decomposition or aggregation of cash flows
+                </text>
+                <text x="400" y="375" font-size="12" text-anchor="middle" fill="#555">
+                    This property ensures no-arbitrage pricing in financial markets
+                </text>
+            </svg>
+        </div>
+
+        <h2>II. Application to Implied Forward Interest Rates</h2>
+
+        <div class="key-concept">
+            <h3>Conceptual Framework</h3>
+            <p>An <strong>implied forward interest rate</strong> is the future interest rate implied by current spot rates such that investors are indifferent between two alternative investment strategies:</p>
+            <ol>
+                <li>Investing for the longer maturity at the long-term rate</li>
+                <li>Investing for the shorter maturity and reinvesting at the forward rate</li>
+            </ol>
+            
+            <p style="margin-top: 15px;">The cash flow additivity principle ensures these strategies have equivalent present values under no-arbitrage conditions.</p>
+        </div>
+
+        <div class="formula-box">
+General Forward Rate Formula:
+
+For a forward rate Fₐ,ᵦ starting at time a and ending at time b:
+
+(1 + rᵦ)^b = (1 + rₐ)^a × (1 + Fₐ,ᵦ)^(b-a)
+
+Solving for Fₐ,ᵦ:
+
+Fₐ,ᵦ = [(1 + rᵦ)^b / (1 + rₐ)^a]^(1/(b-a)) - 1
+
+Where:
+- rₐ = spot rate for maturity a
+- rᵦ = spot rate for maturity b  
+- Fₐ,ᵦ = forward rate from time a to time b
+        </div>
+
+        <div class="example-box">
+            <h3>Example 1: Calculating Implied Forward Rates</h3>
+            
+            <p><strong>Given Information:</strong></p>
+            <table>
+                <tr>
+                    <th>Security</th>
+                    <th>Maturity</th>
+                    <th>Yield to Maturity</th>
+                </tr>
+                <tr>
+                    <td>Zero-coupon bond</td>
+                    <td>1 year</td>
+                    <td>r₁ = 2.50%</td>
+                </tr>
+                <tr>
+                    <td>Zero-coupon bond</td>
+                    <td>2 years</td>
+                    <td>r₂ = 3.50%</td>
+                </tr>
+            </table>
+            
+            <p><strong>Required:</strong> Calculate the one-year forward rate starting in one year (F₁,₁).</p>
+            
+            <h4>Solution:</h4>
+            
+            <p><strong>Step 1: Identify the two equivalent strategies</strong></p>
+            <ul>
+                <li>Strategy A: Invest for 2 years at r₂ = 3.50%</li>
+                <li>Strategy B: Invest for 1 year at r₁ = 2.50%, then reinvest for 1 year at F₁,₁</li>
+            </ul>
+            
+            <p><strong>Step 2: Apply the no-arbitrage condition</strong></p>
+            <p>For an initial investment PV₀:</p>
+            
+            <div class="formula-box">
+Strategy A future value: FV₂ = PV₀ × (1 + r₂)²
+                           = PV₀ × (1.035)²
+                           = PV₀ × 1.071225
+
+Strategy B future value: FV₂ = PV₀ × (1 + r₁) × (1 + F₁,₁)
+                           = PV₀ × (1.025) × (1 + F₁,₁)
+            </div>
+            
+            <p><strong>Step 3: Set equal and solve for F₁,₁</strong></p>
+            
+            <div class="formula-box">
+(1.035)² = (1.025) × (1 + F₁,₁)
+
+1.071225 = 1.025 × (1 + F₁,₁)
+
+(1 + F₁,₁) = 1.071225 / 1.025 = 1.04510
+
+F₁,₁ = 0.04510 = 4.51%
+            </div>
+            
+            <p><strong>Interpretation:</strong> The market is pricing in an expected one-year rate of 4.51% beginning one year from today. This rate represents the breakeven reinvestment rate that makes both strategies equivalent.</p>
+        </div>
+
+        <div class="example-box">
+            <h3>Example 2: Forward Rate Changes and Market Expectations</h3>
+            
+            <p><strong>Context:</strong> Central bank monetary policy announcement</p>
+            
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>1-Year Spot Rate (r₁)</th>
+                    <th>2-Year Spot Rate (r₂)</th>
+                    <th>Implied F₁,₁</th>
+                </tr>
+                <tr>
+                    <td>Before announcement</td>
+                    <td>2.012%</td>
+                    <td>2.539%</td>
+                    <td>3.069%</td>
+                </tr>
+                <tr>
+                    <td>After announcement</td>
+                    <td>2.667%</td>
+                    <td>3.177%</td>
+                    <td>3.689%</td>
+                </tr>
+                <tr>
+                    <td><strong>Change</strong></td>
+                    <td><strong>+65.5 bps</strong></td>
+                    <td><strong>+63.8 bps</strong></td>
+                    <td><strong>+62.0 bps</strong></td>
+                </tr>
+            </table>
+            
+            <h4>Analysis:</h4>
+            
+            <p><strong>Computing Forward Rates:</strong></p>
+            
+            <div class="formula-box">
+Before: F₁,₁ = [(1.02539)² / (1.02012)] - 1 = 0.03069 = 3.069%
+
+After:  F₁,₁ = [(1.03177)² / (1.02667)] - 1 = 0.03689 = 3.689%
+            </div>
+            
+            <p><strong>Interpretation:</strong></p>
+            <ul>
+                <li>The immediate rate increase (+65.5 bps in r₁) reflects the announced policy change</li>
+                <li>The forward rate increase (+62.0 bps) indicates market expectations of continued rate increases</li>
+                <li>In a rising rate environment, the forward rate F₁,₁ exceeds the two-year spot rate r₂</li>
+                <li>The term structure has shifted upward and become more steeply sloped</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <h4>Arbitrage Verification</h4>
+            <p>If the actual forward rate available in the market differs from the implied forward rate, an arbitrage opportunity exists:</p>
+            
+            <p style="margin-top: 10px;"><strong>If actual forward rate > implied forward rate:</strong></p>
+            <ul>
+                <li>Borrow at the 2-year rate</li>
+                <li>Lend at the 1-year rate and lock in lending at the higher forward rate</li>
+                <li>Profit = (Actual F₁,₁ - Implied F₁,₁) × Invested Amount / (1 + r₁)</li>
+            </ul>
+            
+            <p style="margin-top: 10px;"><strong>If actual forward rate < implied forward rate:</strong></p>
+            <ul>
+                <li>Borrow at the 1-year rate, then borrow again at the actual forward rate</li>
+                <li>Lend at the 2-year rate</li>
+                <li>Profit flows in the opposite direction</li>
+            </ul>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 450" style="max-width: 100%;">
+                <!-- Background -->
+                <rect width="800" height="450" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    Forward Interest Rate: Cash Flow Equivalence
+                </text>
+                
+                <!-- Timeline -->
+                <line x1="100" y1="200" x2="700" y2="200" stroke="#333" stroke-width="3"/>
+                <circle cx="100" cy="200" r="6" fill="#667eea"/>
+                <circle cx="400" cy="200" r="6" fill="#667eea"/>
+                <circle cx="700" cy="200" r="6" fill="#667eea"/>
+                
+                <text x="100" y="230" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">t = 0</text>
+                <text x="400" y="230" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">t = 1</text>
+                <text x="700" y="230" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">t = 2</text>
+                
+                <!-- Strategy 1: Direct 2-year investment -->
+                <rect x="80" y="80" width="150" height="60" rx="8" fill="#e0c3fc" stroke="#667eea" stroke-width="2"/>
+                <text x="155" y="105" font-size="13" text-anchor="middle" fill="#2c3e50" font-weight="bold">Strategy 1</text>
+                <text x="155" y="125" font-size="12" text-anchor="middle" fill="#555">PV₀ = 100</text>
+                
+                <path d="M 230 110 Q 465 70 670 110" stroke="#ff6b9d" stroke-width="3" fill="none"/>
+                <text x="450" y="60" font-size="13" text-anchor="middle" fill="#ff6b9d" font-weight="bold">
+                    FV = 100(1 + r₂)²
+                </text>
+                
+                <rect x="620" y="80" width="150" height="60" rx="8" fill="#d4fc79" stroke="#4caf50" stroke-width="2"/>
+                <text x="695" y="105" font-size="13" text-anchor="middle" fill="#2c3e50" font-weight="bold">Result</text>
+                <text x="695" y="125" font-size="12" text-anchor="middle" fill="#555">FV₂</text>
+                
+                <!-- Strategy 2: Two sequential 1-year investments -->
+                <rect x="80" y="280" width="150" height="60" rx="8" fill="#e0c3fc" stroke="#667eea" stroke-width="2"/>
+                <text x="155" y="305" font-size="13" text-anchor="middle" fill="#2c3e50" font-weight="bold">Strategy 2</text>
+                <text x="155" y="325" font-size="12" text-anchor="middle" fill="#555">PV₀ = 100</text>
+                
+                <path d="M 230 310 L 370 310" stroke="#4caf50" stroke-width="3" fill="none"/>
+                <text x="300" y="300" font-size="12" text-anchor="middle" fill="#4caf50" font-weight="bold">
+                    100(1 + r₁)
+                </text>
+                
+                <rect x="325" y="280" width="150" height="60" rx="8" fill="#ffd89b" stroke="#ff9800" stroke-width="2"/>
+                <text x="400" y="305" font-size="13" text-anchor="middle" fill="#2c3e50" font-weight="bold">Year 1 End</text>
+                <text x="400" y="325" font-size="12" text-anchor="middle" fill="#555">Reinvest</text>
+                
+                <path d="M 475 310 L 620 310" stroke="#ff9800" stroke-width="3" fill="none"/>
+                <text x="547" y="300" font-size="12" text-anchor="middle" fill="#ff9800" font-weight="bold">
+                    100(1+r₁)(1+F₁,₁)
+                </text>
+                
+                <rect x="620" y="280" width="150" height="60" rx="8" fill="#d4fc79" stroke="#4caf50" stroke-width="2"/>
+                <text x="695" y="305" font-size="13" text-anchor="middle" fill="#2c3e50" font-weight="bold">Result</text>
+                <text x="695" y="325" font-size="12" text-anchor="middle" fill="#555">FV₂</text>
+                
+                <!-- Equivalence -->
+                <rect x="720" y="175" width="60" height="50" rx="8" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+                <text x="750" y="205" font-size="20" text-anchor="middle" fill="#333" font-weight="bold">=</text>
+                
+                <!-- Bottom explanation -->
+                <rect x="150" y="380" width="500" height="50" rx="10" fill="#c8e6c9" stroke="#4caf50" stroke-width="2"/>
+                <text x="400" y="405" font-size="13" text-anchor="middle" fill="#1b5e20" font-weight="bold">
+                    No-Arbitrage Condition: (1 + r₂)² = (1 + r₁)(1 + F₁,₁)
+                </text>
+                <text x="400" y="422" font-size="11" text-anchor="middle" fill="#2e7d32">
+                    Both strategies yield identical future values under equilibrium pricing
+                </text>
+            </svg>
+        </div>
+
+        <h2>III. Application to Forward Exchange Rates</h2>
+
+        <div class="key-concept">
+            <h3>Interest Rate Parity</h3>
+            <p>The <strong>covered interest rate parity</strong> relationship ensures no-arbitrage between currency markets and interest rate markets. It states that the forward exchange rate must adjust to offset interest rate differentials between two countries.</p>
+        </div>
+
+        <div class="formula-box">
+Forward Exchange Rate Formula:
+
+F = S × [(1 + r_domestic) / (1 + r_foreign)]
+
+Where:
+F = Forward exchange rate (domestic currency per foreign currency)
+S = Spot exchange rate (domestic currency per foreign currency)
+r_domestic = Domestic risk-free interest rate
+r_foreign = Foreign risk-free interest rate
+
+Alternative continuous compounding form:
+F = S × e^((r_domestic - r_foreign) × T)
+        </div>
+
+        <div class="example-box">
+            <h3>Example 3: Forward Exchange Rate Calculation</h3>
+            
+            <p><strong>Given Market Data (as of mid-June 2022):</strong></p>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Spot GBP/USD Rate</td>
+                    <td>1.2602 (USD per GBP)</td>
+                </tr>
+                <tr>
+                    <td>UK Risk-Free Rate (r<sub>GBP</sub>)</td>
+                    <td>1.55% (continuously compounded)</td>
+                </tr>
+                <tr>
+                    <td>US Risk-Free Rate (r<sub>USD</sub>)</td>
+                    <td>2.667% (continuously compounded)</td>
+                </tr>
+                <tr>
+                    <td>Time Horizon</td>
+                    <td>1 year</td>
+                </tr>
+            </table>
+            
+            <p><strong>Required:</strong> Calculate the no-arbitrage one-year forward USD/GBP exchange rate.</p>
+            
+            <h4>Solution:</h4>
+            
+            <p><strong>Step 1: Identify equivalent strategies</strong></p>
+            
+            <p><em>Domestic Strategy (Invest in UK):</em></p>
+            <ul>
+                <li>Invest GBP 1,000 at r<sub>GBP</sub> = 1.55%</li>
+                <li>After 1 year: GBP 1,000 × e^(0.0155) = GBP 1,015.74</li>
+            </ul>
+            
+            <p><em>Foreign Strategy (Invest in US):</em></p>
+            <ul>
+                <li>Convert GBP 1,000 to USD at spot rate: 1,000 × 1.2602 = USD 1,260.20</li>
+                <li>Invest at r<sub>USD</sub> = 2.667%</li>
+                <li>After 1 year: USD 1,260.20 × e^(0.02667) = USD 1,294.26</li>
+            </ul>
+            
+            <p><strong>Step 2: Calculate forward rate for equivalence</strong></p>
+            
+            <div class="formula-box">
+For no-arbitrage:
+GBP 1,015.74 (future value in UK) must equal USD 1,294.26 when converted
+
+Forward Rate = USD 1,294.26 / GBP 1,015.74 = 1.2742 USD/GBP
+            </div>
+            
+            <p><strong>Alternative Calculation Using Formula:</strong></p>
+            
+            <div class="formula-box">
+F = S × e^((r_USD - r_GBP) × T)
+F = 1.2602 × e^((0.02667 - 0.0155) × 1)
+F = 1.2602 × e^(0.01117)
+F = 1.2602 × 1.01123
+F = 1.2742 USD/GBP
+            </div>
+            
+            <p><strong>Interpretation:</strong></p>
+            <ul>
+                <li>The USD depreciates on a forward basis (forward rate 1.2742 > spot rate 1.2602)</li>
+                <li>This compensates for the higher US interest rate (2.667% vs 1.55%)</li>
+                <li>The interest rate differential of 1.117% translates to approximately 1.12% forward premium for GBP</li>
+                <li>This relationship prevents covered interest arbitrage</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <h3>Example 4: Detecting Arbitrage Opportunities</h3>
+            
+            <p><strong>Scenario:</strong> Market quotes vs. theoretical prices</p>
+            
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Spot EUR/USD</td>
+                    <td>1.0800</td>
+                </tr>
+                <tr>
+                    <td>Market Forward Rate (1-year)</td>
+                    <td>1.0950</td>
+                </tr>
+                <tr>
+                    <td>EUR Interest Rate</td>
+                    <td>3.0%</td>
+                </tr>
+                <tr>
+                    <td>USD Interest Rate</td>
+                    <td>4.5%</td>
+                </tr>
+            </table>
+            
+            <h4>Analysis:</h4>
+            
+            <p><strong>Step 1: Calculate theoretical forward rate</strong></p>
+            
+            <div class="formula-box">
+F_theoretical = S × [(1 + r_USD) / (1 + r_EUR)]
+F_theoretical = 1.0800 × [(1.045) / (1.030)]
+F_theoretical = 1.0800 × 1.01456
+F_theoretical = 1.0957 USD/EUR
+            </div>
+            
+            <p><strong>Step 2: Compare to market forward rate</strong></p>
+            <ul>
+                <li>Market forward: 1.0950</li>
+                <li>Theoretical forward: 1.0957</li>
+                <li>Difference: 0.0007 (EUR is underpriced in forward market)</li>
+            </ul>
+            
+            <p><strong>Step 3: Arbitrage strategy</strong></p>
+            <p><em>Since market forward rate < theoretical forward rate, EUR is cheap on forward basis:</em></p>
+            
+            <ol>
+                <li><strong>Today (t=0):</strong>
+                    <ul>
+                        <li>Borrow USD 1,000,000 at 4.5%</li>
+                        <li>Convert to EUR: 1,000,000/1.0800 = EUR 925,926</li>
+                        <li>Invest EUR at 3.0%</li>
+                        <li>Enter forward contract to sell EUR at 1.0950</li>
+                    </ul>
+                </li>
+                <li><strong>One year later (t=1):</strong>
+                    <ul>
+                        <li>EUR investment matures: 925,926 × 1.03 = EUR 953,704</li>
+                        <li>Convert to USD at forward: 953,704 × 1.0950 = USD 1,044,306</li>
+                        <li>Repay USD loan: 1,000,000 × 1.045 = USD 1,045,000</li>
+                        <li><strong>Net profit: USD 1,044,306 - USD 1,045,000 = -USD 694 (loss)</strong></li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <p><em>Note: The negative result indicates we chose the wrong direction. Reverse the strategy:</em></p>
+            
+            <ol>
+                <li>Borrow EUR at 3.0%, convert to USD, invest at 4.5%</li>
+                <li>Enter forward to buy EUR at 1.0950</li>
+                <li>This captures the mispricing and generates profit</li>
+            </ol>
+        </div>
+
+        <div class="important-note">
+            <h4>Key Insights on Forward Exchange Rates</h4>
+            <ul>
+                <li><strong>Currency with higher interest rate trades at a forward discount:</strong> Its forward rate < spot rate</li>
+                <li><strong>Currency with lower interest rate trades at a forward premium:</strong> Its forward rate > spot rate</li>
+                <li><strong>The relationship is precise:</strong> Small deviations create arbitrage opportunities</li>
+                <li><strong>Transaction costs and capital controls</strong> may create bounds within which no-arbitrage holds</li>
+                <li><strong>For exam purposes:</strong> Covered interest parity assumes perfect capital mobility and no transaction costs</li>
+            </ul>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 500" style="max-width: 100%;">
+                <defs>
+                    <linearGradient id="gradUK" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#e3f2fd;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#90caf9;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="gradUS" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#fff3e0;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ffb74d;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Background -->
+                <rect width="800" height="500" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    Covered Interest Rate Parity: Cash Flow Equivalence
+                </text>
+                
+                <!-- UK Strategy Box -->
+                <rect x="50" y="80" width="320" height="180" rx="12" fill="url(#gradUK)" stroke="#1976d2" stroke-width="3"/>
+                <text x="210" y="110" font-size="16" text-anchor="middle" fill="#0d47a1" font-weight="bold">
+                    UK Investment Strategy
+                </text>
+                
+                <text x="210" y="140" font-size="14" text-anchor="middle" fill="#1565c0">Today (t=0):</text>
+                <text x="210" y="160" font-size="13" text-anchor="middle" fill="#333">Start with GBP 1,000</text>
+                <text x="210" y="178" font-size="13" text-anchor="middle" fill="#333">Invest at r_GBP = 1.55%</text>
+                
+                <line x1="70" y1="195" x2="350" y2="195" stroke="#1976d2" stroke-width="1"/>
+                
+                <text x="210" y="215" font-size="14" text-anchor="middle" fill="#1565c0">One Year Later (t=1):</text>
+                <text x="210" y="235" font-size="13" text-anchor="middle" fill="#333" font-weight="bold">
+                    GBP 1,000 × e^0.0155
+                </text>
+                <text x="210" y="252" font-size="13" text-anchor="middle" fill="#333" font-weight="bold">
+                    = GBP 1,015.74
+                </text>
+                
+                <!-- US Strategy Box -->
+                <rect x="430" y="80" width="320" height="180" rx="12" fill="url(#gradUS)" stroke="#ef6c00" stroke-width="3"/>
+                <text x="590" y="110" font-size="16" text-anchor="middle" fill="#e65100" font-weight="bold">
+                    US Investment Strategy
+                </text>
+                
+                <text x="590" y="140" font-size="14" text-anchor="middle" fill="#ef6c00">Today (t=0):</text>
+                <text x="590" y="160" font-size="13" text-anchor="middle" fill="#333">Convert: GBP 1,000 → USD 1,260.20</text>
+                <text x="590" y="178" font-size="13" text-anchor="middle" fill="#333">Invest at r_USD = 2.667%</text>
+                
+                <line x1="450" y1="195" x2="730" y2="195" stroke="#ef6c00" stroke-width="1"/>
+                
+                <text x="590" y="215" font-size="14" text-anchor="middle" fill="#ef6c00">One Year Later (t=1):</text>
+                <text x="590" y="235" font-size="13" text-anchor="middle" fill="#333" font-weight="bold">
+                    USD 1,260.20 × e^0.02667
+                </text>
+                <text x="590" y="252" font-size="13" text-anchor="middle" fill="#333" font-weight="bold">
+                    = USD 1,294.26
+                </text>
+                
+                <!-- Forward Contract -->
+                <rect x="200" y="290" width="400" height="70" rx="10" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+                <text x="400" y="315" font-size="15" text-anchor="middle" fill="#333" font-weight="bold">
+                    Forward Contract locks in exchange rate today
+                </text>
+                <text x="400" y="335" font-size="13" text-anchor="middle" fill="#555">
+                    Must convert USD 1,294.26 back to GBP at forward rate F
+                </text>
+                <text x="400" y="352" font-size="13" text-anchor="middle" fill="#555">
+                    For no-arbitrage: F = 1,294.26 / 1,015.74 = 1.2742
+                </text>
+                
+                <!-- Equivalence box -->
+                <rect x="150" y="390" width="500" height="90" rx="12" fill="#c8e6c9" stroke="#4caf50" stroke-width="3"/>
+                <text x="400" y="420" font-size="16" text-anchor="middle" fill="#1b5e20" font-weight="bold">
+                    No-Arbitrage Condition
+                </text>
+                <text x="400" y="442" font-size="13" text-anchor="middle" fill="#2e7d32">
+                    Investing GBP 1,000 in UK for 1 year at 1.55%
+                </text>
+                <text x="400" y="458" font-size="13" text-anchor="middle" fill="#2e7d32">
+                    must equal
+                </text>
+                <text x="400" y="474" font-size="13" text-anchor="middle" fill="#2e7d32">
+                    Converting to USD, investing at 2.667%, and converting back at forward rate
+                </text>
+            </svg>
+        </div>
+
+        <h2>IV. Application to Option Pricing</h2>
+
+        <div class="key-concept">
+            <h3>Replicating Portfolio Approach</h3>
+            <p>The cash flow additivity principle enables option pricing through construction of a <strong>replicating portfolio</strong> - a combination of the underlying asset and risk-free borrowing/lending that perfectly mimics the option's payoff structure.</p>
+            
+            <p style="margin-top: 15px;"><strong>Core Principle:</strong> If two portfolios generate identical cash flows in all possible future states, they must have the same present value to prevent arbitrage.</p>
+        </div>
+
+        <div class="key-concept">
+            <h3>One-Period Binomial Model</h3>
+            <p>The binomial model assumes the underlying asset can take only two possible values in the next period:</p>
+            <ul>
+                <li><strong>S<sub>u</sub>:</strong> Asset price if it moves up</li>
+                <li><strong>S<sub>d</sub>:</strong> Asset price if it moves down</li>
+            </ul>
+            
+            <p style="margin-top: 10px;">From current price S₀, the option values are:</p>
+            <ul>
+                <li><strong>c<sub>u</sub>:</strong> Call option value if asset moves up</li>
+                <li><strong>c<sub>d</sub>:</strong> Call option value if asset moves down</li>
+            </ul>
+        </div>
+
+        <div class="formula-box">
+Call Option Replication Formula:
+
+Create portfolio: Long Δ shares + Short (borrow) Amount B
+
+Portfolio value at t=0: V₀ = Δ·S₀ - B
+
+Portfolio values at t=1:
+- Up state:   V_u = Δ·S_u - B(1+r)
+- Down state: V_d = Δ·S_d - B(1+r)
+
+For replication, set V_u = c_u and V_d = c_d
+
+Solving simultaneously:
+Δ = (c_u - c_d) / (S_u - S_d)  [Hedge ratio]
+
+B = [S_u·c_d - S_d·c_u] / [(S_u - S_d)(1+r)]
+
+Call option value: c₀ = Δ·S₀ - B
+        </div>
+
+        <div class="example-box">
+            <h3>Example 5: Pricing a Call Option (Detailed)</h3>
+            
+            <p><strong>Given:</strong></p>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Current stock price (S₀)</td>
+                    <td>CNY 40</td>
+                </tr>
+                <tr>
+                    <td>Up movement</td>
+                    <td>+40% → S<sub>u</sub> = CNY 56</td>
+                </tr>
+                <tr>
+                    <td>Down movement</td>
+                    <td>-20% → S<sub>d</sub> = CNY 32</td>
+                </tr>
+                <tr>
+                    <td>Strike price (X)</td>
+                    <td>CNY 50</td>
+                </tr>
+                <tr>
+                    <td>Risk-free rate (r)</td>
+                    <td>5%</td>
+                </tr>
+                <tr>
+                    <td>Time to expiration</td>
+                    <td>1 period</td>
+                </tr>
+            </table>
+            
+            <p><strong>Required:</strong> Calculate the fair value of the call option.</p>
+            
+            <h4>Solution:</h4>
+            
+            <p><strong>Step 1: Determine option payoffs at maturity</strong></p>
+            
+            <div class="formula-box">
+Up state (S_u = CNY 56):
+c_u = Max(0, S_u - X) = Max(0, 56 - 50) = CNY 6
+
+Down state (S_d = CNY 32):
+c_d = Max(0, S_d - X) = Max(0, 32 - 50) = CNY 0
+            </div>
+            
+            <p><strong>Step 2: Calculate hedge ratio (Δ)</strong></p>
+            
+            <div class="formula-box">
+Δ = (c_u - c_d) / (S_u - S_d)
+Δ = (6 - 0) / (56 - 32)
+Δ = 6 / 24 = 0.25
+            </div>
+            
+            <p><strong>Interpretation:</strong> Hold 0.25 shares to replicate the option.</p>
+            
+            <p><strong>Step 3: Verify replication portfolio payoffs</strong></p>
+            
+            <div class="formula-box">
+Up state value:   0.25 × 56 = CNY 14.00
+Down state value: 0.25 × 32 = CNY 8.00
+
+These values must be reduced by borrowed amount with interest
+to match option payoffs (6 and 0)
+
+Therefore, borrowed amount B satisfies:
+14.00 - B(1.05) = 6
+B(1.05) = 8.00
+B = 7.619
+            </div>
+            
+            <p><strong>Step 4: Calculate current call option value</strong></p>
+            
+            <div class="formula-box">
+c₀ = Δ·S₀ - B
+c₀ = 0.25 × 40 - 7.619
+c₀ = 10.00 - 7.619
+c₀ = CNY 2.38
+            </div>
+            
+            <p><strong>Verification:</strong></p>
+            <div class="formula-box">
+Alternative: Discount the risk-free payoff
+
+Portfolio value in 1 period = CNY 8 (in both states)
+Present value = 8 / 1.05 = CNY 7.619
+Plus stock position: 0.25 × 40 = CNY 10
+Net investment = 10 - 7.619 = CNY 2.38 ✓
+            </div>
+            
+            <p><strong>Key Insights:</strong></p>
+            <ul>
+                <li>The option price does not depend on probabilities of up/down moves</li>
+                <li>Only requires: current stock price, possible future prices, strike, and risk-free rate</li>
+                <li>The replicating portfolio creates a <strong>synthetic option</strong></li>
+                <li>Any price other than CNY 2.38 creates an arbitrage opportunity</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <h3>Example 6: Pricing a Put Option</h3>
+            
+            <p><strong>Given:</strong> Same underlying asset parameters as Example 5</p>
+            <ul>
+                <li>S₀ = CNY 40</li>
+                <li>S<sub>u</sub> = CNY 56, S<sub>d</sub> = CNY 32</li>
+                <li>Strike price X = CNY 50</li>
+                <li>r = 5%</li>
+            </ul>
+            
+            <p><strong>Required:</strong> Calculate the fair value of the put option.</p>
+            
+            <h4>Solution:</h4>
+            
+            <p><strong>Step 1: Determine put option payoffs</strong></p>
+            
+            <div class="formula-box">
+Up state (S_u = CNY 56):
+p_u = Max(0, X - S_u) = Max(0, 50 - 56) = CNY 0
+
+Down state (S_d = CNY 32):
+p_d = Max(0, X - S_d) = Max(0, 50 - 32) = CNY 18
+            </div>
+            
+            <p><strong>Step 2: Calculate hedge ratio</strong></p>
+            
+            <div class="formula-box">
+For puts, we buy stock and sell (write) the put:
+
+Δ = (p_u - p_d) / (S_u - S_d)
+Δ = (0 - 18) / (56 - 32)
+Δ = -18 / 24 = -0.75
+            </div>
+            
+            <p><strong>Interpretation:</strong> The negative sign indicates we need to short 0.75 shares. However, for a risk-free portfolio that <em>buys</em> the put, we buy 0.75 shares.</p>
+            
+            <p><strong>Step 3: Construct risk-free portfolio</strong></p>
+            <p>Portfolio: Long 0.75 shares + Long 1 put option</p>
+            
+            <div class="formula-box">
+Up state:   0.75 × 56 + 0 = CNY 42
+Down state: 0.75 × 32 + 18 = CNY 42
+
+Risk-free payoff = CNY 42 in both states
+            </div>
+            
+            <p><strong>Step 4: Calculate put option value</strong></p>
+            
+            <div class="formula-box">
+Present value of portfolio = 42 / 1.05 = CNY 40
+
+Portfolio cost: 0.75 × S₀ + p₀ = 0.75 × 40 + p₀ = 30 + p₀
+
+Setting equal: 30 + p₀ = 40
+
+p₀ = CNY 10.00
+            </div>
+            
+            <p><strong>Verification using Put-Call Parity:</strong></p>
+            
+            <div class="formula-box">
+Put-Call Parity: p₀ + S₀ = c₀ + X/(1+r)
+
+From Example 5: c₀ = CNY 2.38
+
+p₀ = c₀ + X/(1+r) - S₀
+p₀ = 2.38 + 50/1.05 - 40
+p₀ = 2.38 + 47.62 - 40
+p₀ = CNY 10.00 ✓
+            </div>
+        </div>
+
+        <div class="important-note">
+            <h4>Critical Concepts in Option Pricing via Cash Flow Additivity</h4>
+            <ol>
+                <li><strong>Risk-neutral valuation:</strong> The replication approach does not require knowing actual probabilities of price movements</li>
+                
+                <li><strong>No-arbitrage pricing:</strong> Option value = Cost of replicating portfolio, by the no-arbitrage principle</li>
+                
+                <li><strong>Hedge ratio:</strong> Represents the number of shares needed per option to create a risk-free position</li>
+                
+                <li><strong>Dynamic hedging:</strong> In practice, the hedge ratio changes as the stock price and time change, requiring continuous rebalancing</li>
+                
+                <li><strong>Extensions:</strong> Multi-period binomial trees build on this framework by working backwards from expiration</li>
+                
+                <li><strong>Black-Scholes model:</strong> Represents the continuous-time limit of the binomial model</li>
+            </ol>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 550" style="max-width: 100%;">
+                <defs>
+                    <linearGradient id="gradCall" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#4caf50;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#81c784;stop-opacity:0.3" />
+                    </linearGradient>
+                    <linearGradient id="gradPut" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#f44336;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#e57373;stop-opacity:0.3" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Background -->
+                <rect width="800" height="550" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    Binomial Option Pricing: Complete Framework
+                </text>
+                
+                <!-- Current state -->
+                <circle cx="150" cy="275" r="50" fill="#667eea" stroke="#764ba2" stroke-width="3"/>
+                <text x="150" y="270" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Stock</text>
+                <text x="150" y="288" font-size="16" text-anchor="middle" fill="white">S₀ = 40</text>
+                <text x="150" y="340" font-size="13" text-anchor="middle" fill="#333" font-weight="bold">Today (t=0)</text>
+                
+                <!-- Up state -->
+                <circle cx="550" cy="140" r="50" fill="#4caf50" stroke="#2e7d32" stroke-width="3"/>
+                <text x="550" y="135" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Stock UP</text>
+                <text x="550" y="153" font-size="16" text-anchor="middle" fill="white">S_u = 56</text>
+                
+                <!-- Up state options -->
+                <rect x="620" y="115" width="150" height="55" rx="8" fill="url(#gradCall)" stroke="#4caf50" stroke-width="2"/>
+                <text x="695" y="138" font-size="12" text-anchor="middle" fill="#1b5e20" font-weight="bold">Call: c_u = 6</text>
+                <text x="695" y="155" font-size="11" text-anchor="middle" fill="#2e7d32">Max(0, 56-50)</text>
+                
+                <rect x="620" y="180" width="150" height="55" rx="8" fill="url(#gradPut)" stroke="#f44336" stroke-width="2"/>
+                <text x="695" y="203" font-size="12" text-anchor="middle" fill="#b71c1c" font-weight="bold">Put: p_u = 0</text>
+                <text x="695" y="220" font-size="11" text-anchor="middle" fill="#c62828">Max(0, 50-56)</text>
+                
+                <!-- Down state -->
+                <circle cx="550" cy="410" r="50" fill="#f44336" stroke="#c62828" stroke-width="3"/>
+                <text x="550" y="405" font-size="14" text-anchor="middle" fill="white" font-weight="bold">Stock DOWN</text>
+                <text x="550" y="423" font-size="16" text-anchor="middle" fill="white">S_d = 32</text>
+                
+                <!-- Down state options -->
+                <rect x="620" y="365" width="150" height="55" rx="8" fill="url(#gradCall)" stroke="#4caf50" stroke-width="2"/>
+                <text x="695" y="388" font-size="12" text-anchor="middle" fill="#1b5e20" font-weight="bold">Call: c_d = 0</text>
+                <text x="695" y="405" font-size="11" text-anchor="middle" fill="#2e7d32">Max(0, 32-50)</text>
+                
+                <rect x="620" y="430" width="150" height="55" rx="8" fill="url(#gradPut)" stroke="#f44336" stroke-width="2"/>
+                <text x="695" y="453" font-size="12" text-anchor="middle" fill="#b71c1c" font-weight="bold">Put: p_d = 18</text>
+                <text x="695" y="470" font-size="11" text-anchor="middle" fill="#c62828">Max(0, 50-32)</text>
+                
+                <!-- Arrows -->
+                <path d="M 200 250 L 500 155" stroke="#4caf50" stroke-width="4" fill="none" marker-end="url(#arrowGreen2)"/>
+                <text x="330" y="185" font-size="13" fill="#2e7d32" font-weight="bold">+40%</text>
+                
+                <path d="M 200 300 L 500 395" stroke="#f44336" stroke-width="4" fill="none" marker-end="url(#arrowRed2)"/>
+                <text x="330" y="365" font-size="13" fill="#c62828" font-weight="bold">-20%</text>
+                
+                <defs>
+                    <marker id="arrowGreen2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#4caf50" />
+                    </marker>
+                    <marker id="arrowRed2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#f44336" />
+                    </marker>
+                </defs>
+                
+                <!-- Today's option values -->
+                <rect x="30" y="375" width="240" height="155" rx="10" fill="#fff9c4" stroke="#fbc02d" stroke-width="2"/>
+                <text x="150" y="400" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">
+                    Option Values Today:
+                </text>
+                
+                <text x="150" y="425" font-size="13" text-anchor="middle" fill="#555">
+                    Call: c₀ = CNY 2.38
+                </text>
+                <text x="150" y="442" font-size="11" text-anchor="middle" fill="#666">
+                    (0.25 × 40 - 7.619)
+                </text>
+                
+                <line x1="50" y1="455" x2="250" y2="455" stroke="#fbc02d" stroke-width="1"/>
+                
+                <text x="150" y="475" font-size="13" text-anchor="middle" fill="#555">
+                    Put: p₀ = CNY 10.00
+                </text>
+                <text x="150" y="492" font-size="11" text-anchor="middle" fill="#666">
+                    (40 - 0.75 × 40)
+                </text>
+                
+                <text x="150" y="515" font-size="10" text-anchor="middle" fill="#888" font-style="italic">
+                    Risk-free rate: 5%
+                </text>
+            </svg>
+        </div>
+
+        <h2>V. Comprehensive Example: Integrating All Concepts</h2>
+
+        <div class="example-box">
+            <h3>Example 7: Multi-Asset Arbitrage Analysis</h3>
+            
+            <p><strong>Scenario:</strong> A financial analyst is evaluating opportunities across bond, currency, and equity derivative markets.</p>
+            
+            <p><strong>Given Market Data:</strong></p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Interest Rate Markets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1-year USD LIBOR</td>
+                        <td>3.20%</td>
+                    </tr>
+                    <tr>
+                        <td>2-year USD LIBOR</td>
+                        <td>3.80%</td>
+                    </tr>
+                    <tr>
+                        <td>1-year EUR LIBOR</td>
+                        <td>2.10%</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table style="margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th colspan="2">Foreign Exchange Markets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Spot EUR/USD</td>
+                        <td>1.0850</td>
+                    </tr>
+                    <tr>
+                        <td>1-year Forward EUR/USD</td>
+                        <td>1.0965</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table style="margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th colspan="2">Equity Market</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Stock XYZ current price</td>
+                        <td>$100</td>
+                    </tr>
+                    <tr>
+                        <td>1-year call option (Strike $105)</td>
+                        <td>$8.50</td>
+                    </tr>
+                    <tr>
+                        <td>Expected price in 1 year (up)</td>
+                        <td>$125</td>
+                    </tr>
+                    <tr>
+                        <td>Expected price in 1 year (down)</td>
+                        <td>$85</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p><strong>Required:</strong></p>
+            <ol>
+                <li>Calculate the implied 1-year forward rate starting in 1 year for USD</li>
+                <li>Determine if the EUR/USD forward rate satisfies covered interest parity</li>
+                <li>Calculate the fair value of the call option and identify any mispricing</li>
+            </ol>
+            
+            <h4>Solution:</h4>
+            
+            <p><strong>Part 1: Implied Forward Interest Rate</strong></p>
+            
+            <div class="formula-box">
+F₁,₁ = [(1 + r₂)² / (1 + r₁)] - 1
+
+F₁,₁ = [(1.0380)² / (1.0320)] - 1
+
+F₁,₁ = [1.077444 / 1.0320] - 1
+
+F₁,₁ = 1.04403 - 1 = 0.04403 = 4.40%
+            </div>
+            
+            <p><strong>Interpretation:</strong> The market is pricing in a 1-year rate of 4.40% beginning one year from today, representing a significant expected increase from current 1-year rate of 3.20%.</p>
+            
+            <p><strong>Part 2: Covered Interest Parity Analysis</strong></p>
+            
+            <div class="formula-box">
+Theoretical Forward Rate:
+
+F_theoretical = S × [(1 + r_USD) / (1 + r_EUR)]
+
+F_theoretical = 1.0850 × [(1.0320) / (1.0210)]
+
+F_theoretical = 1.0850 × 1.01077
+
+F_theoretical = 1.0967 USD/EUR
+            </div>
+            
+            <p><strong>Comparison:</strong></p>
+            <ul>
+                <li>Market forward rate: 1.0965</li>
+                <li>Theoretical forward rate: 1.0967</li>
+                <li>Difference: 0.0002 (20 pips)</li>
+            </ul>
+            
+            <p><strong>Conclusion:</strong> The forward rate is slightly undervalued but the difference (20 pips) is likely within the bid-ask spread and transaction costs. No practical arbitrage opportunity exists.</p>
+            
+            <p><strong>Part 3: Call Option Valuation</strong></p>
+            
+            <p>Step 1: Determine option payoffs</p>
+            <div class="formula-box">
+Up state (S_u = $125):
+c_u = Max(0, 125 - 105) = $20
+
+Down state (S_d = $85):
+c_d = Max(0, 85 - 105) = $0
+            </div>
+            
+            <p>Step 2: Calculate hedge ratio</p>
+            <div class="formula-box">
+Δ = (c_u - c_d) / (S_u - S_d)
+Δ = (20 - 0) / (125 - 85)
+Δ = 20 / 40 = 0.50
+            </div>
+            
+            <p>Step 3: Determine borrowing amount</p>
+            <p>Portfolio values must match option payoffs:</p>
+            <div class="formula-box">
+Up state:   0.50 × 125 - B(1.032) = 20
+            62.50 - B(1.032) = 20
+            B(1.032) = 42.50
+            B = 41.18
+
+Down state: 0.50 × 85 - B(1.032) = 0
+            42.50 - B(1.032) = 0
+            B(1.032) = 42.50
+            B = 41.18 ✓ (consistent)
+            </div>
+            
+            <p>Step 4: Calculate fair option value</p>
+            <div class="formula-box">
+c₀ = Δ·S₀ - B
+c₀ = 0.50 × 100 - 41.18
+c₀ = 50.00 - 41.18
+c₀ = $8.82
+            </div>
+            
+            <p><strong>Mispricing Analysis:</strong></p>
+            <ul>
+                <li>Market price: $8.50</li>
+                <li>Fair value: $8.82</li>
+                <li>Difference: $0.32 undervalued</li>
+            </ul>
+            
+            <p><strong>Arbitrage Strategy:</strong></p>
+            <ol>
+                <li><strong>Buy:</strong> The undervalued call option at $8.50</li>
+                <li><strong>Short:</strong> 0.50 shares of XYZ stock (receive $50.00)</li>
+                <li><strong>Invest:</strong> $41.50 at 3.20% risk-free rate</li>
+                <li><strong>Net today:</strong> -8.50 + 50.00 - 41.50 = $0 (self-financing)</li>
+            </ol>
+            
+            <p>After one year:</p>
+            <ul>
+                <li>Investment grows to: $41.50 × 1.032 = $42.83</li>
+                <li>If stock rises to $125: Pay $62.50 for short stock, receive $20 from option, plus $42.83 = $0.33 profit</li>
+                <li>If stock falls to $85: Pay $42.50 for short stock, receive $0 from option, plus $42.83 = $0.33 profit</li>
+            </ul>
+            
+            <p><strong>Conclusion:</strong> The option is undervalued by $0.32, creating a riskless arbitrage profit.</p>
+        </div>
+
+        <h2>VI. Exam-Relevant Considerations</h2>
+
+        <div class="important-note">
+            <h3>Key Formulas for CFA Exam</h3>
+            
+            <h4>1. Forward Interest Rates</h4>
+            <div class="formula-box" style="margin: 10px 0;">
+F_m,n = [(1 + r_n)^n / (1 + r_m)^m]^(1/(n-m)) - 1
+            </div>
+            
+            <h4>2. Forward Exchange Rates</h4>
+            <div class="formula-box" style="margin: 10px 0;">
+F = S × [(1 + r_domestic) / (1 + r_foreign)]
+            </div>
+            
+            <h4>3. Option Hedge Ratio</h4>
+            <div class="formula-box" style="margin: 10px 0;">
+Δ = (Option_up - Option_down) / (Stock_up - Stock_down)
+            </div>
+            
+            <h4>4. Replicating Portfolio Value</h4>
+            <div class="formula-box" style="margin: 10px 0;">
+Option_value = Δ × Stock_price - Borrowing
+            </div>
+        </div>
+
+        <div class="important-note">
+            <h3>Common Exam Traps</h3>
+            <ol>
+                <li><strong>Time period confusion:</strong> Ensure rates and time horizons match (annual vs. semi-annual)</li>
+                <li><strong>Currency quotation:</strong> Pay attention to which currency is in numerator vs. denominator</li>
+                <li><strong>Continuous vs. discrete compounding:</strong> Use appropriate formula version</li>
+                <li><strong>Hedge ratio sign:</strong> Positive for calls (buy stock), can be negative for puts</li>
+                <li><strong>Risk-free rate:</strong> Must use the rate matching the time horizon and currency</li>
+            </ol>
+        </div>
+
+        <div class="key-concept">
+            <h3>Conceptual Understanding for Success</h3>
+            <p>The CFA exam tests not just calculation ability but conceptual understanding:</p>
+            <ul>
+                <li><strong>Why cash flow additivity matters:</strong> Foundation for all no-arbitrage pricing</li>
+                <li><strong>Economic intuition:</strong> Interest rate and currency relationships reflect market expectations</li>
+                <li><strong>Arbitrage mechanics:</strong> Understand the specific trades that would exploit mispricings</li>
+                <li><strong>Portfolio equivalence:</strong> Different strategies with same cash flows must have same values</li>
+                <li><strong>Dynamic nature:</strong> Forward rates and option values change as market conditions evolve</li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <a href="cash-flow-additivity-intuitive.html" class="nav-button">← Intuitive Learning</a>
+            <a href="cash-flow-additivity-practice.html" class="nav-button">Practice Questions →</a>
+        </div>
+    </div>
+</body>
+</html>

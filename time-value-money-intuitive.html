@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Value of Money: Intuitive Learning - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .breadcrumb {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.4em;
+            margin: 30px 0 15px 0;
+        }
+
+        h4 {
+            color: #555;
+            font-size: 1.1em;
+            margin: 20px 0 10px 0;
+        }
+
+        .intuitive-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .analogy-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #ff8a65;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #fff6e5 0%, #ffe8cc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #ff9f43;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-family: 'Courier New', monospace;
+        }
+
+        .important-note {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ffd93d;
+            margin: 20px 0;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #667eea;
+        }
+
+        .nav-button.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .nav-button.secondary {
+            background: white;
+            color: #667eea;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .icon {
+            font-size: 1.3em;
+            margin-right: 5px;
+        }
+
+        strong {
+            color: #667eea;
+        }
+
+        .formula {
+            font-size: 1.2em;
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="breadcrumb">
+                <a href="#">CFA Level 1</a> > <a href="#">Quantitative Methods</a> > Time Value of Money
+            </div>
+            <div class="badge">✨ Intuitive Learning</div>
+            <h1>Time Value of Money in Fixed Income & Equity</h1>
+            <p class="subtitle">Understanding how money's value changes over time - explained simply!</p>
+        </div>
+
+        <div class="content">
+            <h2>🎯 Let's Start With a Simple Question</h2>
+            
+            <div class="intuitive-box">
+                <p><strong>Would you rather have ₹10,000 today or ₹10,000 one year from now?</strong></p>
+                <p style="margin-top: 15px;">If you're like most people, you'd choose the money today! But why? 💡</p>
+                <p style="margin-top: 15px;">Here's the thing: money you have <em>right now</em> can be invested to grow. If you put ₹10,000 in a fixed deposit today at 7% interest, you'd have ₹10,700 in a year. So ₹10,000 today is actually <strong>worth more</strong> than ₹10,000 in the future!</p>
+                <p style="margin-top: 15px;">This fundamental idea - that money available today is worth more than the same amount in the future - is called the <strong>Time Value of Money</strong>. It's the foundation for understanding bonds, stocks, loans, and basically every investment decision you'll ever make! 🚀</p>
+            </div>
+
+            <h2>💰 The Magic Formula: Present Value and Future Value</h2>
+
+            <div class="analogy-box">
+                <h3>🎪 Think of Money Like a Plant 🌱</h3>
+                <p>Imagine you plant a seed (your money today). Over time, with the right conditions (interest rate), it grows into a tree (future value). The formula tells us exactly how big that tree will be!</p>
+            </div>
+
+            <div class="formula-box">
+                <h3>The Growth Formula (Future Value)</h3>
+                <div class="formula">
+                    FV = PV × (1 + r)ᵗ
+                </div>
+                <p style="margin-top: 15px;"><strong>What does this mean in plain English?</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>FV</strong> = Future Value (how much you'll have later)</li>
+                    <li><strong>PV</strong> = Present Value (how much you have now)</li>
+                    <li><strong>r</strong> = Interest rate per period (the growth rate)</li>
+                    <li><strong>t</strong> = Number of time periods (how long you wait)</li>
+                </ul>
+            </div>
+
+            <div class="intuitive-box">
+                <h3>🔍 Let's Break Down the Algebra (Super Simply!)</h3>
+                <p><strong>Why do we multiply by (1 + r)?</strong></p>
+                <p style="margin-top: 10px;">Think about it this way: If you have ₹100 and earn 10% interest:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>You keep your original ₹100 → that's the "1"</li>
+                    <li>You earn 10% more → that's the "r" (0.10)</li>
+                    <li>Together you have 1.10 times your money → (1 + 0.10) = 1.10</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Why the power of t?</strong></p>
+                <p style="margin-top: 10px;">The "t" represents compounding - earning interest on your interest!</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Year 1: You multiply by (1 + r) once</li>
+                    <li>Year 2: You multiply by (1 + r) again on the NEW amount</li>
+                    <li>Year 3: You do it again!</li>
+                    <li>So for 3 years: (1 + r) × (1 + r) × (1 + r) = (1 + r)³</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>The reverse formula (Present Value):</strong></p>
+                <p style="margin-top: 10px;">If FV = PV × (1 + r)ᵗ, then to find PV, we just divide both sides:</p>
+                <div class="formula" style="margin-top: 15px;">
+                    PV = FV ÷ (1 + r)ᵗ  or  PV = FV × (1 + r)⁻ᵗ
+                </div>
+                <p style="margin-top: 10px;">This is called <strong>discounting</strong> - we're finding what future money is worth today!</p>
+            </div>
+
+            <div class="image-container">
+                <svg viewBox="0 0 800 400" style="width:100%; max-width:800px;">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#4caf50;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#8bc34a;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Background -->
+                    <rect x="0" y="0" width="800" height="400" fill="#f0f4f8"/>
+                    
+                    <!-- Timeline -->
+                    <line x1="100" y1="200" x2="700" y2="200" stroke="#667eea" stroke-width="3"/>
+                    <polygon points="700,200 690,195 690,205" fill="#667eea"/>
+                    
+                    <!-- Present Value -->
+                    <circle cx="150" cy="200" r="60" fill="url(#grad1)" opacity="0.9"/>
+                    <text x="150" y="195" text-anchor="middle" fill="white" font-size="16" font-weight="bold">PV</text>
+                    <text x="150" y="215" text-anchor="middle" fill="white" font-size="20" font-weight="bold">₹10,000</text>
+                    <text x="150" y="280" text-anchor="middle" fill="#333" font-size="16">Today</text>
+                    
+                    <!-- Growth Arrow -->
+                    <path d="M 220 180 Q 400 100 580 180" stroke="#ff6b9d" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+                    <text x="400" y="120" text-anchor="middle" fill="#ff6b9d" font-size="18" font-weight="bold">× (1 + 0.07)³</text>
+                    <text x="400" y="145" text-anchor="middle" fill="#666" font-size="14">Grows at 7% for 3 years</text>
+                    
+                    <!-- Future Value -->
+                    <circle cx="650" cy="200" r="70" fill="url(#grad2)" opacity="0.9"/>
+                    <text x="650" y="195" text-anchor="middle" fill="white" font-size="16" font-weight="bold">FV</text>
+                    <text x="650" y="215" text-anchor="middle" fill="white" font-size="20" font-weight="bold">₹12,250</text>
+                    <text x="650" y="280" text-anchor="middle" fill="#333" font-size="16">3 Years Later</text>
+                    
+                    <!-- Interest earnings breakdown -->
+                    <rect x="550" y="310" width="180" height="70" fill="#fff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="640" y="330" text-anchor="middle" fill="#667eea" font-size="14" font-weight="bold">Interest Earned:</text>
+                    <text x="640" y="350" text-anchor="middle" fill="#333" font-size="16">₹12,250 - ₹10,000</text>
+                    <text x="640" y="370" text-anchor="middle" fill="#4caf50" font-size="18" font-weight="bold">= ₹2,250</text>
+                </svg>
+                <p style="margin-top: 15px; color: #666;"><em>Visual representation of how money grows over time with compound interest</em></p>
+            </div>
+
+            <div class="example-box">
+                <h3>🇮🇳 Indian Example: Planning for Your Child's Education</h3>
+                <p><strong>Scenario:</strong> You want to save ₹5,00,000 for your daughter's engineering college fees in 10 years. You found a recurring deposit that pays 8% annual interest. How much do you need to invest today?</p>
+                
+                <p style="margin-top: 15px;"><strong>Solution:</strong></p>
+                <p>We know the future value (₹5,00,000) and need to find the present value.</p>
+                <div class="formula">
+                    PV = ₹5,00,000 ÷ (1 + 0.08)¹⁰
+                </div>
+                <p style="margin-top: 10px;">Breaking it down step by step:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>(1.08)¹⁰ = 2.1589 (your money more than doubles!)</li>
+                    <li>PV = ₹5,00,000 ÷ 2.1589</li>
+                    <li><strong>PV = ₹2,31,600 approximately</strong></li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Answer:</strong> You need to invest ₹2,31,600 today to have ₹5,00,000 in 10 years! That's the power of compound interest! 🎓</p>
+            </div>
+
+            <div class="example-box">
+                <h3>🌍 Global Example: Retirement Planning</h3>
+                <p><strong>Scenario:</strong> Sarah invests $25,000 in a retirement fund that earns 9% annually. How much will she have in 20 years?</p>
+                
+                <p style="margin-top: 15px;"><strong>Solution:</strong></p>
+                <p>Here we know the present value and need to find the future value.</p>
+                <div class="formula">
+                    FV = $25,000 × (1 + 0.09)²⁰
+                </div>
+                <p style="margin-top: 10px;">Step by step:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>(1.09)²⁰ = 5.6044 (almost 6 times the original!)</li>
+                    <li>FV = $25,000 × 5.6044</li>
+                    <li><strong>FV = $140,110</strong></li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Answer:</strong> Sarah's investment will grow to $140,110 in 20 years - that's more than 5 times her initial investment! 📈</p>
+            </div>
+
+            <h2>📊 Fixed-Income Instruments: Understanding Bonds</h2>
+
+            <div class="intuitive-box">
+                <p><strong>What's a bond anyway?</strong> 💡</p>
+                <p style="margin-top: 15px;">Think of a bond as an IOU. When you buy a bond, you're lending money to a government or company. They promise to:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Pay you back the principal (face value) at maturity</li>
+                    <li>Pay you interest (coupon payments) along the way</li>
+                </ul>
+                <p style="margin-top: 15px;">The "yield-to-maturity" (YTM) is the total return you'll earn if you hold the bond until it matures. It's like the interest rate for the bond!</p>
+            </div>
+
+            <h3>🎯 Type 1: Discount Bonds (Zero-Coupon Bonds)</h3>
+
+            <div class="analogy-box">
+                <h3>🎁 Think of it Like a Gift Card</h3>
+                <p>Imagine buying a ₹1,000 gift card for ₹800. You pay less today and get the full value later. That discount (₹200) is essentially your interest! No monthly payments - just one lump sum at the end.</p>
+            </div>
+
+            <div class="image-container">
+                <svg viewBox="0 0 800 350" style="width:100%; max-width:800px;">
+                    <!-- Background -->
+                    <rect x="0" y="0" width="800" height="350" fill="#f8f9fa"/>
+                    
+                    <!-- Timeline -->
+                    <line x1="100" y1="175" x2="700" y2="175" stroke="#667eea" stroke-width="2"/>
+                    
+                    <!-- Time markers -->
+                    <line x1="150" y1="165" x2="150" y2="185" stroke="#667eea" stroke-width="2"/>
+                    <text x="150" y="210" text-anchor="middle" fill="#333" font-size="14">Year 0</text>
+                    <text x="150" y="230" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">Today</text>
+                    
+                    <line x1="650" y1="165" x2="650" y2="185" stroke="#667eea" stroke-width="2"/>
+                    <text x="650" y="210" text-anchor="middle" fill="#333" font-size="14">Year 5</text>
+                    <text x="650" y="230" text-anchor="middle" fill="#333" font-size="14" font-weight="bold">Maturity</text>
+                    
+                    <!-- Cash flows -->
+                    <!-- Outflow -->
+                    <rect x="110" y="80" width="80" height="60" fill="#ff6b9d" rx="5" opacity="0.8"/>
+                    <text x="150" y="105" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Pay</text>
+                    <text x="150" y="125" text-anchor="middle" fill="white" font-size="18" font-weight="bold">₹27</text>
+                    <path d="M 150 145 L 150 165" stroke="#ff6b9d" stroke-width="3" marker-end="url(#arrowRed)"/>
+                    <text x="150" y="60" text-anchor="middle" fill="#ff6b9d" font-size="14" font-weight="bold">(Outflow)</text>
+                    
+                    <!-- Inflow -->
+                    <rect x="610" y="80" width="80" height="60" fill="#4caf50" rx="5" opacity="0.8"/>
+                    <text x="650" y="105" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Receive</text>
+                    <text x="650" y="125" text-anchor="middle" fill="white" font-size="18" font-weight="bold">₹100</text>
+                    <path d="M 650 165 L 650 145" stroke="#4caf50" stroke-width="3" marker-end="url(#arrowGreen)"/>
+                    <text x="650" y="60" text-anchor="middle" fill="#4caf50" font-size="14" font-weight="bold">(Inflow)</text>
+                    
+                    <!-- Interest representation -->
+                    <rect x="300" y="260" width="200" height="70" fill="white" stroke="#667eea" stroke-width="2" rx="8"/>
+                    <text x="400" y="285" text-anchor="middle" fill="#667eea" font-size="14" font-weight="bold">Your Interest Earned:</text>
+                    <text x="400" y="305" text-anchor="middle" fill="#333" font-size="16">₹100 - ₹27 = ₹73</text>
+                    <text x="400" y="322" text-anchor="middle" fill="#4caf50" font-size="13">(That's about 22% total return!)</text>
+                    
+                    <!-- Arrow markers -->
+                    <defs>
+                        <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                            <polygon points="0,0 10,5 0,10" fill="#ff6b9d"/>
+                        </marker>
+                        <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                            <polygon points="0,0 10,5 0,10" fill="#4caf50"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <p style="margin-top: 15px; color: #666;"><em>Discount bond: You pay less today and receive full value at maturity</em></p>
+            </div>
+
+            <div class="example-box">
+                <h3>🇮🇳 Indian Example: Government Bond Strip</h3>
+                <p><strong>Scenario:</strong> The Reserve Bank of India offers a 20-year government bond strip (zero-coupon) with a yield of 6.70%. What price should you pay today for ₹100 face value?</p>
+                
+                <p style="margin-top: 15px;"><strong>Solution:</strong></p>
+                <div class="formula">
+                    PV = ₹100 ÷ (1 + 0.067)²⁰
+                </div>
+                <p style="margin-top: 10px;">Calculating:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>(1.067)²⁰ = 3.66</li>
+                    <li>PV = ₹100 ÷ 3.66</li>
+                    <li><strong>PV = ₹27.33</strong></li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Answer:</strong> You should pay ₹27.33 today to receive ₹100 in 20 years. The ₹72.67 difference is your interest earned over 20 years!</p>
+                
+                <div class="important-note" style="margin-top: 20px;">
+                    <p><strong>⚠️ Important Insight:</strong> Notice how you're paying much less than face value. This is why they're called "discount" bonds - you buy them at a discount!</p>
+                </div>
+            </div>
+
+            <h3>💸 What Happens When Interest Rates Change?</h3>
+
+            <div class="intuitive-box">
+                <p><strong>Here's a key principle:</strong> Bond prices and interest rates move in <em>opposite</em> directions! 🔄</p>
+                <p style="margin-top: 15px;"><strong>Think about it this way:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>If interest rates go UP → New bonds offer better returns → Your old bond becomes less attractive → Price goes DOWN</li>
+                    <li>If interest rates go DOWN → New bonds offer worse returns → Your old bond becomes more attractive → Price goes UP</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>📉 Seeing the Inverse Relationship</h3>
+                <p><strong>Continuing the Indian example:</strong> What if interest rates suddenly jump to 7.70%? What's the new bond price?</p>
+                
+                <p style="margin-top: 15px;"><strong>Solution:</strong></p>
+                <div class="formula">
+                    PV = ₹100 ÷ (1 + 0.077)²⁰ = ₹100 ÷ 4.41 = ₹22.68
+                </div>
+                
+                <p style="margin-top: 15px;"><strong>Result:</strong> Price dropped from ₹27.33 to ₹22.68 - that's a loss of ₹4.65!</p>
+                <p style="margin-top: 10px;">When interest rates went up by 1%, the bond price fell. This is the <strong>inverse relationship</strong> in action! 📊</p>
+            </div>
+
+            <h3>🎈 Type 2: Coupon Bonds (Regular Interest Payments)</h3>
+
+            <div class="analogy-box">
+                <h3>🏠 Think of it Like Rental Income</h3>
+                <p>Imagine owning a rental property. Every month, you receive rent (like coupon payments). At the end, you also get the property back (like receiving the principal). A coupon bond works the same way - regular income plus your money back at the end!</p>
+            </div>
+
+            <div class="image-container">
+                <svg viewBox="0 0 900 400" style="width:100%; max-width:900px;">
+                    <!-- Background -->
+                    <rect x="0" y="0" width="900" height="400" fill="#f0f4f8"/>
+                    
+                    <!-- Title -->
+                    <text x="450" y="30" text-anchor="middle" fill="#667eea" font-size="20" font-weight="bold">Coupon Bond Cash Flows (5-Year Bond)</text>
+                    
+                    <!-- Timeline -->
+                    <line x1="50" y1="200" x2="850" y2="200" stroke="#667eea" stroke-width="3"/>
+                    
+                    <!-- Initial payment -->
+                    <rect x="20" y="250" width="60" height="50" fill="#ff6b9d" rx="5"/>
+                    <text x="50" y="275" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Pay</text>
+                    <text x="50" y="292" text-anchor="middle" fill="white" font-size="16">₹100</text>
+                    <text x="50" y="330" text-anchor="middle" fill="#333" font-size="13">Today</text>
+                    
+                    <!-- Coupon payments (Years 1-5) -->
+                    <g id="year1">
+                        <rect x="140" y="100" width="80" height="60" fill="#4caf50" rx="5" opacity="0.8"/>
+                        <text x="180" y="125" text-anchor="middle" fill="white" font-size="13">Coupon</text>
+                        <text x="180" y="145" text-anchor="middle" fill="white" font-size="16" font-weight="bold">₹6.70</text>
+                        <line x1="180" y1="165" x2="180" y2="195" stroke="#4caf50" stroke-width="2"/>
+                        <text x="180" y="230" text-anchor="middle" fill="#333" font-size="12">Year 1</text>
+                    </g>
+                    
+                    <g id="year2">
+                        <rect x="260" y="100" width="80" height="60" fill="#4caf50" rx="5" opacity="0.8"/>
+                        <text x="300" y="125" text-anchor="middle" fill="white" font-size="13">Coupon</text>
+                        <text x="300" y="145" text-anchor="middle" fill="white" font-size="16" font-weight="bold">₹6.70</text>
+                        <line x1="300" y1="165" x2="300" y2="195" stroke="#4caf50" stroke-width="2"/>
+                        <text x="300" y="230" text-anchor="middle" fill="#333" font-size="12">Year 2</text>
+                    </g>
+                    
+                    <g id="year3">
+                        <rect x="380" y="100" width="80" height="60" fill="#4caf50" rx="5" opacity="0.8"/>
+                        <text x="420" y="125" text-anchor="middle" fill="white" font-size="13">Coupon</text>
+                        <text x="420" y="145" text-anchor="middle" fill="white" font-size="16" font-weight="bold">₹6.70</text>
+                        <line x1="420" y1="165" x2="420" y2="195" stroke="#4caf50" stroke-width="2"/>
+                        <text x="420" y="230" text-anchor="middle" fill="#333" font-size="12">Year 3</text>
+                    </g>
+                    
+                    <g id="year4">
+                        <rect x="500" y="100" width="80" height="60" fill="#4caf50" rx="5" opacity="0.8"/>
+                        <text x="540" y="125" text-anchor="middle" fill="white" font-size="13">Coupon</text>
+                        <text x="540" y="145" text-anchor="middle" fill="white" font-size="16" font-weight="bold">₹6.70</text>
+                        <line x1="540" y1="165" x2="540" y2="195" stroke="#4caf50" stroke-width="2"/>
+                        <text x="540" y="230" text-anchor="middle" fill="#333" font-size="12">Year 4</text>
+                    </g>
+                    
+                    <g id="year5">
+                        <rect x="620" y="70" width="80" height="90" fill="#4caf50" rx="5" opacity="0.9"/>
+                        <text x="660" y="95" text-anchor="middle" fill="white" font-size="13">Coupon</text>
+                        <text x="660" y="115" text-anchor="middle" fill="white" font-size="16" font-weight="bold">₹6.70</text>
+                        <text x="660" y="135" text-anchor="middle" fill="white" font-size="12">+</text>
+                        <text x="660" y="152" text-anchor="middle" fill="white" font-size="13">Principal</text>
+                        <text x="660" y="142" text-anchor="middle" fill="white" font-size="18" font-weight="bold">₹100</text>
+                        <line x1="660" y1="165" x2="660" y2="195" stroke="#4caf50" stroke-width="3"/>
+                        <text x="660" y="230" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">Year 5</text>
+                        <text x="660" y="245" text-anchor="middle" fill="#ff6b9d" font-size="11">(Maturity)</text>
+                    </g>
+                    
+                    <!-- Summary box -->
+                    <rect x="750" y="100" width="130" height="100" fill="white" stroke="#667eea" stroke-width="2" rx="8"/>
+                    <text x="815" y="125" text-anchor="middle" fill="#667eea" font-size="14" font-weight="bold">Total Income:</text>
+                    <text x="815" y="150" text-anchor="middle" fill="#333" font-size="13">Coupons:</text>
+                    <text x="815" y="168" text-anchor="middle" fill="#4caf50" font-size="14">₹33.50</text>
+                    <text x="815" y="185" text-anchor="middle" fill="#333" font-size="13">Principal:</text>
+                    <text x="815" y="203" text-anchor="middle" fill="#4caf50" font-size="14">₹100</text>
+                </svg>
+                <p style="margin-top: 15px; color: #666;"><em>Coupon bond: Regular interest payments plus principal at maturity</em></p>
+            </div>
+
+            <div class="formula-box">
+                <h3>Pricing a Coupon Bond</h3>
+                <p style="margin-bottom: 15px;">To find the present value, we discount each cash flow:</p>
+                <div class="formula">
+                    PV = (Coupon₁)/(1+r)¹ + (Coupon₂)/(1+r)² + ... + (Couponₙ + Principal)/(1+r)ⁿ
+                </div>
+                <p style="margin-top: 15px;"><strong>Simplified explanation:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Take each future cash flow</li>
+                    <li>Discount it back to today using the formula</li>
+                    <li>Add them all up!</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h3>🇮🇳 Indian Example: Semiannual Coupon Bond</h3>
+                <p><strong>Scenario:</strong> Republic of India issues a 20-year bond with 6.70% annual coupon paid semiannually. If YTM is 6.70%, what's the price?</p>
+                
+                <p style="margin-top: 15px;"><strong>Key insight:</strong> When coupon rate equals YTM, the bond trades at par (₹100)!</p>
+                
+                <p style="margin-top: 15px;"><strong>But let's verify with calculation:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Semiannual coupon = ₹6.70/2 = ₹3.35</li>
+                    <li>Semiannual rate = 6.70%/2 = 3.35%</li>
+                    <li>Number of periods = 20 years × 2 = 40 periods</li>
+                </ul>
+                
+                <div class="formula" style="margin-top: 15px;">
+                    PV = ₹3.35/(1.0335)¹ + ₹3.35/(1.0335)² + ... + ₹103.35/(1.0335)⁴⁰
+                </div>
+                
+                <p style="margin-top: 15px;"><strong>Result:</strong> PV = ₹100 exactly!</p>
+                
+                <div class="important-note" style="margin-top: 20px;">
+                    <p><strong>💡 Remember This Rule:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Coupon Rate = YTM → Bond trades at Par (₹100)</li>
+                        <li>Coupon Rate > YTM → Bond trades at Premium (>₹100)</li>
+                        <li>Coupon Rate < YTM → Bond trades at Discount (<₹100)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <h3>🌍 Global Example: Greek Government Bond</h3>
+                <p><strong>Scenario:</strong> Greece issues a 7-year bond with 2% annual coupon when YTM is 2%. Two years later, inflation rises and YTM jumps to 3.532%. What's the new price?</p>
+                
+                <p style="margin-top: 15px;"><strong>At issuance (YTM = 2%):</strong></p>
+                <p>Since coupon rate = YTM, price = €100</p>
+                
+                <p style="margin-top: 15px;"><strong>After 2 years (YTM = 3.532%, 5 years remaining):</strong></p>
+                <div class="formula">
+                    PV = €2/(1.03532)¹ + €2/(1.03532)² + ... + €102/(1.03532)⁵
+                </div>
+                
+                <p style="margin-top: 15px;"><strong>Result:</strong> PV = €93.09</p>
+                
+                <p style="margin-top: 15px;"><strong>Interpretation:</strong> When interest rates rose, the bond price fell from €100 to €93.09. Investors holding this bond suffered a capital loss of €6.91! This shows the interest rate risk in bonds. 📉</p>
+            </div>
+
+            <h3>♾️ Type 3: Perpetual Bonds (Forever Payments!)</h3>
+
+            <div class="analogy-box">
+                <h3>🎼 Think of it Like Royalty Payments</h3>
+                <p>Imagine you wrote a hit song that plays on the radio forever. You get royalties every quarter, forever! That's like a perpetual bond - it never matures, so you keep getting paid indefinitely.</p>
+            </div>
+
+            <div class="formula-box">
+                <h3>The Perpetuity Formula (Super Simple!)</h3>
+                <div class="formula">
+                    PV = Payment ÷ Interest Rate
+                </div>
+                <p style="margin-top: 15px;"><strong>Why does this work?</strong></p>
+                <p style="margin-top: 10px;">When payments go on forever, the complicated discounting formula simplifies beautifully! If you get ₹100 every year at 10% interest, you just divide: ₹100 ÷ 0.10 = ₹1,000</p>
+            </div>
+
+            <div class="example-box">
+                <h3>🌍 Global Example: KB Financial Perpetual Bond</h3>
+                <p><strong>Scenario:</strong> KB Financial issued a perpetual bond with 3.30% annual coupon (paid quarterly). The bond price is KRW 97.03 per KRW 100 face value. What's the YTM?</p>
+                
+                <p style="margin-top: 15px;"><strong>Solution:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Quarterly payment = 3.30% × KRW 100 ÷ 4 = KRW 0.825</li>
+                    <li>Using the formula: PV = Payment ÷ r</li>
+                    <li>KRW 97.03 = KRW 0.825 ÷ r</li>
+                    <li>r = KRW 0.825 ÷ KRW 97.03 = 0.85% per quarter</li>
+                    <li>Annual YTM = 0.85% × 4 = <strong>3.40%</strong></li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Insight:</strong> Notice the bond trades below par (97.03 < 100). This makes sense because the coupon rate (3.30%) is less than the YTM (3.40%)!</p>
+            </div>
+
+            <h2>🏠 Annuities: Level Payment Instruments (Like a Home Loan!)</h2>
+
+            <div class="intuitive-box">
+                <p><strong>What's an annuity?</strong> 💭</p>
+                <p style="margin-top: 15px;">Think of your home loan or car loan. Every month, you pay the same amount - part goes to interest, part reduces the principal. That's an annuity - a series of equal payments over time!</p>
+            </div>
+
+            <div class="image-container">
+                <svg viewBox="0 0 800 450" style="width:100%; max-width:800px;">
+                    <!-- Background -->
+                    <rect x="0" y="0" width="800" height="450" fill="#f0f4f8"/>
+                    
+                    <!-- Title -->
+                    <text x="400" y="30" text-anchor="middle" fill="#667eea" font-size="18" font-weight="bold">30-Year Mortgage: How Your Payment Splits</text>
+                    
+                    <!-- Legend -->
+                    <rect x="50" y="50" width="20" height="15" fill="#ff6b9d"/>
+                    <text x="75" y="62" fill="#333" font-size="13">Interest Payment</text>
+                    <rect x="200" y="50" width="20" height="15" fill="#4caf50"/>
+                    <text x="225" y="62" fill="#333" font-size="13">Principal Payment</text>
+                    
+                    <!-- Bar chart showing payment split over time -->
+                    <!-- Month 1 -->
+                    <g id="month1">
+                        <rect x="80" y="330" width="40" height="70" fill="#ff6b9d"/>
+                        <rect x="80" y="320" width="40" height="10" fill="#4caf50"/>
+                        <text x="100" y="415" text-anchor="middle" fill="#333" font-size="11">Month 1</text>
+                        <text x="100" y="310" text-anchor="middle" fill="#333" font-size="10">79%</text>
+                    </g>
+                    
+                    <!-- Year 5 -->
+                    <g id="year5">
+                        <rect x="200" y="320" width="40" height="60" fill="#ff6b9d"/>
+                        <rect x="200" y="300" width="40" height="20" fill="#4caf50"/>
+                        <text x="220" y="415" text-anchor="middle" fill="#333" font-size="11">Year 5</text>
+                        <text x="220" y="290" text-anchor="middle" fill="#333" font-size="10">72%</text>
+                    </g>
+                    
+                    <!-- Year 15 -->
+                    <g id="year15">
+                        <rect x="380" y="280" width="40" height="50" fill="#ff6b9d"/>
+                        <rect x="380" y="230" width="40" height="50" fill="#4caf50"/>
+                        <text x="400" y="415" text-anchor="middle" fill="#333" font-size="11">Year 15</text>
+                        <text x="400" y="220" text-anchor="middle" fill="#333" font-size="10">50/50</text>
+                    </g>
+                    
+                    <!-- Year 25 -->
+                    <g id="year25">
+                        <rect x="560" y="250" width="40" height="20" fill="#ff6b9d"/>
+                        <rect x="560" y="170" width="40" height="80" fill="#4caf50"/>
+                        <text x="580" y="415" text-anchor="middle" fill="#333" font-size="11">Year 25</text>
+                        <text x="580" y="160" text-anchor="middle" fill="#333" font-size="10">72%</text>
+                    </g>
+                    
+                    <!-- Month 360 -->
+                    <g id="month360">
+                        <rect x="680" y="265" width="40" height="5" fill="#ff6b9d"/>
+                        <rect x="680" y="100" width="40" height="165" fill="#4caf50"/>
+                        <text x="700" y="415" text-anchor="middle" fill="#333" font-size="11">Final</text>
+                        <text x="700" y="90" text-anchor="middle" fill="#333" font-size="10">99.6%</text>
+                    </g>
+                    
+                    <!-- Baseline -->
+                    <line x1="60" y1="400" x2="740" y2="400" stroke="#333" stroke-width="2"/>
+                    
+                    <!-- Arrows and annotations -->
+                    <path d="M 120 120 Q 180 160 220 180" stroke="#ff6b9d" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+                    <text x="140" y="110" fill="#ff6b9d" font-size="13" font-weight="bold">Interest decreases</text>
+                    
+                    <path d="M 640 140 Q 580 110 540 95" stroke="#4caf50" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+                    <text x="600" y="150" fill="#4caf50" font-size="13" font-weight="bold">Principal increases</text>
+                </svg>
+                <p style="margin-top: 15px; color: #666;"><em>As time passes, less of your payment goes to interest and more goes to principal!</em></p>
+            </div>
+
+            <div class="formula-box">
+                <h3>The Annuity Payment Formula</h3>
+                <p style="margin-bottom: 15px;">To calculate the equal periodic payment:</p>
+                <div class="formula">
+                    Payment = [r × PV] ÷ [1 - (1 + r)⁻ᵗ]
+                </div>
+                <p style="margin-top: 15px;"><strong>Breaking it down:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>r</strong> = interest rate per period</li>
+                    <li><strong>PV</strong> = present value (loan amount)</li>
+                    <li><strong>t</strong> = total number of payments</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>The numerator (r × PV):</strong> This is how much interest you'd owe in one period</p>
+                <p><strong>The denominator [1 - (1 + r)⁻ᵗ]:</strong> This adjusts for the fact that you're making multiple payments over time</p>
+            </div>
+
+            <div class="example-box">
+                <h3>🏠 Indian Example: Home Loan EMI</h3>
+                <p><strong>Scenario:</strong> You're buying a house worth ₹1 crore. The bank offers an 80% loan (₹80 lakhs) at 5.25% annual interest for 30 years. What's your monthly EMI?</p>
+                
+                <p style="margin-top: 15px;"><strong>Given:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>PV = ₹80,00,000</li>
+                    <li>Annual rate = 5.25%, so monthly rate (r) = 5.25%/12 = 0.4375%</li>
+                    <li>Number of payments (t) = 30 years × 12 = 360 months</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Solution:</strong></p>
+                <div class="formula">
+                    Payment = [0.4375% × ₹80,00,000] ÷ [1 - (1.004375)⁻³⁶⁰]
+                </div>
+                
+                <p style="margin-top: 10px;">Step by step:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Numerator = 0.004375 × ₹80,00,000 = ₹35,000</li>
+                    <li>(1.004375)⁻³⁶⁰ = 0.2086</li>
+                    <li>Denominator = 1 - 0.2086 = 0.7914</li>
+                    <li>Payment = ₹35,000 ÷ 0.7914 = <strong>₹44,217.63</strong></li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Answer:</strong> Your monthly EMI is ₹44,218 (approximately)</p>
+                
+                <div class="important-note" style="margin-top: 20px;">
+                    <p><strong>💡 Fascinating Breakdown:</strong></p>
+                    <p style="margin-top: 10px;"><strong>First Payment:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>Interest = ₹80,00,000 × 0.4375% = ₹35,000</li>
+                        <li>Principal = ₹44,218 - ₹35,000 = ₹9,218</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Last Payment (Month 360):</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>Interest = ₹192</li>
+                        <li>Principal = ₹44,025</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Notice how the split completely flips over 30 years! 🔄</p>
+                </div>
+            </div>
+
+            <h2>📈 Equity Instruments: Valuing Stocks</h2>
+
+            <div class="intuitive-box">
+                <p><strong>How are stocks different from bonds?</strong> 🤔</p>
+                <p style="margin-top: 15px;">With bonds, you know exactly what you'll get - fixed interest and your principal back. But stocks are different:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>No maturity date - they can last forever!</li>
+                    <li>Dividends are not guaranteed - companies pay them when they want</li>
+                    <li>The company can grow (or shrink), affecting stock price</li>
+                </ul>
+                <p style="margin-top: 15px;">So how do we value something with so much uncertainty? We use dividend discount models! 💡</p>
+            </div>
+
+            <h3>💎 Type 1: Constant Dividends (Like Preferred Stock)</h3>
+
+            <div class="analogy-box">
+                <h3>🎰 Think of it Like a Slot Machine... That Always Pays!</h3>
+                <p>Imagine a slot machine that pays you ₹150 every year, forever. How much would you pay for this machine? Well, if you want a 15% return, you'd pay ₹1,000 (because ₹150 ÷ 0.15 = ₹1,000). That's exactly how we value stocks with constant dividends!</p>
+            </div>
+
+            <div class="formula-box">
+                <h3>Constant Dividend Formula (Perpetuity Again!)</h3>
+                <div class="formula">
+                    Stock Price = Dividend ÷ Required Return
+                </div>
+                <p style="margin-top: 15px;">This is the same perpetuity formula we saw with perpetual bonds!</p>
+            </div>
+
+            <div class="example-box">
+                <h3>🌍 Global Example: Shipline PLC</h3>
+                <p><strong>Scenario:</strong> Shipline PLC pays £1.50 dividend annually, expected to continue forever. If investors require a 15% return, what's the stock price?</p>
+                
+                <p style="margin-top: 15px;"><strong>Solution:</strong></p>
+                <div class="formula">
+                    Price = £1.50 ÷ 0.15 = £10.00
+                </div>
+                
+                <p style="margin-top: 15px;"><strong>Answer:</strong> The stock should trade at £10 per share.</p>
+            </div>
+
+            <h3>🌱 Type 2: Constant Growth (Gordon Growth Model)</h3>
+
+            <div class="analogy-box">
+                <h3>🌳 Think of it Like a Fruit Tree</h3>
+                <p>Imagine a mango tree that produces 100 mangoes this year. But it's still growing! Next year it gives 106 mangoes (6% growth), then 112 the year after. If this growth continues forever, how much is the tree worth? That's the Gordon Growth Model for stocks!</p>
+            </div>
+
+            <div class="image-container">
+                <svg viewBox="0 0 800 400" style="width:100%; max-width:800px;">
+                    <!-- Background -->
+                    <rect x="0" y="0" width="800" height="400" fill="#f0f4f8"/>
+                    
+                    <!-- Title -->
+                    <text x="400" y="30" text-anchor="middle" fill="#667eea" font-size="20" font-weight="bold">Dividend Growth Over Time</text>
+                    
+                    <!-- Timeline -->
+                    <line x1="100" y1="350" x2="700" y2="350" stroke="#333" stroke-width="2"/>
+                    
+                    <!-- Growth bars -->
+                    <rect x="120" y="280" width="60" height="70" fill="#4caf50" rx="5"/>
+                    <text x="150" y="270" text-anchor="middle" fill="#4caf50" font-size="14" font-weight="bold">£1.50</text>
+                    <text x="150" y="375" text-anchor="middle" fill="#333" font-size="13">Year 0</text>
+                    
+                    <rect x="240" y="250" width="60" height="100" fill="#4caf50" rx="5"/>
+                    <text x="270" y="240" text-anchor="middle" fill="#4caf50" font-size="14" font-weight="bold">£1.59</text>
+                    <text x="270" y="375" text-anchor="middle" fill="#333" font-size="13">Year 1</text>
+                    
+                    <rect x="360" y="220" width="60" height="130" fill="#4caf50" rx="5"/>
+                    <text x="390" y="210" text-anchor="middle" fill="#4caf50" font-size="14" font-weight="bold">£1.69</text>
+                    <text x="390" y="375" text-anchor="middle" fill="#333" font-size="13">Year 2</text>
+                    
+                    <rect x="480" y="190" width="60" height="160" fill="#4caf50" rx="5"/>
+                    <text x="510" y="180" text-anchor="middle" fill="#4caf50" font-size="14" font-weight="bold">£1.79</text>
+                    <text x="510" y="375" text-anchor="middle" fill="#333" font-size="13">Year 3</text>
+                    
+                    <rect x="600" y="160" width="60" height="190" fill="#4caf50" rx="5"/>
+                    <text x="630" y="150" text-anchor="middle" fill="#4caf50" font-size="14" font-weight="bold">£1.90</text>
+                    <text x="630" y="375" text-anchor="middle" fill="#333" font-size="13">Year 4</text>
+                    
+                    <!-- Growth arrow -->
+                    <path d="M 180 260 L 620 140" stroke="#ff6b9d" stroke-width="3" stroke-dasharray="5,5"/>
+                    <polygon points="620,140 610,145 615,150" fill="#ff6b9d"/>
+                    <text x="400" y="180" text-anchor="middle" fill="#ff6b9d" font-size="16" font-weight="bold">6% Growth Rate</text>
+                    
+                    <!-- Formula box -->
+                    <rect x="50" y="50" width="260" height="80" fill="white" stroke="#667eea" stroke-width="2" rx="8"/>
+                    <text x="180" y="75" text-anchor="middle" fill="#667eea" font-size="14" font-weight="bold">Gordon Growth Formula:</text>
+                    <text x="180" y="100" text-anchor="middle" fill="#333" font-size="16">Price = D₁ ÷ (r - g)</text>
+                    <text x="180" y="120" text-anchor="middle" fill="#666" font-size="12">where g = growth rate</text>
+                </svg>
+                <p style="margin-top: 15px; color: #666;"><em>Dividends growing at a constant rate over time</em></p>
+            </div>
+
+            <div class="formula-box">
+                <h3>The Gordon Growth Model</h3>
+                <div class="formula">
+                    Stock Price = D₁ ÷ (r - g)
+                </div>
+                <p style="margin-top: 15px;"><strong>Where:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>D₁</strong> = Next year's expected dividend = D₀ × (1 + g)</li>
+                    <li><strong>r</strong> = Required rate of return</li>
+                    <li><strong>g</strong> = Constant growth rate</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Why (r - g)?</strong> Think of it this way: if a company grows at 6% but you want 15% return, the "net" discount rate is 9% (15% - 6%). The growth partially offsets the discounting!</p>
+            </div>
+
+            <div class="example-box">
+                <h3>🌍 Continuing Shipline PLC Example</h3>
+                <p><strong>Scenario:</strong> What if Shipline's £1.50 dividend grows at 6% annually instead of staying constant? Required return is still 15%.</p>
+                
+                <p style="margin-top: 15px;"><strong>Solution:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Current dividend (D₀) = £1.50</li>
+                    <li>Next dividend (D₁) = £1.50 × (1.06) = £1.59</li>
+                    <li>Required return (r) = 15%</li>
+                    <li>Growth rate (g) = 6%</li>
+                </ul>
+                
+                <div class="formula" style="margin-top: 15px;">
+                    Price = £1.59 ÷ (0.15 - 0.06) = £1.59 ÷ 0.09 = £17.67
+                </div>
+                
+                <p style="margin-top: 15px;"><strong>Comparison:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>With NO growth: £10.00</li>
+                    <li>With 6% growth: £17.67</li>
+                </ul>
+                
+                <p style="margin-top: 15px;"><strong>Insight:</strong> The growth assumption makes a HUGE difference in valuation! Growth is worth £7.67 more per share. 🚀</p>
+            </div>
+
+            <h3>🚀 Type 3: Two-Stage Growth (Reality Check!)</h3>
+
+            <div class="intuitive-box">
+                <p><strong>Here's the reality:</strong> Companies don't grow at the same rate forever! 📊</p>
+                <p style="margin-top: 15px;">Think about a startup: it might grow super fast initially (30-40% per year), but as it matures, growth slows down to more sustainable levels (5-7%). The two-stage model captures this reality!</p>
+            </div>
+
+            <div class="image-container">
+                <svg viewBox="0 0 800 350" style="width:100%; max-width:800px;">
+                    <!-- Background -->
+                    <rect x="0" y="0" width="800" height="350" fill="#f0f4f8"/>
+                    
+                    <!-- Title -->
+                    <text x="400" y="30" text-anchor="middle" fill="#667eea" font-size="18" font-weight="bold">Two-Stage Dividend Growth Model</text>
+                    
+                    <!-- Stage 1: High Growth -->
+                    <rect x="50" y="70" width="300" height="120" fill="#ff6b9d" fill-opacity="0.2" stroke="#ff6b9d" stroke-width="3" rx="10"/>
+                    <text x="200" y="95" text-anchor="middle" fill="#ff6b9d" font-size="16" font-weight="bold">Stage 1: High Growth</text>
+                    <text x="200" y="120" text-anchor="middle" fill="#333" font-size="14">Years 1-3</text>
+                    <text x="200" y="145" text-anchor="middle" fill="#333" font-size="18" font-weight="bold">g = 6%</text>
+                    <text x="200" y="170" text-anchor="middle" fill="#666" font-size="13">D grows: £1.59 → £1.69 → £1.79</text>
+                    
+                    <!-- Arrow transition -->
+                    <path d="M 360 130 L 440 130" stroke="#667eea" stroke-width="3"/>
+                    <polygon points="440,130 430,125 430,135" fill="#667eea"/>
+                    <text x="400" y="120" text-anchor="middle" fill="#667eea" font-size="13" font-weight="bold">Transition</text>
+                    
+                    <!-- Stage 2: Mature Growth -->
+                    <rect x="450" y="70" width="300" height="120" fill="#4caf50" fill-opacity="0.2" stroke="#4caf50" stroke-width="3" rx="10"/>
+                    <text x="600" y="95" text-anchor="middle" fill="#4caf50" font-size="16" font-weight="bold">Stage 2: Mature Growth</text>
+                    <text x="600" y="120" text-anchor="middle" fill="#333" font-size="14">Year 4 onwards (forever)</text>
+                    <text x="600" y="145" text-anchor="middle" fill="#333" font-size="18" font-weight="bold">g = 2%</text>
+                    <text x="600" y="170" text-anchor="middle" fill="#666" font-size="13">D grows: £1.82 → £1.86 → ...</text>
+                    
+                    <!-- Calculation breakdown -->
+                    <rect x="100" y="220" width="600" height="100" fill="white" stroke="#667eea" stroke-width="2" rx="8"/>
+                    <text x="400" y="245" text-anchor="middle" fill="#667eea" font-size="15" font-weight="bold">Valuation Formula:</text>
+                    <text x="400" y="270" text-anchor="middle" fill="#333" font-size="13">Stock Price = PV(Stage 1 dividends) + PV(Stage 2 terminal value)</text>
+                    <text x="200" y="295" text-anchor="middle" fill="#ff6b9d" font-size="13">Years 1-3 dividends</text>
+                    <text x="600" y="295" text-anchor="middle" fill="#4caf50" font-size="13">Value of all future dividends at Year 3</text>
+                </svg>
+                <p style="margin-top: 15px; color: #666;"><em>Companies typically experience high growth initially, then settle into slower, sustainable growth</em></p>
+            </div>
+
+            <div class="example-box">
+                <h3>🌍 Shipline Two-Stage Growth Example</h3>
+                <p><strong>Scenario:</strong> Shipline dividend grows at 6% for 3 years, then 2% forever. Required return is 15%. Current dividend is £1.50.</p>
+                
+                <p style="margin-top: 15px;"><strong>Step 1: Calculate high-growth dividends</strong></p>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Year</th>
+                        <th>Dividend</th>
+                        <th>Calculation</th>
+                        <th>PV at 15%</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>£1.59</td>
+                        <td>£1.50 × 1.06</td>
+                        <td>£1.38</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>£1.69</td>
+                        <td>£1.59 × 1.06</td>
+                        <td>£1.27</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>£1.79</td>
+                        <td>£1.69 × 1.06</td>
+                        <td>£1.18</td>
+                    </tr>
+                    <tr style="background: #e8f4f8; font-weight: bold;">
+                        <td colspan="3">Total PV of Stage 1</td>
+                        <td>£3.83</td>
+                    </tr>
+                </table>
+                
+                <p style="margin-top: 20px;"><strong>Step 2: Calculate terminal value (Stage 2)</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Year 4 dividend = £1.79 × 1.02 = £1.82</li>
+                    <li>Terminal value at Year 3 = £1.82 ÷ (0.15 - 0.02) = £14.04</li>
+                    <li>PV of terminal value = £14.04 ÷ (1.15)³ = £9.22</li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>Step 3: Total stock price</strong></p>
+                <div class="formula">
+                    Price = £3.83 + £9.22 = £13.05
+                </div>
+                
+                <div class="important-note" style="margin-top: 20px;">
+                    <p><strong>💡 Comparing All Three Models:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>No growth (0%): £10.00</li>
+                        <li>Constant growth (6%): £17.67</li>
+                        <li>Two-stage (6% then 2%): £13.05</li>
+                    </ul>
+                    <p style="margin-top: 10px;">The two-stage model gives a more realistic middle ground! 🎯</p>
+                </div>
+            </div>
+
+            <h2>🎓 Key Takeaways</h2>
+
+            <div class="important-note">
+                <h3>Remember These Core Concepts:</h3>
+                <ol style="margin-left: 25px; margin-top: 15px; line-height: 2;">
+                    <li><strong>Time Value of Money:</strong> Money today is worth more than money tomorrow because it can be invested to grow</li>
+                    <li><strong>Present vs Future Value:</strong> FV = PV × (1+r)ᵗ goes forward; PV = FV ÷ (1+r)ᵗ discounts back</li>
+                    <li><strong>Discount Bonds:</strong> One payment at maturity - the discount is your interest</li>
+                    <li><strong>Coupon Bonds:</strong> Regular interest + principal at end - price moves opposite to rates</li>
+                    <li><strong>Perpetual Bonds:</strong> Forever payments - just divide by the rate</li>
+                    <li><strong>Annuities:</strong> Equal payments over time - like a mortgage</li>
+                    <li><strong>Stock Valuation:</strong> Based on expected dividends discounted to present</li>
+                    <li><strong>Growth Matters:</strong> Higher growth = higher stock price</li>
+                </ol>
+            </div>
+
+            <div class="analogy-box" style="margin-top: 30px;">
+                <h3>🎯 The Big Picture</h3>
+                <p>All these concepts - bonds, stocks, loans, annuities - they all use the same fundamental principle: <strong>the time value of money</strong>. Whether you're pricing a government bond, valuing a company's stock, or calculating your home loan EMI, you're always asking the same question:</p>
+                <p style="margin-top: 15px; text-align: center; font-size: 1.2em; font-weight: bold; color: #667eea;">"What are future cash flows worth today?"</p>
+                <p style="margin-top: 15px;">Master this concept, and you've unlocked the foundation of finance! 🔑</p>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="#" class="nav-button secondary">← Previous LOS</a>
+            <a href="time-value-money-detailed.html" class="nav-button primary">Detailed Notes →</a>
+        </div>
+    </div>
+</body>
+</html>

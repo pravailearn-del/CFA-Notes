@@ -108,6 +108,15 @@
             border-color: #667eea;
         }
 
+        .los-card.available {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .los-card.available:hover {
+            border-color: white;
+        }
+
         .los-card.coming-soon {
             opacity: 0.6;
             cursor: not-allowed;
@@ -126,6 +135,10 @@
             color: inherit;
         }
 
+        .los-card.available .los-code {
+            color: #ffd700;
+        }
+
         .los-title {
             font-size: 1.1em;
             font-weight: bold;
@@ -141,6 +154,11 @@
             font-weight: bold;
         }
 
+        .status-available {
+            background: #4caf50;
+            color: white;
+        }
+
         .status-coming {
             background: #ff9800;
             color: white;
@@ -152,15 +170,38 @@
             flex-wrap: wrap;
             margin-top: 15px;
             padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .los-card.coming-soon .resources-section {
             border-top: 1px solid rgba(0,0,0,0.1);
         }
 
         .resource-link {
             font-size: 0.9em;
             padding: 8px 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+        }
+
+        .los-card.available .resource-link {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .los-card.available .resource-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .los-card.coming-soon .resource-link {
             background: rgba(0,0,0,0.05);
             color: #999;
-            border-radius: 5px;
+            cursor: not-allowed;
         }
 
         footer {
@@ -193,50 +234,50 @@
             <div class="los-grid">
                 
                 <!-- LOS 2.a -->
-                <div class="los-card coming-soon">
+                <div class="los-card available">
                     <div class="los-header">
                         <span class="los-code">LOS 2.a</span>
-                        <span class="status-badge status-coming">Coming Soon</span>
+                        <span class="status-badge status-available">✓ Available</span>
                     </div>
                     <div class="los-title">
                         Calculate and interpret the present value (PV) of fixed-income and equity instruments based on expected future cash flows
                     </div>
                     <div class="resources-section">
-                        <span class="resource-link">📖 Intuitive Learning</span>
-                        <span class="resource-link">📝 Detailed Notes</span>
-                        <span class="resource-link">✍️ Practice Questions</span>
+                        <a href="time-value-money-intuitive.html" class="resource-link">📖 Intuitive Learning</a>
+                        <a href="time-value-money-detailed.html" class="resource-link">📝 Detailed Notes</a>
+                        <a href="time-value-money-practice.html" class="resource-link">✍️ Practice Questions</a>
                     </div>
                 </div>
 
                 <!-- LOS 2.b -->
-                <div class="los-card coming-soon">
+                <div class="los-card available">
                     <div class="los-header">
                         <span class="los-code">LOS 2.b</span>
-                        <span class="status-badge status-coming">Coming Soon</span>
+                        <span class="status-badge status-available">✓ Available</span>
                     </div>
                     <div class="los-title">
                         Calculate and interpret the implied return of fixed-income instruments and required return and implied growth of equity instruments given the present value (PV) and cash flows
                     </div>
                     <div class="resources-section">
-                        <span class="resource-link">📖 Intuitive Learning</span>
-                        <span class="resource-link">📝 Detailed Notes</span>
-                        <span class="resource-link">✍️ Practice Questions</span>
+                        <a href="implied-return-growth-intuitive.html" class="resource-link">📖 Intuitive Learning</a>
+                        <a href="implied-return-growth-detailed.html" class="resource-link">📝 Detailed Notes</a>
+                        <a href="implied-return-growth-practice.html" class="resource-link">✍️ Practice Questions</a>
                     </div>
                 </div>
 
                 <!-- LOS 2.c -->
-                <div class="los-card coming-soon">
+                <div class="los-card available">
                     <div class="los-header">
                         <span class="los-code">LOS 2.c</span>
-                        <span class="status-badge status-coming">Coming Soon</span>
+                        <span class="status-badge status-available">✓ Available</span>
                     </div>
                     <div class="los-title">
                         Explain the cash flow additivity principle, its importance for the no-arbitrage condition, and its use in calculating implied forward interest rates, forward exchange rates, and option values
                     </div>
                     <div class="resources-section">
-                        <span class="resource-link">📖 Intuitive Learning</span>
-                        <span class="resource-link">📝 Detailed Notes</span>
-                        <span class="resource-link">✍️ Practice Questions</span>
+                        <a href="cash-flow-additivity-intuitive.html" class="resource-link">📖 Intuitive Learning</a>
+                        <a href="cash-flow-additivity-detailed.html" class="resource-link">📝 Detailed Notes</a>
+                        <a href="cash-flow-additivity-practice.html" class="resource-link">✍️ Practice Questions</a>
                     </div>
                 </div>
 

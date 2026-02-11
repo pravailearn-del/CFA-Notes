@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implied Return and Growth: Intuitive Learning - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .intuitive-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .analogy-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #ff8a65;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #fbc02d;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> &gt; <a href="#">Quantitative Methods</a> &gt; <a href="#">Time Value of Money</a> &gt; Implied Return and Growth
+        </div>
+
+        <span class="badge">Intuitive Learning</span>
+
+        <h1>Unlocking the Secrets: What Returns Are Hidden in Market Prices? 🔍</h1>
+
+        <div class="intuitive-box">
+            <h3>💡 The Detective Story Begins</h3>
+            <p>Imagine you're a financial detective. You walk into a market and see a bond selling for ₹95.72, promising to pay ₹100 in 4 years. Or you see Coca-Cola stock trading at $63, paying $1.76 in dividends next year.</p>
+            <p><strong>Here's the mystery:</strong> What return is the market expecting? What growth rate is already "baked into" the price?</p>
+            <p>Think of it like this - prices are like sealed envelopes containing secret messages about future returns. Today, you're learning how to open those envelopes! 🎯</p>
+        </div>
+
+        <h2>The Core Idea: Working Backwards from Price 🔙</h2>
+
+        <p>Normally, when you know the return rate, you can calculate what something is worth today. But what if you already know today's price and want to figure out what return everyone is expecting? That's exactly what <strong>implied return</strong> means!</p>
+
+        <div class="analogy-box">
+            <h3>🎂 The Birthday Cake Analogy</h3>
+            <p>Think of it like reverse-engineering a recipe:</p>
+            <p><strong>Normal Way:</strong> You have a recipe (return rate) → You bake the cake (calculate price)</p>
+            <p><strong>Implied Return Way:</strong> You taste the finished cake (see the price) → You figure out the recipe (solve for return)</p>
+            <p>If someone paid ₹500 for a cake that usually costs ₹400, you can deduce they expect it to be extra special (higher implied quality/return)!</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 900 450" style="width:100%; max-width:900px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="900" height="450" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="450" y="35" font-size="26" font-weight="bold" text-anchor="middle" fill="#2c3e50">The Implied Return Journey</text>
+                
+                <!-- Left Box - What We Know -->
+                <g>
+                    <rect x="50" y="80" width="250" height="300" fill="#a8edea" rx="15" stroke="#667eea" stroke-width="3"/>
+                    <text x="175" y="115" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">📊 What We KNOW</text>
+                    
+                    <!-- Present Value -->
+                    <circle cx="175" cy="170" r="50" fill="#667eea"/>
+                    <text x="175" y="165" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Present</text>
+                    <text x="175" y="182" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Value (PV)</text>
+                    <text x="175" y="240" font-size="16" text-anchor="middle" fill="#2c3e50">Today's Price</text>
+                    <text x="175" y="260" font-size="18" font-weight="bold" text-anchor="middle" fill="#764ba2">₹95.72</text>
+                    
+                    <!-- Future Value -->
+                    <circle cx="175" cy="320" r="50" fill="#ff6b9d"/>
+                    <text x="175" y="315" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Future</text>
+                    <text x="175" y="332" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Value (FV)</text>
+                    <text x="175" y="370" font-size="18" font-weight="bold" text-anchor="middle" fill="#764ba2">₹100</text>
+                </g>
+                
+                <!-- Arrow with Question Mark -->
+                <g>
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                            <polygon points="0 0, 10 3, 0 6" fill="#ff8a65" />
+                        </marker>
+                    </defs>
+                    <line x1="320" y1="230" x2="530" y2="230" stroke="#ff8a65" stroke-width="4" marker-end="url(#arrowhead)"/>
+                    <text x="425" y="210" font-size="28" text-anchor="middle" fill="#ff8a65" font-weight="bold">?</text>
+                    <text x="425" y="265" font-size="16" text-anchor="middle" fill="#34495e" font-weight="bold">Solve for Return!</text>
+                </g>
+                
+                <!-- Right Box - What We Find -->
+                <g>
+                    <rect x="550" y="80" width="300" height="300" fill="#fed6e3" rx="15" stroke="#ff6b9d" stroke-width="3"/>
+                    <text x="700" y="115" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">🎯 What We DISCOVER</text>
+                    
+                    <!-- The Implied Return -->
+                    <ellipse cx="700" cy="200" rx="120" ry="80" fill="#ffd89b" stroke="#ff8a65" stroke-width="3"/>
+                    <text x="700" y="190" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">Implied Annual</text>
+                    <text x="700" y="215" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">Return (r)</text>
+                    
+                    <text x="700" y="260" font-size="32" font-weight="bold" text-anchor="middle" fill="#764ba2">1.10%</text>
+                    
+                    <!-- Insight -->
+                    <text x="700" y="310" font-size="15" text-anchor="middle" fill="#34495e" style="font-style: italic;">Market expects this</text>
+                    <text x="700" y="330" font-size="15" text-anchor="middle" fill="#34495e" style="font-style: italic;">return over 4 years!</text>
+                </g>
+            </svg>
+        </div>
+
+        <h2>Part 1: Implied Return for Bonds (Fixed Income) 💰</h2>
+
+        <p>Let's start with bonds because they're simpler - you know exactly what cash flows you'll get!</p>
+
+        <h3>Type 1: Discount Bonds (Zero-Coupon Bonds)</h3>
+
+        <div class="intuitive-box">
+            <h3>🎯 The Simple Case</h3>
+            <p>A discount bond is like a promise: "Pay me ₹95 today, and I'll give you ₹100 in 4 years." No interest payments in between - just one payment at the end.</p>
+            <p><strong>The question:</strong> What annual return are you earning by accepting this deal?</p>
+        </div>
+
+        <div class="formula-box">
+            <h3>The Magic Formula for Discount Bonds</h3>
+            <p style="font-size: 1.3em; text-align: center; margin: 20px 0;">
+                r = (FV / PV)<sup>1/t</sup> - 1
+            </p>
+            <p><strong>Where:</strong></p>
+            <p>• r = implied return (what we're solving for)</p>
+            <p>• FV = future value (what you'll receive)</p>
+            <p>• PV = present value (what you pay today)</p>
+            <p>• t = time period in years</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Government Bond</h3>
+            <p><strong>Situation:</strong> You can buy an RBI bond today for ₹95.72. It will pay you exactly ₹100 in 4 years. No coupon payments.</p>
+            <p><strong>Question:</strong> What's your implied annual return?</p>
+            
+            <p><strong>Let's solve step by step:</strong></p>
+            <p>1. What we know: PV = ₹95.72, FV = ₹100, t = 4 years</p>
+            <p>2. Plug into formula: r = (100 / 95.72)<sup>1/4</sup> - 1</p>
+            <p>3. Calculate: r = (1.0447)<sup>0.25</sup> - 1</p>
+            <p>4. Result: r = 1.0110 - 1 = 0.0110 = <strong>1.10%</strong></p>
+            
+            <p><strong>💡 What this means:</strong> The market is pricing this bond to give you a 1.10% annual return. If you think you can get better than 1.10% elsewhere, don't buy this bond!</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🌍 Global Example: German Government Bond Surprise</h3>
+            <p><strong>The Weird Story:</strong> In 2016, Germany issued a 10-year bond at €100.50 (yes, you paid MORE than face value!). Six years later, it was trading at €95.72.</p>
+            
+            <p><strong>What was the investor's actual return over those 6 years?</strong></p>
+            <p>• Started with: €100.50 (what they paid)</p>
+            <p>• Ended with: €95.72 (current value)</p>
+            <p>• Time: 6 years</p>
+            
+            <p>Using our formula: r = (95.72 / 100.50)<sup>1/6</sup> - 1 = <strong>-0.81%</strong></p>
+            
+            <p><strong>🤯 Mind-blowing insight:</strong> They LOST money every year! This happened because inflation rose in Europe, making the bond less attractive. Remember: bond prices fall when interest rates rise!</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 900 400" style="width:100%; max-width:900px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="900" height="400" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="450" y="35" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">German Bond Journey: Two Different Implied Returns</text>
+                
+                <!-- Timeline -->
+                <line x1="100" y1="200" x2="800" y2="200" stroke="#34495e" stroke-width="3"/>
+                
+                <!-- Year 0 (2016) -->
+                <circle cx="100" cy="200" r="8" fill="#667eea"/>
+                <text x="100" y="230" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">2016</text>
+                <text x="100" y="250" font-size="12" text-anchor="middle" fill="#34495e">Start</text>
+                
+                <!-- Price box at Year 0 -->
+                <rect x="50" y="100" width="100" height="60" fill="#ffd89b" rx="8" stroke="#ff8a65" stroke-width="2"/>
+                <text x="100" y="125" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">Price: €100.50</text>
+                <text x="100" y="145" font-size="12" text-anchor="middle" fill="#34495e">(Bought at premium)</text>
+                <line x1="100" y1="160" x2="100" y2="192" stroke="#ff8a65" stroke-width="2"/>
+                
+                <!-- Year 6 (2022) -->
+                <circle cx="450" cy="200" r="8" fill="#ff6b9d"/>
+                <text x="450" y="230" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">2022</text>
+                <text x="450" y="250" font-size="12" text-anchor="middle" fill="#34495e">6 Years</text>
+                
+                <!-- Price box at Year 6 -->
+                <rect x="400" y="100" width="100" height="80" fill="#e0c3fc" rx="8" stroke="#667eea" stroke-width="2"/>
+                <text x="450" y="120" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">Price: €95.72</text>
+                <text x="450" y="138" font-size="12" text-anchor="middle" fill="#34495e">(Fell in value)</text>
+                <text x="450" y="160" font-size="16" font-weight="bold" text-anchor="middle" fill="#d32f2f">Return: -0.81%</text>
+                <text x="450" y="175" font-size="11" text-anchor="middle" fill="#d32f2f">per year</text>
+                <line x1="450" y1="180" x2="450" y2="192" stroke="#ff6b9d" stroke-width="2"/>
+                
+                <!-- Year 10 (2026) -->
+                <circle cx="800" cy="200" r="8" fill="#4caf50"/>
+                <text x="800" y="230" font-size="14" text-anchor="middle" fill="#2c3e50" font-weight="bold">2026</text>
+                <text x="800" y="250" font-size="12" text-anchor="middle" fill="#34495e">Maturity</text>
+                
+                <!-- Maturity value -->
+                <rect x="750" y="100" width="100" height="80" fill="#a8edea" rx="8" stroke="#4caf50" stroke-width="2"/>
+                <text x="800" y="120" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">Receives: €100</text>
+                <text x="800" y="138" font-size="12" text-anchor="middle" fill="#34495e">(Face value)</text>
+                <text x="800" y="160" font-size="16" font-weight="bold" text-anchor="middle" fill="#4caf50">Return: +1.10%</text>
+                <text x="800" y="175" font-size="11" text-anchor="middle" fill="#4caf50">per year (final 4y)</text>
+                <line x1="800" y1="180" x2="800" y2="192" stroke="#4caf50" stroke-width="2"/>
+                
+                <!-- Arrows showing periods -->
+                <g>
+                    <defs>
+                        <marker id="arrow1" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                            <polygon points="0 0, 8 3, 0 6" fill="#d32f2f" />
+                        </marker>
+                        <marker id="arrow2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                            <polygon points="0 0, 8 3, 0 6" fill="#4caf50" />
+                        </marker>
+                    </defs>
+                    <line x1="120" y1="280" x2="430" y2="280" stroke="#d32f2f" stroke-width="2" marker-end="url(#arrow1)"/>
+                    <text x="275" y="270" font-size="13" text-anchor="middle" fill="#d32f2f" font-weight="bold">First 6 years: Lost money!</text>
+                    
+                    <line x1="470" y1="300" x2="780" y2="300" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow2)"/>
+                    <text x="625" y="325" font-size="13" text-anchor="middle" fill="#4caf50" font-weight="bold">Final 4 years: Will gain!</text>
+                </g>
+                
+                <!-- Bottom note -->
+                <text x="450" y="370" font-size="14" text-anchor="middle" fill="#34495e" font-style="italic">Two investors, same bond, different implied returns based on when they bought!</text>
+            </svg>
+        </div>
+
+        <h3>Type 2: Coupon Bonds (Bonds with Periodic Interest)</h3>
+
+        <div class="intuitive-box">
+            <h3>🎯 The More Realistic Case</h3>
+            <p>Most bonds don't just pay you at the end - they pay you interest every 6 months or year. This is like a rental property that gives you rent checks regularly, plus you get the property back at the end!</p>
+            <p>Calculating implied return here is trickier because you need to account for <strong>reinvesting those interest payments</strong> at the same rate.</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>🏠 The Rental Property Analogy</h3>
+            <p><strong>Scenario:</strong> You buy a rental property for ₹30 lakhs. Every year you get ₹60,000 in rent. After 5 years, you sell it back for ₹30 lakhs.</p>
+            <p><strong>Simple Question:</strong> What's your return?</p>
+            <p><strong>Complication:</strong> Each year's rent can be reinvested! If you reinvest at 5%, your final value is different than if you stuff cash under your mattress. The implied return calculation assumes you reinvest everything at the same rate!</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Greek Bond Bought by an NRI</h3>
+            <p><strong>Setup:</strong> In 2020, a 7-year Greek government bond was issued with a 2% annual coupon. By 2022, it was trading at €93.091 per €100 face value.</p>
+            
+            <p><strong>Question:</strong> What was the 2-year return for someone who bought at issue and held for 2 years?</p>
+            
+            <p><strong>Step 1:</strong> Calculate what you have after 2 years</p>
+            <p>• Year 1 coupon: €2 (reinvested at 2% for 1 year) = €2 × 1.02 = €2.04</p>
+            <p>• Year 2 coupon: €2 (just received, no time to reinvest)</p>
+            <p>• Current bond value: €93.091</p>
+            <p>• <strong>Total FV after 2 years: €97.13</strong></p>
+            
+            <p><strong>Step 2:</strong> Calculate return</p>
+            <p>r = (97.13 / 100)<sup>1/2</sup> - 1 = <strong>-1.445%</strong> per year</p>
+            
+            <p><strong>😟 Ouch!</strong> Despite getting interest payments, the investor lost money because the bond price dropped by €6.91, which was more than the €4.04 earned from coupons!</p>
+        </div>
+
+        <div class="important-note">
+            <h3>⚠️ Key Insight: YTM vs. Realized Return</h3>
+            <p><strong>Yield to Maturity (YTM)</strong> is the implied return IF you hold the bond until maturity AND can reinvest all coupons at that same YTM.</p>
+            <p>But in real life:</p>
+            <p>• You might sell early (like our example above)</p>
+            <p>• Reinvestment rates might be different</p>
+            <p>• Bond prices change as interest rates change</p>
+            <p><strong>Bottom line:</strong> YTM shows market expectations, but your actual return depends on timing and luck!</p>
+        </div>
+
+        <h2>Part 2: Implied Return and Growth for Stocks (Equity) 📈</h2>
+
+        <p>Now things get interesting! With stocks, you're not just solving for return - you're solving for BOTH return AND growth, because they're connected!</p>
+
+        <div class="analogy-box">
+            <h3>🌳 The Growing Mango Tree Analogy</h3>
+            <p>Think of a stock like owning a mango tree:</p>
+            <p>• The tree gives you mangoes each year (dividends)</p>
+            <p>• The tree grows bigger over time, producing more mangoes (dividend growth)</p>
+            <p>• You can sell the tree later (capital gains)</p>
+            
+            <p>If someone pays ₹50,000 for a tree that gives ₹2,000 worth of mangoes this year, what are they assuming? They're betting on:</p>
+            <p>1. <strong>Return (r):</strong> Their total return including dividends and price appreciation</p>
+            <p>2. <strong>Growth (g):</strong> How fast the mango production (dividends) grows each year</p>
+            <p>These two are tied together - you can't solve for one without assuming the other!</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 450" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="450" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">Stock Return = Dividend Yield + Growth Rate</text>
+                
+                <!-- Stock Price Circle -->
+                <circle cx="400" cy="140" r="70" fill="#667eea" stroke="#2c3e50" stroke-width="3"/>
+                <text x="400" y="130" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Stock Price</text>
+                <text x="400" y="155" font-size="22" font-weight="bold" text-anchor="middle" fill="white">$63.00</text>
+                
+                <!-- Arrow splitting -->
+                <line x1="400" y1="220" x2="250" y2="320" stroke="#ff6b9d" stroke-width="4"/>
+                <line x1="400" y1="220" x2="550" y2="320" stroke="#4caf50" stroke-width="4"/>
+                
+                <!-- Left Box - Dividend Yield -->
+                <g>
+                    <rect x="80" y="320" width="260" height="100" fill="#fed6e3" rx="12" stroke="#ff6b9d" stroke-width="3"/>
+                    <text x="210" y="345" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">💰 Dividend Yield</text>
+                    <text x="210" y="370" font-size="16" text-anchor="middle" fill="#34495e">Next Year's Dividend</text>
+                    <text x="210" y="395" font-size="24" font-weight="bold" text-anchor="middle" fill="#ff6b9d">$1.76 / $63 = 2.79%</text>
+                </g>
+                
+                <!-- Plus Sign -->
+                <text x="400" y="375" font-size="40" font-weight="bold" text-anchor="middle" fill="#764ba2">+</text>
+                
+                <!-- Right Box - Growth Rate -->
+                <g>
+                    <rect x="460" y="320" width="260" height="100" fill="#a8edea" rx="12" stroke="#4caf50" stroke-width="3"/>
+                    <text x="590" y="345" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">📈 Growth Rate</text>
+                    <text x="590" y="370" font-size="16" text-anchor="middle" fill="#34495e">Expected Dividend Growth</text>
+                    <text x="590" y="395" font-size="24" font-weight="bold" text-anchor="middle" fill="#4caf50">g = 4.00%</text>
+                </g>
+                
+                <!-- Equals Sign -->
+                <line x1="200" y1="440" x2="600" y2="440" stroke="#764ba2" stroke-width="2"/>
+                <line x1="200" y1="450" x2="600" y2="450" stroke="#764ba2" stroke-width="2"/>
+                
+                <!-- Result Box -->
+                <rect x="150" y="460" width="500" height="60" fill="#ffd89b" rx="12" stroke="#ff8a65" stroke-width="3"/>
+                <text x="400" y="485" font-size="18" text-anchor="middle" fill="#2c3e50">Required Return (r)</text>
+                <text x="400" y="510" font-size="26" font-weight="bold" text-anchor="middle" fill="#764ba2">2.79% + 4.00% = 6.79%</text>
+            </svg>
+        </div>
+
+        <h3>The Gordon Growth Model: Your Stock Pricing Secret Weapon</h3>
+
+        <div class="formula-box">
+            <h3>Two Ways to Look at It:</h3>
+            <p style="font-size: 1.2em; margin: 15px 0;"><strong>Finding Required Return:</strong></p>
+            <p style="font-size: 1.3em; text-align: center; margin: 15px 0;">
+                r = (D₁ / P₀) + g
+            </p>
+            <p>Where: D₁ = next year's dividend, P₀ = current price, g = growth rate</p>
+            
+            <p style="font-size: 1.2em; margin: 25px 0 15px 0;"><strong>Finding Implied Growth:</strong></p>
+            <p style="font-size: 1.3em; text-align: center; margin: 15px 0;">
+                g = r - (D₁ / P₀)
+            </p>
+            <p>Same formula, just rearranged!</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Reliance Industries</h3>
+            <p><strong>Scenario:</strong> Reliance stock trades at ₹2,500. It's expected to pay ₹20 per share in dividends next year.</p>
+            
+            <p><strong>Question 1:</strong> If you assume dividends will grow at 6% forever, what return are investors expecting?</p>
+            <p>• Dividend Yield = ₹20 / ₹2,500 = 0.008 = 0.8%</p>
+            <p>• Growth Rate = 6%</p>
+            <p>• <strong>Required Return = 0.8% + 6% = 6.8%</strong></p>
+            
+            <p><strong>Question 2:</strong> What if you believe investors should expect an 8% return? What growth is implied?</p>
+            <p>• g = 8% - 0.8% = <strong>7.2%</strong></p>
+            
+            <p><strong>💡 Interpretation:</strong> If you think 7.2% growth is too optimistic (maybe Reliance can only grow at 5%), then the stock is overpriced at ₹2,500!</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🌍 Global Example: Coca-Cola Stock</h3>
+            <p><strong>Given:</strong></p>
+            <p>• Stock Price: $63.00</p>
+            <p>• Expected Dividend (next year): $1.76</p>
+            <p>• Expected Dividend Growth: 4% per year forever</p>
+            
+            <p><strong>Calculate the required return:</strong></p>
+            <p>r = ($1.76 / $63.00) + 0.04</p>
+            <p>r = 0.0279 + 0.04 = 0.0679 = <strong>6.79%</strong></p>
+            
+            <p><strong>What this tells us:</strong> At $63, Coca-Cola stock is priced to deliver a 6.79% return if dividends grow at 4% forever. If you think:</p>
+            <p>• 6.79% is too low → Don't buy (overpriced)</p>
+            <p>• 6.79% is attractive → Buy! (good deal)</p>
+            <p>• 4% growth is too optimistic → Stock is overpriced</p>
+            <p>• 4% growth is too pessimistic → Stock is underpriced</p>
+        </div>
+
+        <h2>The Price-to-Earnings Ratio: Another Window into Returns 📊</h2>
+
+        <p>Here's where things get super practical! Instead of looking at prices in dollars, investors often compare using the <strong>Price-to-Earnings (P/E) ratio</strong>.</p>
+
+        <div class="intuitive-box">
+            <h3>🎯 What is P/E Ratio?</h3>
+            <p>Think of P/E ratio like asking: "How many years of earnings am I paying for?"</p>
+            <p>If Infosys has earnings of ₹100 per share and trades at ₹2,000:</p>
+            <p><strong>P/E = ₹2,000 / ₹100 = 20</strong></p>
+            <p>This means you're paying 20 times annual earnings. Is that expensive? Cheap? It depends on growth expectations!</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 400" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="400" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">P/E Ratio: The Return-Growth Connection</text>
+                
+                <!-- P/E Circle -->
+                <circle cx="400" cy="120" r="60" fill="#667eea"/>
+                <text x="400" y="115" font-size="16" font-weight="bold" text-anchor="middle" fill="white">P/E Ratio</text>
+                <text x="400" y="135" font-size="22" font-weight="bold" text-anchor="middle" fill="white">28</text>
+                
+                <!-- Three influencing factors -->
+                <!-- Factor 1: Dividend Payout -->
+                <g>
+                    <rect x="80" y="220" width="180" height="140" fill="#fed6e3" rx="12" stroke="#ff6b9d" stroke-width="2"/>
+                    <text x="170" y="245" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">💰 Dividend</text>
+                    <text x="170" y="265" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Payout Ratio</text>
+                    <text x="170" y="295" font-size="20" font-weight="bold" text-anchor="middle" fill="#ff6b9d">70%</text>
+                    <text x="170" y="320" font-size="13" text-anchor="middle" fill="#34495e">Higher payout</text>
+                    <text x="170" y="338" font-size="13" text-anchor="middle" fill="#34495e">→ Higher P/E</text>
+                    <line x1="170" y1="190" x2="170" y2="220" stroke="#ff6b9d" stroke-width="2"/>
+                </g>
+                
+                <!-- Factor 2: Growth Rate -->
+                <g>
+                    <rect x="310" y="220" width="180" height="140" fill="#a8edea" rx="12" stroke="#4caf50" stroke-width="2"/>
+                    <text x="400" y="245" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">📈 Growth</text>
+                    <text x="400" y="265" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Rate (g)</text>
+                    <text x="400" y="295" font-size="20" font-weight="bold" text-anchor="middle" fill="#4caf50">4%</text>
+                    <text x="400" y="320" font-size="13" text-anchor="middle" fill="#34495e">Higher growth</text>
+                    <text x="400" y="338" font-size="13" text-anchor="middle" fill="#34495e">→ Higher P/E</text>
+                    <line x1="400" y1="190" x2="400" y2="220" stroke="#4caf50" stroke-width="2"/>
+                </g>
+                
+                <!-- Factor 3: Required Return -->
+                <g>
+                    <rect x="540" y="220" width="180" height="140" fill="#ffd89b" rx="12" stroke="#ff8a65" stroke-width="2"/>
+                    <text x="630" y="245" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">🎯 Required</text>
+                    <text x="630" y="265" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Return (r)</text>
+                    <text x="630" y="295" font-size="20" font-weight="bold" text-anchor="middle" fill="#ff8a65">6.5%</text>
+                    <text x="630" y="320" font-size="13" text-anchor="middle" fill="#34495e">Higher return</text>
+                    <text x="630" y="338" font-size="13" text-anchor="middle" fill="#34495e">→ Lower P/E</text>
+                    <line x1="630" y1="190" x2="630" y2="220" stroke="#ff8a65" stroke-width="2"/>
+                </g>
+                
+                <!-- Arrows -->
+                <line x1="265" y1="120" x2="330" y2="120" stroke="#667eea" stroke-width="2"/>
+                <line x1="535" y1="120" x2="470" y2="120" stroke="#667eea" stroke-width="2"/>
+            </svg>
+        </div>
+
+        <div class="formula-box">
+            <h3>The P/E Formula Connection</h3>
+            <p style="font-size: 1.3em; text-align: center; margin: 20px 0;">
+                P/E = (Dividend Payout Ratio) / (r - g)
+            </p>
+            <p><strong>This reveals three insights:</strong></p>
+            <p>1. Higher dividend payout → Higher P/E (more generous to shareholders)</p>
+            <p>2. Higher growth (g) → Higher P/E (more valuable future)</p>
+            <p>3. Higher required return (r) → Lower P/E (investors demand more, pay less)</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: TCS P/E Analysis</h3>
+            <p><strong>Scenario:</strong> TCS stock has a P/E ratio of 25, and pays out 60% of earnings as dividends.</p>
+            
+            <p><strong>Question 1:</strong> If analysts believe TCS can grow at 5% and should deliver 9% returns, is TCS fairly priced?</p>
+            
+            <p>Let's check: P/E = 0.60 / (0.09 - 0.05) = 0.60 / 0.04 = <strong>15</strong></p>
+            
+            <p><strong>Actual P/E is 25, but fair value is 15!</strong></p>
+            <p><strong>Conclusion:</strong> TCS looks overvalued. Either:</p>
+            <p>• The market expects higher growth (more than 5%)</p>
+            <p>• The market expects lower returns (less than 9%)</p>
+            <p>• Investors are paying too much!</p>
+            
+            <p><strong>Question 2:</strong> What growth rate is implied by the P/E of 25?</p>
+            <p>25 = 0.60 / (0.09 - g)</p>
+            <p>0.09 - g = 0.60 / 25 = 0.024</p>
+            <p>g = 0.09 - 0.024 = <strong>6.6%</strong></p>
+            
+            <p><strong>Interpretation:</strong> The market is pricing TCS as if it will grow at 6.6% forever. If you think that's realistic, the P/E of 25 makes sense!</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🌍 Global Example: The Entire S&P 500!</h3>
+            <p>Yes, we can analyze entire stock indexes the same way!</p>
+            
+            <p><strong>Given:</strong></p>
+            <p>• S&P 500 P/E Ratio: 19</p>
+            <p>• Average Dividend Payout: 60%</p>
+            <p>• Investors expect 8% returns</p>
+            
+            <p><strong>What's the implied growth rate for the entire US stock market?</strong></p>
+            <p>19 = 0.60 / (0.08 - g)</p>
+            <p>0.08 - g = 0.60 / 19 = 0.0316</p>
+            <p>g = 0.08 - 0.0316 = <strong>4.84%</strong></p>
+            
+            <p><strong>💡 Big Picture Insight:</strong> The US stock market is priced for 4.84% dividend growth. This seems reasonable given historical US GDP growth of 3-4% plus inflation. If growth slows below this, stocks could fall!</p>
+        </div>
+
+        <div class="important-note">
+            <h3>🧠 The Critical Insight: Returns and Growth are Married</h3>
+            <p>Here's the mind-bending part: <strong>You can't separate expected returns from expected growth in stock prices.</strong></p>
+            
+            <p><strong>A stock with P/E = 28 and 70% payout tells us that (r - g) = 2.5%</strong></p>
+            
+            <p>This could mean:</p>
+            <p>• 6.5% return with 4% growth, OR</p>
+            <p>• 9% return with 6.5% growth, OR</p>
+            <p>• 5% return with 2.5% growth</p>
+            
+            <p><strong>Your job as an analyst:</strong> Estimate BOTH return expectations AND growth expectations to see if the current price makes sense!</p>
+        </div>
+
+        <h2>Practical Applications: When Do You Use This? 🎓</h2>
+
+        <div class="intuitive-box">
+            <h3>🎯 Real-World Uses</h3>
+            
+            <h4>For Bonds:</h4>
+            <p>✓ Compare yields across different bonds</p>
+            <p>✓ Decide if a bond is worth buying at current price</p>
+            <p>✓ Calculate your actual return if you sell before maturity</p>
+            <p>✓ Understand what rate change is "priced in" to bond prices</p>
+            
+            <h4>For Stocks:</h4>
+            <p>✓ Determine if a stock is overvalued or undervalued</p>
+            <p>✓ Understand market expectations built into stock prices</p>
+            <p>✓ Compare stocks with different growth rates</p>
+            <p>✓ Make buy/sell decisions based on your own growth estimates</p>
+            <p>✓ Analyze if entire market indexes are expensive or cheap</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>🔮 Think of Yourself as a Price Detective</h3>
+            <p>Every price in the market is like a locked safe containing hidden assumptions about the future. Implied return and growth calculations are your combination to crack that safe!</p>
+            
+            <p><strong>The safe says:</strong> "Coca-Cola = $63"</p>
+            <p><strong>You decode it to mean:</strong> "The market expects 6.79% returns if dividends grow at 4%"</p>
+            <p><strong>You decide:</strong> "I think dividends will grow at 5%, so this is a bargain!" → BUY</p>
+            <p>OR: "I think dividends will only grow at 3%, so this is expensive!" → SELL</p>
+        </div>
+
+        <h2>Key Takeaways: The Treasure Map 🗺️</h2>
+
+        <div class="important-note">
+            <h3>📚 Remember These Core Ideas</h3>
+            
+            <p><strong>1. Implied return means "working backwards"</strong></p>
+            <p>You know the price and future cash flows, so you solve for the return that makes them equal.</p>
+            
+            <p><strong>2. For discount bonds, it's straightforward</strong></p>
+            <p>r = (FV / PV)^(1/t) - 1. One formula, done!</p>
+            
+            <p><strong>3. For coupon bonds, account for reinvestment</strong></p>
+            <p>Add up all cash flows with their reinvestment, then solve. Or use the YTM (which assumes you hold to maturity).</p>
+            
+            <p><strong>4. For stocks, you need both return AND growth</strong></p>
+            <p>r = (Dividend Yield) + g. They're connected - you can't have one without the other!</p>
+            
+            <p><strong>5. P/E ratios encode return-growth expectations</strong></p>
+            <p>High P/E = expecting high growth or accepting low returns. Low P/E = expecting low growth or demanding high returns.</p>
+            
+            <p><strong>6. Your advantage: Compare market expectations to YOUR expectations</strong></p>
+            <p>If the market expects 4% growth but you think it'll be 6% → Stock is underpriced! 💰</p>
+        </div>
+
+        <div class="navigation">
+            <a href="implied-return-growth-detailed.html" class="nav-button">📖 Go to Detailed Notes</a>
+            <a href="implied-return-growth-practice.html" class="nav-button">✏️ Practice Questions</a>
+        </div>
+    </div>
+</body>
+</html>

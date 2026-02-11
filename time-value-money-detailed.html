@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Value of Money: Detailed Notes - CFA Level 1</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 50px 40px; }
+        .breadcrumb { font-size: 0.9em; margin-bottom: 15px; opacity: 0.95; }
+        .breadcrumb a { color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+        .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.85em; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.3); }
+        h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 700; }
+        .subtitle { font-size: 1.2em; opacity: 0.95; }
+        .content { padding: 50px 40px; }
+        h2 { color: #667eea; font-size: 1.8em; margin: 40px 0 20px 0; padding-bottom: 10px; border-bottom: 3px solid #667eea; }
+        h3 { color: #764ba2; font-size: 1.4em; margin: 30px 0 15px 0; }
+        .key-concept { background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); padding: 25px; border-radius: 15px; margin: 25px 0; border-left: 5px solid #4caf50; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .example-box { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); padding: 25px; border-radius: 15px; margin: 25px 0; border-left: 5px solid #667eea; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .formula-box { background: linear-gradient(135deg, #fff6e5 0%, #ffe8cc 100%); padding: 25px; border-radius: 15px; margin: 25px 0; border-left: 5px solid #ff9f43; box-shadow: 0 5px 15px rgba(0,0,0,0.1); font-family: 'Courier New', monospace; }
+        .important-note { background: #fff9e6; padding: 20px; border-radius: 10px; border-left: 5px solid #ffd93d; margin: 20px 0; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 25px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; }
+        .comparison-table th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px; text-align: left; font-weight: 600; }
+        .comparison-table td { padding: 15px; border-bottom: 1px solid #e0e0e0; }
+        .comparison-table tr:nth-child(even) { background: #f8f9fa; }
+        .navigation { display: flex; justify-content: space-between; padding: 30px 40px; background: #f8f9fa; border-top: 2px solid #e0e0e0; }
+        .nav-button { padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid #667eea; }
+        .nav-button.primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .nav-button.secondary { background: white; color: #667eea; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .formula { font-size: 1.2em; text-align: center; padding: 15px; background: white; border-radius: 8px; margin: 15px 0; }
+        @media (max-width: 768px) { .content { padding: 30px 20px; } h1 { font-size: 2em; } h2 { font-size: 1.5em; } .navigation { flex-direction: column; gap: 15px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="breadcrumb"><a href="#">CFA Level 1</a> > <a href="#">Quantitative Methods</a> > Time Value of Money</div>
+            <div class="badge">📋 Detailed Notes</div>
+            <h1>Time Value of Money in Fixed Income & Equity</h1>
+            <p class="subtitle">Comprehensive technical reference for exam preparation</p>
+        </div>
+        <div class="content">
+            <div class="key-concept">
+                <h2 style="margin-top: 0; border: none; color: #2d5016;">Learning Outcome Statement</h2>
+                <p><strong>Calculate and interpret the present value (PV) of fixed-income and equity instruments based on expected future cash flows.</strong></p>
+            </div>
+
+            <h2>I. Core Time Value Concepts</h2>
+            
+            <div class="formula-box">
+                <h3>Fundamental Equations</h3>
+                <div class="formula">FV<sub>t</sub> = PV(1 + r)<sup>t</sup></div>
+                <p style="margin-top:10px;">Future value with discrete compounding</p>
+                <div class="formula" style="margin-top:15px;">PV = FV<sub>t</sub> / (1 + r)<sup>t</sup></div>
+                <p style="margin-top:10px;">Present value (discounting)</p>
+            </div>
+
+            <h2>II. Fixed-Income Instruments</h2>
+
+            <h3>A. Discount Bonds (Zero-Coupon)</h3>
+            <div class="formula-box">
+                <div class="formula">PV = FV<sub>t</sub> / (1 + r)<sup>t</sup></div>
+                <p style="margin-top:10px;">Single payment at maturity; difference (FV - PV) = total interest</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Example: India 20-Year Strip at 6.70% YTM</h4>
+                <p>PV = INR 100 / (1.067)<sup>20</sup> = INR 27.33</p>
+                <p style="margin-top:10px;">If YTM rises to 7.70%: PV = INR 22.68 (demonstrates inverse price-yield relationship)</p>
+            </div>
+
+            <h3>B. Coupon Bonds</h3>
+            <div class="formula-box">
+                <div class="formula">PV = Σ [PMT<sub>i</sub>/(1+r)<sup>i</sup>] + FV<sub>n</sub>/(1+r)<sup>n</sup></div>
+                <p style="margin-top:10px;"><strong>Price-Yield Relationships:</strong></p>
+                <ul style="margin-left:20px; margin-top:10px;">
+                    <li>Coupon Rate = YTM → Par (PV = 100)</li>
+                    <li>Coupon Rate > YTM → Premium (PV > 100)</li>
+                    <li>Coupon Rate < YTM → Discount (PV < 100)</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>Example: Greece 7-Year Bond, 2% Coupon</h4>
+                <p>At issuance (YTM = 2%): PV = EUR 100.00</p>
+                <p>After 2 years (YTM = 3.532%, 5 years left): PV = EUR 93.09</p>
+                <p style="margin-top:10px;"><strong>Capital loss:</strong> EUR 6.91 due to interest rate increase</p>
+            </div>
+
+            <h3>C. Perpetual Bonds</h3>
+            <div class="formula-box">
+                <div class="formula">PV = PMT / r</div>
+                <p style="margin-top:10px;">Infinite coupon payments, no maturity</p>
+            </div>
+
+            <h3>D. Annuities (Level Payments)</h3>
+            <div class="formula-box">
+                <div class="formula">A = [r × PV] / [1 - (1 + r)<sup>-t</sup>]</div>
+                <p style="margin-top:10px;">Equal periodic payments combining interest and principal</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Example: USD 800,000 Mortgage at 5.25% for 30 Years</h4>
+                <p>Monthly payment: USD 4,417.63</p>
+                <table class="comparison-table" style="margin-top:15px;">
+                    <tr><th>Month</th><th>Payment</th><th>Interest</th><th>Principal</th></tr>
+                    <tr><td>1</td><td>4,417.63</td><td>3,500.00</td><td>917.63</td></tr>
+                    <tr><td>360</td><td>4,417.63</td><td>19.24</td><td>4,398.39</td></tr>
+                </table>
+                <p style="margin-top:10px;">Total interest paid: USD 790,347</p>
+            </div>
+
+            <h2>III. Equity Instruments</h2>
+
+            <h3>A. Constant Dividend (Perpetuity)</h3>
+            <div class="formula-box">
+                <div class="formula">PV = D / r</div>
+                <p style="margin-top:10px;">Used for preferred stock with fixed dividends</p>
+            </div>
+
+            <h3>B. Constant Growth (Gordon Growth Model)</h3>
+            <div class="formula-box">
+                <div class="formula">PV = D<sub>1</sub> / (r - g) = D<sub>0</sub>(1 + g) / (r - g)</div>
+                <p style="margin-top:10px;"><strong>Constraint:</strong> r > g</p>
+                <p style="margin-top:10px;">Dividends grow at constant rate g perpetually</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Example: Shipline PLC</h4>
+                <p>D<sub>0</sub> = GBP 1.50, g = 6%, r = 15%</p>
+                <p>D<sub>1</sub> = 1.50 × 1.06 = GBP 1.59</p>
+                <p>PV = 1.59 / (0.15 - 0.06) = <strong>GBP 17.67</strong></p>
+                <p style="margin-top:10px;">Compare to zero growth: GBP 10.00 (growth adds 76.7%)</p>
+            </div>
+
+            <h3>C. Two-Stage Growth Model</h3>
+            <div class="formula-box">
+                <div class="formula">PV = Σ[D<sub>t</sub>(1+g<sub>s</sub>)<sup>i</sup>/(1+r)<sup>i</sup>] + E(S<sub>n</sub>)/(1+r)<sup>n</sup></div>
+                <p style="margin-top:10px;">Terminal value: E(S<sub>n</sub>) = D<sub>n+1</sub>/(r - g<sub>l</sub>)</p>
+            </div>
+
+            <div class="example-box">
+                <h4>Example: Shipline Two-Stage</h4>
+                <p>Stage 1 (3 years at 6%): PV = GBP 3.83</p>
+                <p>Stage 2 (perpetual at 2%): Terminal PV = GBP 9.22</p>
+                <p><strong>Total Stock Price:</strong> GBP 13.05</p>
+            </div>
+
+            <div class="important-note">
+                <h3>Key Exam Concepts</h3>
+                <ul style="margin-left:20px; margin-top:10px;">
+                    <li><strong>Inverse Relationship:</strong> Bond prices and yields move opposite directions</li>
+                    <li><strong>Compounding Frequency:</strong> More frequent = lower PV for same nominal rate</li>
+                    <li><strong>Perpetuity:</strong> PV = Payment / Rate (bonds and stocks)</li>
+                    <li><strong>Growth Impact:</strong> Higher g significantly increases stock valuations</li>
+                    <li><strong>Annuity Behavior:</strong> Interest ↓ and Principal ↑ over time</li>
+                </ul>
+            </div>
+
+            <h2>Summary Table</h2>
+            <table class="comparison-table">
+                <tr><th>Instrument Type</th><th>Formula</th><th>Key Feature</th></tr>
+                <tr><td>Discount Bond</td><td>PV = FV/(1+r)<sup>t</sup></td><td>Single payment at maturity</td></tr>
+                <tr><td>Coupon Bond</td><td>PV = Σ[PMT/(1+r)<sup>i</sup>] + FV/(1+r)<sup>n</sup></td><td>Periodic coupons + principal</td></tr>
+                <tr><td>Perpetual Bond</td><td>PV = PMT/r</td><td>Infinite payments</td></tr>
+                <tr><td>Annuity</td><td>A = rPV/[1-(1+r)<sup>-t</sup>]</td><td>Level payments</td></tr>
+                <tr><td>Constant Div Stock</td><td>PV = D/r</td><td>Fixed dividend forever</td></tr>
+                <tr><td>Growth Stock</td><td>PV = D<sub>1</sub>/(r-g)</td><td>Constant growth rate</td></tr>
+            </table>
+        </div>
+
+        <div class="navigation">
+            <a href="time-value-money-intuitive.html" class="nav-button secondary">← Intuitive Learning</a>
+            <a href="time-value-money-practice.html" class="nav-button primary">Practice Questions →</a>
+        </div>
+    </div>
+</body>
+</html>

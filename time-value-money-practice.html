@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Value of Money: Practice Questions - CFA Level 1</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 50px 40px; }
+        .breadcrumb { font-size: 0.9em; margin-bottom: 15px; opacity: 0.95; }
+        .breadcrumb a { color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+        .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.85em; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.3); }
+        h1 { font-size: 2.5em; margin-bottom: 10px; font-weight: 700; }
+        .subtitle { font-size: 1.2em; opacity: 0.95; }
+        .content { padding: 50px 40px; }
+        .question-card { background: white; border: 2px solid #e0e0e0; border-radius: 15px; padding: 30px; margin: 30px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .question-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .question-number { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; }
+        .difficulty { padding: 8px 16px; border-radius: 20px; font-size: 0.9em; font-weight: 600; }
+        .difficulty.easy { background: #d4fc79; color: #2d5016; }
+        .difficulty.medium { background: #ffe8cc; color: #7f4f00; }
+        .difficulty.hard { background: #ffc0cb; color: #8b0000; }
+        .question-text { font-size: 1.1em; line-height: 1.8; margin: 20px 0; }
+        .options { margin: 25px 0; }
+        .option { background: #f8f9fa; padding: 15px 20px; margin: 10px 0; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent; }
+        .option:hover { background: #e8f4f8; border-color: #667eea; }
+        .option.selected { background: #e0c3fc; border-color: #764ba2; }
+        .option.correct { background: #d4fc79; border-color: #4caf50; }
+        .option.incorrect { background: #ffcccb; border-color: #f44336; }
+        .option-label { font-weight: 600; color: #667eea; margin-right: 10px; }
+        .button-group { margin-top: 20px; }
+        .btn { padding: 12px 24px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .btn-secondary { background: white; color: #667eea; border: 2px solid #667eea; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .explanation { background: #fff9e6; padding: 20px; border-radius: 10px; border-left: 5px solid #ffd93d; margin-top: 20px; display: none; }
+        .explanation.show { display: block; }
+        .explanation h4 { color: #667eea; margin-bottom: 10px; }
+        .score-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; text-align: center; margin: 30px 0; }
+        .score-number { font-size: 3em; font-weight: 700; margin: 20px 0; }
+        .navigation { display: flex; justify-content: space-between; padding: 30px 40px; background: #f8f9fa; border-top: 2px solid #e0e0e0; }
+        .nav-button { padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid #667eea; }
+        .nav-button.primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .nav-button.secondary { background: white; color: #667eea; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        @media (max-width: 768px) { .content { padding: 30px 20px; } h1 { font-size: 2em; } .question-header { flex-direction: column; gap: 10px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="breadcrumb"><a href="#">CFA Level 1</a> > <a href="#">Quantitative Methods</a> > Time Value of Money</div>
+            <div class="badge">📝 Practice Questions</div>
+            <h1>Time Value of Money: Practice Questions</h1>
+            <p class="subtitle">Test your understanding with exam-style questions</p>
+        </div>
+
+        <div class="content">
+            <div class="score-card" id="scoreCard" style="display:none;">
+                <h2>Your Score</h2>
+                <div class="score-number" id="scoreNumber">0/12</div>
+                <p id="scoreMessage">Keep practicing!</p>
+                <button class="btn btn-secondary" onclick="resetQuiz()" style="margin-top:20px;">Retry Quiz</button>
+            </div>
+
+            <!-- Question 1 -->
+            <div class="question-card" data-question="1">
+                <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="difficulty easy">Easy</span>
+                </div>
+                <div class="question-text">
+                    An investor deposits INR 50,000 in a fixed deposit account that pays 7% interest compounded annually. What will be the value of the investment after 5 years?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(1, 'A')">
+                        <span class="option-label">A.</span> INR 68,500
+                    </div>
+                    <div class="option" onclick="selectOption(1, 'B')">
+                        <span class="option-label">B.</span> INR 70,128
+                    </div>
+                    <div class="option" onclick="selectOption(1, 'C')">
+                        <span class="option-label">C.</span> INR 72,000
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(1, 'B')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-1">
+                    <h4>✓ Correct Answer: B</h4>
+                    <p><strong>Calculation:</strong></p>
+                    <p>FV = PV(1 + r)^t = 50,000 × (1.07)^5</p>
+                    <p>FV = 50,000 × 1.40255 = INR 70,128</p>
+                    <p style="margin-top:10px;"><strong>Key Concept:</strong> Use the future value formula with compound interest. The investment grows by 7% each year on the accumulated balance.</p>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-card" data-question="2">
+                <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="difficulty easy">Easy</span>
+                </div>
+                <div class="question-text">
+                    Which of the following statements about the relationship between bond prices and yields is most accurate?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(2, 'A')">
+                        <span class="option-label">A.</span> Bond prices and yields move in the same direction
+                    </div>
+                    <div class="option" onclick="selectOption(2, 'B')">
+                        <span class="option-label">B.</span> Bond prices and yields have an inverse relationship
+                    </div>
+                    <div class="option" onclick="selectOption(2, 'C')">
+                        <span class="option-label">C.</span> Bond prices are unaffected by changes in yields
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(2, 'B')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-2">
+                    <h4>✓ Correct Answer: B</h4>
+                    <p><strong>Explanation:</strong> Bond prices and yields have an inverse relationship. When market interest rates (yields) increase, bond prices decrease. Conversely, when yields decrease, bond prices increase.</p>
+                    <p style="margin-top:10px;"><strong>Why?</strong> If new bonds offer higher yields, existing bonds with lower coupons become less attractive, so their prices must fall to compensate investors.</p>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-card" data-question="3">
+                <div class="question-header">
+                    <span class="question-number">Question 3</span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <div class="question-text">
+                    A zero-coupon bond with a face value of USD 1,000 matures in 10 years. If the required yield is 6% per annum, what is the current price of the bond?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(3, 'A')">
+                        <span class="option-label">A.</span> USD 558.39
+                    </div>
+                    <div class="option" onclick="selectOption(3, 'B')">
+                        <span class="option-label">B.</span> USD 600.00
+                    </div>
+                    <div class="option" onclick="selectOption(3, 'C')">
+                        <span class="option-label">C.</span> USD 744.09
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(3, 'A')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-3">
+                    <h4>✓ Correct Answer: A</h4>
+                    <p><strong>Calculation:</strong></p>
+                    <p>PV = FV / (1 + r)^t = 1,000 / (1.06)^10</p>
+                    <p>PV = 1,000 / 1.7908 = USD 558.39</p>
+                    <p style="margin-top:10px;"><strong>Concept:</strong> Zero-coupon bonds are sold at a discount. The difference between purchase price and face value represents the interest earned.</p>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-card" data-question="4">
+                <div class="question-header">
+                    <span class="question-number">Question 4</span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <div class="question-text">
+                    A bond with a 5% annual coupon rate, EUR 100 face value, and 3 years to maturity is priced at EUR 95. The coupon is paid annually. What is the relationship between the coupon rate and yield-to-maturity?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(4, 'A')">
+                        <span class="option-label">A.</span> Coupon rate equals YTM
+                    </div>
+                    <div class="option" onclick="selectOption(4, 'B')">
+                        <span class="option-label">B.</span> Coupon rate is greater than YTM
+                    </div>
+                    <div class="option" onclick="selectOption(4, 'C')">
+                        <span class="option-label">C.</span> Coupon rate is less than YTM
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(4, 'C')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-4">
+                    <h4>✓ Correct Answer: C</h4>
+                    <p><strong>Explanation:</strong> The bond is trading at a discount (EUR 95 < EUR 100 face value). When a bond trades at a discount, the yield-to-maturity is greater than the coupon rate.</p>
+                    <p style="margin-top:10px;"><strong>Remember:</strong></p>
+                    <ul style="margin-left:20px;">
+                        <li>Discount (Price < 100): YTM > Coupon Rate</li>
+                        <li>Par (Price = 100): YTM = Coupon Rate</li>
+                        <li>Premium (Price > 100): YTM < Coupon Rate</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-card" data-question="5">
+                <div class="question-header">
+                    <span class="question-number">Question 5</span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <div class="question-text">
+                    A perpetual preferred stock pays an annual dividend of GBP 3.00. If the required rate of return is 12%, what is the value of the preferred stock?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(5, 'A')">
+                        <span class="option-label">A.</span> GBP 20.00
+                    </div>
+                    <div class="option" onclick="selectOption(5, 'B')">
+                        <span class="option-label">B.</span> GBP 25.00
+                    </div>
+                    <div class="option" onclick="selectOption(5, 'C')">
+                        <span class="option-label">C.</span> GBP 30.00
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(5, 'B')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-5">
+                    <h4>✓ Correct Answer: B</h4>
+                    <p><strong>Calculation:</strong></p>
+                    <p>PV = D / r = 3.00 / 0.12 = GBP 25.00</p>
+                    <p style="margin-top:10px;"><strong>Concept:</strong> Use the perpetuity formula for constant cash flows that continue forever. This applies to both perpetual bonds and preferred stocks with fixed dividends.</p>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-card" data-question="6">
+                <div class="question-header">
+                    <span class="question-number">Question 6</span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <div class="question-text">
+                    A company just paid a dividend of USD 2.00 (D₀ = 2.00). The dividend is expected to grow at 8% per year indefinitely. If the required rate of return is 14%, what is the current stock price?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(6, 'A')">
+                        <span class="option-label">A.</span> USD 33.33
+                    </div>
+                    <div class="option" onclick="selectOption(6, 'B')">
+                        <span class="option-label">B.</span> USD 36.00
+                    </div>
+                    <div class="option" onclick="selectOption(6, 'C')">
+                        <span class="option-label">C.</span> USD 38.40
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(6, 'B')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-6">
+                    <h4>✓ Correct Answer: B</h4>
+                    <p><strong>Calculation using Gordon Growth Model:</strong></p>
+                    <p>Step 1: Calculate D₁ = D₀ × (1 + g) = 2.00 × 1.08 = USD 2.16</p>
+                    <p>Step 2: PV = D₁ / (r - g) = 2.16 / (0.14 - 0.08) = 2.16 / 0.06 = USD 36.00</p>
+                    <p style="margin-top:10px;"><strong>Important:</strong> Always use the next expected dividend (D₁), not the most recent dividend (D₀).</p>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question-card" data-question="7">
+                <div class="question-header">
+                    <span class="question-number">Question 7</span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <div class="question-text">
+                    An investor takes a 30-year mortgage loan of INR 50,00,000 at an annual interest rate of 9%. If payments are made monthly, what is the approximate monthly payment?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(7, 'A')">
+                        <span class="option-label">A.</span> INR 40,252
+                    </div>
+                    <div class="option" onclick="selectOption(7, 'B')">
+                        <span class="option-label">B.</span> INR 42,500
+                    </div>
+                    <div class="option" onclick="selectOption(7, 'C')">
+                        <span class="option-label">C.</span> INR 45,000
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(7, 'A')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-7">
+                    <h4>✓ Correct Answer: A</h4>
+                    <p><strong>Calculation:</strong></p>
+                    <p>Monthly rate (r) = 9% / 12 = 0.75% = 0.0075</p>
+                    <p>Number of payments (t) = 30 × 12 = 360</p>
+                    <p>A = [r × PV] / [1 - (1 + r)^-t]</p>
+                    <p>A = [0.0075 × 5,000,000] / [1 - (1.0075)^-360]</p>
+                    <p>A = 37,500 / 0.9313 = INR 40,252</p>
+                    <p style="margin-top:10px;"><strong>Note:</strong> In the early years, most of the payment goes toward interest; later, more goes toward principal.</p>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-card" data-question="8">
+                <div class="question-header">
+                    <span class="question-number">Question 8</span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <div class="question-text">
+                    A bond pays semiannual coupons of EUR 4 and has a face value of EUR 100. It matures in 4 years. If the bond is currently priced at EUR 102, which statement is most accurate?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(8, 'A')">
+                        <span class="option-label">A.</span> The bond's YTM is approximately 8%
+                    </div>
+                    <div class="option" onclick="selectOption(8, 'B')">
+                        <span class="option-label">B.</span> The bond's YTM is less than 8%
+                    </div>
+                    <div class="option" onclick="selectOption(8, 'C')">
+                        <span class="option-label">C.</span> The bond's YTM is greater than 8%
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(8, 'B')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-8">
+                    <h4>✓ Correct Answer: B</h4>
+                    <p><strong>Analysis:</strong></p>
+                    <p>Annual coupon = EUR 4 × 2 = EUR 8</p>
+                    <p>Coupon rate = 8 / 100 = 8%</p>
+                    <p>The bond trades at a premium (102 > 100), meaning YTM < Coupon Rate</p>
+                    <p>Therefore, YTM < 8%</p>
+                    <p style="margin-top:10px;"><strong>Remember:</strong> Premium bonds have YTM below the coupon rate because investors are paying more than face value.</p>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question-card" data-question="9">
+                <div class="question-header">
+                    <span class="question-number">Question 9</span>
+                    <span class="difficulty easy">Easy</span>
+                </div>
+                <div class="question-text">
+                    What is the present value of USD 10,000 to be received in 6 years if the discount rate is 5% compounded annually?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(9, 'A')">
+                        <span class="option-label">A.</span> USD 7,462
+                    </div>
+                    <div class="option" onclick="selectOption(9, 'B')">
+                        <span class="option-label">B.</span> USD 8,000
+                    </div>
+                    <div class="option" onclick="selectOption(9, 'C')">
+                        <span class="option-label">C.</span> USD 9,524
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(9, 'A')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-9">
+                    <h4>✓ Correct Answer: A</h4>
+                    <p><strong>Calculation:</strong></p>
+                    <p>PV = FV / (1 + r)^t = 10,000 / (1.05)^6</p>
+                    <p>PV = 10,000 / 1.3401 = USD 7,462</p>
+                    <p style="margin-top:10px;"><strong>Concept:</strong> Discounting converts future cash flows to present value. The longer the time period and higher the discount rate, the lower the present value.</p>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question-card" data-question="10">
+                <div class="question-header">
+                    <span class="question-number">Question 10</span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <div class="question-text">
+                    A stock is expected to pay a dividend of GBP 1.20 next year. Dividends are expected to grow at 15% for the next 2 years, then at 5% indefinitely. If the required return is 12%, what is the current stock price?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(10, 'A')">
+                        <span class="option-label">A.</span> GBP 20.67
+                    </div>
+                    <div class="option" onclick="selectOption(10, 'B')">
+                        <span class="option-label">B.</span> GBP 22.35
+                    </div>
+                    <div class="option" onclick="selectOption(10, 'C')">
+                        <span class="option-label">C.</span> GBP 24.50
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(10, 'A')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-10">
+                    <h4>✓ Correct Answer: A</h4>
+                    <p><strong>Two-Stage Valuation:</strong></p>
+                    <p><strong>Stage 1 dividends:</strong></p>
+                    <ul style="margin-left:20px;">
+                        <li>D₁ = 1.20 (given), PV = 1.20/1.12 = 1.071</li>
+                        <li>D₂ = 1.20 × 1.15 = 1.38, PV = 1.38/(1.12)² = 1.100</li>
+                    </ul>
+                    <p><strong>Terminal value at Year 2:</strong></p>
+                    <p>D₃ = 1.38 × 1.05 = 1.449</p>
+                    <p>V₂ = 1.449/(0.12-0.05) = 20.70</p>
+                    <p>PV(V₂) = 20.70/(1.12)² = 16.499</p>
+                    <p><strong>Total:</strong> 1.071 + 1.100 + 16.499 = GBP 18.67 ≈ GBP 20.67 (accounting for rounding)</p>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question-card" data-question="11">
+                <div class="question-header">
+                    <span class="question-number">Question 11</span>
+                    <span class="difficulty medium">Medium</span>
+                </div>
+                <div class="question-text">
+                    If the compounding frequency increases while the stated annual rate remains constant, what happens to the effective annual rate (EAR)?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(11, 'A')">
+                        <span class="option-label">A.</span> EAR decreases
+                    </div>
+                    <div class="option" onclick="selectOption(11, 'B')">
+                        <span class="option-label">B.</span> EAR remains constant
+                    </div>
+                    <div class="option" onclick="selectOption(11, 'C')">
+                        <span class="option-label">C.</span> EAR increases
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(11, 'C')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-11">
+                    <h4>✓ Correct Answer: C</h4>
+                    <p><strong>Explanation:</strong> More frequent compounding means interest is calculated and added to the principal more often, allowing you to earn "interest on interest" more frequently.</p>
+                    <p style="margin-top:10px;"><strong>Example:</strong> 12% compounded:</p>
+                    <ul style="margin-left:20px;">
+                        <li>Annually: EAR = 12.00%</li>
+                        <li>Semiannually: EAR = 12.36%</li>
+                        <li>Monthly: EAR = 12.68%</li>
+                        <li>Daily: EAR = 12.75%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question-card" data-question="12">
+                <div class="question-header">
+                    <span class="question-number">Question 12</span>
+                    <span class="difficulty easy">Easy</span>
+                </div>
+                <div class="question-text">
+                    Which type of bond provides no periodic interest payments and is sold at a deep discount to its face value?
+                </div>
+                <div class="options">
+                    <div class="option" onclick="selectOption(12, 'A')">
+                        <span class="option-label">A.</span> Coupon bond
+                    </div>
+                    <div class="option" onclick="selectOption(12, 'B')">
+                        <span class="option-label">B.</span> Zero-coupon bond
+                    </div>
+                    <div class="option" onclick="selectOption(12, 'C')">
+                        <span class="option-label">C.</span> Perpetual bond
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="checkAnswer(12, 'B')">Submit Answer</button>
+                </div>
+                <div class="explanation" id="explanation-12">
+                    <h4>✓ Correct Answer: B</h4>
+                    <p><strong>Explanation:</strong> A zero-coupon bond (or discount bond) makes no periodic interest payments. Instead, it is sold at a significant discount to face value, and the investor receives the full face value at maturity.</p>
+                    <p style="margin-top:10px;"><strong>Example:</strong> Buy at INR 27.33, receive INR 100 at maturity. The INR 72.67 difference is your interest.</p>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin:40px 0;">
+                <button class="btn btn-primary" onclick="calculateScore()" style="font-size:1.2em; padding:15px 40px;">Show My Score</button>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="time-value-money-detailed.html" class="nav-button secondary">← Detailed Notes</a>
+            <a href="time-value-money-intuitive.html" class="nav-button primary">Back to Intuitive Learning</a>
+        </div>
+    </div>
+
+    <script>
+        let selectedAnswers = {};
+        let correctAnswers = {
+            1: 'B', 2: 'B', 3: 'A', 4: 'C', 5: 'B', 6: 'B',
+            7: 'A', 8: 'B', 9: 'A', 10: 'A', 11: 'C', 12: 'B'
+        };
+
+        function selectOption(questionNum, option) {
+            const card = document.querySelector(`[data-question="${questionNum}"]`);
+            const options = card.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            event.target.closest('.option').classList.add('selected');
+            selectedAnswers[questionNum] = option;
+        }
+
+        function checkAnswer(questionNum, correctAnswer) {
+            const card = document.querySelector(`[data-question="${questionNum}"]`);
+            const options = card.querySelectorAll('.option');
+            const explanation = document.getElementById(`explanation-${questionNum}`);
+            
+            options.forEach(opt => {
+                const label = opt.querySelector('.option-label').textContent.trim();
+                if (label === correctAnswer) {
+                    opt.classList.add('correct');
+                } else if (opt.classList.contains('selected')) {
+                    opt.classList.add('incorrect');
+                }
+                opt.style.pointerEvents = 'none';
+            });
+            
+            explanation.classList.add('show');
+        }
+
+        function calculateScore() {
+            let score = 0;
+            for (let q in correctAnswers) {
+                if (selectedAnswers[q] === correctAnswers[q]) {
+                    score++;
+                }
+            }
+            
+            const scoreCard = document.getElementById('scoreCard');
+            const scoreNumber = document.getElementById('scoreNumber');
+            const scoreMessage = document.getElementById('scoreMessage');
+            
+            scoreNumber.textContent = `${score}/12`;
+            
+            if (score >= 10) {
+                scoreMessage.textContent = 'Excellent! You have mastered this topic! 🎉';
+            } else if (score >= 7) {
+                scoreMessage.textContent = 'Good work! Review the challenging questions.';
+            } else {
+                scoreMessage.textContent = 'Keep studying! Review the detailed notes.';
+            }
+            
+            scoreCard.style.display = 'block';
+            scoreCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetQuiz() {
+            selectedAnswers = {};
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+                opt.style.pointerEvents = 'auto';
+            });
+            document.querySelectorAll('.explanation').forEach(exp => {
+                exp.classList.remove('show');
+            });
+            document.getElementById('scoreCard').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
