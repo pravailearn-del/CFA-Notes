@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest Rates: Detailed Notes - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .key-concept {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #27ae60;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #fbc02d;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> &gt; <a href="#">Quantitative Methods</a> &gt; <a href="#">Rates and Returns</a> &gt; Interest Rates
+        </div>
+
+        <span class="badge">Detailed Notes</span>
+
+        <h1>Interest Rates and Time Value of Money</h1>
+
+        <div class="key-concept">
+            <h3>Learning Outcome Statement</h3>
+            <p><strong>Interpret interest rates as required rates of return, discount rates, or opportunity costs and explain an interest rate as the sum of a real risk-free rate and premiums that compensate investors for bearing distinct types of risk.</strong></p>
+        </div>
+
+        <h2>1. Foundational Concept: Time Value of Money</h2>
+
+        <p>The time value of money principle establishes that cash flows occurring at different points in time are not directly comparable. This fundamental concept underpins all financial analysis and valuation.</p>
+
+        <div class="key-concept">
+            <h3>Core Principle</h3>
+            <p>A dollar received today is worth more than a dollar promised in the future. This preference for current consumption over future consumption necessitates compensation for deferring consumption - this compensation is the interest rate.</p>
+        </div>
+
+        <h3>1.1 Mathematical Foundation</h3>
+
+        <p>An interest rate (or yield), denoted as <em>r</em>, represents the rate of return that establishes equivalence between cash flows at different points in time. The basic relationship can be expressed as:</p>
+
+        <div class="formula-box">
+            <p style="font-size: 1.1em; margin-bottom: 15px;">Future Value = Present Value × (1 + r)</p>
+            <p style="font-size: 0.95em;">Or rearranged:</p>
+            <p style="font-size: 1.1em; margin-top: 10px;">r = (Future Value - Present Value) / Present Value</p>
+        </div>
+
+        <div class="example-box">
+            <h4>Example 1: Basic Interest Rate Calculation</h4>
+            <p><strong>Given:</strong></p>
+            <ul>
+                <li>Present Value (PV) = USD 9,500</li>
+                <li>Future Value (FV) = USD 10,000 (one year from now)</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Required compensation:</strong></p>
+            <p>FV - PV = USD 10,000 - USD 9,500 = USD 500</p>
+            <p style="margin-top: 15px;"><strong>Interest rate:</strong></p>
+            <p>r = USD 500 / USD 9,500 = 0.0526 or 5.26%</p>
+            <p style="margin-top: 15px;"><strong>Interpretation:</strong> An investor requires a 5.26% return to be indifferent between receiving USD 9,500 today and USD 10,000 in one year.</p>
+        </div>
+
+        <h2>2. Three Interpretations of Interest Rates</h2>
+
+        <p>Interest rates serve multiple conceptual roles in financial analysis. Understanding these perspectives is essential for proper application in different contexts.</p>
+
+        <h3>2.1 Required Rate of Return</h3>
+
+        <div class="key-concept">
+            <p><strong>Definition:</strong> The minimum rate of return an investor must receive to accept the investment opportunity.</p>
+            <p style="margin-top: 10px;"><strong>Application:</strong> Used in investment decision-making and asset valuation. If an investment's expected return falls below the required rate, the investment should be rejected.</p>
+        </div>
+
+        <h3>2.2 Discount Rate</h3>
+
+        <div class="key-concept">
+            <p><strong>Definition:</strong> The rate used to convert future cash flows to their present value equivalent.</p>
+            <p style="margin-top: 10px;"><strong>Application:</strong> Used in present value calculations and discounted cash flow (DCF) analysis. The terms "interest rate" and "discount rate" are often used interchangeably in practice.</p>
+        </div>
+
+        <p>The present value relationship is expressed as:</p>
+
+        <div class="formula-box">
+            <p style="font-size: 1.1em;">PV = FV / (1 + r)^n</p>
+            <p style="font-size: 0.95em; margin-top: 15px;">Where:</p>
+            <ul style="margin-left: 25px; margin-top: 10px; font-size: 0.95em;">
+                <li>PV = Present Value</li>
+                <li>FV = Future Value</li>
+                <li>r = Discount rate (interest rate)</li>
+                <li>n = Number of periods</li>
+            </ul>
+        </div>
+
+        <h3>2.3 Opportunity Cost</h3>
+
+        <div class="key-concept">
+            <p><strong>Definition:</strong> The value forgone by choosing one course of action over the next best alternative.</p>
+            <p style="margin-top: 10px;"><strong>Application:</strong> In the context of interest rates, it represents the return forgone by consuming rather than investing, or by choosing one investment over another.</p>
+        </div>
+
+        <div class="example-box">
+            <h4>Example 2: Three Perspectives on the Same Rate</h4>
+            <p>An investor evaluates a corporate bond offering 8% annual return.</p>
+            
+            <p style="margin-top: 15px;"><strong>As Required Return:</strong></p>
+            <p>"Given the bond's risk characteristics, I require at least 8% to justify this investment."</p>
+            
+            <p style="margin-top: 15px;"><strong>As Discount Rate:</strong></p>
+            <p>"I will discount the bond's future cash flows at 8% to determine its present value."</p>
+            
+            <p style="margin-top: 15px;"><strong>As Opportunity Cost:</strong></p>
+            <p>"By investing in this bond, I forgo the opportunity to earn returns elsewhere; my opportunity cost is 8%."</p>
+        </div>
+
+        <h2>3. Components of Interest Rates</h2>
+
+        <p>Market-determined interest rates reflect multiple economic factors and risk considerations. The fundamental decomposition is:</p>
+
+        <div class="formula-box">
+            <p style="font-size: 1.05em; line-height: 1.8;">r = Real risk-free interest rate</p>
+            <p style="font-size: 1.05em; line-height: 1.8;">    + Inflation premium</p>
+            <p style="font-size: 1.05em; line-height: 1.8;">    + Default risk premium</p>
+            <p style="font-size: 1.05em; line-height: 1.8;">    + Liquidity premium</p>
+            <p style="font-size: 1.05em; line-height: 1.8;">    + Maturity premium</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 450" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="450" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">Interest Rate Components</text>
+                
+                <!-- Base diagram -->
+                <rect x="100" y="60" width="600" height="60" fill="#4caf50" rx="8"/>
+                <text x="400" y="95" font-size="16" font-weight="bold" text-anchor="middle" fill="white">Real Risk-Free Rate</text>
+                
+                <rect x="100" y="130" width="600" height="50" fill="#ff9800" rx="8"/>
+                <text x="400" y="160" font-size="15" font-weight="bold" text-anchor="middle" fill="white">+ Inflation Premium</text>
+                
+                <!-- Nominal Risk-Free Rate bracket -->
+                <line x1="720" y1="60" x2="750" y2="60" stroke="#2c3e50" stroke-width="2"/>
+                <line x1="750" y1="60" x2="750" y2="180" stroke="#2c3e50" stroke-width="2"/>
+                <line x1="720" y1="180" x2="750" y2="180" stroke="#2c3e50" stroke-width="2"/>
+                <text x="770" y="125" font-size="13" font-weight="bold" fill="#2c3e50">Nominal</text>
+                <text x="770" y="142" font-size="13" font-weight="bold" fill="#2c3e50">Risk-Free</text>
+                <text x="770" y="159" font-size="13" font-weight="bold" fill="#2c3e50">Rate</text>
+                
+                <rect x="100" y="190" width="600" height="50" fill="#f44336" rx="8"/>
+                <text x="400" y="220" font-size="15" font-weight="bold" text-anchor="middle" fill="white">+ Default Risk Premium</text>
+                
+                <rect x="100" y="250" width="600" height="50" fill="#2196f3" rx="8"/>
+                <text x="400" y="280" font-size="15" font-weight="bold" text-anchor="middle" fill="white">+ Liquidity Premium</text>
+                
+                <rect x="100" y="310" width="600" height="50" fill="#9c27b0" rx="8"/>
+                <text x="400" y="340" font-size="15" font-weight="bold" text-anchor="middle" fill="white">+ Maturity Premium</text>
+                
+                <!-- Total bracket -->
+                <line x1="50" y1="60" x2="80" y2="60" stroke="#667eea" stroke-width="3"/>
+                <line x1="80" y1="60" x2="80" y2="360" stroke="#667eea" stroke-width="3"/>
+                <line x1="50" y1="360" x2="80" y2="360" stroke="#667eea" stroke-width="3"/>
+                <text x="30" y="215" font-size="16" font-weight="bold" fill="#667eea" transform="rotate(-90 30 215)">Total Interest Rate (r)</text>
+                
+                <!-- Legend -->
+                <rect x="100" y="380" width="600" height="50" fill="white" rx="8" stroke="#667eea" stroke-width="2"/>
+                <text x="400" y="410" font-size="14" text-anchor="middle" fill="#2c3e50">All components vary over time based on economic conditions and expectations</text>
+            </svg>
+        </div>
+
+        <h3>3.1 Real Risk-Free Interest Rate</h3>
+
+        <div class="key-concept">
+            <p><strong>Definition:</strong> The single-period interest rate for a completely risk-free security assuming no expected inflation.</p>
+            <p style="margin-top: 10px;"><strong>Economic Basis:</strong> Reflects individuals' time preferences for current versus future real consumption. Determined by the supply of and demand for savings in an economy.</p>
+        </div>
+
+        <p><strong>Determinants:</strong></p>
+        <ul>
+            <li>Economic growth expectations (higher growth → higher real rate)</li>
+            <li>Demographic factors (aging populations may increase savings supply)</li>
+            <li>Government fiscal policy (deficits can increase demand for funds)</li>
+            <li>Productivity trends</li>
+        </ul>
+
+        <h3>3.2 Inflation Premium</h3>
+
+        <div class="key-concept">
+            <p><strong>Definition:</strong> Compensation for expected loss of purchasing power due to inflation over the investment horizon.</p>
+            <p style="margin-top: 10px;"><strong>Measurement:</strong> Reflects the average inflation rate expected over the maturity of the debt instrument.</p>
+        </div>
+
+        <p><strong>Key Consideration:</strong> Inflation reduces the purchasing power of a currency unit - the amount of goods and services that can be purchased. Investors require compensation to maintain real purchasing power.</p>
+
+        <div class="example-box">
+            <h4>Example 3: Inflation Impact</h4>
+            <p><strong>Scenario:</strong></p>
+            <ul>
+                <li>Investment amount: EUR 1,000</li>
+                <li>Investment period: 1 year</li>
+                <li>Expected inflation: 3%</li>
+            </ul>
+            
+            <p style="margin-top: 15px;"><strong>Analysis:</strong></p>
+            <p>To maintain purchasing power, the investment must return at least EUR 1,030. If the investor receives only EUR 1,000 after one year, the real return is negative - the money buys 3% less in goods and services.</p>
+            
+            <p style="margin-top: 15px;"><strong>Required nominal return:</strong> At minimum, must exceed 3% to compensate for inflation.</p>
+        </div>
+
+        <h3>3.3 Default Risk Premium</h3>
+
+        <div class="key-concept">
+            <p><strong>Definition:</strong> Compensation for the possibility that the borrower will fail to make promised payments at the contracted time and in the contracted amount.</p>
+            <p style="margin-top: 10px;"><strong>Measurement:</strong> Reflected in credit spreads - the difference in yield between a risky security and a comparable risk-free security.</p>
+        </div>
+
+        <p><strong>Factors Affecting Default Risk Premium:</strong></p>
+        <ul>
+            <li>Borrower's financial strength (leverage, profitability, cash flow)</li>
+            <li>Industry and business risk</li>
+            <li>Economic cycle position</li>
+            <li>Credit rating</li>
+            <li>Collateral and covenants</li>
+        </ul>
+
+        <div class="important-note">
+            <h4>Credit Rating Impact</h4>
+            <p>Credit rating agencies (e.g., Moody's, S&P, Fitch) assess default risk. Ratings range from highest quality (AAA/Aaa) to default (D). Lower ratings require higher default risk premiums.</p>
+        </div>
+
+        <h3>3.4 Liquidity Premium</h3>
+
+        <div class="key-concept">
+            <p><strong>Definition:</strong> Compensation for the risk of loss relative to an investment's fair value if the investment needs to be converted to cash quickly.</p>
+            <p style="margin-top: 10px;"><strong>Drivers:</strong> Transaction costs, market depth, bid-ask spreads, and price impact of trading.</p>
+        </div>
+
+        <p><strong>Examples of Liquidity Differences:</strong></p>
+        <ul>
+            <li><strong>Highly liquid:</strong> US Treasury bills, large-cap stocks on major exchanges</li>
+            <li><strong>Less liquid:</strong> Small-cap stocks, corporate bonds of smaller issuers</li>
+            <li><strong>Illiquid:</strong> Real estate, private equity, thinly traded securities</li>
+        </ul>
+
+        <div class="example-box">
+            <h4>Example 4: Liquidity Premium</h4>
+            <p><strong>Compare two bonds with identical characteristics except liquidity:</strong></p>
+            
+            <table>
+                <tr>
+                    <th>Characteristic</th>
+                    <th>US Treasury Bond</th>
+                    <th>Small Company Bond</th>
+                </tr>
+                <tr>
+                    <td>Maturity</td>
+                    <td>5 years</td>
+                    <td>5 years</td>
+                </tr>
+                <tr>
+                    <td>Default Risk</td>
+                    <td>None</td>
+                    <td>None (government guaranteed)</td>
+                </tr>
+                <tr>
+                    <td>Daily Trading Volume</td>
+                    <td>$500 million</td>
+                    <td>$100,000</td>
+                </tr>
+                <tr>
+                    <td>Yield</td>
+                    <td>3.5%</td>
+                    <td>4.2%</td>
+                </tr>
+            </table>
+            
+            <p style="margin-top: 15px;"><strong>Liquidity Premium:</strong> 4.2% - 3.5% = 0.7% (70 basis points)</p>
+            <p>The small company bond must offer a higher yield to compensate for the difficulty and cost of selling the position if needed.</p>
+        </div>
+
+        <h3>3.5 Maturity Premium</h3>
+
+        <div class="key-concept">
+            <p><strong>Definition:</strong> Compensation for the increased sensitivity of a security's market value to changes in market interest rates as maturity extends.</p>
+            <p style="margin-top: 10px;"><strong>Relationship:</strong> Generally, longer-maturity securities have higher interest rate risk and thus require higher returns.</p>
+        </div>
+
+        <p><strong>Underlying Factors:</strong></p>
+        <ul>
+            <li>Interest rate risk increases with maturity</li>
+            <li>Uncertainty about future economic conditions</li>
+            <li>Reinvestment risk considerations</li>
+            <li>Investor preferences for shorter investment horizons</li>
+        </ul>
+
+        <h2>4. Nominal Risk-Free Interest Rate</h2>
+
+        <p>The nominal risk-free interest rate is a crucial benchmark in finance, representing the return on a risk-free investment before accounting for additional risk factors.</p>
+
+        <div class="formula-box">
+            <p style="font-size: 1.1em; margin-bottom: 15px;"><strong>Precise Formula:</strong></p>
+            <p style="font-size: 1.05em;">(1 + Nominal risk-free rate) = (1 + Real risk-free rate)(1 + Inflation premium)</p>
+            
+            <p style="font-size: 1.1em; margin-top: 25px; margin-bottom: 15px;"><strong>Linear Approximation:</strong></p>
+            <p style="font-size: 1.05em;">Nominal risk-free rate ≈ Real risk-free rate + Inflation premium</p>
+            
+            <p style="font-size: 0.9em; margin-top: 15px; font-style: italic;">Note: The approximation is commonly used in practice and is reasonably accurate for low to moderate inflation rates.</p>
+        </div>
+
+        <div class="example-box">
+            <h4>Example 5: Nominal vs. Real Risk-Free Rate</h4>
+            <p><strong>Given:</strong></p>
+            <ul>
+                <li>Real risk-free rate = 2.0%</li>
+                <li>Expected inflation = 3.5%</li>
+            </ul>
+            
+            <p style="margin-top: 15px;"><strong>Precise Calculation:</strong></p>
+            <p>(1 + Nominal) = (1.020)(1.035) = 1.0557</p>
+            <p>Nominal risk-free rate = 5.57%</p>
+            
+            <p style="margin-top: 15px;"><strong>Approximation:</strong></p>
+            <p>Nominal ≈ 2.0% + 3.5% = 5.5%</p>
+            
+            <p style="margin-top: 15px;"><strong>Difference:</strong> 0.07% (7 basis points) - negligible for most applications</p>
+        </div>
+
+        <h3>4.1 Proxies for Nominal Risk-Free Rate</h3>
+
+        <p>In practice, short-term government securities serve as proxies for the nominal risk-free rate:</p>
+
+        <table>
+            <tr>
+                <th>Country</th>
+                <th>Security</th>
+                <th>Typical Maturities</th>
+            </tr>
+            <tr>
+                <td>United States</td>
+                <td>Treasury Bills (T-bills)</td>
+                <td>4, 13, 26, 52 weeks</td>
+            </tr>
+            <tr>
+                <td>France</td>
+                <td>BTFs (Bons du Trésor)</td>
+                <td>Up to 1 year</td>
+            </tr>
+            <tr>
+                <td>Japan</td>
+                <td>Treasury Bills</td>
+                <td>6, 12 months</td>
+            </tr>
+            <tr>
+                <td>India</td>
+                <td>Treasury Bills</td>
+                <td>91, 182, 364 days</td>
+            </tr>
+        </table>
+
+        <div class="important-note">
+            <h4>Annualization Convention</h4>
+            <p>Interest rates are typically quoted on an annual basis, even for securities with shorter maturities. For example, a 90-day T-bill quoted at 3% represents an annualized rate, not the actual 90-day return.</p>
+            <p style="margin-top: 10px;"><strong>Actual 90-day return:</strong> Approximately 3% × (90/360) = 0.75%</p>
+        </div>
+
+        <h2>5. Comprehensive Example: Decomposing Interest Rates</h2>
+
+        <div class="example-box">
+            <h4>Example 6: Multi-Security Analysis</h4>
+            <p>Consider five debt securities with different characteristics:</p>
+            
+            <table style="margin-top: 15px;">
+                <tr>
+                    <th>Investment</th>
+                    <th>Maturity (years)</th>
+                    <th>Liquidity</th>
+                    <th>Default Risk</th>
+                    <th>Interest Rate (%)</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>2.0</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>2.5</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>7</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>r₃</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>8</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>4.0</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>8</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>6.5</td>
+                </tr>
+            </table>
+            
+            <p style="margin-top: 20px;"><strong>Assumption:</strong> Premiums for inflation, liquidity, and default risk are constant across all time horizons.</p>
+            
+            <h4 style="margin-top: 25px;">Problem 1: Identify the Liquidity Premium</h4>
+            <p><strong>Analysis:</strong> Compare Investments 1 and 2, which differ only in liquidity:</p>
+            <ul style="margin-left: 25px;">
+                <li>Investment 1 (High liquidity): 2.0%</li>
+                <li>Investment 2 (Low liquidity): 2.5%</li>
+                <li><strong>Liquidity Premium: 2.5% - 2.0% = 0.5%</strong></li>
+            </ul>
+            
+            <h4 style="margin-top: 25px;">Problem 2: Determine the Default Risk Premium</h4>
+            <p><strong>Analysis:</strong> Compare Investments 4 and 5:</p>
+            <ul style="margin-left: 25px;">
+                <li>Both have 8-year maturity</li>
+                <li>Investment 4: High liquidity, Low default risk = 4.0%</li>
+                <li>Investment 5: Low liquidity, High default risk = 6.5%</li>
+                <li>Total difference: 6.5% - 4.0% = 2.5%</li>
+                <li>Liquidity premium component: 0.5% (from Problem 1)</li>
+                <li><strong>Default risk premium: 2.5% - 0.5% = 2.0%</strong></li>
+            </ul>
+            
+            <h4 style="margin-top: 25px;">Problem 3: Estimate r₃</h4>
+            <p><strong>Lower Bound Analysis:</strong></p>
+            <p>Investment 3 has longer maturity than Investment 2, so must offer higher return:</p>
+            <p>r₃ > 2.5%</p>
+            
+            <p style="margin-top: 15px;"><strong>Upper Bound Analysis:</strong></p>
+            <p>If Investment 3 had high liquidity, it would be comparable to Investment 4 except for shorter maturity, suggesting r₃ < 4.0%.</p>
+            <p>Since Investment 3 actually has low liquidity, we must add the liquidity premium:</p>
+            <p>Expected r₃ < 4.0% + 0.5% = 4.5%</p>
+            
+            <p style="margin-top: 15px;"><strong>Conclusion:</strong></p>
+            <p style="font-weight: bold;">2.5% < r₃ < 4.5%</p>
+            <p>Most likely range: 3.0% - 4.0%, reflecting moderate maturity premium relative to 2-year securities and the liquidity premium.</p>
+        </div>
+
+        <h2>6. Dynamic Nature of Interest Rates</h2>
+
+        <div class="important-note">
+            <h4>Key Insight: Continuous Fluctuation</h4>
+            <p>All components of interest rates - the real risk-free rate and all risk premiums - vary continuously over time in response to:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>Changes in economic fundamentals</li>
+                <li>Shifts in market expectations</li>
+                <li>Monetary policy adjustments</li>
+                <li>Credit market conditions</li>
+                <li>Liquidity conditions in financial markets</li>
+            </ul>
+            <p style="margin-top: 10px;">Consequently, observed interest rates fluctuate, with the magnitude of changes dependent on various economic factors and their expected future evolution.</p>
+        </div>
+
+        <h2>7. Summary and Exam Considerations</h2>
+
+        <div class="key-concept">
+            <h3>Essential Concepts</h3>
+            <ol>
+                <li><strong>Time Value of Money:</strong> Foundation principle that cash today is preferred to cash in the future</li>
+                <li><strong>Three Interpretations:</strong> Interest rates serve as required returns, discount rates, and opportunity costs</li>
+                <li><strong>Five Components:</strong> Real risk-free rate + Inflation + Default + Liquidity + Maturity premiums</li>
+                <li><strong>Nominal Risk-Free Rate:</strong> Combination of real risk-free rate and inflation premium; serves as benchmark</li>
+                <li><strong>Government Securities:</strong> Short-term government debt represents proxy for nominal risk-free rate</li>
+                <li><strong>Dynamic Nature:</strong> All rate components fluctuate based on economic conditions and expectations</li>
+            </ol>
+        </div>
+
+        <div class="important-note">
+            <h4>Exam Strategy</h4>
+            <p><strong>Analytical Framework:</strong> When evaluating interest rates on exam questions:</p>
+            <ol style="margin-left: 25px; margin-top: 10px;">
+                <li>Identify which securities are being compared</li>
+                <li>Note which characteristics differ between securities</li>
+                <li>Isolate the premium associated with each differentiating factor</li>
+                <li>Apply logical relationships (e.g., higher risk → higher premium)</li>
+                <li>Check reasonableness of results</li>
+            </ol>
+        </div>
+
+        <div class="navigation">
+            <a href="interest-rates-intuitive.html" class="nav-button">← Intuitive Learning</a>
+            <a href="interest-rates-practice.html" class="nav-button">Practice Questions →</a>
+        </div>
+    </div>
+</body>
+</html>

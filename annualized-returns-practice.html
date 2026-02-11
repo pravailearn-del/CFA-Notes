@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annualized Returns: Practice Questions - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .intro-box {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .question-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .question-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .difficulty {
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .difficulty.easy {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+        
+        .difficulty.medium {
+            background: #fff9c4;
+            color: #f57f17;
+        }
+        
+        .difficulty.hard {
+            background: #ffcdd2;
+            color: #c62828;
+        }
+        
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .options {
+            margin: 20px 0;
+        }
+        
+        .option {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .option:hover {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        
+        .option-letter {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .option-text {
+            flex: 1;
+            padding-top: 3px;
+        }
+        
+        .option.selected {
+            border-color: #667eea;
+            background: #e8eaf6;
+        }
+        
+        .option.correct {
+            border-color: #4caf50;
+            background: #e8f5e9;
+        }
+        
+        .option.correct .option-letter {
+            background: #4caf50;
+        }
+        
+        .option.incorrect {
+            border-color: #f44336;
+            background: #ffebee;
+        }
+        
+        .option.incorrect .option-letter {
+            background: #f44336;
+        }
+        
+        .explanation {
+            display: none;
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .explanation.show {
+            display: block;
+        }
+        
+        .explanation h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .check-answer-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+        
+        .check-answer-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .check-answer-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .score-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            display: none;
+        }
+        
+        .score-card.show {
+            display: block;
+        }
+        
+        .score-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .nav-button.prev {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+        }
+        
+        .nav-button.next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .formula-inline {
+            font-family: 'Courier New', monospace;
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        table th {
+            background: #f0f0f0;
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> > <a href="#">Quantitative Methods</a> > <a href="#">Rates and Returns</a> > Practice Questions
+        </div>
+        
+        <span class="badge">Practice Questions</span>
+        
+        <h1>Annualized Returns: Practice Questions</h1>
+        
+        <div class="intro-box">
+            <h3>📝 Test Your Understanding</h3>
+            <p>These 12 practice questions cover annualized returns and continuously compounded returns. The questions range from basic conceptual understanding to complex calculations that mirror CFA exam difficulty.</p>
+            <p><strong>Instructions:</strong> Select your answer for each question, then click "Check Answer" to see if you're correct and read the detailed explanation.</p>
+            <p><strong>Tip:</strong> Have your calculator ready! Some questions require calculations.</p>
+        </div>
+        
+        <h2>Questions</h2>
+        
+        <!-- Question 1 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 1</span>
+                <span class="difficulty easy">Easy</span>
+            </div>
+            <div class="question-text">
+                An investor earns a return of 2% over one month. What is the annualized return?
+            </div>
+            <div class="options" id="q1-options">
+                <div class="option" data-question="1" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">24.0%</div>
+                </div>
+                <div class="option" data-question="1" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">26.8%</div>
+                </div>
+                <div class="option" data-question="1" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">22.5%</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(1, 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-1">
+                <h4>✓ Correct Answer: B (26.8%)</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>To annualize a monthly return, we use the formula: R<sub>annual</sub> = (1 + R<sub>monthly</sub>)<sup>12</sup> - 1</p>
+                <p>Here:</p>
+                <ul>
+                    <li>R<sub>monthly</sub> = 2% = 0.02</li>
+                    <li>c = 12 (there are 12 months in a year)</li>
+                </ul>
+                <p><strong>Calculation:</strong></p>
+                <p>R<sub>annual</sub> = (1 + 0.02)<sup>12</sup> - 1</p>
+                <p>R<sub>annual</sub> = (1.02)<sup>12</sup> - 1</p>
+                <p>R<sub>annual</sub> = 1.2682 - 1 = 0.2682 = <strong>26.8%</strong></p>
+                <p><strong>Why not A?</strong> Option A (24%) is what you'd get if you simply multiplied 2% × 12, but this ignores the compounding effect. The correct answer accounts for the fact that each month's return compounds on the previous months' returns.</p>
+            </div>
+        </div>
+        
+        <!-- Question 2 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 2</span>
+                <span class="difficulty easy">Easy</span>
+            </div>
+            <div class="question-text">
+                Which of the following statements about continuously compounded returns is most accurate?
+            </div>
+            <div class="options" id="q2-options">
+                <div class="option" data-question="2" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">Continuously compounded returns are always larger than discrete returns for positive price changes.</div>
+                </div>
+                <div class="option" data-question="2" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">Continuously compounded returns can be added across time periods.</div>
+                </div>
+                <div class="option" data-question="2" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">Continuously compounded returns are preferred for performance reporting to clients.</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(2, 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-2">
+                <h4>✓ Correct Answer: B</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>The key advantage of continuously compounded returns is their <strong>additivity</strong> property. For multiple periods, you can simply add the continuously compounded returns:</p>
+                <p>r<sub>total</sub> = r<sub>1</sub> + r<sub>2</sub> + r<sub>3</sub> + ...</p>
+                <p>In contrast, discrete returns must be multiplied: (1 + R<sub>1</sub>)(1 + R<sub>2</sub>)(1 + R<sub>3</sub>) - 1</p>
+                <p><strong>Why not A?</strong> This is incorrect. Continuously compounded returns are always <em>smaller</em> than discrete returns for positive price changes. For example, if a stock rises from $100 to $115 (15% discrete return), the continuous return is ln(1.15) = 13.98%.</p>
+                <p><strong>Why not C?</strong> While continuous returns have mathematical advantages, discrete returns are actually preferred for client reporting because they're more intuitive. Clients understand "I made 15%" better than "I made 13.98% continuously compounded."</p>
+            </div>
+        </div>
+        
+        <!-- Question 3 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 3</span>
+                <span class="difficulty medium">Medium</span>
+            </div>
+            <div class="question-text">
+                A stock returned 3.5% over a 45-day holding period. The annualized return, assuming 365 days per year, is closest to:
+            </div>
+            <div class="options" id="q3-options">
+                <div class="option" data-question="3" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">28.4%</div>
+                </div>
+                <div class="option" data-question="3" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">31.2%</div>
+                </div>
+                <div class="option" data-question="3" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">33.9%</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(3, 'C')">Check Answer</button>
+            <div class="explanation" id="explanation-3">
+                <h4>✓ Correct Answer: C (33.9%)</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>For non-standard periods like 45 days, we calculate c as the number of 45-day periods in a year:</p>
+                <p>c = 365 / 45 = 8.111</p>
+                <p><strong>Calculation:</strong></p>
+                <p>R<sub>annual</sub> = (1 + 0.035)<sup>8.111</sup> - 1</p>
+                <p>R<sub>annual</sub> = (1.035)<sup>8.111</sup> - 1</p>
+                <p>R<sub>annual</sub> = 1.339 - 1 = 0.339 = <strong>33.9%</strong></p>
+                <p><strong>Key Insight:</strong> When the holding period doesn't fit evenly into a year (like 45 days), you must use the fractional exponent. Don't try to simplify to quarterly or monthly periods when the question specifies an exact number of days.</p>
+            </div>
+        </div>
+        
+        <!-- Question 4 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 4</span>
+                <span class="difficulty medium">Medium</span>
+            </div>
+            <div class="question-text">
+                An investment generated a total return of 18% over a 15-month period. The annualized return is closest to:
+            </div>
+            <div class="options" id="q4-options">
+                <div class="option" data-question="4" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">14.4%</div>
+                </div>
+                <div class="option" data-question="4" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">15.2%</div>
+                </div>
+                <div class="option" data-question="4" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">22.5%</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(4, 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-4">
+                <h4>✓ Correct Answer: A (14.4%)</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>When the holding period is <strong>longer</strong> than one year, we need to use a fractional exponent less than 1. One year is 12 months out of a 15-month period, so:</p>
+                <p>c = 12 / 15 = 0.8</p>
+                <p><strong>Calculation:</strong></p>
+                <p>R<sub>annual</sub> = (1 + 0.18)<sup>0.8</sup> - 1</p>
+                <p>R<sub>annual</sub> = (1.18)<sup>0.8</sup> - 1</p>
+                <p>R<sub>annual</sub> = 1.144 - 1 = 0.144 = <strong>14.4%</strong></p>
+                <p><strong>Logic Check:</strong> The annualized return (14.4%) is lower than the total return (18%) because the 18% was earned over more than one year (15 months). This makes sense - you'd need to earn 14.4% each year for 1.25 years to end up with 18% total.</p>
+                <p><strong>Why not C?</strong> Option C would suggest you're earning more on an annual basis than you did over 15 months, which is impossible without additional returns.</p>
+            </div>
+        </div>
+        
+        <!-- Question 5 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 5</span>
+                <span class="difficulty medium">Medium</span>
+            </div>
+            <div class="question-text">
+                A security's price increased from ₹1,200 to ₹1,380. The continuously compounded return is closest to:
+            </div>
+            <div class="options" id="q5-options">
+                <div class="option" data-question="5" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">13.98%</div>
+                </div>
+                <div class="option" data-question="5" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">15.00%</div>
+                </div>
+                <div class="option" data-question="5" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">16.25%</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(5, 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-5">
+                <h4>✓ Correct Answer: A (13.98%)</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>To calculate continuously compounded return, we use the natural logarithm of the price relative:</p>
+                <p>r = ln(P<sub>t+1</sub> / P<sub>t</sub>)</p>
+                <p><strong>Calculation:</strong></p>
+                <p>r = ln(1,380 / 1,200)</p>
+                <p>r = ln(1.15)</p>
+                <p>r = 0.1398 = <strong>13.98%</strong></p>
+                <p><strong>Comparison:</strong> The discrete return would be (1,380 - 1,200) / 1,200 = 15%. Notice that the continuously compounded return (13.98%) is slightly smaller than the discrete return (15%), which is always the case for positive returns.</p>
+                <p><strong>Calculator Tip:</strong> Make sure you're using the "ln" button (natural log), not "log" (base-10 logarithm)!</p>
+            </div>
+        </div>
+        
+        <!-- Question 6 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 6</span>
+                <span class="difficulty hard">Hard</span>
+            </div>
+            <div class="question-text">
+                Three ETFs have the following performance since inception:
+                <table style="margin: 15px 0;">
+                    <tr>
+                        <th>ETF</th>
+                        <th>Days Since Inception</th>
+                        <th>Return Since Inception</th>
+                    </tr>
+                    <tr>
+                        <td>ETF X</td>
+                        <td>73 days</td>
+                        <td>2.8%</td>
+                    </tr>
+                    <tr>
+                        <td>ETF Y</td>
+                        <td>6 weeks</td>
+                        <td>1.5%</td>
+                    </tr>
+                    <tr>
+                        <td>ETF Z</td>
+                        <td>4 months</td>
+                        <td>4.2%</td>
+                    </tr>
+                </table>
+                Which ETF has the highest annualized return?
+            </div>
+            <div class="options" id="q6-options">
+                <div class="option" data-question="6" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">ETF X</div>
+                </div>
+                <div class="option" data-question="6" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">ETF Y</div>
+                </div>
+                <div class="option" data-question="6" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">ETF Z</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(6, 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-6">
+                <h4>✓ Correct Answer: A (ETF X)</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>We need to calculate the annualized return for each ETF:</p>
+                
+                <p><strong>ETF X (73 days):</strong></p>
+                <p>c = 365 / 73 = 5.0</p>
+                <p>R<sub>annual</sub> = (1.028)<sup>5.0</sup> - 1 = 1.1475 - 1 = <strong>14.75%</strong></p>
+                
+                <p><strong>ETF Y (6 weeks):</strong></p>
+                <p>c = 52 / 6 = 8.667</p>
+                <p>R<sub>annual</sub> = (1.015)<sup>8.667</sup> - 1 = 1.1387 - 1 = <strong>13.87%</strong></p>
+                
+                <p><strong>ETF Z (4 months):</strong></p>
+                <p>c = 12 / 4 = 3</p>
+                <p>R<sub>annual</sub> = (1.042)<sup>3</sup> - 1 = 1.1310 - 1 = <strong>13.10%</strong></p>
+                
+                <p><strong>Ranking:</strong></p>
+                <ol>
+                    <li>ETF X: 14.75% ✓</li>
+                    <li>ETF Y: 13.87%</li>
+                    <li>ETF Z: 13.10%</li>
+                </ol>
+                
+                <p><strong>Key Insight:</strong> ETF X wins despite having a middle-of-the-road period return (2.8%). Why? Because it achieved this return in the shortest time period (73 days). When you compound this performance over a full year, it produces the highest annualized return. This demonstrates why shorter holding periods can produce dramatic annualized figures.</p>
+            </div>
+        </div>
+        
+        <!-- Question 7 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 7</span>
+                <span class="difficulty easy">Easy</span>
+            </div>
+            <div class="question-text">
+                Which of the following is the primary advantage of using continuously compounded returns over discrete returns?
+            </div>
+            <div class="options" id="q7-options">
+                <div class="option" data-question="7" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">They are easier for clients to understand.</div>
+                </div>
+                <div class="option" data-question="7" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">They are additive across time periods.</div>
+                </div>
+                <div class="option" data-question="7" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">They always produce larger return figures.</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(7, 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-7">
+                <h4>✓ Correct Answer: B</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>The main mathematical advantage of continuously compounded returns is their <strong>additivity</strong>. If you have returns for Period 1, 2, and 3:</p>
+                <ul>
+                    <li><strong>Discrete returns:</strong> Total = (1 + R<sub>1</sub>)(1 + R<sub>2</sub>)(1 + R<sub>3</sub>) - 1 (multiplication)</li>
+                    <li><strong>Continuous returns:</strong> Total = r<sub>1</sub> + r<sub>2</sub> + r<sub>3</sub> (simple addition)</li>
+                </ul>
+                <p>This property makes continuous returns much easier to work with in statistical models, time series analysis, and option pricing formulas like Black-Scholes.</p>
+                <p><strong>Why not A?</strong> Continuously compounded returns are actually <em>less</em> intuitive for clients. Telling a client "you made 13.98% continuously compounded" is less clear than "you made 15%."</p>
+                <p><strong>Why not C?</strong> This is backwards. Continuously compounded returns are always <em>smaller</em> than discrete returns for positive price changes.</p>
+            </div>
+        </div>
+        
+        <!-- Question 8 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 8</span>
+                <span class="difficulty hard">Hard</span>
+            </div>
+            <div class="question-text">
+                A portfolio experiences the following monthly returns: +3.2%, -1.8%, +2.5%, +1.1%. The annualized return using discrete compounding is closest to:
+            </div>
+            <div class="options" id="q8-options">
+                <div class="option" data-question="8" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">15.2%</div>
+                </div>
+                <div class="option" data-question="8" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">16.4%</div>
+                </div>
+                <div class="option" data-question="8" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">17.1%</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(8, 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-8">
+                <h4>✓ Correct Answer: B (16.4%)</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>This is a multi-step problem. First, we need to find the total return over the 4-month period, then annualize it.</p>
+                
+                <p><strong>Step 1: Calculate 4-month total return</strong></p>
+                <p>Total = (1.032)(0.982)(1.025)(1.011) - 1</p>
+                <p>Total = 1.0512 - 1 = 0.0512 = 5.12%</p>
+                
+                <p><strong>Step 2: Annualize the 4-month return</strong></p>
+                <p>Since there are 3 four-month periods in a year (12 months / 4 months = 3):</p>
+                <p>R<sub>annual</sub> = (1.0512)<sup>3</sup> - 1</p>
+                <p>R<sub>annual</sub> = 1.1639 - 1 = 0.1639 = <strong>16.4%</strong></p>
+                
+                <p><strong>Key Points:</strong></p>
+                <ul>
+                    <li>With multiple period returns, always compound them first to get the total period return</li>
+                    <li>Notice we kept the negative return as 0.982 (= 1 - 0.018) when multiplying</li>
+                    <li>The order of multiplication doesn't matter: (1.032)(0.982)(1.025)(1.011) gives the same result regardless of order</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Question 9 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 9</span>
+                <span class="difficulty medium">Medium</span>
+            </div>
+            <div class="question-text">
+                An analyst observes the following: A stock's price was $50 at the beginning of the year and $57.50 at year-end. What is the difference between the discrete annual return and the continuously compounded annual return?
+            </div>
+            <div class="options" id="q9-options">
+                <div class="option" data-question="9" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">0.98 percentage points</div>
+                </div>
+                <div class="option" data-question="9" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">1.02 percentage points</div>
+                </div>
+                <div class="option" data-question="9" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">1.15 percentage points</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(9, 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-9">
+                <h4>✓ Correct Answer: B (1.02 percentage points)</h4>
+                <p><strong>Explanation:</strong></p>
+                
+                <p><strong>Discrete Annual Return:</strong></p>
+                <p>R = (57.50 - 50.00) / 50.00 = 7.50 / 50.00 = 0.15 = <strong>15.00%</strong></p>
+                
+                <p><strong>Continuously Compounded Annual Return:</strong></p>
+                <p>r = ln(57.50 / 50.00) = ln(1.15) = 0.1398 = <strong>13.98%</strong></p>
+                
+                <p><strong>Difference:</strong></p>
+                <p>15.00% - 13.98% = <strong>1.02 percentage points</strong></p>
+                
+                <p><strong>Important Terminology Note:</strong> When we subtract percentages, we express the difference as "percentage points," not "percent." If something goes from 10% to 12%, it increased by 2 percentage points, not by 2% (which would mean 10% × 1.02 = 10.2%).</p>
+                
+                <p><strong>Pattern to Remember:</strong> For typical investment returns (say, in the range of -20% to +30%), the difference between discrete and continuous returns is usually 0.5 to 1.5 percentage points, with larger discrete returns showing bigger differences.</p>
+            </div>
+        </div>
+        
+        <!-- Question 10 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 10</span>
+                <span class="difficulty hard">Hard</span>
+            </div>
+            <div class="question-text">
+                A fund manager needs to invest CAD 3,000,000 today to have CAD 5,000,000 in 8 years. A Guaranteed Investment Contract (GIC) offers 6.5% per annum with quarterly compounding. Will this investment meet the manager's goal?
+            </div>
+            <div class="options" id="q10-options">
+                <div class="option" data-question="10" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">Yes, it will grow to approximately CAD 5,088,000</div>
+                </div>
+                <div class="option" data-question="10" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">No, it will only grow to approximately CAD 4,876,000</div>
+                </div>
+                <div class="option" data-question="10" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">Yes, it will grow to approximately CAD 5,250,000</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(10, 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-10">
+                <h4>✓ Correct Answer: A (Yes, approximately CAD 5,088,000)</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>We need to calculate the future value of CAD 3,000,000 invested for 8 years at 6.5% with quarterly compounding.</p>
+                
+                <p><strong>Given:</strong></p>
+                <ul>
+                    <li>PV = CAD 3,000,000</li>
+                    <li>R<sub>s</sub> = 6.5% = 0.065 (quoted annual rate)</li>
+                    <li>m = 4 (quarterly compounding)</li>
+                    <li>N = 8 years</li>
+                    <li>Periodic rate = R<sub>s</sub>/m = 0.065/4 = 0.01625</li>
+                    <li>Total periods = mN = 4 × 8 = 32</li>
+                </ul>
+                
+                <p><strong>Formula:</strong></p>
+                <p>FV = PV × (1 + R<sub>s</sub>/m)<sup>mN</sup></p>
+                
+                <p><strong>Calculation:</strong></p>
+                <p>FV = CAD 3,000,000 × (1.01625)<sup>32</sup></p>
+                <p>FV = CAD 3,000,000 × 1.6961</p>
+                <p>FV = <strong>CAD 5,088,300</strong></p>
+                
+                <p><strong>Conclusion:</strong> Yes, the investment will meet the goal. The CAD 3,000,000 investment will grow to approximately CAD 5,088,000, which exceeds the required CAD 5,000,000 by about CAD 88,000.</p>
+                
+                <p><strong>Note on Compounding Frequency:</strong> Quarterly compounding means the interest is calculated and added to the principal four times per year, which results in more growth than annual compounding would provide.</p>
+            </div>
+        </div>
+        
+        <!-- Question 11 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 11</span>
+                <span class="difficulty medium">Medium</span>
+            </div>
+            <div class="question-text">
+                An investor earned the following continuously compounded monthly returns: 2.2%, 1.8%, -0.5%, 2.1%. What is the total continuously compounded return for the four-month period?
+            </div>
+            <div class="options" id="q11-options">
+                <div class="option" data-question="11" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">5.6%</div>
+                </div>
+                <div class="option" data-question="11" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">5.9%</div>
+                </div>
+                <div class="option" data-question="11" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">6.2%</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(11, 'A')">Check Answer</button>
+            <div class="explanation" id="explanation-11">
+                <h4>✓ Correct Answer: A (5.6%)</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>This question tests the key property of continuously compounded returns: they are <strong>additive</strong>!</p>
+                
+                <p><strong>Calculation:</strong></p>
+                <p>r<sub>total</sub> = r<sub>1</sub> + r<sub>2</sub> + r<sub>3</sub> + r<sub>4</sub></p>
+                <p>r<sub>total</sub> = 2.2% + 1.8% + (-0.5%) + 2.1%</p>
+                <p>r<sub>total</sub> = 2.2% + 1.8% - 0.5% + 2.1%</p>
+                <p>r<sub>total</sub> = <strong>5.6%</strong></p>
+                
+                <p><strong>Why This Works:</strong> The beauty of continuously compounded returns is that you can simply add them together to get the total return. No multiplication needed!</p>
+                
+                <p><strong>Comparison with Discrete Returns:</strong> If these were discrete returns instead of continuous returns, you would have had to calculate:</p>
+                <p>(1.022)(1.018)(0.995)(1.021) - 1 = 5.76%</p>
+                
+                <p>Notice that:</p>
+                <ul>
+                    <li>Continuous total: 5.6%</li>
+                    <li>Discrete total: 5.76%</li>
+                    <li>The continuous return is slightly smaller, as expected</li>
+                </ul>
+                
+                <p><strong>Practical Tip:</strong> In quantitative finance and statistical modeling, this additivity property is why continuously compounded returns are preferred. They make the math much simpler!</p>
+            </div>
+        </div>
+        
+        <!-- Question 12 -->
+        <div class="question-card">
+            <div class="question-header">
+                <span class="question-number">Question 12</span>
+                <span class="difficulty hard">Hard</span>
+            </div>
+            <div class="question-text">
+                An analyst is comparing two bonds:
+                <ul style="margin: 10px 0; margin-left: 20px;">
+                    <li><strong>Bond A:</strong> Offers 7.2% per annum with semiannual compounding</li>
+                    <li><strong>Bond B:</strong> Offers 7.1% per annum with monthly compounding</li>
+                </ul>
+                If an investor has ₹1,000,000 to invest for 5 years, how much more will the better bond provide?
+            </div>
+            <div class="options" id="q12-options">
+                <div class="option" data-question="12" data-answer="A">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">Bond A will provide approximately ₹2,700 more</div>
+                </div>
+                <div class="option" data-question="12" data-answer="B">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">Bond B will provide approximately ₹1,500 more</div>
+                </div>
+                <div class="option" data-question="12" data-answer="C">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">Bond A will provide approximately ₹5,200 more</div>
+                </div>
+            </div>
+            <button class="check-answer-btn" onclick="checkAnswer(12, 'B')">Check Answer</button>
+            <div class="explanation" id="explanation-12">
+                <h4>✓ Correct Answer: B (Bond B will provide approximately ₹1,500 more)</h4>
+                <p><strong>Explanation:</strong></p>
+                <p>We need to calculate the future value for both bonds and compare.</p>
+                
+                <p><strong>Bond A (7.2% semiannual):</strong></p>
+                <ul>
+                    <li>R<sub>s</sub> = 0.072</li>
+                    <li>m = 2 (semiannual)</li>
+                    <li>Periodic rate = 0.072/2 = 0.036</li>
+                    <li>Total periods = 2 × 5 = 10</li>
+                </ul>
+                <p>FV<sub>A</sub> = ₹1,000,000 × (1.036)<sup>10</sup></p>
+                <p>FV<sub>A</sub> = ₹1,000,000 × 1.4214</p>
+                <p>FV<sub>A</sub> = <strong>₹1,421,400</strong></p>
+                
+                <p><strong>Bond B (7.1% monthly):</strong></p>
+                <ul>
+                    <li>R<sub>s</sub> = 0.071</li>
+                    <li>m = 12 (monthly)</li>
+                    <li>Periodic rate = 0.071/12 = 0.005917</li>
+                    <li>Total periods = 12 × 5 = 60</li>
+                </ul>
+                <p>FV<sub>B</sub> = ₹1,000,000 × (1.005917)<sup>60</sup></p>
+                <p>FV<sub>B</sub> = ₹1,000,000 × 1.4229</p>
+                <p>FV<sub>B</sub> = <strong>₹1,422,900</strong></p>
+                
+                <p><strong>Difference:</strong></p>
+                <p>₹1,422,900 - ₹1,421,400 = <strong>₹1,500</strong></p>
+                
+                <p><strong>Key Insight:</strong> Even though Bond A has a higher stated rate (7.2% vs 7.1%), Bond B provides more value because it compounds more frequently (monthly vs semiannually). The more frequent compounding compensates for the lower stated rate.</p>
+                
+                <p><strong>General Principle:</strong> When comparing investments with different compounding frequencies, you cannot simply compare the stated rates. The <em>effective annual rate</em> is what matters, and more frequent compounding increases the effective rate.</p>
+                
+                <p><strong>Effective Annual Rates:</strong></p>
+                <ul>
+                    <li>Bond A: (1.036)<sup>2</sup> - 1 = 7.33%</li>
+                    <li>Bond B: (1.005917)<sup>12</sup> - 1 = 7.34%</li>
+                </ul>
+                <p>Bond B's effective rate is slightly higher, hence the better outcome.</p>
+            </div>
+        </div>
+        
+        <div class="score-card" id="score-card">
+            <h2>Your Score</h2>
+            <div class="score-number" id="score-display">0/12</div>
+            <p id="score-message"></p>
+        </div>
+        
+        <div class="navigation">
+            <a href="annualized-returns-detailed.html" class="nav-button prev">← Previous: Detailed Notes</a>
+            <a href="#" class="nav-button next">Next LOS →</a>
+        </div>
+    </div>
+    
+    <script>
+        let selectedAnswers = {};
+        let correctAnswers = 0;
+        let totalQuestions = 12;
+        
+        // Add click handlers to all options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const questionNum = this.getAttribute('data-question');
+                const answer = this.getAttribute('data-answer');
+                
+                // Remove selected class from all options in this question
+                document.querySelectorAll(`[data-question="${questionNum}"]`).forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Store the selected answer
+                selectedAnswers[questionNum] = answer;
+                
+                // Enable the check answer button
+                const btn = this.closest('.question-card').querySelector('.check-answer-btn');
+                btn.disabled = false;
+            });
+        });
+        
+        function checkAnswer(questionNum, correctAnswer) {
+            const selectedAnswer = selectedAnswers[questionNum];
+            
+            if (!selectedAnswer) {
+                alert('Please select an answer first!');
+                return;
+            }
+            
+            const options = document.querySelectorAll(`[data-question="${questionNum}"]`);
+            const explanation = document.getElementById(`explanation-${questionNum}`);
+            const btn = document.querySelector(`#explanation-${questionNum}`).previousElementSibling;
+            
+            // Disable the button
+            btn.disabled = true;
+            btn.textContent = 'Answer Checked';
+            
+            // Mark correct and incorrect answers
+            options.forEach(option => {
+                const answer = option.getAttribute('data-answer');
+                if (answer === correctAnswer) {
+                    option.classList.add('correct');
+                    option.classList.remove('selected');
+                }
+                if (answer === selectedAnswer && answer !== correctAnswer) {
+                    option.classList.add('incorrect');
+                    option.classList.remove('selected');
+                }
+                // Disable clicking after checking
+                option.style.pointerEvents = 'none';
+            });
+            
+            // Show explanation
+            explanation.classList.add('show');
+            
+            // Update score if correct
+            if (selectedAnswer === correctAnswer) {
+                correctAnswers++;
+            }
+            
+            // Update score display
+            updateScore();
+        }
+        
+        function updateScore() {
+            const scoreCard = document.getElementById('score-card');
+            const scoreDisplay = document.getElementById('score-display');
+            const scoreMessage = document.getElementById('score-message');
+            
+            scoreDisplay.textContent = `${correctAnswers}/${totalQuestions}`;
+            
+            const percentage = (correctAnswers / totalQuestions) * 100;
+            
+            if (percentage >= 90) {
+                scoreMessage.textContent = '🎉 Outstanding! You have mastered this concept!';
+            } else if (percentage >= 75) {
+                scoreMessage.textContent = '👏 Great job! You have a strong understanding!';
+            } else if (percentage >= 60) {
+                scoreMessage.textContent = '👍 Good work! Review the explanations to strengthen your knowledge.';
+            } else {
+                scoreMessage.textContent = '📚 Keep studying! Review the detailed notes and try again.';
+            }
+            
+            if (Object.keys(selectedAnswers).length === totalQuestions) {
+                scoreCard.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Return Measures: Detailed Notes - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+        
+        .key-concept {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196f3;
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe0b3 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ff8a65;
+        }
+        
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .nav-button.prev {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+        }
+        
+        .nav-button.next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .formula-display {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> > <a href="#">Quantitative Methods</a> > <a href="#">Rates and Returns</a> > Major Return Measures
+        </div>
+        
+        <span class="badge">Detailed Notes</span>
+        
+        <h1>Calculate and Interpret Major Return Measures and Describe Their Appropriate Uses</h1>
+        
+        <div class="key-concept">
+            <h3>Learning Outcome Statement</h3>
+            <p><strong>LOS: Calculate and interpret major return measures and describe their appropriate uses.</strong></p>
+            <p>This LOS requires candidates to understand the distinctions between different return measures (gross vs. net, pre-tax vs. after-tax, nominal vs. real, and leveraged returns), calculate each measure appropriately, and determine which measure is most suitable for specific analytical contexts.</p>
+        </div>
+        
+        <h2>1. Framework for Return Measurement</h2>
+        
+        <p>Investment returns must be adjusted for various factors to provide meaningful comparisons and accurate performance assessment. The progression from gross returns to after-tax real returns represents successive layers of adjustment that reflect the actual economic benefit to investors.</p>
+        
+        <div class="key-concept">
+            <h3>Hierarchy of Return Measures</h3>
+            <p>Return measures can be arranged in a hierarchy, from most general to most investor-specific:</p>
+            <ol>
+                <li><strong>Gross Return:</strong> Portfolio return before any deductions</li>
+                <li><strong>Net Return:</strong> After management fees and administrative expenses</li>
+                <li><strong>Pre-Tax Nominal Return:</strong> Standard reported return (typically equivalent to net return)</li>
+                <li><strong>After-Tax Nominal Return:</strong> After all tax liabilities</li>
+                <li><strong>After-Tax Real Return:</strong> Adjusted for inflation; represents true purchasing power gain</li>
+            </ol>
+        </div>
+        
+        <div class="image-container">
+            <svg viewBox="0 0 800 450" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="450" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    Return Measure Decomposition Framework
+                </text>
+                
+                <!-- Gross Return Level -->
+                <rect x="50" y="70" width="700" height="50" rx="8" fill="#667eea" opacity="0.9"/>
+                <text x="400" y="100" font-size="15" font-weight="bold" text-anchor="middle" fill="white">
+                    Gross Return (R<tspan baseline-shift="sub" font-size="12">gross</tspan>)
+                </text>
+                
+                <line x1="400" y1="120" x2="400" y2="145" stroke="#667eea" stroke-width="2" marker-end="url(#arrow1)"/>
+                <text x="480" y="138" font-size="11" fill="#667eea">- Management Fees</text>
+                
+                <!-- Net Return Level -->
+                <rect x="100" y="145" width="600" height="50" rx="8" fill="#ff6b9d" opacity="0.9"/>
+                <text x="400" y="175" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+                    Net Return (R<tspan baseline-shift="sub" font-size="11">net</tspan>) = Pre-Tax Nominal Return
+                </text>
+                
+                <line x1="400" y1="195" x2="400" y2="220" stroke="#ff6b9d" stroke-width="2" marker-end="url(#arrow2)"/>
+                <text x="480" y="213" font-size="11" fill="#ff6b9d">- Taxes on Income & Gains</text>
+                
+                <!-- After-Tax Nominal Level -->
+                <rect x="150" y="220" width="500" height="50" rx="8" fill="#ffd89b" opacity="0.9"/>
+                <text x="400" y="250" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">
+                    After-Tax Nominal Return (R<tspan baseline-shift="sub" font-size="11">AT,nom</tspan>)
+                </text>
+                
+                <line x1="400" y1="270" x2="400" y2="295" stroke="#ff8a65" stroke-width="2" marker-end="url(#arrow3)"/>
+                <text x="480" y="288" font-size="11" fill="#ff8a65">÷ (1 + Inflation Rate)</text>
+                
+                <!-- After-Tax Real Level -->
+                <rect x="200" y="295" width="400" height="60" rx="8" fill="#4caf50" opacity="0.9"/>
+                <text x="400" y="320" font-size="14" font-weight="bold" text-anchor="middle" fill="white">
+                    After-Tax Real Return (R<tspan baseline-shift="sub" font-size="11">AT,real</tspan>)
+                </text>
+                <text x="400" y="340" font-size="12" text-anchor="middle" fill="white">
+                    True Purchasing Power Gain
+                </text>
+                
+                <!-- Side panel -->
+                <rect x="50" y="375" width="700" height="60" rx="8" fill="white" stroke="#667eea" stroke-width="2"/>
+                <text x="400" y="397" font-size="13" font-weight="bold" text-anchor="middle" fill="#667eea">
+                    Leverage Effect (Optional)
+                </text>
+                <text x="400" y="418" font-size="11" text-anchor="middle" fill="#555">
+                    Can be applied at any level: R<tspan baseline-shift="sub" font-size="9">L</tspan> = R<tspan baseline-shift="sub" font-size="9">P</tspan> + (V<tspan baseline-shift="sub" font-size="9">B</tspan>/V<tspan baseline-shift="sub" font-size="9">E</tspan>) × (R<tspan baseline-shift="sub" font-size="9">P</tspan> - r<tspan baseline-shift="sub" font-size="9">D</tspan>)
+                </text>
+                
+                <!-- Arrow markers -->
+                <defs>
+                    <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#667eea" />
+                    </marker>
+                    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#ff6b9d" />
+                    </marker>
+                    <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#ff8a65" />
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+        
+        <h2>2. Gross Return and Net Return</h2>
+        
+        <div class="key-concept">
+            <h3>Definitions</h3>
+            <p><strong>Gross Return:</strong> The return on managed assets after deducting trading expenses and commissions, but before deducting management fees, custody fees, and other administrative expenses. Gross return reflects the investment manager's skill in security selection and portfolio management.</p>
+            <p><strong>Net Return:</strong> The return earned by the investment vehicle (e.g., mutual fund) after all managerial and administrative expenses. This represents what investors actually receive and is the standard reported return figure.</p>
+        </div>
+        
+        <div class="formula-box">
+            <h4>Relationship Between Gross and Net Returns</h4>
+            <div class="formula-display">
+                R<sub>net</sub> = R<sub>gross</sub> - Fee Rate
+            </div>
+            <p style="margin-top: 15px;">For a more precise calculation when fees are charged as a percentage of assets:</p>
+            <div class="formula-display">
+                (1 + R<sub>net</sub>) = (1 + R<sub>gross</sub>) × (1 - f)
+            </div>
+            <p><strong>Where:</strong></p>
+            <ul>
+                <li><strong>f</strong> = Fee rate as a decimal (e.g., 0.015 for 1.5% annual fee)</li>
+            </ul>
+        </div>
+        
+        <div class="important-note">
+            <h4>Rationale for Separate Measurement</h4>
+            <p>The distinction between gross and net returns exists because:</p>
+            <ol>
+                <li><strong>Fee structures vary by investor:</strong> Larger accounts typically receive lower fee rates</li>
+                <li><strong>Expense ratios vary by fund size:</strong> Fixed administrative costs create economies of scale</li>
+                <li><strong>Manager evaluation:</strong> Gross returns provide a basis for assessing investment skill independent of fee structure</li>
+                <li><strong>Competitive disadvantage for small funds:</strong> Small funds have higher expense ratios relative to assets under management</li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <h3>Example 1: Gross vs. Net Return Calculation</h3>
+            <p><strong>Problem Statement:</strong> A mutual fund manages EUR 30 million in assets. The fund's portfolio appreciated from EUR 30 million to EUR 35 million over one year. The fund incurs EUR 500,000 in fixed annual expenses (unrelated to manager performance) and charges a 1.5% management fee on assets under management.</p>
+            
+            <p><strong>Required:</strong> Calculate (a) the gross return and (b) the net return to investors.</p>
+            
+            <p><strong>Solution:</strong></p>
+            
+            <h4>(a) Gross Return:</h4>
+            <p>Portfolio appreciation before any expense deductions:</p>
+            <div class="formula-display">
+                R<sub>gross</sub> = (EUR 35,000,000 - EUR 30,000,000) / EUR 30,000,000<br>
+                R<sub>gross</sub> = EUR 5,000,000 / EUR 30,000,000 = 0.1667 = <strong>16.67%</strong>
+            </div>
+            
+            <h4>(b) Net Return:</h4>
+            <p>Total expenses:</p>
+            <ul>
+                <li>Management fee: EUR 30,000,000 × 0.015 = EUR 450,000</li>
+                <li>Other fixed expenses: EUR 500,000</li>
+                <li>Total expense ratio: (EUR 450,000 + EUR 500,000) / EUR 30,000,000 = 3.17%</li>
+            </ul>
+            
+            <p>Net return to investors:</p>
+            <div class="formula-display">
+                R<sub>net</sub> = 16.67% - 3.17% = <strong>13.50%</strong>
+            </div>
+            
+            <p><strong>Interpretation:</strong> The manager's gross return of 16.67% demonstrates investment skill. However, investors received only 13.50% due to the 3.17% expense ratio. The high expense ratio relative to assets (due to the fund's small size) significantly impacts investor returns.</p>
+        </div>
+        
+        <h2>3. Pre-Tax and After-Tax Nominal Returns</h2>
+        
+        <div class="key-concept">
+            <h3>Tax Considerations in Return Measurement</h3>
+            <p><strong>Pre-Tax Nominal Return:</strong> The standard return measure that has not been adjusted for taxes or inflation. This is typically equivalent to the net return (after fees but before taxes).</p>
+            <p><strong>After-Tax Nominal Return:</strong> The return after deducting all applicable taxes on dividends, interest, and realized capital gains. This represents the actual cash flow available to the taxable investor.</p>
+        </div>
+        
+        <div class="formula-box">
+            <h4>After-Tax Return Calculation</h4>
+            <div class="formula-display">
+                R<sub>AT,nom</sub> = R<sub>PT,nom</sub> - (Tax Rate × R<sub>PT,nom</sub>)
+            </div>
+            <p>Or equivalently:</p>
+            <div class="formula-display">
+                R<sub>AT,nom</sub> = R<sub>PT,nom</sub> × (1 - Tax Rate)
+            </div>
+            <p><strong>Where:</strong></p>
+            <ul>
+                <li><strong>R<sub>AT,nom</sub></strong> = After-tax nominal return</li>
+                <li><strong>R<sub>PT,nom</sub></strong> = Pre-tax nominal return</li>
+                <li><strong>Tax Rate</strong> = Effective tax rate on investment returns (as decimal)</li>
+            </ul>
+            
+            <p style="margin-top: 20px;"><strong>Important Note:</strong> In practice, different components of return may be taxed at different rates:</p>
+            <ul>
+                <li>Interest income: Often taxed as ordinary income</li>
+                <li>Qualified dividends: May receive preferential rates</li>
+                <li>Short-term capital gains: Typically taxed as ordinary income</li>
+                <li>Long-term capital gains: Often receive preferential tax treatment</li>
+            </ul>
+        </div>
+        
+        <div class="important-note">
+            <h4>Taxation Jurisdictional Variations</h4>
+            <p>Tax treatment of investment returns varies significantly across jurisdictions:</p>
+            <ul>
+                <li><strong>Capital gains timing:</strong> May be taxed upon realization or accrual (e.g., discount bonds)</li>
+                <li><strong>Holding period requirements:</strong> Long-term preferential rates typically require 1+ year holding periods</li>
+                <li><strong>Dividend taxation:</strong> Ranges from preferential rates to ordinary income to tax-exempt</li>
+                <li><strong>Account type impacts:</strong> Tax-deferred (e.g., IRA, 401(k)) vs. taxable accounts</li>
+            </ul>
+        </div>
+        
+        <div class="example-box">
+            <h3>Example 2: After-Tax Return Calculation</h3>
+            <p><strong>Problem Statement:</strong> An investor in a mutual fund earned a 15% pre-tax nominal return in Year 1. The investor's marginal tax rate is 20%, applied uniformly to all investment returns. Calculate the after-tax nominal return.</p>
+            
+            <p><strong>Analysis:</strong></p>
+            <ul>
+                <li>Pre-tax nominal return (R<sub>PT,nom</sub>) = 15%</li>
+                <li>Tax rate (t) = 20% = 0.20</li>
+                <li>Assume all gains are realized and taxes paid immediately</li>
+            </ul>
+            
+            <p><strong>Solution:</strong></p>
+            <div class="formula-display">
+                R<sub>AT,nom</sub> = 15% × (1 - 0.20)<br>
+                R<sub>AT,nom</sub> = 15% × 0.80<br>
+                <strong>R<sub>AT,nom</sub> = 12%</strong>
+            </div>
+            
+            <p><strong>Alternative Calculation:</strong></p>
+            <div class="formula-display">
+                Tax liability = 15% × 0.20 = 3%<br>
+                After-tax return = 15% - 3% = <strong>12%</strong>
+            </div>
+            
+            <p><strong>Interpretation:</strong> Of the 15% pre-tax return, 3 percentage points are paid in taxes, leaving the investor with a 12% after-tax nominal return.</p>
+        </div>
+        
+        <h2>4. Nominal Returns and Real Returns</h2>
+        
+        <div class="key-concept">
+            <h3>Inflation Adjustment</h3>
+            <p><strong>Nominal Return:</strong> The return measured in current currency units without adjustment for inflation. This is the standard reported return figure.</p>
+            <p><strong>Real Return:</strong> The return adjusted for inflation, representing the change in purchasing power. Real returns enable meaningful comparisons across time periods with different inflation rates and across countries with different inflation experiences.</p>
+        </div>
+        
+        <div class="formula-box">
+            <h4>Fisher Equation: Nominal and Real Return Relationship</h4>
+            <div class="formula-display">
+                (1 + Nominal Return) = (1 + Real Return) × (1 + Inflation Rate)
+            </div>
+            <p>Solving for real return:</p>
+            <div class="formula-display">
+                (1 + Real Return) = (1 + Nominal Return) / (1 + Inflation Rate)
+            </div>
+            <p>Therefore:</p>
+            <div class="formula-display">
+                Real Return = [(1 + Nominal Return) / (1 + Inflation Rate)] - 1
+            </div>
+            <p><strong>Linear Approximation (valid for low inflation rates):</strong></p>
+            <div class="formula-display">
+                Real Return ≈ Nominal Return - Inflation Rate
+            </div>
+            <p><strong>Note:</strong> The exact formula should be used for examination calculations; the approximation is conceptual only.</p>
+        </div>
+        
+        <div class="example-box">
+            <h3>Example 3: Real Return Calculation</h3>
+            <p><strong>Problem Statement:</strong> An investor earned a 3% after-tax nominal return in Year 5. The inflation rate during this period was 2%. Calculate the after-tax real return.</p>
+            
+            <p><strong>Analysis:</strong></p>
+            <ul>
+                <li>After-tax nominal return = 3% = 0.03</li>
+                <li>Inflation rate = 2% = 0.02</li>
+            </ul>
+            
+            <p><strong>Solution:</strong></p>
+            <div class="formula-display">
+                Real Return = [(1 + 0.03) / (1 + 0.02)] - 1<br>
+                Real Return = (1.03 / 1.02) - 1<br>
+                Real Return = 1.00980 - 1<br>
+                <strong>Real Return = 0.0098 = 0.98%</strong>
+            </div>
+            
+            <p><strong>Interpretation:</strong> Although the investor earned 3% in nominal terms after taxes, inflation reduced purchasing power by 2%. The true gain in purchasing power is approximately 0.98% (or 98 basis points).</p>
+            
+            <p><strong>Verification Using Approximation:</strong></p>
+            <p>Real Return ≈ 3% - 2% = 1%</p>
+            <p>The approximation yields 1%, close to the exact answer of 0.98%. The approximation is reasonably accurate when both returns and inflation are relatively low.</p>
+        </div>
+        
+        <div class="image-container">
+            <svg viewBox="0 0 800 500" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="500" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    Decomposition of Nominal Return into Real Return and Inflation
+                </text>
+                
+                <!-- Total nominal return bar -->
+                <rect x="50" y="80" width="700" height="60" rx="8" fill="#667eea" opacity="0.9"/>
+                <text x="400" y="115" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+                    Nominal Return: 8%
+                </text>
+                
+                <!-- Decomposition -->
+                <line x1="400" y1="140" x2="250" y2="180" stroke="#4caf50" stroke-width="2" marker-end="url(#arrow4)"/>
+                <line x1="400" y1="140" x2="550" y2="180" stroke="#ff6b9d" stroke-width="2" marker-end="url(#arrow5)"/>
+                
+                <!-- Real return component -->
+                <rect x="50" y="180" width="360" height="60" rx="8" fill="#4caf50" opacity="0.9"/>
+                <text x="230" y="210" font-size="15" font-weight="bold" text-anchor="middle" fill="white">
+                    Real Return: 2.86%
+                </text>
+                <text x="230" y="228" font-size="12" text-anchor="middle" fill="white">
+                    Actual purchasing power gain
+                </text>
+                
+                <!-- Inflation component -->
+                <rect x="430" y="180" width="320" height="60" rx="8" fill="#ff6b9d" opacity="0.9"/>
+                <text x="590" y="210" font-size="15" font-weight="bold" text-anchor="middle" fill="white">
+                    Inflation: 5%
+                </text>
+                <text x="590" y="228" font-size="12" text-anchor="middle" fill="white">
+                    Loss of purchasing power
+                </text>
+                
+                <!-- Formula verification -->
+                <rect x="50" y="270" width="700" height="200" rx="10" fill="white" stroke="#667eea" stroke-width="2"/>
+                <text x="400" y="300" font-size="14" font-weight="bold" text-anchor="middle" fill="#667eea">
+                    Mathematical Verification
+                </text>
+                
+                <text x="70" y="330" font-size="13" fill="#333">Given:</text>
+                <text x="90" y="355" font-size="12" fill="#555">• Nominal Return = 8%</text>
+                <text x="90" y="375" font-size="12" fill="#555">• Inflation Rate = 5%</text>
+                
+                <text x="70" y="405" font-size="13" fill="#333">Calculate Real Return:</text>
+                <text x="90" y="430" font-size="12" fill="#555">Real Return = [(1.08) / (1.05)] - 1</text>
+                <text x="90" y="450" font-size="12" fill="#555">Real Return = 1.02857 - 1 = 0.02857 = <tspan font-weight="bold" fill="#4caf50">2.86%</tspan></text>
+                
+                <!-- Arrow markers -->
+                <defs>
+                    <marker id="arrow4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#4caf50" />
+                    </marker>
+                    <marker id="arrow5" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#ff6b9d" />
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+        
+        <div class="example-box">
+            <h3>Example 4: Asset Class Real Returns</h3>
+            <p><strong>Problem Statement:</strong> An analyst observes the following historic geometric returns:</p>
+            
+            <table class="comparison-table" style="margin: 15px 0;">
+                <tr>
+                    <th>Asset Class</th>
+                    <th>Geometric Return (%)</th>
+                </tr>
+                <tr>
+                    <td>Equities</td>
+                    <td>8.0</td>
+                </tr>
+                <tr>
+                    <td>Corporate Bonds</td>
+                    <td>6.5</td>
+                </tr>
+                <tr>
+                    <td>Treasury Bills</td>
+                    <td>2.5</td>
+                </tr>
+                <tr>
+                    <td>Inflation</td>
+                    <td>2.1</td>
+                </tr>
+            </table>
+            
+            <p><strong>Required:</strong> Calculate (a) the real rate of return for equities, (b) the real rate of return for corporate bonds, (c) the risk premium for equities, and (d) the risk premium for corporate bonds.</p>
+            
+            <p><strong>Solutions:</strong></p>
+            
+            <h4>(a) Real Rate of Return for Equities:</h4>
+            <div class="formula-display">
+                Real Return<sub>equities</sub> = [(1 + 0.080) / (1 + 0.021)] - 1<br>
+                = (1.080 / 1.021) - 1<br>
+                = 1.0578 - 1<br>
+                = 0.0578 = <strong>5.8%</strong>
+            </div>
+            
+            <h4>(b) Real Rate of Return for Corporate Bonds:</h4>
+            <div class="formula-display">
+                Real Return<sub>bonds</sub> = [(1 + 0.065) / (1 + 0.021)] - 1<br>
+                = (1.065 / 1.021) - 1<br>
+                = 1.0431 - 1<br>
+                = 0.0431 = <strong>4.3%</strong>
+            </div>
+            
+            <h4>(c) Risk Premium for Equities:</h4>
+            <p>The equity risk premium is calculated relative to the risk-free rate (proxied by Treasury bills):</p>
+            <div class="formula-display">
+                Risk Premium<sub>equities</sub> = [(1 + 0.080) / (1 + 0.025)] - 1<br>
+                = (1.080 / 1.025) - 1<br>
+                = 1.0537 - 1<br>
+                = 0.0537 = <strong>5.4%</strong>
+            </div>
+            
+            <h4>(d) Risk Premium for Corporate Bonds:</h4>
+            <div class="formula-display">
+                Risk Premium<sub>bonds</sub> = [(1 + 0.065) / (1 + 0.025)] - 1<br>
+                = (1.065 / 1.025) - 1<br>
+                = 1.0390 - 1<br>
+                = 0.0390 = <strong>3.9%</strong>
+            </div>
+            
+            <p><strong>Interpretation:</strong></p>
+            <ul>
+                <li>Equities provided a real return of 5.8%, representing genuine purchasing power growth after inflation</li>
+                <li>Corporate bonds provided a real return of 4.3%</li>
+                <li>The equity risk premium of 5.4% compensates investors for bearing equity market risk</li>
+                <li>The corporate bond risk premium of 3.9% compensates for credit and liquidity risk</li>
+            </ul>
+        </div>
+        
+        <div class="important-note">
+            <h4>After-Tax Real Return: The Ultimate Benchmark</h4>
+            <p>The after-tax real return represents the most comprehensive measure of investment performance from an investor's perspective. It accounts for:</p>
+            <ol>
+                <li>Management fees and expenses (net return)</li>
+                <li>Tax liability (after-tax return)</li>
+                <li>Inflation (real return)</li>
+            </ol>
+            <p><strong>Challenge:</strong> Asset managers typically do not calculate after-tax real returns because:</p>
+            <ul>
+                <li>Tax rates vary by investor (marginal tax rate differences)</li>
+                <li>Tax treatment depends on holding period (short-term vs. long-term)</li>
+                <li>Account type matters (taxable vs. tax-deferred vs. tax-exempt)</li>
+                <li>Jurisdiction-specific tax rules create complexity</li>
+            </ul>
+            <p><strong>Application:</strong> Individual investors should calculate their own after-tax real returns for accurate performance assessment and comparison across investment alternatives.</p>
+        </div>
+        
+        <h2>5. Leveraged Returns</h2>
+        
+        <div class="key-concept">
+            <h3>Leverage in Investment Context</h3>
+            <p><strong>Leverage</strong> refers to the use of borrowed capital or derivative instruments to create investment exposure greater than the investor's equity capital. Leverage amplifies both gains and losses.</p>
+            <p><strong>Sources of Leverage:</strong></p>
+            <ol>
+                <li><strong>Borrowed Capital:</strong> Direct borrowing (e.g., margin accounts, mortgage financing)</li>
+                <li><strong>Derivatives:</strong> Futures, options, swaps requiring minimal upfront capital relative to notional exposure</li>
+            </ol>
+        </div>
+        
+        <div class="formula-box">
+            <h4>Leveraged Return Formula</h4>
+            <div class="formula-display">
+                R<sub>L</sub> = [R<sub>P</sub> × (V<sub>E</sub> + V<sub>B</sub>) - (V<sub>B</sub> × r<sub>D</sub>)] / V<sub>E</sub>
+            </div>
+            <p>Simplifying:</p>
+            <div class="formula-display">
+                R<sub>L</sub> = R<sub>P</sub> + (V<sub>B</sub> / V<sub>E</sub>) × (R<sub>P</sub> - r<sub>D</sub>)
+            </div>
+            <p><strong>Where:</strong></p>
+            <ul>
+                <li><strong>R<sub>L</sub></strong> = Leveraged return on equity</li>
+                <li><strong>R<sub>P</sub></strong> = Portfolio return (total investment return)</li>
+                <li><strong>V<sub>E</sub></strong> = Equity capital (investor's own money)</li>
+                <li><strong>V<sub>B</sub></strong> = Borrowed capital (debt)</li>
+                <li><strong>r<sub>D</sub></strong> = Cost of debt (interest rate on borrowed funds)</li>
+                <li><strong>(V<sub>B</sub> / V<sub>E</sub>)</strong> = Leverage ratio or debt-to-equity ratio</li>
+            </ul>
+            
+            <p style="margin-top: 20px;"><strong>Key Relationships:</strong></p>
+            <ul>
+                <li>If R<sub>P</sub> > r<sub>D</sub>: Leverage increases return (R<sub>L</sub> > R<sub>P</sub>)</li>
+                <li>If R<sub>P</sub> < r<sub>D</sub>: Leverage decreases return (R<sub>L</sub> < R<sub>P</sub>)</li>
+                <li>If R<sub>P</sub> = r<sub>D</sub>: Leverage has no effect (R<sub>L</sub> = R<sub>P</sub>)</li>
+            </ul>
+        </div>
+        
+        <div class="example-box">
+            <h3>Example 5: Leveraged Portfolio Return</h3>
+            <p><strong>Problem Statement:</strong> A portfolio manager oversees a EUR 10 million equity portfolio that generates an 8% total investment return over one year. The portfolio is financed 30% with debt at a 5% annual interest rate. Calculate the leveraged return on equity.</p>
+            
+            <p><strong>Analysis:</strong></p>
+            <ul>
+                <li>Total portfolio value = EUR 10 million</li>
+                <li>Debt financing = 30% = EUR 3 million (V<sub>B</sub>)</li>
+                <li>Equity capital = 70% = EUR 7 million (V<sub>E</sub>)</li>
+                <li>Portfolio return (R<sub>P</sub>) = 8% = 0.08</li>
+                <li>Cost of debt (r<sub>D</sub>) = 5% = 0.05</li>
+                <li>Leverage ratio = V<sub>B</sub> / V<sub>E</sub> = EUR 3M / EUR 7M = 0.4286</li>
+            </ul>
+            
+            <p><strong>Solution:</strong></p>
+            <div class="formula-display">
+                R<sub>L</sub> = R<sub>P</sub> + (V<sub>B</sub> / V<sub>E</sub>) × (R<sub>P</sub> - r<sub>D</sub>)<br>
+                R<sub>L</sub> = 8% + (3/7) × (8% - 5%)<br>
+                R<sub>L</sub> = 8% + 0.4286 × 3%<br>
+                R<sub>L</sub> = 8% + 1.286%<br>
+                <strong>R<sub>L</sub> = 9.29%</strong>
+            </div>
+            
+            <p><strong>Verification Using Direct Calculation:</strong></p>
+            <ul>
+                <li>Total portfolio gain: EUR 10,000,000 × 0.08 = EUR 800,000</li>
+                <li>Interest expense: EUR 3,000,000 × 0.05 = EUR 150,000</li>
+                <li>Net gain to equity: EUR 800,000 - EUR 150,000 = EUR 650,000</li>
+                <li>Return on equity: EUR 650,000 / EUR 7,000,000 = 0.0929 = <strong>9.29%</strong> ✓</li>
+            </ul>
+            
+            <p><strong>Interpretation:</strong> By borrowing at 5% to invest in a portfolio earning 8%, the manager enhanced the return on equity from 8% (unleveraged) to 9.29% (leveraged). The 1.29 percentage point enhancement results from earning the 3% spread (8% - 5%) on the EUR 3 million of borrowed capital.</p>
+        </div>
+        
+        <div class="important-note">
+            <h4>Risk Implications of Leverage</h4>
+            <p><strong>Leverage magnifies both gains and losses:</strong></p>
+            
+            <table class="comparison-table" style="margin-top: 15px;">
+                <tr>
+                    <th>Scenario</th>
+                    <th>Portfolio Return</th>
+                    <th>Unleveraged Return</th>
+                    <th>Leveraged Return (30% debt at 5%)</th>
+                </tr>
+                <tr>
+                    <td>Favorable</td>
+                    <td>+15%</td>
+                    <td>+15.0%</td>
+                    <td>+19.3%</td>
+                </tr>
+                <tr>
+                    <td>Base Case</td>
+                    <td>+8%</td>
+                    <td>+8.0%</td>
+                    <td>+9.3%</td>
+                </tr>
+                <tr>
+                    <td>Adverse</td>
+                    <td>+2%</td>
+                    <td>+2.0%</td>
+                    <td>-0.7%</td>
+                </tr>
+                <tr>
+                    <td>Severe Adverse</td>
+                    <td>-10%</td>
+                    <td>-10.0%</td>
+                    <td>-15.7%</td>
+                </tr>
+            </table>
+            
+            <p><strong>Critical Considerations:</strong></p>
+            <ul>
+                <li><strong>Margin calls:</strong> Significant losses may trigger forced liquidation</li>
+                <li><strong>Interest obligation:</strong> Must be paid regardless of portfolio performance</li>
+                <li><strong>Amplified volatility:</strong> Standard deviation of returns increases proportionally with leverage</li>
+                <li><strong>Path dependency:</strong> A large drawdown followed by recovery may still result in net loss due to compounding effects</li>
+            </ul>
+        </div>
+        
+        <h2>6. Comprehensive Return Measurement Framework</h2>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Return Measure</th>
+                    <th>Definition</th>
+                    <th>Primary Use</th>
+                    <th>Key Users</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Gross Return</strong></td>
+                    <td>Return before fees and expenses</td>
+                    <td>Manager skill evaluation</td>
+                    <td>Consultants, institutional investors</td>
+                </tr>
+                <tr>
+                    <td><strong>Net Return</strong></td>
+                    <td>Return after all fees/expenses</td>
+                    <td>Investor performance assessment</td>
+                    <td>All investors</td>
+                </tr>
+                <tr>
+                    <td><strong>Pre-Tax Nominal</strong></td>
+                    <td>Standard return (typically = net)</td>
+                    <td>General comparison, reporting</td>
+                    <td>Tax-exempt investors, comparative analysis</td>
+                </tr>
+                <tr>
+                    <td><strong>After-Tax Nominal</strong></td>
+                    <td>Return after tax liability</td>
+                    <td>Taxable investor performance</td>
+                    <td>Individual taxable investors</td>
+                </tr>
+                <tr>
+                    <td><strong>Real Return</strong></td>
+                    <td>Inflation-adjusted return</td>
+                    <td>Cross-period, cross-country comparison</td>
+                    <td>Long-term investors, pension funds</td>
+                </tr>
+                <tr>
+                    <td><strong>After-Tax Real</strong></td>
+                    <td>Purchasing power gain after all costs</td>
+                    <td>True economic benefit assessment</td>
+                    <td>Individual investors (self-calculated)</td>
+                </tr>
+                <tr>
+                    <td><strong>Leveraged Return</strong></td>
+                    <td>Return on equity with borrowing</td>
+                    <td>Leverage strategy evaluation</td>
+                    <td>Sophisticated investors, hedge funds</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="important-note">
+            <h4>Selection Criteria: Choosing the Appropriate Return Measure</h4>
+            
+            <p><strong>Context-Specific Guidelines:</strong></p>
+            
+            <ol>
+                <li><strong>Manager Performance Evaluation:</strong> Use gross returns to isolate investment skill from fee structure effects</li>
+                
+                <li><strong>Investment Decision-Making:</strong> Use net returns (what you'll actually receive) for comparing investment alternatives</li>
+                
+                <li><strong>Tax-Exempt Investors:</strong> Focus on pre-tax returns (taxes irrelevant); consider real returns for long horizons</li>
+                
+                <li><strong>Taxable Individual Investors:</strong> Calculate after-tax returns; use after-tax real returns for retirement planning and long-term goals</li>
+                
+                <li><strong>Cross-Period Comparisons:</strong> Use real returns to eliminate the confounding effect of different inflation environments</li>
+                
+                <li><strong>International Comparisons:</strong> Convert to common currency, then compute real returns to control for both exchange rates and inflation differences</li>
+                
+                <li><strong>Leverage Analysis:</strong> Calculate leveraged returns to assess whether borrowing costs justify the additional risk</li>
+            </ol>
+        </div>
+        
+        <h2>7. Integrated Example: Complete Return Analysis</h2>
+        
+        <div class="example-box">
+            <h3>Example 6: Comprehensive Return Calculation</h3>
+            <p><strong>Problem Statement:</strong> An investor allocates USD 500,000 to a mutual fund. At year-end, the portfolio has grown to USD 580,000. The fund's expense ratio is 1.5%. The investor faces a 25% tax rate on investment gains. Inflation during the period was 3%. The investor also used USD 200,000 of margin borrowing at 6% annual interest.</p>
+            
+            <p><strong>Required:</strong> Calculate (a) gross return, (b) net return, (c) after-tax nominal return, (d) after-tax real return, and (e) leveraged return on the investor's equity.</p>
+            
+            <p><strong>Solution:</strong></p>
+            
+            <h4>(a) Gross Return:</h4>
+            <p>The portfolio appreciation before fee deduction:</p>
+            <div class="formula-display">
+                R<sub>gross</sub> = (USD 580,000 - USD 500,000) / USD 500,000<br>
+                R<sub>gross</sub> = USD 80,000 / USD 500,000 = 0.16 = <strong>16.0%</strong>
+            </div>
+            
+            <h4>(b) Net Return:</h4>
+            <p>After deducting the 1.5% expense ratio:</p>
+            <div class="formula-display">
+                R<sub>net</sub> = 16.0% - 1.5% = <strong>14.5%</strong>
+            </div>
+            
+            <h4>(c) After-Tax Nominal Return:</h4>
+            <p>Tax on net return at 25% rate:</p>
+            <div class="formula-display">
+                R<sub>AT,nom</sub> = 14.5% × (1 - 0.25)<br>
+                R<sub>AT,nom</sub> = 14.5% × 0.75 = <strong>10.875%</strong>
+            </div>
+            
+            <h4>(d) After-Tax Real Return:</h4>
+            <p>Adjusting for 3% inflation:</p>
+            <div class="formula-display">
+                R<sub>AT,real</sub> = [(1 + 0.10875) / (1 + 0.03)] - 1<br>
+                R<sub>AT,real</sub> = (1.10875 / 1.03) - 1<br>
+                R<sub>AT,real</sub> = 1.0764 - 1 = <strong>7.64%</strong>
+            </div>
+            
+            <h4>(e) Leveraged Return:</h4>
+            <p>First, calculate parameters:</p>
+            <ul>
+                <li>Total invested: USD 500,000 + USD 200,000 = USD 700,000</li>
+                <li>Equity (V<sub>E</sub>): USD 500,000</li>
+                <li>Debt (V<sub>B</sub>): USD 200,000</li>
+                <li>Portfolio return (R<sub>P</sub>): 14.5% (using net return)</li>
+                <li>Cost of debt (r<sub>D</sub>): 6%</li>
+            </ul>
+            
+            <p>Leveraged return calculation:</p>
+            <div class="formula-display">
+                R<sub>L</sub> = 14.5% + (200,000/500,000) × (14.5% - 6%)<br>
+                R<sub>L</sub> = 14.5% + 0.4 × 8.5%<br>
+                R<sub>L</sub> = 14.5% + 3.4%<br>
+                <strong>R<sub>L</sub> = 17.9%</strong>
+            </div>
+            
+            <p><strong>Summary Table:</strong></p>
+            <table class="comparison-table" style="margin-top: 15px;">
+                <tr>
+                    <th>Return Measure</th>
+                    <th>Value</th>
+                    <th>Represents</th>
+                </tr>
+                <tr>
+                    <td>Gross Return</td>
+                    <td>16.0%</td>
+                    <td>Manager's investment performance</td>
+                </tr>
+                <tr>
+                    <td>Net Return</td>
+                    <td>14.5%</td>
+                    <td>After fees, what fund reports</td>
+                </tr>
+                <tr>
+                    <td>After-Tax Nominal</td>
+                    <td>10.875%</td>
+                    <td>Cash gain after taxes</td>
+                </tr>
+                <tr>
+                    <td>After-Tax Real</td>
+                    <td>7.64%</td>
+                    <td>True purchasing power gain</td>
+                </tr>
+                <tr>
+                    <td>Leveraged Return</td>
+                    <td>17.9%</td>
+                    <td>Return on equity with borrowing</td>
+                </tr>
+            </table>
+            
+            <p><strong>Interpretation:</strong> The progression from 16% gross return to 7.64% after-tax real return illustrates the cumulative impact of fees (1.5pp), taxes (3.625pp), and inflation (3.235pp effective reduction). The use of leverage enhanced the return on equity from 14.5% to 17.9%, demonstrating the benefit when R<sub>P</sub> > r<sub>D</sub>.</p>
+        </div>
+        
+        <div class="important-note">
+            <h4>Exam Focus Areas</h4>
+            <ul>
+                <li><strong>Computational Accuracy:</strong> Use exact formulas, not approximations, for real return calculations</li>
+                <li><strong>Sequence of Adjustments:</strong> Taxes are calculated before inflation adjustment in after-tax real returns</li>
+                <li><strong>Leverage Interpretation:</strong> Understand when leverage enhances vs. detracts from returns</li>
+                <li><strong>Contextual Application:</strong> Select appropriate return measures based on investor type and analytical purpose</li>
+                <li><strong>Fee Impact:</strong> Recognize the significant long-term cumulative effect of seemingly small fee differences</li>
+            </ul>
+        </div>
+        
+        <div class="navigation">
+            <a href="return-measures-intuitive.html" class="nav-button prev">← Previous: Intuitive Learning</a>
+            <a href="return-measures-practice.html" class="nav-button next">Next: Practice Questions →</a>
+        </div>
+    </div>
+</body>
+</html>

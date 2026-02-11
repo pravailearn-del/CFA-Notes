@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annualized Returns: Detailed Notes - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+        
+        .key-concept {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #2196f3;
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe0b3 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ff8a65;
+        }
+        
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .nav-button.prev {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+        }
+        
+        .nav-button.next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .formula-display {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> > <a href="#">Quantitative Methods</a> > <a href="#">Rates and Returns</a> > Annualized Returns
+        </div>
+        
+        <span class="badge">Detailed Notes</span>
+        
+        <h1>Calculate and Interpret Annualized Return Measures and Continuously Compounded Returns</h1>
+        
+        <div class="key-concept">
+            <h3>Learning Outcome Statement</h3>
+            <p><strong>LOS: Calculate and interpret annualized return measures and continuously compounded returns, and describe their appropriate uses.</strong></p>
+            <p>This LOS requires candidates to understand the mathematical conversion of returns across different time periods, recognize the fundamental differences between discrete and continuous compounding, and apply these concepts appropriately in investment analysis.</p>
+        </div>
+        
+        <h2>1. The Need for Return Standardization</h2>
+        
+        <p>Investment returns are realized over varying time horizons. To facilitate meaningful comparison across different securities and investment strategies, returns must be standardized to a common temporal basis. The convention in finance is to express returns on an annualized basis.</p>
+        
+        <div class="key-concept">
+            <h3>Core Principle</h3>
+            <p><strong>Annualization</strong> is the process of converting a return earned over any period (shorter or longer than one year) to an equivalent annual rate of return through the application of compound interest principles.</p>
+        </div>
+        
+        <h2>2. Non-Annual Compounding Framework</h2>
+        
+        <p>When interest compounds more frequently than annually, the present value formula must be adjusted to account for the periodic interest rate and the corresponding number of compounding periods.</p>
+        
+        <div class="formula-box">
+            <h4>Present Value with Non-Annual Compounding</h4>
+            <div class="formula-display">
+                PV = FV<sub>N</sub> × (1 + R<sub>s</sub>/m)<sup>-mN</sup>
+            </div>
+            <p><strong>Where:</strong></p>
+            <ul>
+                <li><strong>PV</strong> = Present value</li>
+                <li><strong>FV<sub>N</sub></strong> = Future value at time N</li>
+                <li><strong>R<sub>s</sub></strong> = Quoted annual interest rate (stated annual rate)</li>
+                <li><strong>m</strong> = Number of compounding periods per year</li>
+                <li><strong>N</strong> = Number of years</li>
+            </ul>
+            <p><strong>Key Insight:</strong> The periodic interest rate is R<sub>s</sub>/m, and the total number of compounding periods is mN.</p>
+        </div>
+        
+        <div class="example-box">
+            <h3>Example 1: Present Value with Monthly Compounding</h3>
+            <p><strong>Problem Statement:</strong> A Canadian pension fund manager must make a lump-sum payment of CAD 5,000,000 in 10 years. She wishes to invest in a Guaranteed Investment Contract (GIC) that pays 6% per annum, compounded monthly. What amount must be invested today?</p>
+            
+            <p><strong>Analysis:</strong></p>
+            <ul>
+                <li>Future Value (FV<sub>N</sub>) = CAD 5,000,000</li>
+                <li>Quoted annual rate (R<sub>s</sub>) = 6% = 0.06</li>
+                <li>Compounding periods per year (m) = 12</li>
+                <li>Periodic rate (R<sub>s</sub>/m) = 0.06/12 = 0.005</li>
+                <li>Number of years (N) = 10</li>
+                <li>Total compounding periods (mN) = 12 × 10 = 120</li>
+            </ul>
+            
+            <p><strong>Solution:</strong></p>
+            <div class="formula-display">
+                PV = CAD 5,000,000 × (1.005)<sup>-120</sup><br>
+                PV = CAD 5,000,000 × 0.549633<br>
+                <strong>PV = CAD 2,748,163.67</strong>
+            </div>
+            
+            <p><strong>Interpretation:</strong> By investing CAD 2,748,163.67 today at 6% per annum with monthly compounding, the fund will accumulate to the required CAD 5,000,000 in 10 years.</p>
+        </div>
+        
+        <h2>3. Annualization of Returns: General Framework</h2>
+        
+        <p>The fundamental formula for annualizing returns from any period is based on the compound interest principle.</p>
+        
+        <div class="formula-box">
+            <h4>General Annualization Formula</h4>
+            <div class="formula-display">
+                R<sub>annual</sub> = (1 + R<sub>period</sub>)<sup>c</sup> - 1
+            </div>
+            <p><strong>Where:</strong></p>
+            <ul>
+                <li><strong>R<sub>annual</sub></strong> = Annualized return</li>
+                <li><strong>R<sub>period</sub></strong> = Return for the specific period</li>
+                <li><strong>c</strong> = Number of periods in one year</li>
+            </ul>
+            
+            <p><strong>Common Values of c:</strong></p>
+            <table class="comparison-table" style="margin-top: 15px;">
+                <tr>
+                    <th>Period</th>
+                    <th>Value of c</th>
+                    <th>Calculation Basis</th>
+                </tr>
+                <tr>
+                    <td>Daily</td>
+                    <td>365 or 250</td>
+                    <td>Calendar days or trading days</td>
+                </tr>
+                <tr>
+                    <td>Weekly</td>
+                    <td>52</td>
+                    <td>52 weeks per year</td>
+                </tr>
+                <tr>
+                    <td>Monthly</td>
+                    <td>12</td>
+                    <td>12 months per year</td>
+                </tr>
+                <tr>
+                    <td>Quarterly</td>
+                    <td>4</td>
+                    <td>4 quarters per year</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="image-container">
+            <svg viewBox="0 0 800 450" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="450" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    Annualization Process: Mathematical Framework
+                </text>
+                
+                <!-- Input Box -->
+                <rect x="50" y="70" width="250" height="100" rx="10" fill="#e0c3fc" stroke="#764ba2" stroke-width="2"/>
+                <text x="175" y="100" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">INPUT</text>
+                <text x="175" y="125" font-size="13" text-anchor="middle" fill="#333">Period Return (R_period)</text>
+                <text x="175" y="145" font-size="13" text-anchor="middle" fill="#333">Time Period Length</text>
+                
+                <!-- Arrow -->
+                <line x1="300" y1="120" x2="380" y2="120" stroke="#667eea" stroke-width="3" marker-end="url(#arrowhead)"/>
+                <text x="340" y="105" font-size="12" text-anchor="middle" fill="#667eea" font-weight="bold">Apply Formula</text>
+                
+                <!-- Process Box -->
+                <rect x="380" y="70" width="270" height="100" rx="10" fill="#fff5e6" stroke="#ff8a65" stroke-width="2"/>
+                <text x="515" y="100" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">CALCULATION</text>
+                <text x="515" y="125" font-size="12" text-anchor="middle" fill="#333">(1 + R_period)^c - 1</text>
+                <text x="515" y="145" font-size="11" text-anchor="middle" fill="#555">c = periods per year</text>
+                
+                <!-- Arrow -->
+                <line x1="650" y1="120" x2="730" y2="120" stroke="#667eea" stroke-width="3" marker-end="url(#arrowhead)"/>
+                
+                <!-- Output Box -->
+                <rect x="730" y="70" width="50" height="100" rx="10" fill="#d4fc79" stroke="#4caf50" stroke-width="2"/>
+                <text x="755" y="100" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50" transform="rotate(-90 755 120)">OUTPUT</text>
+                <text x="755" y="135" font-size="11" text-anchor="middle" fill="#333" transform="rotate(-90 755 135)">Annual Return</text>
+                
+                <!-- Example calculations below -->
+                <rect x="50" y="200" width="700" height="220" rx="10" fill="white" stroke="#999" stroke-width="1"/>
+                <text x="400" y="230" font-size="16" font-weight="bold" text-anchor="middle" fill="#667eea">Worked Examples</text>
+                
+                <!-- Example 1 -->
+                <g>
+                    <text x="70" y="260" font-size="13" font-weight="bold" fill="#333">Weekly Return: 0.2%</text>
+                    <text x="70" y="280" font-size="12" fill="#555">c = 52 (weeks per year)</text>
+                    <text x="70" y="300" font-size="12" fill="#555">(1 + 0.002)^52 - 1 = (1.002)^52 - 1</text>
+                    <text x="70" y="320" font-size="12" font-weight="bold" fill="#4caf50">= 0.1095 = 10.95% annually</text>
+                </g>
+                
+                <!-- Example 2 -->
+                <g>
+                    <text x="420" y="260" font-size="13" font-weight="bold" fill="#333">15-Day Return: 0.4%</text>
+                    <text x="420" y="280" font-size="12" fill="#555">c = 365/15 = 24.33</text>
+                    <text x="420" y="300" font-size="12" fill="#555">(1 + 0.004)^24.33 - 1 = (1.004)^24.33 - 1</text>
+                    <text x="420" y="320" font-size="12" font-weight="bold" fill="#4caf50">= 0.1020 = 10.20% annually</text>
+                </g>
+                
+                <!-- Example 3 -->
+                <g>
+                    <text x="70" y="360" font-size="13" font-weight="bold" fill="#333">18-Month Return: 20%</text>
+                    <text x="70" y="380" font-size="12" fill="#555">c = 12/18 = 2/3 = 0.6667</text>
+                    <text x="70" y="400" font-size="12" fill="#555">(1 + 0.20)^0.6667 - 1 = (1.20)^0.6667 - 1</text>
+                    <text x="420" y="400" font-size="12" font-weight="bold" fill="#4caf50">= 0.1292 = 12.92% annually</text>
+                </g>
+                
+                <!-- Arrow marker definition -->
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#667eea" />
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+        
+        <h2>4. Multi-Period Examples with Detailed Analysis</h2>
+        
+        <div class="example-box">
+            <h3>Example 2: Comparing Securities with Different Holding Periods</h3>
+            <p><strong>Problem Statement:</strong> An analyst evaluates three securities with different holding periods:</p>
+            <ul>
+                <li>Security A: 6.2% return over 100 days</li>
+                <li>Security B: 2% return over 4 weeks</li>
+                <li>Security C: 5% return over 3 months</li>
+            </ul>
+            <p>Determine which security generated the highest annualized return.</p>
+            
+            <p><strong>Analysis:</strong></p>
+            
+            <h4>Security A (100-day holding period):</h4>
+            <ul>
+                <li>Period return = 6.2% = 0.062</li>
+                <li>c = 365/100 = 3.65 periods per year</li>
+                <li>R<sub>SA</sub> = (1 + 0.062)<sup>3.65</sup> - 1</li>
+                <li>R<sub>SA</sub> = (1.062)<sup>3.65</sup> - 1 = 1.2455 - 1</li>
+                <li><strong>R<sub>SA</sub> = 0.2455 = 24.55%</strong></li>
+            </ul>
+            
+            <h4>Security B (4-week holding period):</h4>
+            <ul>
+                <li>Period return = 2% = 0.02</li>
+                <li>c = 52/4 = 13 periods per year</li>
+                <li>R<sub>SB</sub> = (1 + 0.02)<sup>13</sup> - 1</li>
+                <li>R<sub>SB</sub> = (1.02)<sup>13</sup> - 1 = 1.2936 - 1</li>
+                <li><strong>R<sub>SB</sub> = 0.2936 = 29.36%</strong></li>
+            </ul>
+            
+            <h4>Security C (3-month/quarterly holding period):</h4>
+            <ul>
+                <li>Period return = 5% = 0.05</li>
+                <li>c = 4 periods per year</li>
+                <li>R<sub>SC</sub> = (1 + 0.05)<sup>4</sup> - 1</li>
+                <li>R<sub>SC</sub> = (1.05)<sup>4</sup> - 1 = 1.2155 - 1</li>
+                <li><strong>R<sub>SC</sub> = 0.2155 = 21.55%</strong></li>
+            </ul>
+            
+            <p><strong>Conclusion:</strong> Security B generated the highest annualized return at 29.36%, despite having the lowest nominal period return. This demonstrates the impact of shorter holding periods when annualized.</p>
+        </div>
+        
+        <div class="example-box">
+            <h3>Example 3: Exchange-Traded Fund Performance Analysis</h3>
+            <p><strong>Problem Statement:</strong> An investor evaluates three recently formed ETFs with the following performance data:</p>
+            
+            <table class="comparison-table" style="margin: 15px 0;">
+                <tr>
+                    <th>ETF</th>
+                    <th>Time Since Inception</th>
+                    <th>Return Since Inception</th>
+                </tr>
+                <tr>
+                    <td>ETF 1</td>
+                    <td>146 days</td>
+                    <td>4.61%</td>
+                </tr>
+                <tr>
+                    <td>ETF 2</td>
+                    <td>5 weeks</td>
+                    <td>1.10%</td>
+                </tr>
+                <tr>
+                    <td>ETF 3</td>
+                    <td>15 months</td>
+                    <td>14.35%</td>
+                </tr>
+            </table>
+            
+            <p><strong>Required:</strong> Determine which ETF has the highest annualized rate of return.</p>
+            
+            <p><strong>Solution:</strong></p>
+            
+            <h4>ETF 1:</h4>
+            <div class="formula-display">
+                R<sub>annual</sub> = (1.0461)<sup>365/146</sup> - 1 = (1.0461)<sup>2.5</sup> - 1 = 0.1193 = <strong>11.93%</strong>
+            </div>
+            
+            <h4>ETF 2:</h4>
+            <div class="formula-display">
+                R<sub>annual</sub> = (1.0110)<sup>52/5</sup> - 1 = (1.0110)<sup>10.4</sup> - 1 = 0.1205 = <strong>12.05%</strong>
+            </div>
+            
+            <h4>ETF 3:</h4>
+            <div class="formula-display">
+                R<sub>annual</sub> = (1.1435)<sup>12/15</sup> - 1 = (1.1435)<sup>0.8</sup> - 1 = 0.1132 = <strong>11.32%</strong>
+            </div>
+            
+            <p><strong>Answer: B (ETF 2)</strong></p>
+            
+            <p><strong>Interpretation:</strong> Despite having the lowest periodic return (1.10%), ETF 2 exhibits the highest annualized return (12.05%) due to the compounding effect over multiple periods. This illustrates the critical role of the reinvestment assumption inherent in annualized return calculations.</p>
+        </div>
+        
+        <div class="important-note">
+            <h4>Critical Limitation: The Reinvestment Assumption</h4>
+            <p>The fundamental limitation of annualized returns is the implicit assumption that the periodic return can be <strong>precisely replicated</strong> throughout the entire year with continuous reinvestment at the same rate.</p>
+            <p><strong>Implications:</strong></p>
+            <ul>
+                <li>Volatility is ignored in the annualization calculation</li>
+                <li>Market conditions may not permit consistent return replication</li>
+                <li>Shorter periods produce more extreme annualized figures</li>
+                <li>Use annualized returns for <strong>comparison</strong>, not for <strong>forecasting</strong></li>
+            </ul>
+        </div>
+        
+        <h2>5. Conversion Between Non-Annual Periods</h2>
+        
+        <p>Returns can be converted between any two time periods using the same compound interest framework.</p>
+        
+        <div class="formula-box">
+            <h4>Cross-Period Conversion Formulas</h4>
+            <p><strong>Daily to Weekly Conversion:</strong></p>
+            <div class="formula-display">
+                R<sub>weekly</sub> = (1 + R<sub>daily</sub>)<sup>5</sup> - 1
+            </div>
+            <p style="font-size: 0.9em; color: #666; margin-top: 5px;">Assumes 5 trading days per week</p>
+            
+            <p style="margin-top: 20px;"><strong>Annual to Weekly Conversion:</strong></p>
+            <div class="formula-display">
+                R<sub>weekly</sub> = (1 + R<sub>annual</sub>)<sup>1/52</sup> - 1
+            </div>
+            <p style="font-size: 0.9em; color: #666; margin-top: 5px;">52 weeks comprise one year</p>
+        </div>
+        
+        <h2>6. Continuously Compounded Returns</h2>
+        
+        <div class="key-concept">
+            <h3>Definition and Rationale</h3>
+            <p><strong>Continuously compounded return</strong> represents the rate of return under the assumption of instantaneous, continuous compounding. It is expressed as the natural logarithm of the price relative.</p>
+            <p><strong>Key Advantage:</strong> Continuously compounded returns are <em>additive</em> across time periods, whereas discrete returns are <em>multiplicative</em>. This property simplifies mathematical modeling and statistical analysis.</p>
+        </div>
+        
+        <div class="formula-box">
+            <h4>Continuously Compounded Return Formula</h4>
+            <div class="formula-display">
+                r<sub>t,t+1</sub> = ln(P<sub>t+1</sub> / P<sub>t</sub>) = ln(1 + R<sub>t,t+1</sub>)
+            </div>
+            <p><strong>Where:</strong></p>
+            <ul>
+                <li><strong>r<sub>t,t+1</sub></strong> = Continuously compounded return from time t to t+1</li>
+                <li><strong>ln</strong> = Natural logarithm (base e)</li>
+                <li><strong>P<sub>t+1</sub></strong> = Price at time t+1</li>
+                <li><strong>P<sub>t</sub></strong> = Price at time t</li>
+                <li><strong>R<sub>t,t+1</sub></strong> = Discrete (holding period) return from t to t+1</li>
+            </ul>
+        </div>
+        
+        <div class="image-container">
+            <svg viewBox="0 0 800 500" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="500" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    Discrete vs. Continuous Compounding: Mathematical Properties
+                </text>
+                
+                <!-- Discrete Returns Box -->
+                <rect x="50" y="70" width="330" height="180" rx="10" fill="white" stroke="#667eea" stroke-width="2"/>
+                <text x="215" y="100" font-size="16" font-weight="bold" text-anchor="middle" fill="#667eea">
+                    Discrete Returns (Multiplicative)
+                </text>
+                <text x="70" y="130" font-size="13" fill="#333">Period 1: R₁ = 5%</text>
+                <text x="70" y="155" font-size="13" fill="#333">Period 2: R₂ = 3%</text>
+                <text x="70" y="180" font-size="13" fill="#333">Period 3: R₃ = 4%</text>
+                <line x1="70" y1="195" x2="360" y2="195" stroke="#ccc" stroke-width="1"/>
+                <text x="70" y="215" font-size="13" font-weight="bold" fill="#333">Total Return:</text>
+                <text x="70" y="235" font-size="12" fill="#555">(1.05)(1.03)(1.04) - 1 = 0.1246</text>
+                
+                <!-- Continuous Returns Box -->
+                <rect x="420" y="70" width="330" height="180" rx="10" fill="white" stroke="#4caf50" stroke-width="2"/>
+                <text x="585" y="100" font-size="16" font-weight="bold" text-anchor="middle" fill="#4caf50">
+                    Continuous Returns (Additive)
+                </text>
+                <text x="440" y="130" font-size="13" fill="#333">Period 1: r₁ = 4.88%</text>
+                <text x="440" y="155" font-size="13" fill="#333">Period 2: r₂ = 2.96%</text>
+                <text x="440" y="180" font-size="13" fill="#333">Period 3: r₃ = 3.92%</text>
+                <line x1="440" y1="195" x2="730" y2="195" stroke="#ccc" stroke-width="1"/>
+                <text x="440" y="215" font-size="13" font-weight="bold" fill="#333">Total Return:</text>
+                <text x="440" y="235" font-size="12" fill="#555">4.88% + 2.96% + 3.92% = 11.76%</text>
+                
+                <!-- Conversion Arrow -->
+                <line x1="215" y1="270" x2="585" y2="270" stroke="#ff8a65" stroke-width="2" marker-end="url(#arrowhead2)"/>
+                <line x1="585" y1="290" x2="215" y2="290" stroke="#ff8a65" stroke-width="2" marker-end="url(#arrowhead3)"/>
+                <text x="400" y="265" font-size="12" text-anchor="middle" fill="#ff8a65" font-weight="bold">r = ln(1 + R)</text>
+                <text x="400" y="305" font-size="12" text-anchor="middle" fill="#ff8a65" font-weight="bold">R = exp(r) - 1</text>
+                
+                <!-- Property Boxes -->
+                <rect x="50" y="330" width="330" height="140" rx="10" fill="#e3f2fd" stroke="#2196f3" stroke-width="2"/>
+                <text x="215" y="360" font-size="14" font-weight="bold" text-anchor="middle" fill="#2196f3">
+                    Key Properties of Discrete Returns
+                </text>
+                <text x="70" y="385" font-size="12" fill="#333">• Always larger than continuous equivalent</text>
+                <text x="70" y="405" font-size="12" fill="#333">• Requires multiplication for multi-period</text>
+                <text x="70" y="425" font-size="12" fill="#333">• More intuitive interpretation</text>
+                <text x="70" y="445" font-size="12" fill="#333">• Standard in practical applications</text>
+                
+                <rect x="420" y="330" width="330" height="140" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"/>
+                <text x="585" y="360" font-size="14" font-weight="bold" text-anchor="middle" fill="#4caf50">
+                    Key Properties of Continuous Returns
+                </text>
+                <text x="440" y="385" font-size="12" fill="#333">• Always smaller than discrete equivalent</text>
+                <text x="440" y="405" font-size="12" fill="#333">• Additive across time periods</text>
+                <text x="440" y="425" font-size="12" fill="#333">• Symmetric for gains and losses</text>
+                <text x="440" y="445" font-size="12" fill="#333">• Preferred in theoretical models</text>
+                
+                <!-- Additional arrow markers -->
+                <defs>
+                    <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#ff8a65" />
+                    </marker>
+                    <marker id="arrowhead3" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+                        <polygon points="10 0, 0 3, 10 6" fill="#ff8a65" />
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+        
+        <div class="example-box">
+            <h3>Example 4: Computing Continuously Compounded Returns</h3>
+            <p><strong>Problem Statement:</strong> An asset is purchased at time t = 0 for USD 30.00. At time t = 1, the asset value is USD 34.50. Calculate both the discrete holding period return and the continuously compounded return.</p>
+            
+            <p><strong>Solution:</strong></p>
+            
+            <h4>Discrete Holding Period Return:</h4>
+            <div class="formula-display">
+                R<sub>0,1</sub> = (P<sub>1</sub> - P<sub>0</sub>) / P<sub>0</sub><br>
+                R<sub>0,1</sub> = (34.50 - 30.00) / 30.00 = 4.50 / 30.00<br>
+                <strong>R<sub>0,1</sub> = 0.15 = 15%</strong>
+            </div>
+            
+            <h4>Continuously Compounded Return:</h4>
+            <div class="formula-display">
+                r<sub>0,1</sub> = ln(P<sub>1</sub> / P<sub>0</sub>) = ln(34.50 / 30.00)<br>
+                r<sub>0,1</sub> = ln(1.15)<br>
+                <strong>r<sub>0,1</sub> = 0.139762 = 13.98%</strong>
+            </div>
+            
+            <p><strong>Observation:</strong> The continuously compounded return (13.98%) is smaller than the discrete return (15%), which is always the case for positive returns.</p>
+            
+            <p><strong>Verification:</strong></p>
+            <div class="formula-display">
+                P<sub>1</sub> = P<sub>0</sub> × exp(r<sub>0,1</sub>)<br>
+                P<sub>1</sub> = 30.00 × exp(0.139762) = 30.00 × 1.15<br>
+                P<sub>1</sub> = 34.50 ✓
+            </div>
+        </div>
+        
+        <h2>7. Multi-Period Continuously Compounded Returns</h2>
+        
+        <div class="formula-box">
+            <h4>Additivity Property of Continuously Compounded Returns</h4>
+            <p>For an investment horizon from t = 0 to t = T:</p>
+            <div class="formula-display">
+                r<sub>0,T</sub> = ln(P<sub>T</sub> / P<sub>0</sub>)
+            </div>
+            <p>This can be decomposed as the sum of single-period continuously compounded returns:</p>
+            <div class="formula-display">
+                r<sub>0,T</sub> = r<sub>T-1,T</sub> + r<sub>T-2,T-1</sub> + ... + r<sub>0,1</sub>
+            </div>
+            <p><strong>Mathematical Proof:</strong></p>
+            <p>Since P<sub>T</sub>/P<sub>0</sub> = (P<sub>T</sub>/P<sub>T-1</sub>)(P<sub>T-1</sub>/P<sub>T-2</sub>)...(P<sub>1</sub>/P<sub>0</sub>), taking natural logarithms of both sides:</p>
+            <div class="formula-display">
+                ln(P<sub>T</sub>/P<sub>0</sub>) = ln[(P<sub>T</sub>/P<sub>T-1</sub>)(P<sub>T-1</sub>/P<sub>T-2</sub>)...(P<sub>1</sub>/P<sub>0</sub>)]<br>
+                = ln(P<sub>T</sub>/P<sub>T-1</sub>) + ln(P<sub>T-1</sub>/P<sub>T-2</sub>) + ... + ln(P<sub>1</sub>/P<sub>0</sub>)
+            </div>
+        </div>
+        
+        <div class="important-note">
+            <h4>Practical Applications of Continuously Compounded Returns</h4>
+            <ul>
+                <li><strong>Option Pricing Models:</strong> Black-Scholes-Merton model requires continuously compounded risk-free rate</li>
+                <li><strong>Quantitative Analysis:</strong> Log returns are approximately normally distributed, facilitating statistical modeling</li>
+                <li><strong>Time Series Analysis:</strong> Additive property simplifies regression and forecasting models</li>
+                <li><strong>Portfolio Theory:</strong> Simplified calculation of portfolio returns when combining assets</li>
+            </ul>
+        </div>
+        
+        <h2>8. Comprehensive Comparison Table</h2>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Discrete Compounding</th>
+                    <th>Continuous Compounding</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Formula</strong></td>
+                    <td>R = (P<sub>t+1</sub> - P<sub>t</sub>) / P<sub>t</sub></td>
+                    <td>r = ln(P<sub>t+1</sub> / P<sub>t</sub>)</td>
+                </tr>
+                <tr>
+                    <td><strong>Multi-period aggregation</strong></td>
+                    <td>Multiplicative: (1+R<sub>1</sub>)(1+R<sub>2</sub>)... - 1</td>
+                    <td>Additive: r<sub>1</sub> + r<sub>2</sub> + ...</td>
+                </tr>
+                <tr>
+                    <td><strong>Magnitude</strong></td>
+                    <td>Larger</td>
+                    <td>Smaller (for positive returns)</td>
+                </tr>
+                <tr>
+                    <td><strong>Interpretation</strong></td>
+                    <td>Direct percentage change</td>
+                    <td>Instantaneous growth rate</td>
+                </tr>
+                <tr>
+                    <td><strong>Symmetry</strong></td>
+                    <td>Asymmetric (50% gain ≠ 50% loss)</td>
+                    <td>Symmetric (gains and losses)</td>
+                </tr>
+                <tr>
+                    <td><strong>Practical use</strong></td>
+                    <td>Standard reporting, intuitive</td>
+                    <td>Theoretical models, statistical analysis</td>
+                </tr>
+                <tr>
+                    <td><strong>Annualization</strong></td>
+                    <td>(1 + R<sub>period</sub>)<sup>c</sup> - 1</td>
+                    <td>r<sub>period</sub> × c</td>
+                </tr>
+                <tr>
+                    <td><strong>Required for CFA</strong></td>
+                    <td>Yes - primary calculation method</td>
+                    <td>Yes - understanding concept and conversion</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>9. Exam-Relevant Nuances and Edge Cases</h2>
+        
+        <div class="important-note">
+            <h4>Critical Points for CFA Examination</h4>
+            <ol>
+                <li><strong>Day Count Convention:</strong> Be aware whether 365 (calendar days) or 250 (trading days) is specified in the question for daily return annualization.</li>
+                <li><strong>Non-Standard Periods:</strong> For periods like "100 days" or "15 months," carefully compute c as a fraction (365/100 or 12/15).</li>
+                <li><strong>Negative Returns:</strong> The annualization formula works for both positive and negative returns, but extreme negative returns can produce counterintuitive results.</li>
+                <li><strong>Consistency Requirement:</strong> All returns in a comparison must be annualized using the same methodology and day count convention.</li>
+                <li><strong>Continuously Compounded Returns:</strong> Always smaller than their discrete equivalents for positive returns; use natural logarithm (ln), not log base 10.</li>
+                <li><strong>Practical Limitation:</strong> Short-period returns, when annualized, assume perfect replication of returns—an unrealistic assumption in volatile markets.</li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <h3>Example 5: Comprehensive Multi-Part Problem</h3>
+            <p><strong>Problem Statement:</strong> A portfolio manager tracks the following monthly returns for a fixed income portfolio over three months:</p>
+            <ul>
+                <li>Month 1: +2.5%</li>
+                <li>Month 2: -1.2%</li>
+                <li>Month 3: +3.1%</li>
+            </ul>
+            
+            <p><strong>Required:</strong></p>
+            <ol>
+                <li>Calculate the total return over the three-month period using discrete compounding</li>
+                <li>Calculate the annualized return using discrete compounding</li>
+                <li>Calculate the continuously compounded return for each month</li>
+                <li>Calculate the total continuously compounded return and verify it equals the sum of monthly continuous returns</li>
+                <li>Compare the discrete and continuous annualized returns</li>
+            </ol>
+            
+            <p><strong>Solutions:</strong></p>
+            
+            <h4>1. Total Discrete Return (3-month period):</h4>
+            <div class="formula-display">
+                Total Return = (1.025)(0.988)(1.031) - 1<br>
+                = 1.0442 - 1<br>
+                <strong>= 0.0442 = 4.42%</strong>
+            </div>
+            
+            <h4>2. Annualized Discrete Return:</h4>
+            <div class="formula-display">
+                R<sub>annual</sub> = (1 + 0.0442)<sup>4</sup> - 1<br>
+                = (1.0442)<sup>4</sup> - 1<br>
+                = 1.1871 - 1<br>
+                <strong>= 0.1871 = 18.71%</strong>
+            </div>
+            
+            <h4>3. Continuously Compounded Monthly Returns:</h4>
+            <div class="formula-display">
+                Month 1: r<sub>1</sub> = ln(1.025) = 0.02469 = 2.469%<br>
+                Month 2: r<sub>2</sub> = ln(0.988) = -0.01208 = -1.208%<br>
+                Month 3: r<sub>3</sub> = ln(1.031) = 0.03053 = 3.053%
+            </div>
+            
+            <h4>4. Total Continuously Compounded Return:</h4>
+            <div class="formula-display">
+                r<sub>total</sub> = r<sub>1</sub> + r<sub>2</sub> + r<sub>3</sub><br>
+                = 0.02469 + (-0.01208) + 0.03053<br>
+                = 0.04314 = 4.314%
+            </div>
+            <p><strong>Verification:</strong> r<sub>total</sub> = ln(1.0442) = 0.04314 ✓</p>
+            
+            <h4>5. Annualized Continuously Compounded Return:</h4>
+            <div class="formula-display">
+                r<sub>annual</sub> = r<sub>quarterly</sub> × 4<br>
+                = 0.04314 × 4<br>
+                <strong>= 0.17256 = 17.26%</strong>
+            </div>
+            
+            <p><strong>Comparison:</strong></p>
+            <ul>
+                <li>Discrete annualized return: 18.71%</li>
+                <li>Continuous annualized return: 17.26%</li>
+                <li>Difference: 1.45 percentage points</li>
+                <li>As expected, the continuous return is smaller</li>
+            </ul>
+        </div>
+        
+        <div class="important-note">
+            <h4>Summary: When to Use Each Method</h4>
+            <table class="comparison-table" style="margin-top: 15px;">
+                <tr>
+                    <th>Context</th>
+                    <th>Recommended Approach</th>
+                    <th>Rationale</th>
+                </tr>
+                <tr>
+                    <td>Performance reporting</td>
+                    <td>Discrete returns</td>
+                    <td>More intuitive for clients and stakeholders</td>
+                </tr>
+                <tr>
+                    <td>Option pricing models</td>
+                    <td>Continuous returns</td>
+                    <td>Required by Black-Scholes-Merton</td>
+                </tr>
+                <tr>
+                    <td>Statistical modeling</td>
+                    <td>Continuous returns</td>
+                    <td>Better distributional properties</td>
+                </tr>
+                <tr>
+                    <td>Investment comparisons</td>
+                    <td>Either (be consistent)</td>
+                    <td>Relative ranking preserved</td>
+                </tr>
+                <tr>
+                    <td>CFA Level I exam</td>
+                    <td>Both (as specified)</td>
+                    <td>Must demonstrate competency in both methods</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="navigation">
+            <a href="annualized-returns-intuitive.html" class="nav-button prev">← Previous: Intuitive Learning</a>
+            <a href="annualized-returns-practice.html" class="nav-button next">Next: Practice Questions →</a>
+        </div>
+    </div>
+</body>
+</html>

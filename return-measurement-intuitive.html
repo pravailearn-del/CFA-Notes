@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Measurement: Intuitive Learning - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .intuitive-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .analogy-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #ff8a65;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #fbc02d;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> &gt; <a href="#">Quantitative Methods</a> &gt; <a href="#">Rates and Returns</a> &gt; Return Measurement
+        </div>
+
+        <span class="badge">Intuitive Learning</span>
+
+        <h1>Measuring Returns: Your Investment Report Card 📊💰</h1>
+
+        <div class="intuitive-box">
+            <h3>💡 The Big Question</h3>
+            <p>You bought 100 shares of Reliance at ₹2,000 each last year. Today they're worth ₹2,200, and you received ₹50 per share as dividends. Did you make money? <em>Obviously yes!</em> But here's the real question:</p>
+            <p><strong>How do you measure and compare this performance?</strong></p>
+            <p>If your friend invested in TCS and made a different amount, who did better? And if you hold your Reliance shares for three years with varying returns each year, what's your <em>actual</em> average return?</p>
+            <p>That's what this is all about - learning different ways to measure and compare investment returns!</p>
+        </div>
+
+        <h2>The Two Sources of Investment Returns 🎯</h2>
+
+        <div class="analogy-box">
+            <h3>🏠 Think of It Like Owning Rental Property</h3>
+            <p>When you own a rental property, you make money in two ways:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>🏠 <strong>Monthly Rent:</strong> Regular income that comes in every month</li>
+                <li>📈 <strong>Property Appreciation:</strong> The house itself becomes more valuable over time</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>Investing in stocks works exactly the same way!</strong></p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>💰 <strong>Dividends/Interest:</strong> Regular income payments (like rent)</li>
+                <li>📈 <strong>Capital Gains:</strong> The stock price goes up (like property appreciation)</li>
+            </ul>
+            <p style="margin-top: 15px;">Your total return combines both these sources!</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 400" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="400" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">Two Ways Your Money Grows</text>
+                
+                <!-- Left Box - Periodic Income -->
+                <rect x="50" y="80" width="320" height="280" fill="#c8e6c9" rx="15" stroke="#4caf50" stroke-width="3"/>
+                <text x="210" y="120" font-size="20" font-weight="bold" text-anchor="middle" fill="#2e7d32">💰 Periodic Income</text>
+                <text x="210" y="145" font-size="14" text-anchor="middle" fill="#555">(The Steady Flow)</text>
+                
+                <!-- Icons for periodic income -->
+                <text x="210" y="190" font-size="40" text-anchor="middle">💵</text>
+                <text x="210" y="230" font-size="14" text-anchor="middle" fill="#2c3e50">• Dividends from stocks</text>
+                <text x="210" y="255" font-size="14" text-anchor="middle" fill="#2c3e50">• Interest from bonds</text>
+                <text x="210" y="280" font-size="14" text-anchor="middle" fill="#2c3e50">• Coupon payments</text>
+                
+                <rect x="90" y="310" width="240" height="35" fill="#fff9c4" rx="8"/>
+                <text x="210" y="333" font-size="13" text-anchor="middle" fill="#555">Like monthly rent on property</text>
+                
+                <!-- Right Box - Capital Gains -->
+                <rect x="430" y="80" width="320" height="280" fill="#ffcdd2" rx="15" stroke="#c0392b" stroke-width="3"/>
+                <text x="590" y="120" font-size="20" font-weight="bold" text-anchor="middle" fill="#c62828">📈 Capital Gains/Losses</text>
+                <text x="590" y="145" font-size="14" text-anchor="middle" fill="#555">(The Price Change)</text>
+                
+                <!-- Graph icon for capital gains -->
+                <text x="590" y="190" font-size="40" text-anchor="middle">📊</text>
+                <text x="590" y="230" font-size="14" text-anchor="middle" fill="#2c3e50">• Stock price increases</text>
+                <text x="590" y="255" font-size="14" text-anchor="middle" fill="#2c3e50">• Property appreciation</text>
+                <text x="590" y="280" font-size="14" text-anchor="middle" fill="#2c3e50">• Asset value changes</text>
+                
+                <rect x="470" y="310" width="240" height="35" fill="#fff9c4" rx="8"/>
+                <text x="590" y="333" font-size="13" text-anchor="middle" fill="#555">Like house value going up</text>
+            </svg>
+        </div>
+
+        <h2>Method 1: Holding Period Return (HPR) - The Simplest Way 📏</h2>
+
+        <div class="intuitive-box">
+            <h3>🎯 What Is It?</h3>
+            <p>The <strong>Holding Period Return</strong> is the return you earned over <em>one specific period</em> - could be a day, a month, a year, or any time frame you choose. It's the most straightforward way to measure return!</p>
+            <p>Think of it as answering: "If I bought this on Day 1 and sold it on Day 30, what percentage did I make?"</p>
+        </div>
+
+        <div class="formula-box">
+            <h3 style="color: white; margin-bottom: 15px;">📐 The Formula</h3>
+            <p style="font-size: 1.2em; margin-bottom: 15px;">
+                <strong>HPR = (Ending Price - Beginning Price + Income) / Beginning Price</strong>
+            </p>
+            <p style="font-size: 0.95em; color: #f0f4f8;">Or written mathematically: R = (P₁ - P₀ + I₁) / P₀</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Your Infosys Investment</h3>
+            <p><strong>Scenario:</strong> You bought 100 shares of Infosys at ₹1,400 per share. Six months later, the price is ₹1,540, and you received a dividend of ₹60 per share.</p>
+            
+            <p style="margin-top: 20px;"><strong>Let's calculate your return:</strong></p>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Beginning Price (P₀)</td>
+                    <td>₹1,400 per share</td>
+                </tr>
+                <tr>
+                    <td>Ending Price (P₁)</td>
+                    <td>₹1,540 per share</td>
+                </tr>
+                <tr>
+                    <td>Dividend Income (I₁)</td>
+                    <td>₹60 per share</td>
+                </tr>
+                <tr style="background-color: #fff9c4; font-weight: bold;">
+                    <td>Price Change</td>
+                    <td>₹140 per share</td>
+                </tr>
+            </table>
+            
+            <p style="margin-top: 20px;"><strong>Calculation:</strong></p>
+            <p style="margin-left: 20px;">HPR = (₹1,540 - ₹1,400 + ₹60) / ₹1,400</p>
+            <p style="margin-left: 20px;">HPR = ₹200 / ₹1,400 = <strong>14.29%</strong></p>
+            
+            <div class="important-note" style="margin-top: 20px;">
+                <p><strong>Breaking it down:</strong></p>
+                <ul style="margin-left: 25px; margin-top: 10px;">
+                    <li>📈 Capital Gain: (₹140/₹1,400) = <strong>10%</strong></li>
+                    <li>💰 Dividend Yield: (₹60/₹1,400) = <strong>4.29%</strong></li>
+                    <li>✅ Total Return: <strong>14.29%</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="example-box">
+            <h3>🌍 Global Example: Apple Stock Adventure</h3>
+            <p><strong>Scenario:</strong> You bought 50 shares of Apple at $150 per share. One year later, it's at $165, and you received a $2.50 per share dividend.</p>
+            
+            <p style="margin-top: 20px;"><strong>Your return calculation:</strong></p>
+            <p style="margin-left: 20px;">HPR = ($165 - $150 + $2.50) / $150</p>
+            <p style="margin-left: 20px;">HPR = $17.50 / $150 = <strong>11.67%</strong></p>
+            
+            <p style="margin-top: 15px;">You made 11.67% in one year - that's pretty good! 🎉</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 350" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="350" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="22" font-weight="bold" text-anchor="middle" fill="#2c3e50">Holding Period Return: The Journey</text>
+                
+                <!-- Start point -->
+                <circle cx="100" cy="175" r="50" fill="#ffcdd2" stroke="#c62828" stroke-width="3"/>
+                <text x="100" y="165" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">START</text>
+                <text x="100" y="185" font-size="18" font-weight="bold" text-anchor="middle" fill="#c62828">₹1,400</text>
+                <text x="100" y="240" font-size="12" text-anchor="middle" fill="#555">Day 1</text>
+                
+                <!-- Arrow with income -->
+                <path d="M 160 175 L 600 175" stroke="#667eea" stroke-width="4" fill="none" marker-end="url(#arrowhead2)"/>
+                <defs>
+                    <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#667eea"/>
+                    </marker>
+                </defs>
+                
+                <!-- Income box on arrow -->
+                <rect x="320" y="110" width="160" height="55" fill="#c8e6c9" rx="10" stroke="#4caf50" stroke-width="2"/>
+                <text x="400" y="130" font-size="12" text-anchor="middle" fill="#555">During the period</text>
+                <text x="400" y="150" font-size="16" font-weight="bold" text-anchor="middle" fill="#2e7d32">💰 Dividend: ₹60</text>
+                
+                <!-- End point -->
+                <circle cx="700" cy="175" r="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="3"/>
+                <text x="700" y="165" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">END</text>
+                <text x="700" y="185" font-size="18" font-weight="bold" text-anchor="middle" fill="#2e7d32">₹1,540</text>
+                <text x="700" y="240" font-size="12" text-anchor="middle" fill="#555">Day 180</text>
+                
+                <!-- Result box -->
+                <rect x="250" y="270" width="300" height="60" fill="#fff9c4" rx="10" stroke="#fbc02d" stroke-width="2"/>
+                <text x="400" y="295" font-size="14" text-anchor="middle" fill="#555">Total Gain = ₹140 + ₹60 = ₹200</text>
+                <text x="400" y="318" font-size="18" font-weight="bold" text-anchor="middle" fill="#c0392b">Return = 14.29%</text>
+            </svg>
+        </div>
+
+        <h3>Multi-Period HPR: Connecting the Dots 🔗</h3>
+
+        <div class="intuitive-box">
+            <h3>🎯 What If You Hold for Multiple Years?</h3>
+            <p>Let's say you hold an investment for 3 years, and each year gives you a different return. How do you calculate your total return?</p>
+            <p>Here's the trick: <strong>You multiply the growth factors!</strong></p>
+            <p>Think of it like this - if your money grows by 10% in Year 1, you now have 1.10 times your original amount. If it then grows 5% in Year 2, you have 1.05 times what you had at the start of Year 2. So you multiply: 1.10 × 1.05</p>
+        </div>
+
+        <div class="formula-box">
+            <h3 style="color: white; margin-bottom: 15px;">📐 Multi-Period HPR Formula</h3>
+            <p style="font-size: 1.1em; margin-bottom: 10px;">
+                <strong>HPR = [(1 + R₁) × (1 + R₂) × (1 + R₃)] - 1</strong>
+            </p>
+            <p style="font-size: 0.9em; color: #f0f4f8;">Where R₁, R₂, R₃ are the returns in each period</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Your 3-Year HDFC Bank Journey</h3>
+            <p><strong>Scenario:</strong> You invested in HDFC Bank and got these annual returns:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>Year 1: <strong>+12%</strong></li>
+                <li>Year 2: <strong>-8%</strong> (ouch, bad year!)</li>
+                <li>Year 3: <strong>+15%</strong></li>
+            </ul>
+            
+            <p style="margin-top: 20px;"><strong>Total return calculation:</strong></p>
+            <p style="margin-left: 20px;">HPR = [(1 + 0.12) × (1 - 0.08) × (1 + 0.15)] - 1</p>
+            <p style="margin-left: 20px;">HPR = [1.12 × 0.92 × 1.15] - 1</p>
+            <p style="margin-left: 20px;">HPR = [1.1844] - 1 = <strong>18.44%</strong></p>
+            
+            <div class="important-note" style="margin-top: 20px;">
+                <p><strong>💡 Key Insight:</strong> Even though you had a bad year (Year 2), your overall 3-year return was positive at 18.44%! This shows why staying invested can pay off.</p>
+            </div>
+        </div>
+
+        <h2>Method 2: Arithmetic Mean Return - The Simple Average 📊</h2>
+
+        <div class="analogy-box">
+            <h3>🎓 Like Your School Report Card Average</h3>
+            <p>Remember how you calculated your average marks in school? You added all your subject scores and divided by the number of subjects:</p>
+            <p style="margin-left: 20px; margin-top: 10px;"><strong>(Math + Science + English) ÷ 3 = Your Average</strong></p>
+            <p style="margin-top: 15px;">The <strong>Arithmetic Mean Return</strong> works exactly the same way! You add up all your annual returns and divide by the number of years.</p>
+            <p style="margin-top: 10px;">It's the simplest way to get an average, and it's great for estimating what might happen in the next single period.</p>
+        </div>
+
+        <div class="formula-box">
+            <h3 style="color: white; margin-bottom: 15px;">📐 Arithmetic Mean Formula</h3>
+            <p style="font-size: 1.1em; margin-bottom: 10px;">
+                <strong>Arithmetic Mean = (R₁ + R₂ + R₃ + ... + Rₙ) / n</strong>
+            </p>
+            <p style="font-size: 0.9em; color: #f0f4f8;">Just add all returns and divide by the count!</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Tata Motors Performance</h3>
+            <p><strong>Scenario:</strong> Tata Motors gave you these annual returns over 5 years:</p>
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Return</th>
+                </tr>
+                <tr><td>Year 1</td><td>+15%</td></tr>
+                <tr><td>Year 2</td><td>+22%</td></tr>
+                <tr><td>Year 3</td><td>-5%</td></tr>
+                <tr><td>Year 4</td><td>+8%</td></tr>
+                <tr><td>Year 5</td><td>+12%</td></tr>
+            </table>
+            
+            <p style="margin-top: 20px;"><strong>Arithmetic mean calculation:</strong></p>
+            <p style="margin-left: 20px;">Mean = (15% + 22% - 5% + 8% + 12%) / 5</p>
+            <p style="margin-left: 20px;">Mean = 52% / 5 = <strong>10.4%</strong></p>
+            
+            <p style="margin-top: 15px;">Your simple average return was 10.4% per year!</p>
+        </div>
+
+        <div class="important-note">
+            <h4>⚠️ The Arithmetic Mean's Big Problem</h4>
+            <p>Here's something important: <strong>The arithmetic mean can be misleading!</strong></p>
+            <p style="margin-top: 10px;">Why? Because it doesn't account for <em>compounding</em>. If you lose 50% one year and gain 50% the next year, the arithmetic mean says you're even (0% average). But are you really?</p>
+            <p style="margin-top: 10px;"><strong>Example:</strong> Start with ₹100. Lose 50% → you have ₹50. Gain 50% → you have ₹75. You're down ₹25, not even!</p>
+            <p style="margin-top: 10px;">The arithmetic mean works okay for <em>predicting the next single year's return</em>, but it <strong>overestimates</strong> your actual investment growth over multiple years.</p>
+        </div>
+
+        <h2>Method 3: Geometric Mean Return - The TRUE Average Growth Rate 🎯</h2>
+
+        <div class="intuitive-box">
+            <h3>💡 The Real Deal</h3>
+            <p>The <strong>Geometric Mean Return</strong> is what you actually care about when you're investing for the long term. It tells you:</p>
+            <p style="margin-left: 20px; margin-top: 10px;"><em>"What single annual return, compounded every year, would give me my actual ending value?"</em></p>
+            <p style="margin-top: 15px;">It's the <strong>true compound growth rate</strong> of your investment!</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>🌱 Think of It Like Growing a Plant</h3>
+            <p>Imagine you plant a seed. Over 3 years, it grows unevenly:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>Year 1: Grows 200% (triples in size) 🌱→🌿</li>
+                <li>Year 2: Shrinks 50% (bad weather) 🌿→🌱</li>
+                <li>Year 3: Grows 50% 🌱→🌿</li>
+            </ul>
+            <p style="margin-top: 15px;">The arithmetic mean would say "grows 67% per year" but that's not accurate!</p>
+            <p>The geometric mean asks: <strong>"What steady growth rate each year would get you from seed to final plant?"</strong></p>
+            <p style="margin-top: 10px;">That's the growth rate that accounts for reality - including compounding!</p>
+        </div>
+
+        <div class="formula-box">
+            <h3 style="color: white; margin-bottom: 15px;">📐 Geometric Mean Formula</h3>
+            <p style="font-size: 1.1em; margin-bottom: 10px;">
+                <strong>Geometric Mean = ⁿ√[(1+R₁) × (1+R₂) × ... × (1+Rₙ)] - 1</strong>
+            </p>
+            <p style="font-size: 0.9em; color: #f0f4f8;">Multiply growth factors, take nth root, subtract 1</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: The Tale of Two Averages</h3>
+            <p><strong>Scenario:</strong> You invested ₹1,00,000 in a mutual fund. Here are your annual returns:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>Year 1: <strong>-50%</strong> (market crash! 😱)</li>
+                <li>Year 2: <strong>+35%</strong> (recovery)</li>
+                <li>Year 3: <strong>+27%</strong> (good times)</li>
+            </ul>
+            
+            <table style="margin-top: 20px;">
+                <tr>
+                    <th>Year</th>
+                    <th>Return</th>
+                    <th>Your Balance</th>
+                </tr>
+                <tr><td>Start</td><td>-</td><td>₹1,00,000</td></tr>
+                <tr><td>Year 1</td><td>-50%</td><td>₹50,000</td></tr>
+                <tr><td>Year 2</td><td>+35%</td><td>₹67,500</td></tr>
+                <tr><td>Year 3</td><td>+27%</td><td>₹85,725</td></tr>
+            </table>
+            
+            <p style="margin-top: 20px;"><strong>Arithmetic Mean:</strong></p>
+            <p style="margin-left: 20px;">(-50% + 35% + 27%) / 3 = <strong>4.0%</strong></p>
+            
+            <p style="margin-top: 20px;"><strong>Geometric Mean:</strong></p>
+            <p style="margin-left: 20px;">³√[(1-0.50) × (1+0.35) × (1+0.27)] - 1</p>
+            <p style="margin-left: 20px;">³√[0.50 × 1.35 × 1.27] - 1</p>
+            <p style="margin-left: 20px;">³√[0.85725] - 1 = <strong>-5.0%</strong></p>
+            
+            <div class="important-note" style="margin-top: 20px;">
+                <p><strong>🎯 The Reality Check:</strong></p>
+                <p style="margin-top: 10px;">• Arithmetic mean says you made 4% per year (sounds good!)</p>
+                <p>• Geometric mean says you LOST 5% per year (matches reality!)</p>
+                <p style="margin-top: 10px;">Your actual ending balance is ₹85,725 - you're down 14.3%. The geometric mean of -5% compounded over 3 years gives you this exact result!</p>
+                <p style="margin-top: 10px;"><strong>The geometric mean tells the truth about your investment performance.</strong></p>
+            </div>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 500" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="500" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">Arithmetic vs Geometric: The Big Difference!</text>
+                
+                <!-- Left side - Arithmetic -->
+                <rect x="40" y="70" width="340" height="380" fill="#ffcdd2" rx="15" stroke="#c62828" stroke-width="3"/>
+                <text x="210" y="105" font-size="18" font-weight="bold" text-anchor="middle" fill="#c62828">Arithmetic Mean = 4%</text>
+                <text x="210" y="130" font-size="13" text-anchor="middle" fill="#555">(Simple average)</text>
+                
+                <!-- Arithmetic visualization -->
+                <text x="210" y="170" font-size="16" text-anchor="middle" fill="#2c3e50">Year 1: -50%</text>
+                <text x="210" y="200" font-size="16" text-anchor="middle" fill="#2c3e50">Year 2: +35%</text>
+                <text x="210" y="230" font-size="16" text-anchor="middle" fill="#2c3e50">Year 3: +27%</text>
+                <line x1="100" y1="250" x2="320" y2="250" stroke="#c62828" stroke-width="2"/>
+                <text x="210" y="280" font-size="18" font-weight="bold" text-anchor="middle" fill="#c62828">Sum = 12%</text>
+                <text x="210" y="310" font-size="16" text-anchor="middle" fill="#2c3e50">12% ÷ 3 = 4%</text>
+                
+                <rect x="70" y="340" width="280" height="90" fill="#fff9c4" rx="10"/>
+                <text x="210" y="365" font-size="14" text-anchor="middle" fill="#555">If this were true...</text>
+                <text x="210" y="390" font-size="14" text-anchor="middle" fill="#2c3e50">₹1,00,000 would become</text>
+                <text x="210" y="415" font-size="18" font-weight="bold" text-anchor="middle" fill="#c0392b">₹1,12,486</text>
+                
+                <!-- Right side - Geometric -->
+                <rect x="420" y="70" width="340" height="380" fill="#c8e6c9" rx="15" stroke="#4caf50" stroke-width="3"/>
+                <text x="590" y="105" font-size="18" font-weight="bold" text-anchor="middle" fill="#2e7d32">Geometric Mean = -5%</text>
+                <text x="590" y="130" font-size="13" text-anchor="middle" fill="#555">(True compound rate)</text>
+                
+                <!-- Geometric visualization -->
+                <text x="590" y="170" font-size="14" text-anchor="middle" fill="#2c3e50">Start: ₹1,00,000</text>
+                <text x="590" y="195" font-size="14" text-anchor="middle" fill="#2c3e50">× 0.50 = ₹50,000</text>
+                <text x="590" y="220" font-size="14" text-anchor="middle" fill="#2c3e50">× 1.35 = ₹67,500</text>
+                <text x="590" y="245" font-size="14" text-anchor="middle" fill="#2c3e50">× 1.27 = ₹85,725</text>
+                <line x1="480" y1="265" x2="700" y2="265" stroke="#4caf50" stroke-width="2"/>
+                <text x="590" y="295" font-size="16" font-weight="bold" text-anchor="middle" fill="#2e7d32">Actual ending value</text>
+                
+                <rect x="450" y="320" width="280" height="110" fill="#fff9c4" rx="10"/>
+                <text x="590" y="345" font-size="14" text-anchor="middle" fill="#555">Reality check:</text>
+                <text x="590" y="370" font-size="14" text-anchor="middle" fill="#2c3e50">₹1,00,000 became</text>
+                <text x="590" y="395" font-size="18" font-weight="bold" text-anchor="middle" fill="#c0392b">₹85,725</text>
+                <text x="590" y="420" font-size="13" text-anchor="middle" fill="#555">(Down 14.3%!)</text>
+            </svg>
+        </div>
+
+        <h2>Method 4: Harmonic Mean Return - The Cost Averaging Specialist 🎲</h2>
+
+        <div class="intuitive-box">
+            <h3>🎯 A Special Case</h3>
+            <p>The <strong>Harmonic Mean</strong> might sound fancy, but it has one very specific use: <strong>when you're investing a fixed amount of money at different prices</strong>.</p>
+            <p>This is exactly what happens when you use SIPs (Systematic Investment Plans) or dollar-cost averaging!</p>
+        </div>
+
+        <div class="analogy-box">
+            <h3>🛒 The Shopping Cart Analogy</h3>
+            <p>Imagine you go shopping for apples every week with exactly ₹100:</p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li>Week 1: Apples cost ₹10/kg → You buy 10 kg</li>
+                <li>Week 2: Price jumps to ₹20/kg → You buy 5 kg</li>
+            </ul>
+            <p style="margin-top: 15px;">What's your average price per kg? It's NOT ₹15 (the arithmetic mean)!</p>
+            <p>You bought 15 kg for ₹200, so your average price = ₹200/15 kg = <strong>₹13.33/kg</strong></p>
+            <p style="margin-top: 10px;">That's the harmonic mean! It accounts for the fact that you bought MORE when prices were lower.</p>
+        </div>
+
+        <div class="formula-box">
+            <h3 style="color: white; margin-bottom: 15px;">📐 Harmonic Mean Formula</h3>
+            <p style="font-size: 1.1em; margin-bottom: 10px;">
+                <strong>Harmonic Mean = n / (1/X₁ + 1/X₂ + ... + 1/Xₙ)</strong>
+            </p>
+            <p style="font-size: 0.9em; color: #f0f4f8;">Where n is the number of periods</p>
+        </div>
+
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Your Monthly SIP</h3>
+            <p><strong>Scenario:</strong> You invest ₹10,000 every month in a fund (SIP) for 3 months at these NAVs:</p>
+            <table style="margin-top: 15px;">
+                <tr>
+                    <th>Month</th>
+                    <th>NAV (Price)</th>
+                    <th>Units Bought</th>
+                </tr>
+                <tr><td>Month 1</td><td>₹100</td><td>100 units</td></tr>
+                <tr><td>Month 2</td><td>₹80</td><td>125 units</td></tr>
+                <tr><td>Month 3</td><td>₹120</td><td>83.33 units</td></tr>
+                <tr style="background-color: #fff9c4; font-weight: bold;">
+                    <td>Total</td><td>-</td><td>308.33 units</td>
+                </tr>
+            </table>
+            
+            <p style="margin-top: 20px;"><strong>Average price per unit:</strong></p>
+            <p style="margin-left: 20px;">Total invested = ₹30,000</p>
+            <p style="margin-left: 20px;">Total units = 308.33</p>
+            <p style="margin-left: 20px;">Average price = ₹30,000 / 308.33 = <strong>₹97.30</strong></p>
+            
+            <p style="margin-top: 20px;"><strong>Using Harmonic Mean Formula:</strong></p>
+            <p style="margin-left: 20px;">HM = 3 / (1/100 + 1/80 + 1/120)</p>
+            <p style="margin-left: 20px;">HM = 3 / (0.01 + 0.0125 + 0.00833)</p>
+            <p style="margin-left: 20px;">HM = 3 / 0.03083 = <strong>₹97.30</strong></p>
+            
+            <div class="important-note" style="margin-top: 20px;">
+                <p><strong>💡 Key Insight:</strong> The arithmetic mean of prices is ₹100, but your actual average price paid is ₹97.30!</p>
+                <p style="margin-top: 10px;">Why? Because you automatically bought MORE units when prices were LOWER. The harmonic mean captures this perfectly!</p>
+            </div>
+        </div>
+
+        <h2>The Big Picture: Which Mean Should You Use? 🤔</h2>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 600" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="600" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="35" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">The Hierarchy of Means</text>
+                
+                <!-- Top box - Arithmetic -->
+                <rect x="200" y="80" width="400" height="120" fill="#ffcdd2" rx="15" stroke="#c62828" stroke-width="3"/>
+                <text x="400" y="115" font-size="20" font-weight="bold" text-anchor="middle" fill="#c62828">Arithmetic Mean (Highest)</text>
+                <text x="400" y="145" font-size="14" text-anchor="middle" fill="#2c3e50">Use for: Predicting next single period</text>
+                <text x="400" y="170" font-size="13" text-anchor="middle" fill="#555">⚠️ Overestimates long-term growth</text>
+                <text x="400" y="190" font-size="13" text-anchor="middle" fill="#555">Easy to calculate, not realistic for compounding</text>
+                
+                <!-- Arrow down -->
+                <path d="M 400 210 L 400 240" stroke="#667eea" stroke-width="4" marker-end="url(#arrowhead3)"/>
+                <defs>
+                    <marker id="arrowhead3" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <polygon points="0 0, 10 5, 0 10" fill="#667eea"/>
+                    </marker>
+                </defs>
+                
+                <!-- Middle box - Geometric -->
+                <rect x="200" y="250" width="400" height="120" fill="#c8e6c9" rx="15" stroke="#4caf50" stroke-width="3"/>
+                <text x="400" y="285" font-size="20" font-weight="bold" text-anchor="middle" fill="#2e7d32">Geometric Mean (Middle)</text>
+                <text x="400" y="315" font-size="14" text-anchor="middle" fill="#2c3e50">Use for: Historical returns & long-term growth</text>
+                <text x="400" y="340" font-size="13" text-anchor="middle" fill="#555">✅ True compound growth rate</text>
+                <text x="400" y="360" font-size="13" text-anchor="middle" fill="#555">Shows what actually happened to your money!</text>
+                
+                <!-- Arrow down -->
+                <path d="M 400 380 L 400 410" stroke="#667eea" stroke-width="4" marker-end="url(#arrowhead4)"/>
+                <defs>
+                    <marker id="arrowhead4" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                        <polygon points="0 0, 10 5, 0 10" fill="#667eea"/>
+                    </marker>
+                </defs>
+                
+                <!-- Bottom box - Harmonic -->
+                <rect x="200" y="420" width="400" height="120" fill="#e1bee7" rx="15" stroke="#9c27b0" stroke-width="3"/>
+                <text x="400" y="455" font-size="20" font-weight="bold" text-anchor="middle" fill="#7b1fa2">Harmonic Mean (Lowest)</text>
+                <text x="400" y="485" font-size="14" text-anchor="middle" fill="#2c3e50">Use for: Fixed amount investing (SIP/DCA)</text>
+                <text x="400" y="510" font-size="13" text-anchor="middle" fill="#555">📊 Average price paid per unit</text>
+                <text x="400" y="530" font-size="13" text-anchor="middle" fill="#555">Perfect for dollar-cost averaging</text>
+                
+                <!-- Side note -->
+                <rect x="50" y="560" width="700" height="30" fill="#fff9c4" rx="8"/>
+                <text x="400" y="580" font-size="13" text-anchor="middle" fill="#555">Remember: Harmonic ≤ Geometric ≤ Arithmetic (unless all values are equal)</text>
+            </svg>
+        </div>
+
+        <div class="important-note">
+            <h3>🎯 Decision Flowchart: Which Mean to Use?</h3>
+            <p style="margin-top: 15px;"><strong>Ask yourself these questions:</strong></p>
+            <ul style="margin-left: 25px; margin-top: 10px;">
+                <li><strong>Q: What return will I get next year?</strong><br>A: Use <em>Arithmetic Mean</em> (simple average of past returns)</li>
+                <li style="margin-top: 10px;"><strong>Q: What was my actual investment growth rate over the past 5 years?</strong><br>A: Use <em>Geometric Mean</em> (true compound rate)</li>
+                <li style="margin-top: 10px;"><strong>Q: What average price did I pay with my monthly SIPs?</strong><br>A: Use <em>Harmonic Mean</em> (for fixed amount investing)</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <h3>🌍 Global Example: Comparing Fund Managers</h3>
+            <p><strong>Scenario:</strong> Two fund managers manage your money for 3 years. Both start with $100,000.</p>
+            
+            <table style="margin-top: 15px;">
+                <tr>
+                    <th>Year</th>
+                    <th>Manager A Return</th>
+                    <th>Manager B Return</th>
+                </tr>
+                <tr><td>Year 1</td><td>+20%</td><td>+5%</td></tr>
+                <tr><td>Year 2</td><td>+5%</td><td>+15%</td></tr>
+                <tr><td>Year 3</td><td>+5%</td><td>+10%</td></tr>
+            </table>
+            
+            <p style="margin-top: 20px;"><strong>Arithmetic Means:</strong></p>
+            <p style="margin-left: 20px;">Manager A: (20% + 5% + 5%) / 3 = <strong>10%</strong></p>
+            <p style="margin-left: 20px;">Manager B: (5% + 15% + 10%) / 3 = <strong>10%</strong></p>
+            <p style="margin-top: 10px;">They look equal!</p>
+            
+            <p style="margin-top: 20px;"><strong>Geometric Means:</strong></p>
+            <p style="margin-left: 20px;">Manager A: ³√[1.20 × 1.05 × 1.05] - 1 = <strong>9.91%</strong></p>
+            <p style="margin-left: 20px;">Manager B: ³√[1.05 × 1.15 × 1.10] - 1 = <strong>9.96%</strong></p>
+            
+            <p style="margin-top: 20px;"><strong>Final Values:</strong></p>
+            <p style="margin-left: 20px;">Manager A: $100,000 → <strong>$132,300</strong></p>
+            <p style="margin-left: 20px;">Manager B: $100,000 → <strong>$132,825</strong></p>
+            
+            <div class="important-note" style="margin-top: 20px;">
+                <p><strong>💡 The Lesson:</strong> Manager B actually did slightly better! The geometric mean reveals this, while the arithmetic mean hides it. When comparing investment performance, always use the geometric mean!</p>
+            </div>
+        </div>
+
+        <h2>Key Takeaways 🎓</h2>
+
+        <div class="important-note">
+            <h3>📌 Remember These Points:</h3>
+            <ul style="margin-left: 25px; margin-top: 15px;">
+                <li><strong>Holding Period Return (HPR)</strong> = Simple return over any single period. Perfect for "what did I make this month/year?"</li>
+                <li style="margin-top: 10px;"><strong>Arithmetic Mean</strong> = Simple average. Good for estimating next year's return, but overestimates long-term growth.</li>
+                <li style="margin-top: 10px;"><strong>Geometric Mean</strong> = True compound growth rate. Use this for actual investment performance over time.</li>
+                <li style="margin-top: 10px;"><strong>Harmonic Mean</strong> = For fixed amount investing. Gives you the actual average price paid per unit.</li>
+                <li style="margin-top: 10px;"><strong>Always remember:</strong> Harmonic ≤ Geometric ≤ Arithmetic (unless all returns are equal)</li>
+                <li style="margin-top: 10px;"><strong>The geometric mean is your friend</strong> when reporting historical performance - it tells the truth!</li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <a href="return-measurement-detailed.html" class="nav-button">→ Detailed Notes</a>
+            <a href="return-measurement-practice.html" class="nav-button">Practice Questions →</a>
+        </div>
+    </div>
+</body>
+</html>

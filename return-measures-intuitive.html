@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Return Measures: Intuitive Learning - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+        
+        .intuitive-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .analogy-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ff6b9d;
+        }
+        
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe0b3 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #ff8a65;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .nav-button.prev {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
+        }
+        
+        .nav-button.next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> > <a href="#">Quantitative Methods</a> > <a href="#">Rates and Returns</a> > Major Return Measures
+        </div>
+        
+        <span class="badge">Intuitive Learning</span>
+        
+        <h1>Major Return Measures: What You Really Make 💰</h1>
+        
+        <div class="intuitive-box">
+            <h3>🎯 The Reality Check Question</h3>
+            <p>Your mutual fund manager calls you with exciting news: "Your fund returned 20% this year!"</p>
+            <p>You're thrilled! But then you start thinking...</p>
+            <ul>
+                <li>Wait, what about the 2% management fee I pay?</li>
+                <li>And what about the 30% tax on my gains?</li>
+                <li>Plus, inflation was 5% this year...</li>
+                <li>So how much did I <em>really</em> make?</li>
+            </ul>
+            <p><strong>This is why we need different return measures!</strong> That "20%" can mean very different things depending on what's included and what's not.</p>
+        </div>
+        
+        <h2>The Return Sandwich 🥪</h2>
+        
+        <div class="analogy-box">
+            <h3>🍔 Think of Returns Like a Burger</h3>
+            <p>Imagine your investment return is a delicious burger. But before you get to eat it, several people take bites:</p>
+            <ul>
+                <li><strong>The fund manager</strong> takes a bite (management fees)</li>
+                <li><strong>The government</strong> takes a bite (taxes)</li>
+                <li><strong>Inflation</strong> makes the burger smaller (purchasing power loss)</li>
+            </ul>
+            <p>What's left for you? That's your <strong>after-tax real return</strong> - the only thing you actually get to consume!</p>
+        </div>
+        
+        <div class="image-container">
+            <svg viewBox="0 0 800 500" style="width:100%; max-width:800px;">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ff8a65;stop-opacity:1" />
+                    </linearGradient>
+                    <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffd89b;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#19547b;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="500" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="22" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    The Journey from Gross to Net Return
+                </text>
+                
+                <!-- Starting return -->
+                <rect x="50" y="80" width="700" height="70" rx="10" fill="url(#grad1)" opacity="0.9"/>
+                <text x="400" y="110" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+                    Gross Return: 20%
+                </text>
+                <text x="400" y="135" font-size="14" text-anchor="middle" fill="white">
+                    (Before ANY deductions - the fund's raw performance)
+                </text>
+                
+                <!-- Arrow down -->
+                <line x1="400" y1="150" x2="400" y2="180" stroke="#667eea" stroke-width="3" marker-end="url(#arrowhead)"/>
+                <text x="500" y="170" font-size="13" fill="#667eea" font-weight="bold">- Fees</text>
+                
+                <!-- After fees -->
+                <rect x="50" y="180" width="630" height="60" rx="10" fill="url(#grad2)" opacity="0.9"/>
+                <text x="365" y="207" font-size="17" font-weight="bold" text-anchor="middle" fill="white">
+                    Net Return: 18%
+                </text>
+                <text x="365" y="228" font-size="13" text-anchor="middle" fill="white">
+                    (After management fees - what the fund reports to you)
+                </text>
+                
+                <!-- Arrow down -->
+                <line x1="365" y1="240" x2="365" y2="270" stroke="#ff6b9d" stroke-width="3" marker-end="url(#arrowhead2)"/>
+                <text x="480" y="260" font-size="13" fill="#ff6b9d" font-weight="bold">- Taxes</text>
+                
+                <!-- After taxes -->
+                <rect x="50" y="270" width="540" height="60" rx="10" fill="#ffd89b" opacity="0.9"/>
+                <text x="320" y="297" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">
+                    After-Tax Nominal: 12.6%
+                </text>
+                <text x="320" y="318" font-size="12" text-anchor="middle" fill="#555">
+                    (After taxes, but not adjusted for inflation yet)
+                </text>
+                
+                <!-- Arrow down -->
+                <line x1="320" y1="330" x2="320" y2="360" stroke="#ff8a65" stroke-width="3" marker-end="url(#arrowhead3)"/>
+                <text x="440" y="350" font-size="13" fill="#ff8a65" font-weight="bold">- Inflation</text>
+                
+                <!-- Final return -->
+                <rect x="50" y="360" width="450" height="70" rx="10" fill="#4caf50" opacity="0.9"/>
+                <text x="275" y="390" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+                    After-Tax Real Return: 7.2%
+                </text>
+                <text x="275" y="415" font-size="13" text-anchor="middle" fill="white">
+                    👆 THIS is what you ACTUALLY keep!
+                </text>
+                
+                <!-- Side note -->
+                <rect x="520" y="360" width="260" height="110" rx="8" fill="white" stroke="#999" stroke-width="2"/>
+                <text x="650" y="385" font-size="14" font-weight="bold" text-anchor="middle" fill="#667eea">
+                    The Shrinkage
+                </text>
+                <text x="540" y="410" font-size="12" fill="#333">Started with: 20.0%</text>
+                <text x="540" y="430" font-size="12" fill="#333">Ended with: 7.2%</text>
+                <text x="540" y="450" font-size="12" fill="#333">Lost: 12.8 percentage points!</text>
+                
+                <!-- Arrow markers -->
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#667eea" />
+                    </marker>
+                    <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#ff6b9d" />
+                    </marker>
+                    <marker id="arrowhead3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#ff8a65" />
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+        
+        <h2>Gross vs. Net Returns 📊</h2>
+        
+        <div class="intuitive-box">
+            <h3>💡 The Basic Distinction</h3>
+            <p><strong>Gross Return:</strong> The return before deducting management fees and expenses. This shows the manager's skill at picking investments.</p>
+            <p><strong>Net Return:</strong> The return after all fees and expenses are deducted. This is what you actually receive in your account.</p>
+            <p><strong>Think of it like pizza delivery:</strong></p>
+            <ul>
+                <li>Gross return = The whole pizza (before delivery fee)</li>
+                <li>Net return = What arrives at your door (after delivery fee)</li>
+            </ul>
+        </div>
+        
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Mutual Fund Returns</h3>
+            <p><strong>Scenario:</strong> You invested ₹10,00,000 in an HDFC mutual fund. The fund manager made brilliant investment decisions and the portfolio grew to ₹11,50,000 by year-end.</p>
+            
+            <p><strong>The Gross Return (Manager's Performance):</strong></p>
+            <p>The fund's assets grew from ₹30 crores to ₹35 crores (let's say). Before any fees, the gross return is:</p>
+            <p style="text-align: center; font-weight: bold; background: white; padding: 10px; border-radius: 5px; margin: 15px 0;">
+                Gross Return = (35 - 30) / 30 = 16.67%
+            </p>
+            
+            <p><strong>But wait! The fund charges fees:</strong></p>
+            <ul>
+                <li>Management fee: 1.5% per year</li>
+                <li>Other expenses: 0.5% per year</li>
+                <li>Total expense ratio: 2.0%</li>
+            </ul>
+            
+            <p><strong>Your Net Return (What You Get):</strong></p>
+            <p>After the 2% in fees is deducted:</p>
+            <p style="text-align: center; font-weight: bold; background: white; padding: 10px; border-radius: 5px; margin: 15px 0;">
+                Net Return = 16.67% - 2.0% ≈ 14.67%
+            </p>
+            
+            <p><strong>Your actual ending balance:</strong> ₹10,00,000 × 1.1467 = ₹11,46,700</p>
+            
+            <p><strong>Key Insight:</strong> The manager did well (16.67%), but you received 14.67% because of fees. That 2% might not sound like much, but over 20 years, it's the difference between ₹48.6 lakhs and ₹36.8 lakhs on a ₹10 lakh investment!</p>
+        </div>
+        
+        <div class="example-box">
+            <h3>🌍 Global Example: Small Fund vs. Large Fund</h3>
+            <p><strong>The Small Fund Problem:</strong></p>
+            <p>Imagine two funds with identical investment performance:</p>
+            <ul>
+                <li><strong>Small Fund:</strong> $10 million in assets, $200,000 in fixed annual expenses</li>
+                <li><strong>Large Fund:</strong> $1 billion in assets, $2 million in fixed annual expenses</li>
+            </ul>
+            
+            <p><strong>Both funds earn 12% gross return.</strong></p>
+            
+            <p><strong>Small Fund Net Return:</strong></p>
+            <ul>
+                <li>Expense ratio: $200,000 / $10,000,000 = 2.0%</li>
+                <li>Net return: 12% - 2.0% = <strong>10.0%</strong></li>
+            </ul>
+            
+            <p><strong>Large Fund Net Return:</strong></p>
+            <ul>
+                <li>Expense ratio: $2,000,000 / $1,000,000,000 = 0.2%</li>
+                <li>Net return: 12% - 0.2% = <strong>11.8%</strong></li>
+            </ul>
+            
+            <p><strong>The Result:</strong> Even though both managers are equally skilled, the large fund's investors get a better net return (11.8% vs. 10.0%) because expenses are spread across more assets!</p>
+            
+            <p><strong>This is why:</strong> Small mutual funds often waive part of their fees to stay competitive. Otherwise, nobody would invest with them!</p>
+        </div>
+        
+        <div class="important-note">
+            <h4>⚠️ Why Gross Returns Matter</h4>
+            <p>When evaluating a fund manager's skill, <strong>always look at gross returns</strong>, not net returns. Why?</p>
+            <ul>
+                <li>A large fund might have lower expenses just because of size, not better management</li>
+                <li>A small fund might have higher expenses but better investment decisions</li>
+                <li>Gross returns show pure investment skill, separated from fee structure</li>
+            </ul>
+            <p><strong>Bottom line:</strong> Judge managers on gross returns, but invest based on net returns!</p>
+        </div>
+        
+        <h2>Pre-Tax vs. After-Tax Returns 🏛️</h2>
+        
+        <div class="intuitive-box">
+            <h3>💡 The Tax Man Always Gets His Cut</h3>
+            <p>Governments tax investment returns. The amount you pay depends on:</p>
+            <ul>
+                <li><strong>Type of income:</strong> Capital gains, dividends, interest (all taxed differently)</li>
+                <li><strong>Holding period:</strong> Short-term vs. long-term capital gains</li>
+                <li><strong>Your country:</strong> Tax laws vary widely</li>
+                <li><strong>Your tax bracket:</strong> Higher earners pay more</li>
+            </ul>
+        </div>
+        
+        <div class="image-container">
+            <svg viewBox="0 0 800 400" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="400" fill="#f8f9fa"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    How Different Types of Income Are Taxed
+                </text>
+                
+                <!-- Interest Income Box -->
+                <rect x="50" y="70" width="220" height="140" rx="10" fill="#ffcdd2" opacity="0.8"/>
+                <text x="160" y="100" font-size="16" font-weight="bold" text-anchor="middle" fill="#c62828">
+                    Interest Income
+                </text>
+                <text x="160" y="125" font-size="13" text-anchor="middle" fill="#333">
+                    (Bonds, FDs, Savings)
+                </text>
+                <rect x="70" y="140" width="180" height="50" rx="5" fill="white"/>
+                <text x="160" y="160" font-size="12" text-anchor="middle" fill="#555">Tax Rate: HIGHEST</text>
+                <text x="160" y="178" font-size="11" text-anchor="middle" fill="#777">Usually taxed as</text>
+                <text x="160" y="193" font-size="11" text-anchor="middle" fill="#777">ordinary income</text>
+                
+                <!-- Dividend Income Box -->
+                <rect x="290" y="70" width="220" height="140" rx="10" fill="#fff9c4" opacity="0.8"/>
+                <text x="400" y="100" font-size="16" font-weight="bold" text-anchor="middle" fill="#f57f17">
+                    Dividend Income
+                </text>
+                <text x="400" y="125" font-size="13" text-anchor="middle" fill="#333">
+                    (Stock dividends)
+                </text>
+                <rect x="310" y="140" width="180" height="50" rx="5" fill="white"/>
+                <text x="400" y="160" font-size="12" text-anchor="middle" fill="#555">Tax Rate: MEDIUM</text>
+                <text x="400" y="178" font-size="11" text-anchor="middle" fill="#777">Preferential rate</text>
+                <text x="400" y="193" font-size="11" text-anchor="middle" fill="#777">in many countries</text>
+                
+                <!-- Capital Gains Box -->
+                <rect x="530" y="70" width="220" height="140" rx="10" fill="#c8e6c9" opacity="0.8"/>
+                <text x="640" y="100" font-size="16" font-weight="bold" text-anchor="middle" fill="#2e7d32">
+                    Long-Term Cap Gains
+                </text>
+                <text x="640" y="125" font-size="13" text-anchor="middle" fill="#333">
+                    (Held > 1 year)
+                </text>
+                <rect x="550" y="140" width="180" height="50" rx="5" fill="white"/>
+                <text x="640" y="160" font-size="12" text-anchor="middle" fill="#555">Tax Rate: LOWEST</text>
+                <text x="640" y="178" font-size="11" text-anchor="middle" fill="#777">Favorable treatment</text>
+                <text x="640" y="193" font-size="11" text-anchor="middle" fill="#777">to encourage investing</text>
+                
+                <!-- Example calculation below -->
+                <rect x="50" y="240" width="700" height="140" rx="10" fill="white" stroke="#667eea" stroke-width="2"/>
+                <text x="400" y="270" font-size="15" font-weight="bold" text-anchor="middle" fill="#667eea">
+                    Example: ₹1,00,000 gain, 30% tax bracket
+                </text>
+                
+                <g>
+                    <text x="70" y="300" font-size="13" fill="#333">Interest: ₹1,00,000 × 30% = ₹30,000 tax</text>
+                    <text x="70" y="320" font-size="12" font-weight="bold" fill="#c62828">After-tax: ₹70,000</text>
+                </g>
+                
+                <g>
+                    <text x="300" y="300" font-size="13" fill="#333">Dividend: ₹1,00,000 × 20% = ₹20,000 tax</text>
+                    <text x="300" y="320" font-size="12" font-weight="bold" fill="#f57f17">After-tax: ₹80,000</text>
+                </g>
+                
+                <g>
+                    <text x="530" y="300" font-size="13" fill="#333">Cap Gain: ₹1,00,000 × 15% = ₹15,000 tax</text>
+                    <text x="530" y="320" font-size="12" font-weight="bold" fill="#2e7d32">After-tax: ₹85,000</text>
+                </g>
+                
+                <text x="400" y="355" font-size="12" text-anchor="middle" fill="#777" font-style="italic">
+                    Same ₹1,00,000 gain, different tax treatments = different after-tax returns!
+                </text>
+            </svg>
+        </div>
+        
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Tax on Equity Returns</h3>
+            <p><strong>Scenario:</strong> You bought shares of Reliance for ₹5,00,000 and sold them after 18 months for ₹6,50,000. You also received ₹20,000 in dividends during this time.</p>
+            
+            <p><strong>Your Pre-Tax Return:</strong></p>
+            <ul>
+                <li>Capital gain: ₹6,50,000 - ₹5,00,000 = ₹1,50,000</li>
+                <li>Dividend income: ₹20,000</li>
+                <li>Total gain: ₹1,70,000</li>
+                <li>Pre-tax return: ₹1,70,000 / ₹5,00,000 = <strong>34%</strong></li>
+            </ul>
+            
+            <p><strong>The Tax Bill (Indian rates as example):</strong></p>
+            <ul>
+                <li>Long-term capital gains (held > 1 year): 10% on gains > ₹1 lakh = (₹1,50,000 - ₹1,00,000) × 10% = ₹5,000</li>
+                <li>Dividend income tax: ₹20,000 × 30% (your tax bracket) = ₹6,000</li>
+                <li>Total tax: ₹11,000</li>
+            </ul>
+            
+            <p><strong>Your After-Tax Return:</strong></p>
+            <p>Net gain after taxes: ₹1,70,000 - ₹11,000 = ₹1,59,000</p>
+            <p style="text-align: center; font-weight: bold; background: white; padding: 10px; border-radius: 5px; margin: 15px 0;">
+                After-tax return: ₹1,59,000 / ₹5,00,000 = 31.8%
+            </p>
+            
+            <p><strong>The Difference:</strong> Your 34% pre-tax return becomes 31.8% after-tax. Not huge in this case, but that's because long-term capital gains get favorable treatment in India!</p>
+        </div>
+        
+        <div class="analogy-box">
+            <h3>🎯 Smart Tax Strategy</h3>
+            <p><strong>Think of taxes like shopping for deals:</strong></p>
+            <ul>
+                <li><strong>Hold investments longer than 1 year</strong> → Get the "long-term capital gains discount"</li>
+                <li><strong>Minimize trading</strong> → Fewer taxable events = lower tax bill</li>
+                <li><strong>Use tax-advantaged accounts</strong> → Like shopping at a duty-free store!</li>
+            </ul>
+            <p>A good investment manager thinks about taxes, not just returns. A 25% gain with high taxes might be worse than a 20% gain with low taxes!</p>
+        </div>
+        
+        <h2>Nominal vs. Real Returns 📉</h2>
+        
+        <div class="intuitive-box">
+            <h3>💡 The Inflation Illusion</h3>
+            <p>You made 10% this year. Sounds great! But if inflation was 8%, your money only bought 2% more stuff than before. That's the <strong>real return</strong>.</p>
+            <p><strong>Nominal return</strong> = What you see in your account</p>
+            <p><strong>Real return</strong> = What your money can actually buy</p>
+        </div>
+        
+        <div class="formula-box">
+            <h4>The Real Return Formula:</h4>
+            <p style="font-size: 1.1em; text-align: center; margin: 20px 0;">
+                <strong>(1 + Real Return) = (1 + Nominal Return) / (1 + Inflation)</strong>
+            </p>
+            <p>Or rearranged:</p>
+            <p style="font-size: 1.1em; text-align: center; margin: 20px 0;">
+                <strong>Real Return = [(1 + Nominal Return) / (1 + Inflation)] - 1</strong>
+            </p>
+        </div>
+        
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: The Inflation Reality Check</h3>
+            <p><strong>Scenario:</strong> Your grandmother kept ₹10 lakhs in a fixed deposit at 6% per year for 10 years. She's excited because her FD is now worth ₹17.91 lakhs!</p>
+            
+            <p><strong>Nominal Return:</strong> 79.1% over 10 years (or about 6% annually)</p>
+            
+            <p><strong>But wait...</strong> Inflation in India averaged 5% per year during this time.</p>
+            
+            <p><strong>Real Return Calculation:</strong></p>
+            <p>Real return per year = [(1.06) / (1.05)] - 1 = 0.0095 = <strong>0.95% per year</strong></p>
+            
+            <p><strong>What This Means:</strong></p>
+            <ul>
+                <li>Her FD balance grew from ₹10L to ₹17.91L</li>
+                <li>But prices also went up!</li>
+                <li>In terms of <em>purchasing power</em>, she only gained about 0.95% per year</li>
+                <li>That ₹17.91L today buys roughly what ₹11L would have bought 10 years ago</li>
+            </ul>
+            
+            <p><strong>The Lesson:</strong> She preserved her wealth (didn't lose to inflation), but barely grew it. This is why stocks and other growth investments matter!</p>
+        </div>
+        
+        <div class="example-box">
+            <h3>🌍 Global Example: Comparing Returns Across Countries</h3>
+            <p><strong>Scenario:</strong> You're comparing two investment opportunities:</p>
+            <ul>
+                <li><strong>US Bond:</strong> Returns 4% per year (US inflation: 2%)</li>
+                <li><strong>Indian Bond:</strong> Returns 8% per year (India inflation: 5%)</li>
+            </ul>
+            
+            <p><strong>Which is better?</strong> Let's look at real returns:</p>
+            
+            <p><strong>US Bond Real Return:</strong></p>
+            <p>Real return = [(1.04) / (1.02)] - 1 = 0.0196 = <strong>1.96%</strong></p>
+            
+            <p><strong>Indian Bond Real Return:</strong></p>
+            <p>Real return = [(1.08) / (1.05)] - 1 = 0.0286 = <strong>2.86%</strong></p>
+            
+            <p><strong>The Winner:</strong> The Indian bond! Even though both offer attractive nominal returns, the Indian bond gives you 2.86% real growth vs. 1.96% for the US bond.</p>
+            
+            <p><strong>Why This Matters:</strong> When comparing investments across countries or time periods, always look at <strong>real returns</strong>. Nominal returns can be misleading if inflation rates differ!</p>
+        </div>
+        
+        <div class="important-note">
+            <h4>🎯 When to Use Real Returns</h4>
+            <ul>
+                <li><strong>Comparing across time:</strong> Was your grandfather's 15% return in 1990 better than your 10% return today? Use real returns!</li>
+                <li><strong>Comparing across countries:</strong> Is a 12% return in India better than 5% in the US? Use real returns!</li>
+                <li><strong>Retirement planning:</strong> How much will you really be able to buy in 30 years? Think in real terms!</li>
+                <li><strong>Long-term investing:</strong> The longer the horizon, the more inflation matters</li>
+            </ul>
+        </div>
+        
+        <h2>Leveraged Returns 🎢</h2>
+        
+        <div class="intuitive-box">
+            <h3>💡 Borrowing to Amplify Returns</h3>
+            <p>Leverage means using borrowed money to invest more than you actually have. It's like using a lever to lift a heavy rock - a small force creates a big effect.</p>
+            <p><strong>The upside:</strong> When investments go up, your returns are magnified! 🚀</p>
+            <p><strong>The downside:</strong> When investments go down, your losses are magnified too! 💥</p>
+        </div>
+        
+        <div class="analogy-box">
+            <h3>🏠 The Real Estate Analogy</h3>
+            <p>You want to buy a ₹50 lakh house. You have two options:</p>
+            
+            <p><strong>Option 1: Pay all cash (No leverage)</strong></p>
+            <ul>
+                <li>You invest: ₹50 lakhs of your own money</li>
+                <li>House appreciates 10%: Now worth ₹55 lakhs</li>
+                <li>Your return: ₹5 lakhs gain / ₹50 lakhs invested = <strong>10%</strong></li>
+            </ul>
+            
+            <p><strong>Option 2: Take a mortgage (With leverage)</strong></p>
+            <ul>
+                <li>You invest: ₹10 lakhs down payment (20%)</li>
+                <li>You borrow: ₹40 lakhs at 8% interest</li>
+                <li>House appreciates 10%: Now worth ₹55 lakhs</li>
+                <li>Your gain: ₹5 lakhs appreciation - ₹3.2 lakhs interest = ₹1.8 lakhs</li>
+                <li>Your return: ₹1.8 lakhs / ₹10 lakhs invested = <strong>18%</strong></li>
+            </ul>
+            
+            <p><strong>The Magic:</strong> You only invested ₹10 lakhs but got exposure to a ₹50 lakh asset. When it goes up 10%, you make 18% on your own money!</p>
+            <p><strong>The Risk:</strong> If the house drops 10% in value, your loss is magnified too!</p>
+        </div>
+        
+        <div class="formula-box">
+            <h4>Leveraged Return Formula:</h4>
+            <p style="font-size: 1em; text-align: center; margin: 20px 0;">
+                <strong>R<sub>L</sub> = R<sub>P</sub> + (V<sub>B</sub> / V<sub>E</sub>) × (R<sub>P</sub> - r<sub>D</sub>)</strong>
+            </p>
+            <p><strong>Where:</strong></p>
+            <ul>
+                <li><strong>R<sub>L</sub></strong> = Leveraged return (what you make)</li>
+                <li><strong>R<sub>P</sub></strong> = Portfolio return (before accounting for borrowing cost)</li>
+                <li><strong>V<sub>B</sub></strong> = Value of borrowed money</li>
+                <li><strong>V<sub>E</sub></strong> = Value of your own equity</li>
+                <li><strong>r<sub>D</sub></strong> = Cost of debt (interest rate on borrowed money)</li>
+            </ul>
+            <p><strong>The Key Insight:</strong> Leverage works in your favor when R<sub>P</sub> > r<sub>D</sub> (when your investment return exceeds your borrowing cost)</p>
+        </div>
+        
+        <div class="example-box">
+            <h3>🇮🇳 Indian Example: Margin Trading</h3>
+            <p><strong>Scenario:</strong> You want to buy ₹10,00,000 worth of Tata Motors shares. Your broker offers margin trading where you can borrow 50% of the investment at 10% annual interest.</p>
+            
+            <p><strong>Your Investment:</strong></p>
+            <ul>
+                <li>Your own money (V<sub>E</sub>): ₹5,00,000</li>
+                <li>Borrowed money (V<sub>B</sub>): ₹5,00,000 at 10% interest</li>
+                <li>Total investment: ₹10,00,000</li>
+            </ul>
+            
+            <p><strong>Scenario A: Stock goes up 20%</strong></p>
+            <ul>
+                <li>Portfolio value: ₹10,00,000 × 1.20 = ₹12,00,000</li>
+                <li>Portfolio return (R<sub>P</sub>): 20%</li>
+                <li>Interest cost: ₹5,00,000 × 10% = ₹50,000</li>
+                <li>Your gain: ₹2,00,000 - ₹50,000 = ₹1,50,000</li>
+                <li>Your return: ₹1,50,000 / ₹5,00,000 = <strong>30%</strong></li>
+            </ul>
+            
+            <p style="background: #e8f5e9; padding: 10px; border-radius: 5px; border-left: 4px solid #4caf50;">
+                <strong>✓ Using the formula:</strong><br>
+                R<sub>L</sub> = 20% + (5,00,000/5,00,000) × (20% - 10%)<br>
+                R<sub>L</sub> = 20% + 1 × 10% = <strong>30%</strong> ✓
+            </p>
+            
+            <p><strong>Scenario B: Stock goes down 20%</strong></p>
+            <ul>
+                <li>Portfolio value: ₹10,00,000 × 0.80 = ₹8,00,000</li>
+                <li>Portfolio return (R<sub>P</sub>): -20%</li>
+                <li>Interest cost: ₹50,000 (you still pay this!)</li>
+                <li>Your loss: -₹2,00,000 - ₹50,000 = -₹2,50,000</li>
+                <li>Your return: -₹2,50,000 / ₹5,00,000 = <strong>-50%</strong></li>
+            </ul>
+            
+            <p style="background: #ffebee; padding: 10px; border-radius: 5px; border-left: 4px solid #f44336;">
+                <strong>⚠ Leverage magnifies losses too!</strong> A 20% drop becomes a 50% loss on your own money.
+            </p>
+        </div>
+        
+        <div class="example-box">
+            <h3>🌍 Global Example: Professional Portfolio Management</h3>
+            <p><strong>Scenario:</strong> A European pension fund has EUR 70 million of its own capital. It borrows EUR 30 million at 5% to create a EUR 100 million portfolio. The portfolio earns 8% return.</p>
+            
+            <p><strong>Calculation:</strong></p>
+            <ul>
+                <li>V<sub>E</sub> = EUR 70 million</li>
+                <li>V<sub>B</sub> = EUR 30 million</li>
+                <li>R<sub>P</sub> = 8%</li>
+                <li>r<sub>D</sub> = 5%</li>
+            </ul>
+            
+            <p><strong>Leveraged Return:</strong></p>
+            <p style="text-align: center; background: white; padding: 10px; border-radius: 5px; margin: 10px 0;">
+                R<sub>L</sub> = 8% + (30/70) × (8% - 5%)<br>
+                R<sub>L</sub> = 8% + 0.4286 × 3%<br>
+                R<sub>L</sub> = 8% + 1.29%<br>
+                <strong>R<sub>L</sub> = 9.29%</strong>
+            </p>
+            
+            <p><strong>Breaking It Down:</strong></p>
+            <ul>
+                <li>The portfolio earned 8% on EUR 100 million = EUR 8 million</li>
+                <li>Interest on borrowed EUR 30 million = EUR 1.5 million</li>
+                <li>Net gain: EUR 8 million - EUR 1.5 million = EUR 6.5 million</li>
+                <li>Return on equity: EUR 6.5 million / EUR 70 million = 9.29% ✓</li>
+            </ul>
+            
+            <p><strong>The Advantage:</strong> By borrowing at 5% and earning 8%, the fund improved its return from 8% to 9.29%. That extra 1.29% comes from leverage!</p>
+        </div>
+        
+        <div class="important-note">
+            <h4>⚠️ The Rules of Leverage</h4>
+            <ul>
+                <li><strong>Leverage helps when:</strong> Your investment return (R<sub>P</sub>) > Your borrowing cost (r<sub>D</sub>)</li>
+                <li><strong>Leverage hurts when:</strong> Your investment return (R<sub>P</sub>) < Your borrowing cost (r<sub>D</sub>)</li>
+                <li><strong>Magnification works both ways:</strong> Gains are amplified, but so are losses</li>
+                <li><strong>Margin calls are real:</strong> If your investment drops too much, you might be forced to sell at the worst time</li>
+                <li><strong>Interest never sleeps:</strong> You pay borrowing costs whether your investment goes up or down</li>
+            </ul>
+            <p><strong>Warren Buffett's warning:</strong> "Leverage is the only way a smart person can go broke!"</p>
+        </div>
+        
+        <h2>The Complete Picture 🖼️</h2>
+        
+        <div class="image-container">
+            <svg viewBox="0 0 800 600" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="600" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="22" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+                    The Complete Return Hierarchy
+                </text>
+                
+                <!-- Gross Return -->
+                <rect x="100" y="70" width="600" height="60" rx="10" fill="#667eea" opacity="0.9"/>
+                <text x="400" y="105" font-size="18" font-weight="bold" text-anchor="middle" fill="white">
+                    GROSS RETURN (Manager's Skill)
+                </text>
+                
+                <!-- Net Return -->
+                <rect x="120" y="150" width="560" height="60" rx="10" fill="#ff6b9d" opacity="0.9"/>
+                <text x="400" y="185" font-size="17" font-weight="bold" text-anchor="middle" fill="white">
+                    NET RETURN (After Fees & Expenses)
+                </text>
+                
+                <!-- Pre-Tax Nominal -->
+                <rect x="140" y="230" width="520" height="60" rx="10" fill="#ffd89b" opacity="0.9"/>
+                <text x="400" y="265" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">
+                    PRE-TAX NOMINAL (What Fund Reports)
+                </text>
+                
+                <!-- After-Tax Nominal -->
+                <rect x="160" y="310" width="480" height="60" rx="10" fill="#8ec5fc" opacity="0.9"/>
+                <text x="400" y="345" font-size="15" font-weight="bold" text-anchor="middle" fill="#333">
+                    AFTER-TAX NOMINAL (After Government's Cut)
+                </text>
+                
+                <!-- After-Tax Real -->
+                <rect x="180" y="390" width="440" height="80" rx="10" fill="#4caf50" opacity="0.9"/>
+                <text x="400" y="425" font-size="16" font-weight="bold" text-anchor="middle" fill="white">
+                    AFTER-TAX REAL RETURN
+                </text>
+                <text x="400" y="450" font-size="14" text-anchor="middle" fill="white">
+                    👑 What You Actually Keep & Can Spend
+                </text>
+                
+                <!-- Leverage note -->
+                <rect x="50" y="500" width="700" height="80" rx="8" fill="white" stroke="#ff8a65" stroke-width="2"/>
+                <text x="400" y="530" font-size="14" font-weight="bold" text-anchor="middle" fill="#ff8a65">
+                    🎢 LEVERAGE: Can amplify any of these returns (for better or worse!)
+                </text>
+                <text x="400" y="555" font-size="12" text-anchor="middle" fill="#666">
+                    Using borrowed money magnifies gains AND losses at every level
+                </text>
+            </svg>
+        </div>
+        
+        <div class="important-note">
+            <h4>🎯 Key Takeaways</h4>
+            <ul>
+                <li><strong>Gross Return:</strong> Judge managers on this (shows pure skill)</li>
+                <li><strong>Net Return:</strong> Invest based on this (what you actually get before taxes)</li>
+                <li><strong>After-Tax Nominal:</strong> Your real cash gain (but not adjusted for inflation)</li>
+                <li><strong>After-Tax Real:</strong> Your true purchasing power gain (the only number that really matters!)</li>
+                <li><strong>Leverage:</strong> A double-edged sword that amplifies everything</li>
+            </ul>
+            <p><strong>Remember:</strong> A 20% gross return can become a 7% after-tax real return after fees, taxes, and inflation take their cut. Always know which return measure you're looking at!</p>
+        </div>
+        
+        <div class="navigation">
+            <a href="#" class="nav-button prev">← Previous: Annualized Returns</a>
+            <a href="return-measures-detailed.html" class="nav-button next">Next: Detailed Notes →</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Measurement: Detailed Notes - CFA Level 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .key-concept {
+            background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+
+        .important-note {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #fbc02d;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">CFA Level 1</a> &gt; <a href="#">Quantitative Methods</a> &gt; <a href="#">Rates and Returns</a> &gt; Return Measurement
+        </div>
+
+        <span class="badge">Detailed Notes</span>
+
+        <h1>Return Measurement Approaches</h1>
+
+        <div class="key-concept">
+            <h3>Learning Outcome Statement</h3>
+            <p><strong>Calculate and interpret different approaches to return measurement over time and describe their appropriate uses.</strong></p>
+        </div>
+
+        <h2>1. Introduction to Return Measurement</h2>
+
+        <p>Financial assets are characterized primarily by their return and risk profiles. Understanding various return measurement methodologies is essential for portfolio construction, performance evaluation, and comparative analysis.</p>
+
+        <h3>1.1 Sources of Return</h3>
+
+        <p>Financial assets typically generate returns through two distinct mechanisms:</p>
+
+        <div class="key-concept">
+            <h4>Periodic Income</h4>
+            <p>Cash flows received during the holding period, including:</p>
+            <ul>
+                <li>Cash dividends from equity securities</li>
+                <li>Interest payments from fixed-income instruments</li>
+                <li>Coupon payments from bonds</li>
+            </ul>
+
+            <h4>Capital Appreciation/Depreciation</h4>
+            <p>Changes in the market value of the asset:</p>
+            <ul>
+                <li>Capital gains from price increases</li>
+                <li>Capital losses from price decreases</li>
+            </ul>
+        </div>
+
+        <p>Some assets provide returns exclusively through one mechanism (e.g., non-dividend-paying growth stocks rely solely on capital appreciation), while others generate returns through both channels.</p>
+
+        <h2>2. Holding Period Return (HPR)</h2>
+
+        <h3>2.1 Definition and Formula</h3>
+
+        <p>The holding period return represents the total return earned from holding an asset over a single specified period, regardless of duration. This period may range from a single day to multiple years.</p>
+
+        <div class="formula-box">
+            <h3 style="color: white;">Mathematical Expression</h3>
+            <p style="margin-top: 15px; font-size: 1.2em;">
+                R = (P₁ - P₀ + I₁) / P₀
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95em; color: #f0f4f8;">
+                Where:<br>
+                R = Holding period return<br>
+                P₀ = Price at time t=0 (beginning of period)<br>
+                P₁ = Price at time t=1 (end of period)<br>
+                I₁ = Income received during the period
+            </p>
+        </div>
+
+        <h3>2.2 Components of HPR</h3>
+
+        <p>The holding period return comprises two distinct components:</p>
+
+        <ul>
+            <li><strong>Capital Gain/Loss:</strong> (P₁ - P₀) / P₀</li>
+            <li><strong>Income Yield:</strong> I₁ / P₀</li>
+        </ul>
+
+        <div class="example-box">
+            <h3>Example 1: Single Period HPR Calculation</h3>
+            <p><strong>Problem:</strong> An investor purchased 100 shares at $34.50 per share at the beginning of the quarter. The investor sold all shares for $30.50 per share after receiving a $51.55 dividend payment at the end of the quarter. Calculate the holding period return.</p>
+            
+            <p><strong>Solution:</strong></p>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Calculation</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>Initial Investment (P₀)</td>
+                    <td>100 × $34.50</td>
+                    <td>$3,450</td>
+                </tr>
+                <tr>
+                    <td>Ending Value (P₁)</td>
+                    <td>100 × $30.50</td>
+                    <td>$3,050</td>
+                </tr>
+                <tr>
+                    <td>Dividend Income (I₁)</td>
+                    <td>-</td>
+                    <td>$51.55</td>
+                </tr>
+                <tr>
+                    <td>Capital Loss</td>
+                    <td>($3,050 - $3,450) / $3,450</td>
+                    <td>-11.59%</td>
+                </tr>
+                <tr>
+                    <td>Dividend Yield</td>
+                    <td>$51.55 / $3,450</td>
+                    <td>1.49%</td>
+                </tr>
+                <tr style="background-color: #fff9c4; font-weight: bold;">
+                    <td>Total HPR</td>
+                    <td>-11.59% + 1.49%</td>
+                    <td>-10.10%</td>
+                </tr>
+            </table>
+            
+            <p style="margin-top: 20px;"><strong>Interpretation:</strong> The investor experienced a negative holding period return of 10.10%, despite receiving dividend income, due to capital depreciation exceeding the income component.</p>
+        </div>
+
+        <h3>2.3 Multi-Period Holding Period Return</h3>
+
+        <p>For investment horizons spanning multiple periods, the cumulative holding period return is calculated by compounding the individual period returns:</p>
+
+        <div class="formula-box">
+            <h3 style="color: white;">Multi-Period HPR Formula</h3>
+            <p style="margin-top: 15px; font-size: 1.2em;">
+                R = [(1 + R₁) × (1 + R₂) × (1 + R₃) × ... × (1 + Rₙ)] - 1
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95em; color: #f0f4f8;">
+                Where R₁, R₂, ..., Rₙ represent the returns in periods 1, 2, ..., n
+            </p>
+        </div>
+
+        <div class="example-box">
+            <h3>Example 2: Three-Year Holding Period Return</h3>
+            <p><strong>Problem:</strong> A mutual fund exhibits the following annual returns. Calculate the three-year holding period return.</p>
+            
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Return</th>
+                </tr>
+                <tr><td>20X8</td><td>14%</td></tr>
+                <tr><td>20X9</td><td>-10%</td></tr>
+                <tr><td>20X0</td><td>-2%</td></tr>
+            </table>
+            
+            <p><strong>Solution:</strong></p>
+            <p>R = [(1 + 0.14) × (1 - 0.10) × (1 - 0.02)] - 1</p>
+            <p>R = [1.14 × 0.90 × 0.98] - 1</p>
+            <p>R = 1.00548 - 1 = <strong>0.55%</strong></p>
+            
+            <p><strong>Interpretation:</strong> Despite two negative years, the strong performance in 20X8 resulted in a positive cumulative return of 0.55% over the three-year period.</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 400" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="400" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">Multi-Period Return Compounding Visualization</text>
+                
+                <!-- Starting value -->
+                <rect x="50" y="100" width="120" height="80" fill="#c8e6c9" rx="10" stroke="#4caf50" stroke-width="2"/>
+                <text x="110" y="130" font-size="12" text-anchor="middle" fill="#555">Initial</text>
+                <text x="110" y="155" font-size="18" font-weight="bold" text-anchor="middle" fill="#2e7d32">$100,000</text>
+                
+                <!-- Year 1 -->
+                <path d="M 180 140 L 240 140" stroke="#667eea" stroke-width="3" marker-end="url(#arrow1)"/>
+                <defs>
+                    <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#667eea"/>
+                    </marker>
+                </defs>
+                <text x="210" y="125" font-size="11" text-anchor="middle" fill="#667eea" font-weight="bold">+14%</text>
+                
+                <rect x="250" y="100" width="120" height="80" fill="#c8e6c9" rx="10" stroke="#4caf50" stroke-width="2"/>
+                <text x="310" y="130" font-size="12" text-anchor="middle" fill="#555">Year 1</text>
+                <text x="310" y="155" font-size="18" font-weight="bold" text-anchor="middle" fill="#2e7d32">$114,000</text>
+                
+                <!-- Year 2 -->
+                <path d="M 380 140 L 440 140" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrow2)"/>
+                <defs>
+                    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#e74c3c"/>
+                    </marker>
+                </defs>
+                <text x="410" y="125" font-size="11" text-anchor="middle" fill="#e74c3c" font-weight="bold">-10%</text>
+                
+                <rect x="450" y="100" width="120" height="80" fill="#ffcdd2" rx="10" stroke="#e74c3c" stroke-width="2"/>
+                <text x="510" y="130" font-size="12" text-anchor="middle" fill="#555">Year 2</text>
+                <text x="510" y="155" font-size="18" font-weight="bold" text-anchor="middle" fill="#c62828">$102,600</text>
+                
+                <!-- Year 3 -->
+                <path d="M 580 140 L 620 140" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrow3)"/>
+                <defs>
+                    <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                        <polygon points="0 0, 10 3, 0 6" fill="#e74c3c"/>
+                    </marker>
+                </defs>
+                <text x="600" y="125" font-size="11" text-anchor="middle" fill="#e74c3c" font-weight="bold">-2%</text>
+                
+                <rect x="630" y="100" width="120" height="80" fill="#ffcdd2" rx="10" stroke="#e74c3c" stroke-width="2"/>
+                <text x="690" y="130" font-size="12" text-anchor="middle" fill="#555">Year 3</text>
+                <text x="690" y="155" font-size="18" font-weight="bold" text-anchor="middle" fill="#c62828">$100,548</text>
+                
+                <!-- Result box -->
+                <rect x="200" y="250" width="400" height="120" fill="#fff9c4" rx="15" stroke="#fbc02d" stroke-width="2"/>
+                <text x="400" y="280" font-size="14" text-anchor="middle" fill="#555">Three-Year Holding Period Return</text>
+                <text x="400" y="310" font-size="16" text-anchor="middle" fill="#2c3e50">Calculation: (1.14 × 0.90 × 0.98) - 1</text>
+                <text x="400" y="345" font-size="22" font-weight="bold" text-anchor="middle" fill="#c0392b">HPR = 0.55%</text>
+            </svg>
+        </div>
+
+        <h2>3. Arithmetic Mean Return</h2>
+
+        <h3>3.1 Definition and Formula</h3>
+
+        <p>The arithmetic mean return represents the simple average of holding period returns across multiple periods. It is calculated by summing all individual returns and dividing by the total number of periods.</p>
+
+        <div class="formula-box">
+            <h3 style="color: white;">Arithmetic Mean Formula</h3>
+            <p style="margin-top: 15px; font-size: 1.2em;">
+                R̄ᵢ = (Rᵢ₁ + Rᵢ₂ + ... + RᵢT) / T
+            </p>
+            <p style="margin-top: 10px; font-size: 1.1em;">
+                R̄ᵢ = (1/T) Σ Rᵢₜ
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95em; color: #f0f4f8;">
+                Where:<br>
+                R̄ᵢ = Arithmetic mean return for asset i<br>
+                Rᵢₜ = Return in period t<br>
+                T = Total number of periods
+            </p>
+        </div>
+
+        <h3>3.2 Properties and Applications</h3>
+
+        <div class="key-concept">
+            <h4>Key Characteristics:</h4>
+            <ul>
+                <li>Assumes equal initial investment at the beginning of each period</li>
+                <li>Does not account for compounding effects</li>
+                <li>Possesses well-defined statistical properties</li>
+                <li>Appropriate for forecasting single-period returns</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <h4>Critical Limitation: Upward Bias</h4>
+            <p>The arithmetic mean return exhibits an upward bias unless all underlying holding period returns are identical. This bias becomes particularly pronounced when returns exhibit high volatility or include both positive and negative values.</p>
+            <p style="margin-top: 10px;"><strong>Mathematical relationship:</strong> Arithmetic Mean ≥ Geometric Mean, with equality only when all returns are equal.</p>
+        </div>
+
+        <div class="example-box">
+            <h3>Example 3: Demonstrating Arithmetic Mean Bias</h3>
+            <p><strong>Problem:</strong> Calculate the arithmetic mean return for an investment with the following annual returns: -50%, +35%, +27%</p>
+            
+            <p><strong>Solution:</strong></p>
+            <p>R̄ = (-50% + 35% + 27%) / 3 = 12% / 3 = <strong>4.0%</strong></p>
+            
+            <p><strong>Analysis:</strong> An initial investment of €1.0000 would evolve as follows:</p>
+            
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Return</th>
+                    <th>Balance (€)</th>
+                </tr>
+                <tr><td>Initial</td><td>-</td><td>1.0000</td></tr>
+                <tr><td>Year 1</td><td>-50%</td><td>0.5000</td></tr>
+                <tr><td>Year 2</td><td>+35%</td><td>0.6750</td></tr>
+                <tr><td>Year 3</td><td>+27%</td><td>0.8573</td></tr>
+            </table>
+            
+            <p style="margin-top: 20px;"><strong>Comparison:</strong> If the arithmetic mean of 4% were accurate, the ending balance would be:</p>
+            <p>€1.0000 × (1.04)³ = <strong>€1.1249</strong></p>
+            
+            <p style="margin-top: 15px;"><strong>Actual ending balance: €0.8573</strong></p>
+            
+            <p style="margin-top: 15px;"><strong>Conclusion:</strong> The arithmetic mean significantly overestimates actual investment performance, demonstrating the upward bias when returns are volatile.</p>
+        </div>
+
+        <h2>4. Geometric Mean Return</h2>
+
+        <h3>4.1 Definition and Formula</h3>
+
+        <p>The geometric mean return represents the compound rate of return that, when applied consistently over all periods, produces the actual terminal value of the investment. It is the appropriate measure for multi-period return analysis.</p>
+
+        <div class="formula-box">
+            <h3 style="color: white;">Geometric Mean Formula</h3>
+            <p style="margin-top: 15px; font-size: 1.2em;">
+                R̄Gᵢ = ᵀ√[(1+R₁) × (1+R₂) × ... × (1+Rₜ)] - 1
+            </p>
+            <p style="margin-top: 10px; font-size: 1.1em;">
+                R̄Gᵢ = [∏ (1+Rₜ)]^(1/T) - 1
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95em; color: #f0f4f8;">
+                Where:<br>
+                R̄Gᵢ = Geometric mean return for asset i<br>
+                Rₜ = Return in period t<br>
+                T = Total number of periods<br>
+                ∏ = Product notation (multiply all terms)
+            </p>
+        </div>
+
+        <h3>4.2 Properties and Interpretation</h3>
+
+        <div class="key-concept">
+            <h4>Essential Characteristics:</h4>
+            <ul>
+                <li>Accounts for compounding effects of reinvested returns</li>
+                <li>Provides accurate representation of portfolio growth over time</li>
+                <li>Always less than or equal to arithmetic mean (except when all returns are equal)</li>
+                <li>Appropriate for reporting historical investment performance</li>
+                <li>Represents the true compound annual growth rate (CAGR)</li>
+            </ul>
+        </div>
+
+        <div class="example-box">
+            <h3>Example 4: Geometric Mean Calculation</h3>
+            <p><strong>Problem:</strong> A hedge fund exhibits the following annual returns. Calculate the geometric mean return over the three-year period.</p>
+            
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Return</th>
+                </tr>
+                <tr><td>20X8</td><td>+22%</td></tr>
+                <tr><td>20X9</td><td>-25%</td></tr>
+                <tr><td>20X0</td><td>+11%</td></tr>
+            </table>
+            
+            <p><strong>Solution:</strong></p>
+            <p>R̄G = [(1 + 0.22) × (1 - 0.25) × (1 + 0.11)]^(1/3) - 1</p>
+            <p>R̄G = [1.22 × 0.75 × 1.11]^(1/3) - 1</p>
+            <p>R̄G = [1.0157]^(1/3) - 1</p>
+            <p>R̄G = 1.0052 - 1 = <strong>0.52%</strong></p>
+            
+            <p><strong>Interpretation:</strong> The fund's compound annual growth rate was 0.52% over the three-year period. An initial investment of $100,000 would grow to $100,000 × (1.0052)³ = $101,571.83</p>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 500" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="500" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">Arithmetic vs. Geometric Mean: Comparative Analysis</text>
+                
+                <!-- Data table section -->
+                <rect x="50" y="60" width="700" height="150" fill="white" rx="10" stroke="#667eea" stroke-width="2"/>
+                
+                <text x="400" y="85" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">Annual Returns</text>
+                <text x="150" y="110" font-size="13" text-anchor="middle" fill="#555">Year 1: -50%</text>
+                <text x="400" y="110" font-size="13" text-anchor="middle" fill="#555">Year 2: +35%</text>
+                <text x="650" y="110" font-size="13" text-anchor="middle" fill="#555">Year 3: +27%</text>
+                
+                <!-- Arithmetic calculation -->
+                <rect x="70" y="135" width="300" height="60" fill="#ffcdd2" rx="8"/>
+                <text x="220" y="157" font-size="12" text-anchor="middle" fill="#555">Arithmetic Mean</text>
+                <text x="220" y="180" font-size="16" font-weight="bold" text-anchor="middle" fill="#c62828">(-50 + 35 + 27) / 3 = 4.0%</text>
+                
+                <!-- Geometric calculation -->
+                <rect x="430" y="135" width="300" height="60" fill="#c8e6c9" rx="8"/>
+                <text x="580" y="157" font-size="12" text-anchor="middle" fill="#555">Geometric Mean</text>
+                <text x="580" y="180" font-size="16" font-weight="bold" text-anchor="middle" fill="#2e7d32">³√(0.5 × 1.35 × 1.27) - 1 = -5.0%</text>
+                
+                <!-- Comparison boxes -->
+                <rect x="50" y="240" width="330" height="220" fill="#fff9c4" rx="12" stroke="#fbc02d" stroke-width="2"/>
+                <text x="215" y="270" font-size="15" font-weight="bold" text-anchor="middle" fill="#2c3e50">Arithmetic Mean Projection</text>
+                <text x="215" y="300" font-size="13" text-anchor="middle" fill="#555">Initial Investment: €1.0000</text>
+                <text x="215" y="330" font-size="13" text-anchor="middle" fill="#555">If 4% return held each year:</text>
+                <text x="215" y="360" font-size="13" text-anchor="middle" fill="#2c3e50">Year 1: €1.0000 × 1.04 = €1.0400</text>
+                <text x="215" y="385" font-size="13" text-anchor="middle" fill="#2c3e50">Year 2: €1.0400 × 1.04 = €1.0816</text>
+                <text x="215" y="410" font-size="13" text-anchor="middle" fill="#2c3e50">Year 3: €1.0816 × 1.04 = €1.1249</text>
+                <text x="215" y="440" font-size="16" font-weight="bold" text-anchor="middle" fill="#c0392b">Ending Value: €1.1249</text>
+                
+                <rect x="420" y="240" width="330" height="220" fill="#c8e6c9" rx="12" stroke="#4caf50" stroke-width="2"/>
+                <text x="585" y="270" font-size="15" font-weight="bold" text-anchor="middle" fill="#2c3e50">Actual Performance</text>
+                <text x="585" y="300" font-size="13" text-anchor="middle" fill="#555">Initial Investment: €1.0000</text>
+                <text x="585" y="330" font-size="13" text-anchor="middle" fill="#555">Actual year-by-year progression:</text>
+                <text x="585" y="360" font-size="13" text-anchor="middle" fill="#2c3e50">Year 1: €1.0000 × 0.50 = €0.5000</text>
+                <text x="585" y="385" font-size="13" text-anchor="middle" fill="#2c3e50">Year 2: €0.5000 × 1.35 = €0.6750</text>
+                <text x="585" y="410" font-size="13" text-anchor="middle" fill="#2c3e50">Year 3: €0.6750 × 1.27 = €0.8573</text>
+                <text x="585" y="440" font-size="16" font-weight="bold" text-anchor="middle" fill="#27ae60">Ending Value: €0.8573</text>
+                
+                <!-- Conclusion -->
+                <rect x="150" y="470" width="500" height="20" fill="#e74c3c" rx="5"/>
+                <text x="400" y="485" font-size="12" font-weight="bold" text-anchor="middle" fill="white">Arithmetic overstates by 31.2% | Geometric matches reality (-5.0% CAGR)</text>
+            </svg>
+        </div>
+
+        <h3>4.3 Relationship Between Means</h3>
+
+        <p>The mathematical relationship between arithmetic and geometric means is expressed as:</p>
+
+        <div class="formula-box">
+            <h3 style="color: white;">Fundamental Inequality</h3>
+            <p style="margin-top: 15px; font-size: 1.3em; text-align: center;">
+                Harmonic Mean ≤ Geometric Mean ≤ Arithmetic Mean
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95em; color: #f0f4f8;">
+                Equality holds if and only if all observations are identical
+            </p>
+        </div>
+
+        <p>The divergence between arithmetic and geometric means increases with the variability of returns. Greater volatility results in larger discrepancies between the two measures.</p>
+
+        <h2>5. Harmonic Mean Return</h2>
+
+        <h3>5.1 Definition and Formula</h3>
+
+        <p>The harmonic mean is appropriate when the variable represents a rate or ratio. In investment contexts, it is particularly relevant for cost averaging scenarios where a fixed monetary amount is invested at varying prices.</p>
+
+        <div class="formula-box">
+            <h3 style="color: white;">Harmonic Mean Formula</h3>
+            <p style="margin-top: 15px; font-size: 1.2em;">
+                X̄H = n / Σ(1/Xᵢ)
+            </p>
+            <p style="margin-top: 15px; font-size: 0.95em; color: #f0f4f8;">
+                Where:<br>
+                X̄H = Harmonic mean<br>
+                n = Number of observations<br>
+                Xᵢ = Individual observations (Xᵢ > 0)
+            </p>
+        </div>
+
+        <h3>5.2 Application: Cost Averaging</h3>
+
+        <p>The harmonic mean is the correct measure for determining the average price paid per unit when investing fixed amounts at different prices. This application is fundamental to dollar-cost averaging strategies.</p>
+
+        <div class="example-box">
+            <h3>Example 5: Cost Averaging Analysis</h3>
+            <p><strong>Problem:</strong> An investor implements a systematic investment strategy, investing €1,000 monthly for two months at prices of €10 and €15 per share. Calculate the average price paid per share.</p>
+            
+            <p><strong>Solution:</strong></p>
+            
+            <table>
+                <tr>
+                    <th>Month</th>
+                    <th>Investment Amount</th>
+                    <th>Price per Share</th>
+                    <th>Shares Acquired</th>
+                </tr>
+                <tr>
+                    <td>Month 1</td>
+                    <td>€1,000</td>
+                    <td>€10</td>
+                    <td>100.00</td>
+                </tr>
+                <tr>
+                    <td>Month 2</td>
+                    <td>€1,000</td>
+                    <td>€15</td>
+                    <td>66.67</td>
+                </tr>
+                <tr style="background-color: #fff9c4; font-weight: bold;">
+                    <td>Total</td>
+                    <td>€2,000</td>
+                    <td>-</td>
+                    <td>166.67</td>
+                </tr>
+            </table>
+            
+            <p><strong>Average Price (Direct Calculation):</strong></p>
+            <p>Average Price = Total Investment / Total Shares = €2,000 / 166.67 = <strong>€12.00</strong></p>
+            
+            <p><strong>Average Price (Harmonic Mean):</strong></p>
+            <p>X̄H = 2 / (1/10 + 1/15)</p>
+            <p>X̄H = 2 / (0.1 + 0.0667)</p>
+            <p>X̄H = 2 / 0.1667 = <strong>€12.00</strong></p>
+            
+            <p style="margin-top: 20px;"><strong>Comparison with Arithmetic Mean:</strong></p>
+            <p>Arithmetic Mean = (€10 + €15) / 2 = €12.50</p>
+            
+            <div class="important-note">
+                <p><strong>Analysis:</strong> The harmonic mean of €12.00 accurately reflects the average acquisition cost, while the arithmetic mean of €12.50 overstates the average price. This difference arises because the fixed investment amount automatically purchases more shares when prices are lower, a phenomenon correctly captured by the harmonic mean.</p>
+            </div>
+        </div>
+
+        <h2>6. Comparative Analysis and Selection Criteria</h2>
+
+        <div class="key-concept">
+            <h3>Decision Framework for Return Measure Selection</h3>
+            
+            <h4>Use Arithmetic Mean When:</h4>
+            <ul>
+                <li>Forecasting expected return for the next single period</li>
+                <li>Estimating average one-period performance</li>
+                <li>Statistical properties (e.g., standard deviation) are required</li>
+            </ul>
+
+            <h4>Use Geometric Mean When:</h4>
+            <ul>
+                <li>Reporting historical investment performance</li>
+                <li>Calculating compound annual growth rates (CAGR)</li>
+                <li>Comparing multi-period investment returns</li>
+                <li>Determining the actual growth rate of wealth over time</li>
+            </ul>
+
+            <h4>Use Harmonic Mean When:</h4>
+            <ul>
+                <li>Analyzing cost averaging strategies</li>
+                <li>Computing average prices with fixed monetary investments</li>
+                <li>Evaluating periodic investment plans (SIP, dollar-cost averaging)</li>
+                <li>Averaging price-to-earnings ratios or other valuation multiples</li>
+            </ul>
+        </div>
+
+        <div class="image-container">
+            <svg viewBox="0 0 800 450" style="width:100%; max-width:800px;">
+                <!-- Background -->
+                <rect x="0" y="0" width="800" height="450" fill="#f0f4f8"/>
+                
+                <!-- Title -->
+                <text x="400" y="30" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">Return Measurement Method Selection Framework</text>
+                
+                <!-- Decision tree structure -->
+                <rect x="250" y="60" width="300" height="60" fill="#667eea" rx="10"/>
+                <text x="400" y="85" font-size="14" font-weight="bold" text-anchor="middle" fill="white">What is your objective?</text>
+                
+                <!-- Three branches -->
+                <path d="M 300 120 L 150 180" stroke="#667eea" stroke-width="3"/>
+                <path d="M 400 120 L 400 180" stroke="#667eea" stroke-width="3"/>
+                <path d="M 500 120 L 650 180" stroke="#667eea" stroke-width="3"/>
+                
+                <!-- Forecasting branch -->
+                <rect x="50" y="180" width="200" height="220" fill="#ffcdd2" rx="12" stroke="#c62828" stroke-width="2"/>
+                <text x="150" y="205" font-size="13" font-weight="bold" text-anchor="middle" fill="#c62828">Forecasting</text>
+                <text x="150" y="230" font-size="12" text-anchor="middle" fill="#2c3e50">Next Period Return?</text>
+                <rect x="70" y="245" width="160" height="40" fill="white" rx="5"/>
+                <text x="150" y="270" font-size="14" font-weight="bold" text-anchor="middle" fill="#c62828">Arithmetic Mean</text>
+                <text x="150" y="305" font-size="11" text-anchor="middle" fill="#555">Best estimate for</text>
+                <text x="150" y="325" font-size="11" text-anchor="middle" fill="#555">single-period</text>
+                <text x="150" y="345" font-size="11" text-anchor="middle" fill="#555">future return</text>
+                <text x="150" y="375" font-size="10" text-anchor="middle" fill="#c62828">⚠️ Not for multi-period!</text>
+                
+                <!-- Historical Performance branch -->
+                <rect x="300" y="180" width="200" height="220" fill="#c8e6c9" rx="12" stroke="#4caf50" stroke-width="2"/>
+                <text x="400" y="205" font-size="13" font-weight="bold" text-anchor="middle" fill="#2e7d32">Historical Analysis</text>
+                <text x="400" y="230" font-size="12" text-anchor="middle" fill="#2c3e50">Past Performance?</text>
+                <rect x="320" y="245" width="160" height="40" fill="white" rx="5"/>
+                <text x="400" y="270" font-size="14" font-weight="bold" text-anchor="middle" fill="#2e7d32">Geometric Mean</text>
+                <text x="400" y="305" font-size="11" text-anchor="middle" fill="#555">True compound</text>
+                <text x="400" y="325" font-size="11" text-anchor="middle" fill="#555">growth rate</text>
+                <text x="400" y="345" font-size="11" text-anchor="middle" fill="#555">Actual wealth growth</text>
+                <text x="400" y="375" font-size="10" text-anchor="middle" fill="#2e7d32">✓ Most accurate!</text>
+                
+                <!-- Cost Averaging branch -->
+                <rect x="550" y="180" width="200" height="220" fill="#e1bee7" rx="12" stroke="#9c27b0" stroke-width="2"/>
+                <text x="650" y="205" font-size="13" font-weight="bold" text-anchor="middle" fill="#7b1fa2">Cost Analysis</text>
+                <text x="650" y="230" font-size="12" text-anchor="middle" fill="#2c3e50">Fixed Amount Investing?</text>
+                <rect x="570" y="245" width="160" height="40" fill="white" rx="5"/>
+                <text x="650" y="270" font-size="14" font-weight="bold" text-anchor="middle" fill="#7b1fa2">Harmonic Mean</text>
+                <text x="650" y="305" font-size="11" text-anchor="middle" fill="#555">Average price paid</text>
+                <text x="650" y="325" font-size="11" text-anchor="middle" fill="#555">per unit with</text>
+                <text x="650" y="345" font-size="11" text-anchor="middle" fill="#555">fixed investments</text>
+                <text x="650" y="375" font-size="10" text-anchor="middle" fill="#7b1fa2">📊 For SIP/DCA</text>
+                
+                <!-- Bottom note -->
+                <rect x="150" y="415" width="500" height="25" fill="#fff9c4" rx="5"/>
+                <text x="400" y="432" font-size="11" text-anchor="middle" fill="#555">Key: Arithmetic (highest) ≥ Geometric (middle) ≥ Harmonic (lowest)</text>
+            </svg>
+        </div>
+
+        <h2>7. Comprehensive Example: Integrated Analysis</h2>
+
+        <div class="example-box">
+            <h3>Example 6: Multi-Method Return Analysis</h3>
+            <p><strong>Problem:</strong> An analyst evaluates a mutual fund with the following annual returns over a 10-year period. Calculate and interpret all three mean measures.</p>
+            
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Return</th>
+                    <th>Year</th>
+                    <th>Return</th>
+                </tr>
+                <tr><td>1</td><td>4.5%</td><td>6</td><td>4.5%</td></tr>
+                <tr><td>2</td><td>6.0%</td><td>7</td><td>3.5%</td></tr>
+                <tr><td>3</td><td>1.5%</td><td>8</td><td>2.5%</td></tr>
+                <tr><td>4</td><td>-2.0%</td><td>9</td><td>5.5%</td></tr>
+                <tr><td>5</td><td>0.0%</td><td>10</td><td>4.0%</td></tr>
+            </table>
+            
+            <p><strong>Solution 1: Arithmetic Mean</strong></p>
+            <p>Sum of returns = 4.5% + 6.0% + 1.5% + (-2.0%) + 0.0% + 4.5% + 3.5% + 2.5% + 5.5% + 4.0% = 30.0%</p>
+            <p>Arithmetic Mean = 30.0% / 10 = <strong>3.00%</strong></p>
+            
+            <p style="margin-top: 20px;"><strong>Solution 2: Geometric Mean</strong></p>
+            <p>R̄G = [(1.045)(1.060)(1.015)(0.980)(1.000)(1.045)(1.035)(1.025)(1.055)(1.040)]^(1/10) - 1</p>
+            <p>R̄G = [1.340234]^(1/10) - 1</p>
+            <p>R̄G = 1.029717 - 1 = <strong>2.97%</strong></p>
+            
+            <p style="margin-top: 20px;"><strong>Verification:</strong></p>
+            <p>Initial investment: $100,000</p>
+            <p>Using arithmetic mean: $100,000 × (1.03)^10 = $134,392</p>
+            <p>Using geometric mean: $100,000 × (1.0297)^10 = $134,023</p>
+            <p>Actual ending value: $100,000 × 1.340234 = <strong>$134,023</strong></p>
+            
+            <div class="important-note">
+                <p><strong>Interpretation:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>The arithmetic mean of 3.00% would be appropriate for forecasting the expected return in year 11</li>
+                    <li>The geometric mean of 2.97% accurately represents the fund's compound annual growth rate over the historical 10-year period</li>
+                    <li>The small difference (0.03%) reflects relatively low volatility in annual returns</li>
+                    <li>For reporting historical performance, the geometric mean of 2.97% should be used</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>8. Summary and Key Concepts</h2>
+
+        <div class="key-concept">
+            <h3>Essential Points for CFA Level 1</h3>
+            
+            <h4>1. Holding Period Return (HPR)</h4>
+            <ul>
+                <li>Measures return over any single specified period</li>
+                <li>Formula: R = (P₁ - P₀ + I₁) / P₀</li>
+                <li>Can be extended to multiple periods through compounding</li>
+            </ul>
+
+            <h4>2. Arithmetic Mean</h4>
+            <ul>
+                <li>Simple average of returns: R̄ = (ΣRᵢ) / n</li>
+                <li>Best for forecasting next period's return</li>
+                <li>Exhibits upward bias for multi-period analysis</li>
+                <li>Does not account for compounding effects</li>
+            </ul>
+
+            <h4>3. Geometric Mean</h4>
+            <ul>
+                <li>Compound annual growth rate: R̄G = [∏(1+Rᵢ)]^(1/n) - 1</li>
+                <li>Appropriate for historical performance reporting</li>
+                <li>Accurately reflects actual wealth growth</li>
+                <li>Always ≤ arithmetic mean (unless all returns equal)</li>
+            </ul>
+
+            <h4>4. Harmonic Mean</h4>
+            <ul>
+                <li>Appropriate for averaging rates and ratios</li>
+                <li>Correct measure for cost averaging scenarios</li>
+                <li>Formula: X̄H = n / Σ(1/Xᵢ)</li>
+                <li>Always ≤ geometric mean</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <h3>Critical Exam Considerations</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Always use geometric mean when calculating historical compound returns</li>
+                <li>Arithmetic mean is appropriate only for single-period forecasts</li>
+                <li>Remember the inequality: Harmonic ≤ Geometric ≤ Arithmetic</li>
+                <li>Greater return volatility leads to larger divergence between arithmetic and geometric means</li>
+                <li>For cost averaging problems, use harmonic mean</li>
+                <li>Multi-period HPR requires compounding: multiply (1+R) terms, then subtract 1</li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <a href="return-measurement-intuitive.html" class="nav-button">← Intuitive Learning</a>
+            <a href="return-measurement-practice.html" class="nav-button">Practice Questions →</a>
+        </div>
+    </div>
+</body>
+</html>
